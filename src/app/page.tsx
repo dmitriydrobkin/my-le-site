@@ -19,7 +19,14 @@ const DEFAULT_TEXTS = {
 };
 
 export default async function HomePage() {
-  const settings = await getSiteSettings();
+  let settings;
+  
+  try {
+    settings = await getSiteSettings();
+  } catch (error) {
+    console.error('Ошибка загрузки настроек (используем дефолтные):', error);
+    settings = {}; // Fallback на пустой объект, чтобы приложение не упало
+  }
 
   return (
     <>
@@ -32,17 +39,17 @@ export default async function HomePage() {
 
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center animate-fade-in mt-20">
           <p className="font-sans text-xs uppercase tracking-[0.3em] text-blue-400 mb-6 font-semibold">
-            {settings.hero_badge ?? DEFAULT_TEXTS.hero_badge}
+            {settings?.hero_badge ?? DEFAULT_TEXTS.hero_badge}
           </p>
           <h1 className="font-sans text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-8">
-            {settings.hero_title_1 ?? DEFAULT_TEXTS.hero_title_1}
+            {settings?.hero_title_1 ?? DEFAULT_TEXTS.hero_title_1}
             <br />
             <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-              {settings.hero_title_italic ?? DEFAULT_TEXTS.hero_title_italic}
+              {settings?.hero_title_italic ?? DEFAULT_TEXTS.hero_title_italic}
             </span>
           </h1>
           <p className="mx-auto max-w-2xl font-sans text-lg md:text-xl font-light leading-relaxed text-gray-400 mb-12">
-            {settings.hero_description ?? DEFAULT_TEXTS.hero_description}
+            {settings?.hero_description ?? DEFAULT_TEXTS.hero_description}
           </p>
           <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
             <Link href="#quiz" className="group relative px-8 py-4 bg-white hover:bg-gray-100 text-black rounded-full transition-all font-sans text-sm font-bold uppercase tracking-wider overflow-hidden">
