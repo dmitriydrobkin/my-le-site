@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import { Header } from '@/components/Header';
 import { getSiteSettings } from '@/server/functions/settings';
+import { QuizModal } from '@/components/QuizModal';
 import './globals.css';
 
 // ⚡ КРИТИЧНО: Переводим весь Layout в Edge, чтобы не было конфликтов с page.tsx
@@ -63,6 +64,9 @@ export default async function RootLayout({
             </p>
           </div>
         </footer>
+
+        {/* Global Modal */}
+        <QuizModal />
       </body>
     </html>
   );

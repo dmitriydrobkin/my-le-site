@@ -15,25 +15,20 @@ type Step = {
 
 const STEPS: Step[] = [
   {
-    id: 'projectType',
-    question: 'Какой тип проекта вам нужен?',
+    id: 'niche',
+    question: 'В какой нише работает ваш бизнес?',
     type: 'choice',
-    options: ['Landing Page', 'Корпоративный сайт', 'Интернет-магазин', 'Web-приложение (SaaS)'],
+    options: ['Услуги (салоны, ремонт и т.д.)', 'E-commerce / Товары', 'Инфобизнес / Обучение', 'B2B / Сложные продажи', 'Другое'],
   },
   {
-    id: 'budget',
-    question: 'Какой у вас ориентировочный бюджет?',
+    id: 'needs',
+    question: 'Какая автоматизация вам нужна?',
     type: 'choice',
-    options: ['Менее $1,000', '$1,000 - $3,000', '$3,000 - $10,000', 'Более $10,000'],
-  },
-  {
-    id: 'details',
-    question: 'Кратко опишите задачу (по желанию)',
-    type: 'text',
+    options: ['Только сайт (лендинг/корпоративный)', 'Только Telegram-бот', 'Сайт + Бот (Единая система)'],
   },
   {
     id: 'contact',
-    question: 'Как с вами связаться?',
+    question: 'Куда отправить расчет стоимости?',
     type: 'contact',
   },
 ];
@@ -92,15 +87,22 @@ export default function QuizStepper() {
   };
 
   if (isSuccess) {
+    // Простая логика оценки для демо
+    let estimatedCost = 'от $1,500';
+    if (answers['needs'] === 'Только сайт (лендинг/корпоративный)') estimatedCost = 'от $800';
+    if (answers['needs'] === 'Только Telegram-бот') estimatedCost = 'от $500';
+
     return (
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-12 text-center max-w-lg mx-auto"
+        className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-12 text-center max-w-lg mx-auto relative z-10"
       >
         <CheckCircle2 className="w-16 h-16 text-emerald-400 mx-auto mb-6" />
-        <h3 className="text-3xl font-bold text-white mb-4">Спасибо за заявку!</h3>
-        <p className="text-gray-400">Я свяжусь с вами в ближайшее время для обсуждения деталей проекта.</p>
+        <h3 className="text-3xl font-bold text-white mb-2">Оценка готова!</h3>
+        <p className="text-gray-400 mb-6">Предварительная стоимость вашего проекта:</p>
+        <div className="text-5xl font-bold text-[#ff4400] mb-8">{estimatedCost}</div>
+        <p className="text-gray-400 text-sm">Я уже получил вашу заявку и скоро напишу по указанным контактам, чтобы уточнить детали и дать точную смету.</p>
       </motion.div>
     );
   }
@@ -119,8 +121,11 @@ export default function QuizStepper() {
       </div>
 
       <div className="mt-4 mb-8">
-        <span className="text-sm font-medium text-blue-400 tracking-wider uppercase">Шаг {currentStep + 1} из {STEPS.length}</span>
+        <span className="text-sm font-medium text-[#ff4400] tracking-wider uppercase">Шаг {currentStep + 1} из {STEPS.length}</span>
         <h3 className="text-3xl font-bold text-white mt-2">{step?.question}</h3>
+        {step?.type === 'contact' && (
+          <p className="text-gray-400 mt-2 text-sm">Оставьте контакт, чтобы увидеть предварительную оценку стоимости.</p>
+        )}
       </div>
 
       <div className="min-h-[200px]">
@@ -141,7 +146,7 @@ export default function QuizStepper() {
                     className={cn(
                       "text-left p-4 rounded-xl border transition-all duration-200",
                       answers[step?.id || ''] === opt 
-                        ? "bg-blue-500/20 border-blue-500 text-white" 
+                        ? "bg-[#ff4400]/20 border-[#ff4400] text-white" 
                         : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20"
                     )}
                   >
@@ -170,8 +175,8 @@ export default function QuizStepper() {
                     type="text"
                     value={answers['name'] || ''}
                     onChange={e => handleChange('name', e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
-                    placeholder="Иван Иванов"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-[#ff4400] transition-colors"
+                    placeholder="Ваше имя"
                   />
                 </div>
                 <div>
@@ -181,8 +186,8 @@ export default function QuizStepper() {
                     type="text"
                     value={answers['contactInfo'] || ''}
                     onChange={e => handleChange('contactInfo', e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
-                    placeholder="@username или email@example.com"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-[#ff4400] transition-colors"
+                    placeholder="@username или номер телефона"
                   />
                 </div>
               </form>
