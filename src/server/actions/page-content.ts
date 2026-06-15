@@ -1,34 +1,41 @@
 'use server';
 
-import { getRequestContext } from '@cloudflare/next-on-pages';
-import { drizzle } from 'drizzle-orm/d1';
+import { db } from '@/server/db';
 import { pageContent } from '@/server/db/schema';
+import { eq } from 'drizzle-orm';
+import { getRequestContext } from '@cloudflare/next-on-pages';
 
-// ❌ УДАЛИЛИ export const runtime = 'edge';
-
-export async function savePageContent(formData: FormData) {
+export async function savePageContent(data: {
+  route: string;
+  h1: string;
+  seoTitle: string;
+  description: string;
+}) {
   const { env } = getRequestContext();
-  const db = drizzle(env.DB);
+  const database = db(env.DB);
 
-  const pageRoute = formData.get('pageRoute')?.toString();
-  
-  if (!pageRoute) {
-    throw new Error('pageRoute is required');
-  }
+  try {
+    await database
+      .insert(pageContent)
+      .values({
+        route: data.route,
+        h1: data.h1,
+        seoTitle: data.seoTitle,
+        description: data.description,
+      })
+      .onConflictDoUpdate({
+        target: [pageContent.route],
+        set: {
+          h1: data.h1,
+          seoTitle: data.seoTitle,
+          description: data.description,
+          updatedAt: new Date(),
+        },
+      });
 
-  const keys = ['h1', 'description', 'seoTitle', 'seoDescription'];
-
-  for (const key of keys) {
-    const value = formData.get(key)?.toString();
-    if (value !== undefined) {
-      await db.insert(pageContent)
-        .values({
-          route: pageRoute,
-        })
-        .onConflictDoUpdate({
-          target: [pageContent.pageRoute, pageContent.key],
-          set: { value },
-        });
-    }
+    return { success: true };
+  } catch (error) {
+    console.error('Ошибка при сохранении контента страницы:', error);
+    return { success: false, error: 'Не удалось сохранить данные' };
   }
 }
