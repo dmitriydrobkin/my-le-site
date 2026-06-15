@@ -4,18 +4,11 @@
  */
 
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import { getSiteSettings } from '@/server/functions/settings';
 import QuizStepper from '@/components/QuizStepper';
+import SceneWrapper from '@/components/animations/SceneWrapper'; // ИСПОЛЬЗУЕМ ОБЕРТКУ
 
 export const runtime = 'edge';
-
-// ⚡ КРИТИЧНОЕ ИСПРАВЛЕНИЕ: Отключаем SSR для 3D-сцены, 
-// чтобы сервер Cloudflare не пытался запустить WebGL.
-const Scene = dynamic(() => import('@/components/animations/Scene'), { 
-  ssr: false,
-  loading: () => <div className="absolute inset-0 -z-10 h-full w-full bg-black"></div> // Заглушка пока грузится 3D
-});
 
 // Стандартные тексты (Fallback)
 const DEFAULT_TEXTS = {
@@ -39,10 +32,12 @@ export default async function HomePage() {
     <>
       {/* Главный экран (Hero) */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black text-white">
-        <Scene />
+        
+        {/* Наш безопасный 3D-куб */}
+        <SceneWrapper />
         
         {/* Glow Effects */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-black/80 to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-black/80 to-black pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center animate-fade-in mt-20">
           <p className="font-sans text-xs uppercase tracking-[0.3em] text-blue-400 mb-6 font-semibold">

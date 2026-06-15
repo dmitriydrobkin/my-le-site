@@ -4,6 +4,9 @@ import { Header } from '@/components/Header';
 import { getSiteSettings } from '@/server/functions/settings';
 import './globals.css';
 
+// ⚡ КРИТИЧНО: Переводим весь Layout в Edge, чтобы не было конфликтов с page.tsx
+export const runtime = 'edge';
+
 const playfair = Playfair_Display({
   subsets: ['latin', 'cyrillic'],
   variable: '--font-serif',
