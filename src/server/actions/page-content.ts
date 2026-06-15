@@ -2,8 +2,6 @@
 
 import { db } from '@/server/db';
 import { pageContent } from '@/server/db/schema';
-import { eq } from 'drizzle-orm';
-import { getRequestContext } from '@cloudflare/next-on-pages';
 
 export async function savePageContent(data: {
   route: string;
@@ -11,11 +9,8 @@ export async function savePageContent(data: {
   seoTitle: string;
   description: string;
 }) {
-  const { env } = getRequestContext();
-  const database = db(env.DB);
-
   try {
-    await database
+    await db
       .insert(pageContent)
       .values({
         route: data.route,
