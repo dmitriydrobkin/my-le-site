@@ -134,13 +134,13 @@ export default function QuizStepper() {
           >
             {step?.type === 'choice' && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {step.options?.map(opt => (
+                {step?.options?.map(opt => (
                   <button
                     key={opt}
-                    onClick={() => handleSelect(step.id, opt)}
+                    onClick={() => handleSelect(step?.id || '', opt)}
                     className={cn(
                       "text-left p-4 rounded-xl border transition-all duration-200",
-                      answers[step.id] === opt 
+                      answers[step?.id || ''] === opt 
                         ? "bg-blue-500/20 border-blue-500 text-white" 
                         : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20"
                     )}
@@ -155,7 +155,7 @@ export default function QuizStepper() {
               <textarea
                 rows={4}
                 value={answers[step?.id || ''] || ''}
-                onChange={e => handleChange(step.id, e.target.value)}
+                onChange={e => handleChange(step?.id || '', e.target.value)}
                 placeholder="Напишите здесь..."
                 className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
               />
@@ -200,7 +200,7 @@ export default function QuizStepper() {
           <ArrowLeft className="w-6 h-6" />
         </button>
 
-        {step.type === 'contact' ? (
+        {step?.type === 'contact' ? (
           <button
             form="quiz-form"
             type="submit"
@@ -215,7 +215,7 @@ export default function QuizStepper() {
             onClick={handleNext}
             className={cn(
               "flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all",
-              step.type === 'text' || answers[step.id]
+              step?.type === 'text' || answers[step?.id || '']
                 ? "bg-white text-black hover:scale-105"
                 : "bg-white/10 text-gray-500 cursor-not-allowed"
             )}
