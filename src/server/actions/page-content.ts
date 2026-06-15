@@ -23,7 +23,7 @@ export async function savePageContent(formData: FormData) {
     if (value !== undefined) {
       await db.insert(pageContent)
         .values({
-          pageRoute,
+          route: pageRoute,
           key,
           value,
         })
