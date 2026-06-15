@@ -4,13 +4,20 @@
  */
 
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { getSiteSettings } from '@/server/functions/settings';
-import Scene from '@/components/animations/Scene';
 import QuizStepper from '@/components/QuizStepper';
 
 export const runtime = 'edge';
 
-// Стандартные тексты (Fallback), если в базе данных пусто
+// ⚡ КРИТИЧНОЕ ИСПРАВЛЕНИЕ: Отключаем SSR для 3D-сцены, 
+// чтобы сервер Cloudflare не пытался запустить WebGL.
+const Scene = dynamic(() => import('@/components/animations/Scene'), { 
+  ssr: false,
+  loading: () => <div className="absolute inset-0 -z-10 h-full w-full bg-black"></div> // Заглушка пока грузится 3D
+});
+
+// Стандартные тексты (Fallback)
 const DEFAULT_TEXTS = {
   hero_badge: 'Lead Creative Developer',
   hero_title_1: 'Создаю сайты, которые',
@@ -24,8 +31,8 @@ export default async function HomePage() {
   try {
     settings = await getSiteSettings();
   } catch (error) {
-    console.error('Ошибка загрузки настроек (используем дефолтные):', error);
-    settings = {}; // Fallback на пустой объект, чтобы приложение не упало
+    console.error('Ошибка загрузки настроек:', error);
+    settings = {}; 
   }
 
   return (
