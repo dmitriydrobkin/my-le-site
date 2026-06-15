@@ -161,7 +161,7 @@ export default function QuizStepper() {
               />
             )}
 
-            {step.type === 'contact' && (
+            {step?.type === 'contact' && (
               <form id="quiz-form" onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-sm text-gray-400 mb-2">Ваше имя *</label>
