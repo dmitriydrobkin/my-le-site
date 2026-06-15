@@ -19,3 +19,25 @@ export const pageContent = sqliteTable('page_content', {
     .notNull()
     .$defaultFn(() => new Date()),
 });
+
+// Лиды (заявки)
+export const leads = sqliteTable('leads', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  name: text('name').notNull(),
+  contactInfo: text('contact_info').notNull(),
+  status: text('status', { enum: ['new', 'contacted', 'converted', 'rejected'] }).notNull().default('new'),
+  estimatedBudget: text('estimated_budget'),
+  createdAt: integer('created_at', { mode: 'timestamp' })
+    .notNull()
+    .$defaultFn(() => new Date()),
+});
+
+// Ответы из квиза
+export const quizAnswers = sqliteTable('quiz_answers', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  leadId: text('lead_id').notNull().references(() => leads.id, { onDelete: 'cascade' }),
+  answersJson: text('answers_json', { mode: 'json' }).notNull(), // Храним ответы в JSON
+  createdAt: integer('created_at', { mode: 'timestamp' })
+    .notNull()
+    .$defaultFn(() => new Date()),
+});
