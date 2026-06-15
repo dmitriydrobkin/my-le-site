@@ -151,10 +151,10 @@ export default function QuizStepper() {
               </div>
             )}
 
-            {step.type === 'text' && (
+            {step?.type === 'text' && (
               <textarea
                 rows={4}
-                value={answers[step.id] || ''}
+                value={answers[step?.id || ''] || ''}
                 onChange={e => handleChange(step.id, e.target.value)}
                 placeholder="Напишите здесь..."
                 className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
