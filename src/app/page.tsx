@@ -1,21 +1,19 @@
 /**
- * Главная страница портфолио / корпоративного сайта.
- * Серверный компонент.
+ * Главная страница портфолио.
  */
 
 import Link from 'next/link';
 import { getSiteSettings } from '@/server/functions/settings';
 import QuizStepper from '@/components/QuizStepper';
-import SceneWrapper from '@/components/animations/SceneWrapper'; // ИСПОЛЬЗУЕМ ОБЕРТКУ
+import Scene from '@/components/animations/Scene'; // Прямой импорт нашей новой легкой сцены
 
 export const runtime = 'edge';
 
-// Стандартные тексты (Fallback)
 const DEFAULT_TEXTS = {
   hero_badge: 'Lead Creative Developer',
   hero_title_1: 'Создаю сайты, которые',
   hero_title_italic: 'приносят прибыль',
-  hero_description: 'Премиальный дизайн, WebGL-анимации и надежная Cloudflare Edge архитектура. Выводим ваш бизнес на новый уровень.',
+  hero_description: 'Премиальный дизайн, современные анимации и надежная архитектура. Выводим ваш бизнес на новый уровень.',
 };
 
 export default async function HomePage() {
@@ -30,14 +28,12 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* Главный экран (Hero) */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black text-white">
         
-        {/* Наш безопасный 3D-куб */}
-        <SceneWrapper />
+        {/* Легкая CSS-сцена */}
+        <Scene />
         
-        {/* Glow Effects */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-black/80 to-black pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/60 to-black pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center animate-fade-in mt-20">
           <p className="font-sans text-xs uppercase tracking-[0.3em] text-blue-400 mb-6 font-semibold">
@@ -65,7 +61,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Секция Квиза */}
       <section id="quiz" className="relative py-32 bg-black text-white">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-900/10 to-black" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
@@ -77,7 +72,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Заглушка для секции с портфолио */}
       <section id="portfolio" className="mx-auto max-w-7xl px-6 py-32 lg:px-8 text-center text-white">
         <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-tight mb-4">Избранные работы</h2>
         <p className="text-gray-500 text-lg">Здесь скоро появятся кейсы...</p>
