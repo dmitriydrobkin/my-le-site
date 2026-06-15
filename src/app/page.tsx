@@ -1,14 +1,16 @@
 /**
  * Главная страница портфолио.
+ * Серверный компонент.
  */
 
 import Link from 'next/link';
 import { getSiteSettings } from '@/server/functions/settings';
 import QuizStepper from '@/components/QuizStepper';
-import Scene from '@/components/animations/Scene'; // Прямой импорт нашей новой легкой сцены
+import SceneWrapper from '@/components/animations/SceneWrapper'; // Импортируем безопасную обертку для 3D сцены
 
 export const runtime = 'edge';
 
+// Стандартные тексты (Fallback), если в базе данных пусто
 const DEFAULT_TEXTS = {
   hero_badge: 'Lead Creative Developer',
   hero_title_1: 'Создаю сайты, которые',
@@ -30,8 +32,8 @@ export default async function HomePage() {
     <>
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black text-white">
         
-        {/* Легкая CSS-сцена */}
-        <Scene />
+        {/* Безопасная 3D-сцена с отложенной загрузкой в браузере */}
+        <SceneWrapper />
         
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/60 to-black pointer-events-none" />
 
@@ -61,6 +63,7 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Секция Квиза */}
       <section id="quiz" className="relative py-32 bg-black text-white">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-900/10 to-black" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
@@ -72,6 +75,7 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Заглушка для секции с портфолио */}
       <section id="portfolio" className="mx-auto max-w-7xl px-6 py-32 lg:px-8 text-center text-white">
         <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-tight mb-4">Избранные работы</h2>
         <p className="text-gray-500 text-lg">Здесь скоро появятся кейсы...</p>

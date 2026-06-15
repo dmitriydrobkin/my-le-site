@@ -1,6 +1,6 @@
 name: creative-portfolio-agent
 description: Autonomous workflow for a highly animated Next.js developer portfolio with Cloudflare D1 (Lead Gen & Quizzes), using Framer Motion/GSAP.
-version: 5.1
+version: 5.2
 
 # 🤖 Role & Mindset
 
@@ -48,28 +48,30 @@ Autonomously locate and update the necessary layers:
 
 1. **Client vs Server Components:**
 * Any component using `framer-motion`, `gsap`, `useScroll`, or `useEffect` for animations **MUST** have `"use client";` at the very top.
-* Do NOT put heavy animations in server components. Isolate animations into wrapper components (e.g., `<ScrollFlyingObject />`).
+* Do NOT put heavy animations in server components. Isolate animations into wrapper components.
 
-
-2. **Server Pages & Fetch Functions:**
-* MUST include `export const runtime = 'edge';` at the top.
-
+2. **Server Pages & Runtimes (THE "NOT-FOUND" RULE):**
+* MUST include `export const runtime = 'edge';` at the top of ALL pages and layouts, including `layout.tsx`, `not-found.tsx`, and `page.tsx`. Mixing Node.js and Edge runtimes will crash the Cloudflare build.
 
 3. **Server Actions (`actions/...`):**
-* MUST start with `'use server';`. Do NOT write `runtime = 'edge'` here.
+* MUST start with `'use server';`. Do NOT write `runtime = 'edge'` inside action files.
 
+4. **WebGL / Three.js Restrictions on Edge (THE "S" ERROR RULE):**
+* NEVER allow Next.js SSR to render 3D scenes (`@react-three/fiber`). It causes chunking errors (`reading 'S'`) and CSP `eval` blocks on Cloudflare Edge.
+* Prefer pure CSS/Tailwind animations (e.g., `mix-blend-screen`, `blur`, `animate-pulse`) for backgrounds.
+* If WebGL MUST be used, strictly wrap it in a Client-Only wrapper using `useEffect` (checking a `mounted` state) and render a `<div />` placeholder until mounted. Do not rely solely on `next/dynamic`.
 
-4. **Database Context (D1):**
-* D1 is only available via request context. Initialize it inside functions/actions:
-```typescript
-const { env } = getRequestContext();
-const db = drizzle(env.DB);
-```
+# 🗄 DATA & CLOUDFLARE D1 RULES (CRITICAL LESSONS LEARNED)
 
-# 🗄 DATA & LEAD GEN RULES
+1. **Proxy Database Object:** If importing `db` from `src/server/db/index.ts` (which is a Proxy), use it DIRECTLY (e.g., `await db.select()`). DO NOT invoke it as a function (`db(env.DB)` is WRONG and causes `TypeError: db is not a function` 500 errors). 
+2. **Context Fallback in Actions:** If you must use `getRequestContext().env.DB` (like in server actions without the proxy), initialize Drizzle strictly via `const db = drizzle(env.DB);`.
+3. **Empty DB Fallback (Zero-State):** The database will be completely empty upon first deployment. ALWAYS wrap top-level page data fetches (`getSiteSettings`, `getPageContent`) in `try/catch`. If it fails or returns undefined, provide a safe fallback object (e.g., `settings = {}`) and default UI texts to prevent 500 Internal Server Errors.
+4. **Drizzle Typing:** Never write manual types for database schemas. Always use `export type MyModel = typeof myTable.$inferSelect;`.
+
+# 🛡 LEAD GEN & FORM RULES
 
 1. **Quiz & Form Handling:** Always validate schema using `zod` before inserting into D1 to prevent spam.
-2. **Graceful Degradation:** Use `try/catch` for all DB inserts. If a lead fails to save, log the error but show a polite success message to the user (No Error 500s).
+2. **Graceful Degradation:** Use `try/catch` for all DB inserts. If a lead fails to save, log the error but show a polite success message to the user (No Error 500s on the client).
 
 # 🟦 TYPESCRIPT & STYLING
 
