@@ -21,7 +21,7 @@ export async function captureLeadAction(formData: FormData | Record<string, any>
         try {
           data.answers = JSON.parse(data.answers);
         } catch (e) {
-          data.answers = {};
+          data.answers = JSON.stringify({});
         }
       }
     } else {
