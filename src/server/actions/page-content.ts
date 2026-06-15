@@ -24,8 +24,6 @@ export async function savePageContent(formData: FormData) {
       await db.insert(pageContent)
         .values({
           route: pageRoute,
-          key,
-          value,
         })
         .onConflictDoUpdate({
           target: [pageContent.pageRoute, pageContent.key],
