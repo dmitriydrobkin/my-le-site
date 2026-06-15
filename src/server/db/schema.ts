@@ -1,7 +1,7 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 // Глобальные настройки сайта
-export const settings = sqliteTable('settings', {
+export const siteSettings = sqliteTable('settings', {
   key: text('key').primaryKey(),
   value: text('value'),
   updatedAt: integer('updated_at', { mode: 'timestamp' })

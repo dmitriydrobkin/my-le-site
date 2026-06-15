@@ -132,7 +132,7 @@ export default function QuizStepper() {
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
           >
-            {step.type === 'choice' && (
+            {step?.type === 'choice' && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {step.options?.map(opt => (
                   <button
