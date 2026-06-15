@@ -120,7 +120,7 @@ export default function QuizStepper() {
 
       <div className="mt-4 mb-8">
         <span className="text-sm font-medium text-blue-400 tracking-wider uppercase">Шаг {currentStep + 1} из {STEPS.length}</span>
-        <h3 className="text-3xl font-bold text-white mt-2">{step.question}</h3>
+        <h3 className="text-3xl font-bold text-white mt-2">{step?.question}</h3>
       </div>
 
       <div className="min-h-[200px]">
