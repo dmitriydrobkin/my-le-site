@@ -56,3 +56,8 @@
   .animation-delay-400 { animation-delay: 400ms; }
   .animation-delay-500 { animation-delay: 500ms; }
 }
+
+body.hide-native-cursor,
+body.hide-native-cursor * {
+  cursor: none !important;
+}

@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Manrope, Unbounded } from 'next/font/google';
 import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { Preloader } from '@/components/Preloader';
+import { CustomCursor } from '@/components/CustomCursor';
 import { getSiteSettings } from '@/server/functions/settings';
 import { QuizModal } from '@/components/QuizModal';
 import './globals.css';
@@ -48,25 +51,15 @@ export default async function RootLayout({
   return (
     <html lang="ru" className={`${unbounded.variable} ${manrope.variable}`}>
       <body className="font-sans text-ink bg-surface min-h-screen flex flex-col">
+        <Preloader />
+        <CustomCursor />
+        
         <Header />
         
         {/* Главный контент */}
         <main className="flex-grow">{children}</main>
 
-        <footer className="border-t border-ink/5 bg-surface py-12 mt-24">
-          <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
-            <p className="font-display text-xl font-bold tracking-tight text-ink">
-              {brandName}<span className="text-coral">.</span>dev<span className="text-cyan">.</span>
-            </p>
-            <p className="mt-4 font-sans text-sm text-ink/60">
-              Сайты и Telegram-боты, которые приносят прибыль 24/7.
-            </p>
-            <div className="w-12 h-px bg-coral/20 mx-auto my-6" />
-            <p className="font-sans text-xs uppercase tracking-widest text-ink/40">
-              © {new Date().getFullYear()} — {footerText}
-            </p>
-          </div>
-        </footer>
+        <Footer />
 
         {/* Global Modal */}
         <QuizModal />
