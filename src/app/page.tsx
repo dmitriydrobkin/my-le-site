@@ -40,6 +40,30 @@ const SERVICES = [
   }
 ];
 
+const PORTFOLIO = [
+  {
+    tag: 'REAL ESTATE',
+    title: 'РИЕЛ: электронная площадка для...',
+    description: 'Разработали комплекс решений, которые повысили продажи в три раза',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800',
+    span: 'lg:col-span-1'
+  },
+  {
+    tag: 'ECOMMERCE',
+    title: 'Anabel Arto: лучший производитель женского белья в Украине',
+    description: 'Новый уровень eCommerce для лучшего производителя женского белья в Украине',
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200',
+    span: 'lg:col-span-2'
+  },
+  {
+    tag: 'MEDIA',
+    title: 'Украина.info: диджитал-платформа...',
+    description: 'С нуля создали масштабную новостную платформу: веб-ресурсы, мобильное приложение и мульти-админпанель',
+    image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=800',
+    span: 'lg:col-span-1'
+  }
+];
+
 export default function B2BHomePage() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [paddingLeft, setPaddingLeft] = useState(24);
@@ -245,24 +269,46 @@ export default function B2BHomePage() {
         </div>
       </section>
 
-      {/* 4. СТЕК ТЕХНОЛОГИЙ */}
-      <section className="py-24 bg-surface">
+      {/* 4. ПРИМЕРЫ РАБОТ */}
+      <section className="py-24 lg:py-32 bg-surface border-t border-ink/5">
         <div className="max-w-[1400px] mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-10 mb-16">
-            <h2 className="font-display text-4xl font-bold text-ink">Стек технологий</h2>
-            <p className="font-sans text-ink/50 font-medium max-w-md lg:text-right">
-              Мы используем передовые инструменты, чтобы ваши проекты работали молниеносно, безопасно и стабильно.
-            </p>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase">
+              Примеры работ
+            </h2>
+            <Link href="/portfolio" className="flex items-center gap-3 font-bold font-sans text-sm tracking-widest uppercase hover:text-coral transition-colors group">
+              Смотреть все
+              <span className="w-10 h-10 rounded-full border border-ink/10 bg-white flex items-center justify-center group-hover:border-coral transition-colors shadow-sm">
+                <ArrowUpRight className="w-4 h-4" />
+              </span>
+            </Link>
           </div>
-          
-          <div className="flex flex-wrap gap-4">
-            <div className="px-6 py-3 rounded-full bg-ink text-white font-bold font-sans text-sm shadow-md">Next.js</div>
-            <div className="px-6 py-3 rounded-full border border-ink/20 text-ink font-bold font-sans text-sm hover:border-ink hover:bg-white transition-colors cursor-pointer bg-transparent">React</div>
-            <div className="px-6 py-3 rounded-full border border-ink/20 text-ink font-bold font-sans text-sm hover:border-ink hover:bg-white transition-colors cursor-pointer bg-transparent">TypeScript</div>
-            <div className="px-6 py-3 rounded-full border border-ink/20 text-ink font-bold font-sans text-sm hover:border-ink hover:bg-white transition-colors cursor-pointer bg-transparent">Cloudflare D1</div>
-            <div className="px-6 py-3 rounded-full border border-ink/20 text-ink font-bold font-sans text-sm hover:border-ink hover:bg-white transition-colors cursor-pointer bg-transparent">Tailwind CSS</div>
-            <div className="px-6 py-3 rounded-full border border-ink/20 text-ink font-bold font-sans text-sm hover:border-ink hover:bg-white transition-colors cursor-pointer bg-transparent">Framer Motion</div>
-            <div className="px-6 py-3 rounded-full border border-ink/20 text-ink font-bold font-sans text-sm hover:border-ink hover:bg-white transition-colors cursor-pointer bg-transparent">Telegram API</div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            {PORTFOLIO.map((item, index) => (
+              <Link href="#" key={index} className={`flex flex-col group cursor-pointer ${item.span}`}>
+                <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-[400px] rounded-[2rem] overflow-hidden mb-8 shadow-glass border border-ink/5">
+                  <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
+                </div>
+                <div className="flex justify-between items-start gap-4 h-full">
+                  <div className="flex flex-col">
+                    <span className="font-sans text-xs font-bold tracking-widest text-ink/40 uppercase block mb-3">
+                      {item.tag}
+                    </span>
+                    <h3 className="font-display text-2xl md:text-3xl font-bold text-ink mb-4 group-hover:text-coral transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed max-w-sm mt-auto">
+                      {item.description}
+                    </p>
+                  </div>
+                  <div className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center text-ink bg-white border border-ink/10 group-hover:bg-coral group-hover:text-white group-hover:border-transparent transition-colors shadow-sm">
+                    <ArrowUpRight className="w-5 h-5" />
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

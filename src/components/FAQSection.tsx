@@ -28,7 +28,8 @@ const FAQS = [
 ];
 
 export function FAQSection() {
-  const [openId, setOpenId] = useState<string | null>(FAQS[0].id);
+  // ⚡ ИСПРАВЛЕНИЕ ЗДЕСЬ: добавили ?. и ?? null, чтобы удовлетворить строгий TypeScript
+  const [openId, setOpenId] = useState<string | null>(FAQS[0]?.id ?? null);
 
   return (
     <section className="py-24 bg-surface">
