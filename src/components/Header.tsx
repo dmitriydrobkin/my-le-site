@@ -15,75 +15,76 @@ export function Header() {
     return null;
   }
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const menuItems = [
+    { label: 'Главная', href: '/' },
+    { label: 'Разработка сайтов + боты', href: '/services/sites-and-bots' },
+    { label: 'Корпоративные порталы', href: '/services/portals' },
+    { label: 'E-commerce решения', href: '/services/ecommerce' },
+    { label: 'Мобильные приложения', href: '/services/mobile' },
+    { label: 'Интеграция CRM', href: '/services/crm' },
+    { label: 'Контакты', href: '/contact' },
+  ];
 
   return (
     <>
-      {/* Плавающая шапка (Островки) */}
-      <header className="fixed top-6 inset-x-0 z-50 pointer-events-none px-4 sm:px-8 flex justify-between items-start max-w-7xl mx-auto">
-        
-        {/* Левый островок - Логотип */}
-        <Link 
-          href="/" 
-          className="pointer-events-auto flex items-center h-14 px-6 bg-white/80 backdrop-blur-xl rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-white/50 transition-transform hover:scale-105"
-        >
-          <span className="font-display text-lg font-bold text-ink">
-            malyshev<span className="text-coral">.</span>dev<span className="text-cyan">.</span>
-          </span>
-        </Link>
+      <header className="fixed top-6 left-0 right-0 z-50 pointer-events-none px-6">
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
+          {/* Логотип */}
+          <Link 
+            href="/"
+            className="pointer-events-auto bg-white/80 backdrop-blur-md shadow-glass rounded-full px-8 py-4 font-display font-bold text-ink tracking-tight flex items-center gap-2 transition-transform hover:scale-105"
+          >
+            <div className="w-2 h-2 rounded-full bg-cyan-500 shadow-neon-cyan"></div>
+            malyshev.dev.
+          </Link>
 
-        {/* Правый островок - Кнопка Меню */}
-        <button 
-          onClick={toggleMenu}
-          className="pointer-events-auto flex items-center gap-3 h-14 px-6 bg-white/80 backdrop-blur-xl rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-white/50 transition-all hover:bg-white hover:scale-105 group"
-        >
-          <span className="font-sans text-sm font-bold text-ink hidden sm:block group-hover:text-coral transition-colors">
-            Меню
-          </span>
-          <div className="bg-ink text-white p-1.5 rounded-full group-hover:bg-coral transition-colors">
-            <Menu className="w-4 h-4" />
-          </div>
-        </button>
+          {/* Кнопка Меню */}
+          <button 
+            onClick={() => setIsMenuOpen(true)}
+            className="pointer-events-auto bg-white/80 backdrop-blur-md shadow-glass rounded-full px-8 py-4 flex items-center gap-4 text-ink font-bold transition-transform hover:scale-105 group"
+          >
+            <span>Меню</span>
+            <div className="w-8 h-8 rounded-full bg-ink flex items-center justify-center text-white group-hover:bg-coral transition-colors">
+              <Menu className="w-4 h-4" />
+            </div>
+          </button>
+        </div>
       </header>
 
-      {/* Полноэкранное оверлей меню */}
+      {/* Оверлей Меню */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-surface/95 backdrop-blur-2xl flex flex-col p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] bg-ink/95 backdrop-blur-xl flex flex-col justify-center items-center"
           >
-            <div className="flex justify-between items-center max-w-7xl mx-auto w-full">
-              <span className="font-display text-xl font-bold text-ink">
-                malyshev<span className="text-coral">.</span>dev<span className="text-cyan">.</span>
-              </span>
-              <button 
-                onClick={toggleMenu}
-                className="p-3 bg-white border border-ink/10 rounded-full text-ink hover:text-coral hover:border-coral/30 hover:shadow-neon-coral transition-all"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+            <button 
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-10 right-10 w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-coral transition-colors"
+            >
+              <X className="w-8 h-8" />
+            </button>
 
-            <nav className="flex flex-col items-center justify-center flex-1 gap-8">
-              <Link href="#portfolio" onClick={toggleMenu} className="font-display text-4xl sm:text-6xl font-bold text-ink hover:text-coral transition-colors">
-                Кейсы
-              </Link>
-              <Link href="#how-it-works" onClick={toggleMenu} className="font-display text-4xl sm:text-6xl font-bold text-ink hover:text-coral transition-colors">
-                Как мы работаем
-              </Link>
-              <Link href="#integrations" onClick={toggleMenu} className="font-display text-4xl sm:text-6xl font-bold text-ink hover:text-coral transition-colors">
-                Интеграции
-              </Link>
-              
-              <div className="mt-12">
-                <a href="https://t.me/your_telegram" target="_blank" rel="noopener noreferrer" className="btn-primary">
-                  Написать в Telegram
-                </a>
-              </div>
+            <nav className="flex flex-col gap-6 text-center">
+              {menuItems.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <Link 
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="font-display text-4xl md:text-5xl font-bold text-white hover:text-cyan-400 transition-colors relative group"
+                  >
+                    {item.label}
+                    <span className="absolute -bottom-2 left-0 right-0 h-1 bg-cyan-400 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                  </Link>
+                </motion.div>
+              ))}
             </nav>
           </motion.div>
         )}
