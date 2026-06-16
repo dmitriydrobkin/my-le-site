@@ -10,3 +10,5 @@ binding = "DB"
 database_name = "portfolio-db" 
 database_id = "b7d889c3-71dd-47cc-962c-3ca0033d27c7"
 preview_database_id = "b7d889c3-71dd-47cc-962c-3ca0033d27c7"
+
+ADMIN_PASSWORD="admin"

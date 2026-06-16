@@ -46,21 +46,21 @@ const PORTFOLIO = [
     title: 'РИЕЛ: электронная площадка для...',
     description: 'Разработали комплекс решений, которые повысили продажи в три раза',
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800',
-    span: 'lg:col-span-1'
+    span: 'lg:col-span-3'
   },
   {
     tag: 'ECOMMERCE',
     title: 'Anabel Arto: лучший производитель женского белья в Украине',
     description: 'Новый уровень eCommerce для лучшего производителя женского белья в Украине',
     image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200',
-    span: 'lg:col-span-2'
+    span: 'lg:col-span-4'
   },
   {
     tag: 'MEDIA',
     title: 'Украина.info: диджитал-платформа...',
     description: 'С нуля создали масштабную новостную платформу: веб-ресурсы, мобильное приложение и мульти-админпанель',
     image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=800',
-    span: 'lg:col-span-1'
+    span: 'lg:col-span-3'
   }
 ];
 
@@ -127,7 +127,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 2. РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА (SPLIT + HORIZONTAL SCROLL) */}
-      <section className="py-24 lg:py-32 bg-white overflow-hidden">
+      <section className="pt-12 pb-24 lg:pt-16 lg:pb-32 bg-white overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 mb-16">
           {/* Header Split */}
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10">
@@ -166,7 +166,7 @@ export default function B2BHomePage() {
           {SERVICES.map((service, index) => (
             <div 
               key={index} 
-              className="snap-start flex-shrink-0 w-[85vw] sm:w-[420px] bg-surface rounded-[2.5rem] p-8 lg:p-10 flex flex-col h-[480px] justify-between group relative"
+              className="snap-start flex-shrink-0 w-[85vw] sm:w-[420px] bg-surface rounded-[2.5rem] p-8 lg:p-10 flex flex-col h-[380px] justify-between group relative"
             >
               {/* Content Top */}
               <div className="relative z-10 flex flex-col">
@@ -270,7 +270,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 4. ПРИМЕРЫ РАБОТ */}
-      <section className="py-24 lg:py-32 bg-surface border-t border-ink/5">
+      <section className="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-surface border-t border-ink/5">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase">
@@ -284,10 +284,10 @@ export default function B2BHomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
             {PORTFOLIO.map((item, index) => (
               <Link href="#" key={index} className={`flex flex-col group cursor-pointer ${item.span}`}>
-                <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-[400px] rounded-[2rem] overflow-hidden mb-8 shadow-glass border border-ink/5">
+                <div className={`relative w-full aspect-[4/3] lg:aspect-auto ${index === 1 ? 'lg:h-[500px]' : 'lg:h-[400px]'} rounded-[2rem] overflow-hidden mb-8 shadow-glass border border-ink/5`}>
                   <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
                 </div>
@@ -317,9 +317,9 @@ export default function B2BHomePage() {
       <FAQSection />
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
-      <section className="py-12 md:py-24 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-[1400px] mx-auto px-6">
-          <div className="bg-ink rounded-[2.5rem] p-10 md:p-16 lg:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="bg-ink rounded-[2.5rem] p-8 md:p-12 lg:p-16 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
             
             {/* Фоновое 3D Изображение */}
             <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full opacity-40 lg:opacity-100 pointer-events-none">

@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 const FAQS = [
   {
@@ -30,9 +32,10 @@ const FAQS = [
 export function FAQSection() {
   // ⚡ ИСПРАВЛЕНИЕ ЗДЕСЬ: добавили ?. и ?? null, чтобы удовлетворить строгий TypeScript
   const [openId, setOpenId] = useState<string | null>(FAQS[0]?.id ?? null);
+  const [phone, setPhone] = useState<string>();
 
   return (
-    <section className="py-24 bg-surface">
+    <section className="pt-12 pb-24 bg-surface">
       <div className="max-w-[1400px] mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           
@@ -48,23 +51,52 @@ export function FAQSection() {
             </p>
             
             <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="relative flex items-center border border-ink/20 rounded-[1.5rem] bg-white focus-within:border-ink focus-within:ring-1 focus-within:ring-ink transition-all overflow-hidden group">
-                <div className="flex items-center gap-2 pl-6 pr-4 py-4 border-r border-ink/10 cursor-pointer bg-surface/50 group-hover:bg-surface transition-colors">
-                  <span className="text-xl">🇺🇦</span>
-                  <span className="text-[10px] text-ink/40">▼</span>
+              <div className="relative flex flex-col border border-ink/20 rounded-[1.5rem] bg-white focus-within:border-ink focus-within:ring-1 focus-within:ring-ink transition-all group py-2 px-1">
+                <span className="text-[10px] text-ink/40 uppercase font-bold tracking-wider mb-0.5 px-4 pt-1">Номер телефона *</span>
+                <div className="px-4 pb-1">
+                  <PhoneInput
+                    international
+                    defaultCountry="UA"
+                    value={phone}
+                    onChange={setPhone}
+                    className="custom-phone-input"
+                    placeholder="XX XXX XX XX"
+                    required
+                  />
                 </div>
-                <div className="flex flex-col px-5 py-2 w-full bg-white">
-                  <span className="text-[10px] text-ink/40 uppercase font-bold tracking-wider mb-0.5">Номер телефона *</span>
-                  <div className="flex items-center">
-                    <span className="text-ink font-bold mr-1.5">+380</span>
-                    <input 
-                      type="tel" 
-                      placeholder="XX XXX XX XX" 
-                      className="w-full outline-none text-ink font-bold placeholder-ink/20 bg-transparent" 
-                      required 
-                    />
-                  </div>
-                </div>
+                <style dangerouslySetInnerHTML={{__html: `
+                  .custom-phone-input {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                  }
+                  .custom-phone-input .PhoneInputCountry {
+                    margin-right: 12px;
+                    padding-right: 12px;
+                    border-right: 1px solid rgba(0,0,0,0.1);
+                  }
+                  .custom-phone-input input {
+                    flex: 1;
+                    outline: none;
+                    border: none;
+                    background: transparent;
+                    font-weight: bold;
+                    color: inherit;
+                  }
+                  .custom-phone-input input::placeholder {
+                    color: rgba(0,0,0,0.2);
+                  }
+                  .custom-phone-input .PhoneInputCountryIcon {
+                    width: 24px;
+                    height: 16px;
+                  }
+                  .custom-phone-input .PhoneInputCountrySelectArrow {
+                    margin-left: 6px;
+                    width: 8px;
+                    height: 8px;
+                    opacity: 0.5;
+                  }
+                `}} />
               </div>
               <button 
                 type="submit" 
