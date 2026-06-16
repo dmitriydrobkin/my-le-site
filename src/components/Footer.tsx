@@ -44,7 +44,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6 border-b border-white/10 pb-10">
           
           {/* Column 1: Consultation Card (Col Span 4) */}
-          <div className="lg:col-span-4 flex">
+          <div className="order-2 lg:order-1 lg:col-span-4 flex">
             <QuizTrigger className="w-full relative overflow-hidden bg-[#E5FF38] text-ink rounded-[2rem] p-6 md:p-8 flex flex-col justify-between group hover:scale-[1.02] transition-transform duration-300 shadow-lg text-left h-full min-h-[220px]">
               {/* Abstract Shape Background */}
               <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-gradient-to-tr from-cyan-400 via-blue-500 to-transparent rounded-full mix-blend-multiply opacity-80 blur-2xl group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
@@ -64,7 +64,7 @@ export function Footer() {
           </div>
 
           {/* Column 2: Quick Links (Col Span 5) */}
-          <div className="lg:col-span-5 flex flex-col justify-center lg:pl-8">
+          <div className="order-1 lg:order-2 lg:col-span-5 flex flex-col justify-center lg:pl-8">
             <h4 className="font-display text-xl font-bold mb-6 flex items-center gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-white opacity-50" />
               Быстрые ссылки
@@ -83,7 +83,7 @@ export function Footer() {
           </div>
 
           {/* Column 3: Contacts (Col Span 3) */}
-          <div className="lg:col-span-3 flex flex-col justify-center">
+          <div className="order-3 lg:col-span-3 flex flex-col justify-center">
             <h4 className="font-display text-xl font-bold mb-6 flex items-center gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-white opacity-50" />
               Контакты

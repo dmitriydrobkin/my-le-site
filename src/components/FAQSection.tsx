@@ -64,7 +64,7 @@ export function FAQSection() {
               </p>
             </div>
             
-            <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="hidden lg:flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
               <div className="relative flex flex-col border border-ink/20 rounded-[1.5rem] bg-white focus-within:border-ink focus-within:ring-1 focus-within:ring-ink transition-all group py-2 px-1">
                 <span className="text-[10px] text-ink/40 uppercase font-bold tracking-wider mb-0.5 px-4 pt-1">Номер телефона *</span>
                 <div className="px-4 pb-1">

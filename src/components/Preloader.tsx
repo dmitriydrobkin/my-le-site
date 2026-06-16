@@ -39,7 +39,7 @@ export function Preloader() {
               x: typeof window !== 'undefined' ? -window.innerWidth / 2 + 100 : -300
             }}
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className="flex items-center gap-3 font-display font-bold text-5xl md:text-6xl text-ink tracking-tight"
+            className="flex items-center gap-3 font-display font-bold text-3xl sm:text-4xl md:text-6xl text-ink tracking-tight"
           >
             <motion.div 
               initial={{ scale: 0 }}

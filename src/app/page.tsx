@@ -284,10 +284,10 @@ export default function B2BHomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-10 gap-2 lg:gap-6">
             {PORTFOLIO.map((item, index) => (
               <Link href="#" key={index} className={`flex flex-col group cursor-pointer ${item.span}`}>
-                <div className={`relative w-full aspect-[4/3] lg:aspect-auto ${index === 1 ? 'lg:h-[500px]' : 'lg:h-[400px]'} rounded-[2rem] overflow-hidden mb-8 shadow-glass border border-ink/5`}>
+                <div className={`relative w-full aspect-[4/3] lg:aspect-auto ${index === 1 ? 'lg:h-[500px]' : 'lg:h-[400px]'} rounded-[2rem] overflow-hidden mb-4 lg:mb-8 shadow-glass border border-ink/5`}>
                   <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
                 </div>
