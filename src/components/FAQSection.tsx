@@ -94,7 +94,7 @@ export function FAQSection() {
                     <h3 className="font-display text-2xl md:text-3xl font-bold text-ink group-hover:text-coral transition-colors flex-1 pr-4">
                       {faq.question}
                     </h3>
-                    <div className={\`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 \${isOpen ? 'bg-coral text-white rotate-180' : 'bg-surface text-ink group-hover:bg-ink group-hover:text-white'}\`}>
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${isOpen ? 'bg-coral text-white rotate-180' : 'bg-surface text-ink group-hover:bg-ink group-hover:text-white'}`}>
                       <ArrowDown className="w-5 h-5" />
                     </div>
                   </button>
