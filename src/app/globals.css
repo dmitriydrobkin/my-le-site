@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 /**
- * Базовые стили премиального кондитерского бренда.
- * Минимализм, много whitespace, тонкие золотые линии.
+ * Ультрасовременный премиальный дизайн.
+ * Светлый воздушный минимализм, эффект стекла.
  */
 @layer base {
   html {
@@ -12,57 +12,47 @@
   }
 
   body {
-    @apply bg-cream text-chocolate antialiased;
-  }
-
-  ::selection {
-    @apply bg-gold/20 text-chocolate;
+    @apply bg-cloud text-graphite antialiased selection:bg-electric/20 selection:text-electric;
+    background-image: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.03) 0%, transparent 70%);
   }
 }
 
 @layer components {
-  /** Тонкая золотая разделительная линия */
-  .divider-gold {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent;
+  /** Эффект матового стекла (Glassmorphism) */
+  .glass-panel {
+    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-glass;
   }
 
-  /** Кнопка основного действия */
+  /** Кнопка основного действия — высокая конверсия */
   .btn-primary {
-    @apply inline-flex items-center justify-center border border-gold bg-gold px-8 py-3
-      font-sans text-sm uppercase tracking-widest text-chocolate
-      transition-all duration-300 hover:bg-gold-light hover:shadow-lg;
+    @apply inline-flex items-center justify-center rounded-full bg-electric px-8 py-3.5
+      font-sans text-sm font-medium tracking-wide text-white
+      transition-all duration-400 hover:bg-electric-light hover:shadow-glass-hover hover:-translate-y-0.5
+      focus:outline-none focus:ring-2 focus:ring-electric focus:ring-offset-2;
   }
 
-  /** Кнопка вторичного действия — контурная */
+  /** Кнопка вторичного действия */
   .btn-outline {
-    @apply inline-flex items-center justify-center border border-chocolate/20 bg-transparent
-      px-8 py-3 font-sans text-sm uppercase tracking-widest text-chocolate
-      transition-all duration-300 hover:border-gold hover:text-gold;
+    @apply inline-flex items-center justify-center rounded-full border border-graphite/10 bg-white/50 backdrop-blur-md
+      px-8 py-3.5 font-sans text-sm font-medium tracking-wide text-graphite
+      transition-all duration-400 hover:border-electric/30 hover:text-electric hover:shadow-glass hover:-translate-y-0.5;
   }
 
-  /** Заголовок секции с serif-шрифтом */
+  /** Заголовок секции (Display font) */
   .section-title {
-    @apply font-serif text-3xl font-light tracking-tight text-chocolate md:text-4xl lg:text-5xl;
+    @apply font-display text-4xl font-semibold tracking-tight text-graphite md:text-5xl lg:text-6xl;
   }
 
   /** Подзаголовок секции */
   .section-subtitle {
-    @apply mt-4 max-w-2xl font-sans text-base font-light leading-relaxed text-chocolate/60;
+    @apply mt-6 max-w-2xl font-sans text-lg font-light leading-relaxed text-graphite-light;
   }
 }
 
 @layer utilities {
-  /** Задержки для каскадной анимации появления */
-  .animation-delay-100 {
-    animation-delay: 100ms;
-  }
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-  .animation-delay-300 {
-    animation-delay: 300ms;
-  }
-  .animation-delay-400 {
-    animation-delay: 400ms;
-  }
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
 }

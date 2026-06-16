@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, Outfit } from 'next/font/google';
 import { Header } from '@/components/Header';
 import { getSiteSettings } from '@/server/functions/settings';
 import { QuizModal } from '@/components/QuizModal';
@@ -8,9 +8,9 @@ import './globals.css';
 // ⚡ КРИТИЧНО: Переводим весь Layout в Edge, чтобы не было конфликтов с page.tsx
 export const runtime = 'edge';
 
-const playfair = Playfair_Display({
+const outfit = Outfit({
   subsets: ['latin', 'cyrillic'],
-  variable: '--font-serif',
+  variable: '--font-display',
   display: 'swap',
 });
 
@@ -22,8 +22,8 @@ const inter = Inter({
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
-  const title = settings.site_title ?? 'Dmitriy | Creative Web Developer';
-  const description = settings.site_description ?? 'Разработка премиальных сайтов, анимаций и сложных веб-приложений.';
+  const title = settings.site_title ?? 'Dmitriy | Высококонверсионные сайты и боты';
+  const description = settings.site_description ?? 'Автоматизированные воронки, сайты и Telegram-боты, которые работают 24/7 и приносят прибыль.';
   const isIndexingEnabled = settings.seo_indexing_enabled === 'true';
 
   return {
@@ -42,24 +42,27 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const settings = await getSiteSettings();
-  const brandName = settings.brand_name ?? 'D.Drobkin';
-  const footerText = settings.footer_text ?? 'Digital Excellence';
+  const brandName = settings.brand_name ?? 'Dmitriy.dev';
+  const footerText = settings.footer_text ?? 'Automated Client Acquisition';
 
   return (
-    <html lang="ru" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-sans text-gray-900 bg-white">
+    <html lang="ru" className={`${outfit.variable} ${inter.variable}`}>
+      <body className="font-sans text-graphite bg-cloud min-h-screen flex flex-col">
         <Header />
         
         {/* Главный контент */}
-        <main>{children}</main>
+        <main className="flex-grow">{children}</main>
 
-        <footer className="border-t border-gray-200 bg-gray-50 py-16 mt-24">
+        <footer className="border-t border-graphite/5 bg-cloud-50 py-12 mt-24">
           <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
-            <p className="font-serif text-2xl font-light">
-              {brandName}<span className="text-blue-600">.</span>
+            <p className="font-display text-xl font-medium tracking-tight text-graphite">
+              {brandName}<span className="text-electric">.</span>
             </p>
-            <div className="w-16 h-px bg-blue-600 mx-auto my-6 opacity-30" />
-            <p className="font-sans text-xs uppercase tracking-[0.2em] text-gray-500">
+            <p className="mt-4 font-sans text-sm text-graphite-lighter">
+              Сайты и Telegram-боты, которые приносят прибыль 24/7.
+            </p>
+            <div className="w-12 h-px bg-electric/20 mx-auto my-6" />
+            <p className="font-sans text-xs uppercase tracking-widest text-graphite-lighter/60">
               © {new Date().getFullYear()} — {footerText}
             </p>
           </div>

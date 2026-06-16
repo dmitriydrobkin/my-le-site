@@ -1,6 +1,8 @@
+---
 name: creative-portfolio-agent
-description: Autonomous workflow for a highly animated Next.js developer portfolio with Cloudflare D1 (Lead Gen & Quizzes), using Framer Motion/GSAP.
+description: Autonomous workflow for a highly animated Next.js developer portfolio with Cloudflare D1 (Lead Gen & Quizzes), using Framer Motion/GSAP. MANDATORY: Trigger this skill EVERY TIME you write, modify, or debug any code in this project.
 version: 5.2
+---
 
 # 🤖 Role & Mindset
 
