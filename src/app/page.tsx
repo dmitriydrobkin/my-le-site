@@ -127,7 +127,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 2. РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА (SPLIT + HORIZONTAL SCROLL) */}
-      <section className="pt-12 pb-24 lg:pt-16 lg:pb-32 bg-white overflow-hidden">
+      <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-white overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 mb-16">
           {/* Header Split */}
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10">
@@ -213,7 +213,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 3. BENTO GRID (ПОЧЕМУ ВЫБРАТЬ MALYSHEV.DEV) */}
-      <section className="py-24 lg:py-32 bg-white border-t border-ink/5">
+      <section className="pt-12 pb-24 lg:pt-16 lg:pb-32 bg-white">
         <div className="max-w-[1400px] mx-auto px-6">
           <h2 className="font-display text-3xl md:text-5xl font-bold text-ink mb-16 uppercase">
             ПОЧЕМУ ВЫБРАТЬ MALYSHEV.DEV?
@@ -317,9 +317,9 @@ export default function B2BHomePage() {
       <FAQSection />
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-6 md:py-8 bg-white">
         <div className="max-w-[1400px] mx-auto px-6">
-          <div className="bg-ink rounded-[2.5rem] p-8 md:p-12 lg:p-16 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          <div className="bg-ink rounded-[2.5rem] p-6 md:p-8 lg:p-10 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
             
             {/* Фоновое 3D Изображение */}
             <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full opacity-40 lg:opacity-100 pointer-events-none">
@@ -339,7 +339,7 @@ export default function B2BHomePage() {
                 <br className="hidden md:block" />
                 о вашем проекте
               </h2>
-              <p className="font-sans text-white/50 text-sm md:text-base leading-relaxed mb-10 max-w-sm uppercase tracking-wide">
+              <p className="font-sans text-white/50 text-sm md:text-base leading-relaxed mb-10 max-w-sm">
                 Обращайтесь к нам за бесплатной консультацией, это возможность обсудить свои идеи с экспертами по диджитализации. Оставьте свой номер, мы перезвоним!
               </p>
               

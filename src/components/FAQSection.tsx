@@ -37,18 +37,32 @@ export function FAQSection() {
   return (
     <section className="pt-12 pb-24 bg-surface">
       <div className="max-w-[1400px] mx-auto px-6">
+        {/* Заголовок для мобильных, чтобы он оставался сверху, а форма уходила вниз */}
+        <div className="lg:hidden mb-12">
+          <h2 className="font-display text-5xl font-bold uppercase text-ink leading-[0.9] mb-6">
+            Частые
+            <br />
+            вопросы
+          </h2>
+          <p className="font-sans text-ink/60 font-medium max-w-sm">
+            Наши эксперты подберут самое эффективное решение для вашего бизнеса
+          </p>
+        </div>
+
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           
           {/* Левая часть - Заголовки и форма */}
-          <div className="lg:w-1/3 flex flex-col">
-            <h2 className="font-display text-5xl lg:text-[4rem] font-bold uppercase text-ink leading-[0.9] mb-6">
-              Частые
-              <br />
-              вопросы
-            </h2>
-            <p className="font-sans text-ink/60 mb-12 font-medium max-w-sm">
-              Наши эксперты подберут самое эффективное решение для вашего бизнеса
-            </p>
+          <div className="lg:w-1/3 flex flex-col order-2 lg:order-1">
+            <div className="hidden lg:block">
+              <h2 className="font-display text-[4rem] font-bold uppercase text-ink leading-[0.9] mb-6">
+                Частые
+                <br />
+                вопросы
+              </h2>
+              <p className="font-sans text-ink/60 mb-12 font-medium max-w-sm">
+                Наши эксперты подберут самое эффективное решение для вашего бизнеса
+              </p>
+            </div>
             
             <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
               <div className="relative flex flex-col border border-ink/20 rounded-[1.5rem] bg-white focus-within:border-ink focus-within:ring-1 focus-within:ring-ink transition-all group py-2 px-1">
@@ -108,7 +122,7 @@ export function FAQSection() {
           </div>
 
           {/* Правая часть - Аккордеон */}
-          <div className="lg:w-2/3 flex flex-col">
+          <div className="lg:w-2/3 flex flex-col order-1 lg:order-2">
             {FAQS.map((faq) => {
               const isOpen = openId === faq.id;
               
