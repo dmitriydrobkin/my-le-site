@@ -32,7 +32,7 @@ export function QuizModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeQuiz}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 bg-ink/40 backdrop-blur-md"
           />
 
           {/* Modal Content */}
@@ -46,7 +46,7 @@ export function QuizModal() {
             {/* Close Button */}
             <button
               onClick={closeQuiz}
-              className="absolute -top-12 right-0 sm:-right-12 sm:-top-4 p-2 text-gray-400 hover:text-white transition-colors bg-black/40 rounded-full border border-white/10 z-20"
+              className="absolute -top-12 right-0 sm:-right-12 sm:-top-4 p-2 text-ink/60 hover:text-coral transition-colors bg-white/80 shadow-glass rounded-full border border-ink/10 z-20"
               aria-label="Close modal"
             >
               <X className="w-6 h-6" />

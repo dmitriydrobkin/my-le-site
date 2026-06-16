@@ -39,26 +39,32 @@ export default async function AdminPage({
   const leadsData = await getLeadsWithAnswers();
 
   return (
-    <div className="min-h-screen bg-black py-16 text-white space-y-12 px-4">
+    <div className="space-y-12 pb-16 pt-8">
       
       {/* ================= БЛОК 0: ЗАЯВКИ (CRM) ================= */}
-      <div className="mx-auto max-w-4xl bg-gray-900 p-10 shadow-lg border border-gray-800 rounded-3xl">
-        <h1 className="font-sans text-3xl mb-2 font-bold">Заявки (CRM)</h1>
+      <div className="mx-auto max-w-4xl glass-panel p-10 rounded-3xl">
+        <h1 className="font-display text-3xl mb-8 font-bold text-ink">Заявки (CRM)</h1>
         
         <div className="space-y-4">
           {leadsData.length === 0 ? (
-            <p className="text-gray-500 italic">Пока нет ни одной заявки.</p>
+            <p className="text-ink/60 italic">Пока нет ни одной заявки.</p>
           ) : (
             leadsData.map(lead => (
-              <div key={lead.id} className="bg-black border border-gray-800 p-6 rounded-2xl flex flex-col gap-4">
-                <div className="flex justify-between">
-                  <h3 className="text-xl font-bold">{lead.name}</h3>
-                  <span className="text-blue-400 font-mono text-sm">{lead.status}</span>
+              <div key={lead.id} className="bg-white/50 border border-ink/10 p-6 rounded-2xl flex flex-col gap-4 shadow-sm hover:shadow-glass transition-shadow">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-xl font-bold text-ink">{lead.name}</h3>
+                    <p className="text-ink/60 font-medium text-sm mt-1">{lead.contactInfo}</p>
+                  </div>
+                  <span className="bg-cyan/10 text-cyan-600 px-3 py-1 rounded-full font-sans text-xs font-bold uppercase tracking-wider">
+                    {lead.status}
+                  </span>
                 </div>
-                <p className="text-gray-400 text-sm">{lead.contactInfo}</p>
                 {lead.answers && (
-                  <div className="bg-gray-950 p-3 rounded-lg text-xs text-gray-400">
-                    {JSON.stringify(lead.answers)}
+                  <div className="bg-surface border border-ink/5 p-4 rounded-xl text-sm text-ink/70">
+                    <pre className="whitespace-pre-wrap font-sans text-xs">
+                      {JSON.stringify(lead.answers, null, 2)}
+                    </pre>
                   </div>
                 )}
               </div>
@@ -68,18 +74,26 @@ export default async function AdminPage({
       </div>
 
       {/* ================= БЛОК 1: ГЛОБАЛЬНЫЕ НАСТРОЙКИ ================= */}
-      <div className="mx-auto max-w-4xl bg-gray-900 p-10 shadow-lg border border-gray-800 rounded-3xl">
-        <h2 className="text-2xl font-bold mb-8">Настройки сайта</h2>
+      <div className="mx-auto max-w-4xl glass-panel p-10 rounded-3xl">
+        <h2 className="font-display text-2xl font-bold mb-8 text-ink">Настройки сайта</h2>
         <form action={updateSiteSettings} className="space-y-6">
-          <input name="site_title" defaultValue={settings.site_title ?? ''} placeholder="SEO Title" className="w-full p-3 bg-black border border-gray-700 rounded-lg" />
-          <textarea name="hero_description" defaultValue={settings.hero_description ?? ''} placeholder="Description" className="w-full p-3 bg-black border border-gray-700 rounded-lg" />
-          <SubmitButton defaultText="Сохранить настройки" />
+          <div>
+            <label className="block text-sm font-bold text-ink/80 mb-2">Название сайта (SEO Title)</label>
+            <input name="site_title" defaultValue={settings.site_title ?? ''} placeholder="Dmitriy | Автоматизация бизнеса" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-ink/80 mb-2">Общее описание (Meta Description)</label>
+            <textarea rows={3} name="hero_description" defaultValue={settings.hero_description ?? ''} placeholder="Сайты и Телеграм-боты под ключ" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors resize-none" />
+          </div>
+          <div className="pt-2">
+            <SubmitButton defaultText="Сохранить настройки" />
+          </div>
         </form>
       </div>
 
       {/* ================= БЛОК 2: КОНТЕНТ СТРАНИЦ ================= */}
-      <div className="mx-auto max-w-4xl bg-gray-900 p-10 shadow-lg border border-gray-800 rounded-3xl">
-        <h2 className="text-2xl font-bold mb-8">Контент страниц</h2>
+      <div className="mx-auto max-w-4xl glass-panel p-10 rounded-3xl">
+        <h2 className="font-display text-2xl font-bold mb-8 text-ink">Контент страниц</h2>
         
         <form 
           action={async (formData: FormData) => {
@@ -95,10 +109,21 @@ export default async function AdminPage({
           className="space-y-6"
         >
           <input type="hidden" name="route" value={selectedRoute} />
-          <input name="h1" defaultValue={content.h1 || ''} placeholder="H1 заголовок" className="w-full p-3 bg-black border border-gray-700 rounded-lg" />
-          <input name="seoTitle" defaultValue={content.seoTitle || ''} placeholder="SEO Title" className="w-full p-3 bg-black border border-gray-700 rounded-lg" />
-          <textarea name="description" defaultValue={content.description || ''} placeholder="Описание" className="w-full p-3 bg-black border border-gray-700 rounded-lg" />
-          <SubmitButton defaultText="Сохранить контент" />
+          <div>
+            <label className="block text-sm font-bold text-ink/80 mb-2">H1 заголовок</label>
+            <input name="h1" defaultValue={content.h1 || ''} placeholder="Главный заголовок страницы" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-ink/80 mb-2">SEO Title страницы</label>
+            <input name="seoTitle" defaultValue={content.seoTitle || ''} placeholder="SEO Title для этой страницы" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
+          </div>
+          <div>
+            <label className="block text-sm font-bold text-ink/80 mb-2">Описание (Description)</label>
+            <textarea rows={3} name="description" defaultValue={content.description || ''} placeholder="Описание страницы" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors resize-none" />
+          </div>
+          <div className="pt-2">
+            <SubmitButton defaultText="Сохранить контент" />
+          </div>
         </form>
       </div>
     </div>

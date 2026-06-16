@@ -87,7 +87,6 @@ export default function QuizStepper() {
   };
 
   if (isSuccess) {
-    // Простая логика оценки для демо
     let estimatedCost = 'от $1,500';
     if (answers['needs'] === 'Только сайт (лендинг/корпоративный)') estimatedCost = 'от $800';
     if (answers['needs'] === 'Только Telegram-бот') estimatedCost = 'от $500';
@@ -96,13 +95,17 @@ export default function QuizStepper() {
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-12 text-center max-w-lg mx-auto relative z-10"
+        className="glass-panel rounded-3xl p-12 text-center max-w-lg mx-auto relative z-10"
       >
-        <CheckCircle2 className="w-16 h-16 text-emerald-400 mx-auto mb-6" />
-        <h3 className="text-3xl font-bold text-white mb-2">Оценка готова!</h3>
-        <p className="text-gray-400 mb-6">Предварительная стоимость вашего проекта:</p>
-        <div className="text-5xl font-bold text-[#ff4400] mb-8">{estimatedCost}</div>
-        <p className="text-gray-400 text-sm">Я уже получил вашу заявку и скоро напишу по указанным контактам, чтобы уточнить детали и дать точную смету.</p>
+        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_0_rgba(74,222,128,0.3)]">
+          <CheckCircle2 className="w-10 h-10 text-green-500" />
+        </div>
+        <h3 className="font-display text-3xl font-bold text-ink mb-2">Оценка готова!</h3>
+        <p className="font-sans text-ink/60 mb-6 font-medium">Предварительная стоимость вашего проекта:</p>
+        <div className="font-display text-5xl font-bold text-coral mb-8 drop-shadow-[0_0_15px_rgba(255,77,77,0.3)]">{estimatedCost}</div>
+        <p className="font-sans text-ink/50 text-sm leading-relaxed">
+          Я уже получил вашу заявку и скоро свяжусь с вами по указанным контактам, чтобы уточнить детали и дать точную смету.
+        </p>
       </motion.div>
     );
   }
@@ -110,21 +113,21 @@ export default function QuizStepper() {
   const step = STEPS[currentStep];
 
   return (
-    <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 max-w-2xl mx-auto overflow-hidden relative">
+    <div className="glass-panel rounded-3xl p-8 max-w-2xl mx-auto overflow-hidden relative shadow-[0_20px_60px_rgba(17,17,17,0.1)]">
       {/* Progress */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-white/5">
+      <div className="absolute top-0 left-0 w-full h-1 bg-ink/5">
         <motion.div 
-          className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
+          className="h-full bg-gradient-to-r from-coral to-cyan"
           initial={{ width: 0 }}
           animate={{ width: `${((currentStep + 1) / STEPS.length) * 100}%` }}
         />
       </div>
 
       <div className="mt-4 mb-8">
-        <span className="text-sm font-medium text-[#ff4400] tracking-wider uppercase">Шаг {currentStep + 1} из {STEPS.length}</span>
-        <h3 className="text-3xl font-bold text-white mt-2">{step?.question}</h3>
+        <span className="font-sans text-xs font-bold text-coral tracking-widest uppercase">Шаг {currentStep + 1} из {STEPS.length}</span>
+        <h3 className="font-display text-3xl font-bold text-ink mt-3">{step?.question}</h3>
         {step?.type === 'contact' && (
-          <p className="text-gray-400 mt-2 text-sm">Оставьте контакт, чтобы увидеть предварительную оценку стоимости.</p>
+          <p className="font-sans text-ink/60 mt-3 text-sm font-medium">Оставьте контакт, чтобы увидеть предварительную оценку стоимости.</p>
         )}
       </div>
 
@@ -138,16 +141,16 @@ export default function QuizStepper() {
             transition={{ duration: 0.3 }}
           >
             {step?.type === 'choice' && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans">
                 {step?.options?.map(opt => (
                   <button
                     key={opt}
                     onClick={() => handleSelect(step?.id || '', opt)}
                     className={cn(
-                      "text-left p-4 rounded-xl border transition-all duration-200",
+                      "text-left p-5 rounded-2xl border transition-all duration-300 font-semibold text-[15px]",
                       answers[step?.id || ''] === opt 
-                        ? "bg-[#ff4400]/20 border-[#ff4400] text-white" 
-                        : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20"
+                        ? "bg-coral/10 border-coral text-coral shadow-[0_0_20px_0_rgba(255,77,77,0.2)]" 
+                        : "bg-surface border-ink/5 text-ink/70 hover:bg-white hover:border-ink/10 hover:shadow-glass hover:text-ink hover:-translate-y-0.5"
                     )}
                   >
                     {opt}
@@ -162,32 +165,32 @@ export default function QuizStepper() {
                 value={answers[step?.id || ''] || ''}
                 onChange={e => handleChange(step?.id || '', e.target.value)}
                 placeholder="Напишите здесь..."
-                className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                className="font-sans w-full bg-surface border border-ink/10 rounded-2xl p-5 text-ink placeholder:text-ink/40 focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral transition-colors resize-none shadow-inner"
               />
             )}
 
             {step?.type === 'contact' && (
-              <form id="quiz-form" onSubmit={handleSubmit} className="space-y-4">
+              <form id="quiz-form" onSubmit={handleSubmit} className="space-y-5 font-sans">
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Ваше имя *</label>
+                  <label className="block text-sm font-bold text-ink/80 mb-2">Ваше имя *</label>
                   <input
                     required
                     type="text"
                     value={answers['name'] || ''}
                     onChange={e => handleChange('name', e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-[#ff4400] transition-colors"
-                    placeholder="Ваше имя"
+                    className="w-full bg-surface border border-ink/10 rounded-2xl p-5 text-ink placeholder:text-ink/40 focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral transition-all shadow-inner"
+                    placeholder="Александр"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Email или Telegram *</label>
+                  <label className="block text-sm font-bold text-ink/80 mb-2">Email или Telegram *</label>
                   <input
                     required
                     type="text"
                     value={answers['contactInfo'] || ''}
                     onChange={e => handleChange('contactInfo', e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-[#ff4400] transition-colors"
-                    placeholder="@username или номер телефона"
+                    className="w-full bg-surface border border-ink/10 rounded-2xl p-5 text-ink placeholder:text-ink/40 focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral transition-all shadow-inner"
+                    placeholder="@username или почта"
                   />
                 </div>
               </form>
@@ -196,11 +199,11 @@ export default function QuizStepper() {
         </AnimatePresence>
       </div>
 
-      <div className="mt-8 flex justify-between items-center">
+      <div className="mt-10 flex justify-between items-center">
         <button
           onClick={handlePrev}
           disabled={currentStep === 0 || isSubmitting}
-          className="p-3 text-gray-400 hover:text-white disabled:opacity-0 transition-colors"
+          className="p-3 text-ink/40 hover:text-coral disabled:opacity-0 transition-colors"
         >
           <ArrowLeft className="w-6 h-6" />
         </button>
@@ -210,19 +213,19 @@ export default function QuizStepper() {
             form="quiz-form"
             type="submit"
             disabled={isSubmitting || !answers['name'] || !answers['contactInfo']}
-            className="flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform disabled:opacity-50 disabled:hover:scale-100"
+            className="btn-primary flex items-center gap-2 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:bg-coral disabled:hover:shadow-none"
           >
-            {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Отправить'}
+            {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Получить расчет'}
             <ArrowRight className="w-5 h-5" />
           </button>
         ) : (
           <button
             onClick={handleNext}
             className={cn(
-              "flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all",
+              "btn-primary flex items-center gap-2 transition-all",
               step?.type === 'text' || answers[step?.id || '']
-                ? "bg-white text-black hover:scale-105"
-                : "bg-white/10 text-gray-500 cursor-not-allowed"
+                ? ""
+                : "opacity-50 pointer-events-none bg-ink/10 text-ink/40 border-none shadow-none"
             )}
           >
             Далее
