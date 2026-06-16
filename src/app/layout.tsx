@@ -42,7 +42,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const settings = await getSiteSettings();
-  const brandName = settings.brand_name ?? 'Dmitriy.dev';
+  const brandName = settings.brand_name ?? 'malyshev';
   const footerText = settings.footer_text ?? 'Automated Client Acquisition';
 
   return (
@@ -56,7 +56,7 @@ export default async function RootLayout({
         <footer className="border-t border-ink/5 bg-surface py-12 mt-24">
           <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
             <p className="font-display text-xl font-bold tracking-tight text-ink">
-              {brandName}<span className="text-coral">.</span>
+              {brandName}<span className="text-coral">.</span>dev<span className="text-cyan">.</span>
             </p>
             <p className="mt-4 font-sans text-sm text-ink/60">
               Сайты и Telegram-боты, которые приносят прибыль 24/7.
