@@ -9,27 +9,27 @@ import { useRef, useEffect, useState } from 'react';
 const SERVICES = [
   {
     id: '01/',
-    title: 'Интернет магазин',
-    description: 'Мы создаем магазины для eCommerce, которые помогают не только продавать, но и завоевывать сердца клиентов. Удобный каталог...',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: '02/',
-    title: 'Корпоративные сайты',
-    description: 'Не стоит недооценивать корпоративные сайты - это все еще лучший инструмент презентации компании в диджитале. Покажите свои...',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: '03/',
-    title: 'Интернет портал',
-    description: 'Автоматизируйте рутинные рабочие процессы, упростите бизнес и дайте своим сотрудникам новые инструменты. Интернет...',
+    title: 'Лендинги',
+    description: 'Одностраничные сайты с высокой конверсией для быстрого запуска продукта, сбора лидов и тестирования гипотез.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
   },
   {
-    id: '04/',
-    title: 'Каталог',
-    description: 'Мы создаем сайты-каталоги для бизнеса, чтобы вы могли в режиме реального времени обновлять свой ассортимент и представлять...',
+    id: '02/',
+    title: 'Сайты-визитки',
+    description: 'Компактное, стильное и информативное представительство вашего бизнеса в интернете для формирования сильного имиджа.',
     image: 'https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: '03/',
+    title: 'Корпоративные сайты',
+    description: 'Многостраничные решения для бизнеса. Инструмент для презентации компании, повышения лояльности и привлечения крупных клиентов.',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: '04/',
+    title: 'Интернет магазин',
+    description: 'Мы создаем магазины для eCommerce, которые помогают не только продавать, но и завоевывать сердца клиентов. Удобный каталог и онлайн-оплата.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: '05/',
@@ -62,13 +62,13 @@ export default function B2BHomePage() {
 
   const scrollLeft = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: -420, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: 420, behavior: 'smooth' });
     }
   };
 
@@ -132,11 +132,12 @@ export default function B2BHomePage() {
           className="flex gap-6 overflow-x-auto pb-12 snap-x snap-mandatory hide-scrollbar"
           style={{ 
             scrollbarWidth: 'none', 
-            msOverflowStyle: 'none',
-            paddingLeft: `${paddingLeft}px`,
-            paddingRight: `${paddingLeft}px`
+            msOverflowStyle: 'none'
           }}
         >
+          {/* Explicit spacer element to align the first card perfectly without using paddingLeft on the flex container, which can cause scrolling bugs */}
+          <div style={{ minWidth: paddingLeft - 24 }} className="flex-shrink-0" />
+
           {SERVICES.map((service, index) => (
             <div 
               key={index} 
@@ -160,7 +161,7 @@ export default function B2BHomePage() {
 
               {/* Action Button Bottom (Expanding Pill on Hover) */}
               <div className="relative z-10 mt-auto flex justify-start">
-                <div className="relative overflow-hidden rounded-full border border-ink/10 bg-white transition-all duration-500 ease-out flex items-center p-1.5 w-16 h-16 group-hover:w-full group-hover:justify-between group-hover:border-transparent">
+                <div className="relative overflow-hidden rounded-full border border-ink/10 bg-white transition-all duration-500 ease-out flex items-center justify-center group-hover:justify-between p-1.5 w-24 h-16 group-hover:w-full group-hover:border-transparent">
                   {/* Background Image inside the expanded pill */}
                   <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out pointer-events-none">
                     <Image src={service.image} fill className="object-cover" alt="" />
@@ -168,7 +169,7 @@ export default function B2BHomePage() {
                   </div>
                   
                   {/* Hover text */}
-                  <span className="relative z-10 opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto text-white font-bold font-sans tracking-wide ml-6 whitespace-nowrap overflow-hidden transition-all duration-500">
+                  <span className="relative z-10 opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto text-white font-bold font-sans tracking-wide group-hover:ml-6 whitespace-nowrap overflow-hidden transition-all duration-500">
                     Подробнее
                   </span>
                   
@@ -180,7 +181,11 @@ export default function B2BHomePage() {
               </div>
             </div>
           ))}
+
+          {/* Right padding explicit spacer */}
+          <div style={{ minWidth: paddingLeft - 24 }} className="flex-shrink-0" />
         </div>
+      </section>        </div>
       </section>
 
       {/* 3. BENTO GRID (ПОЧЕМУ ВЫБРАТЬ MALYSHEV.DEV) */}
