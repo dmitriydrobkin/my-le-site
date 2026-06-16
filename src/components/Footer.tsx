@@ -1,8 +1,30 @@
 'use client';
 
 import Link from 'next/link';
-import { Instagram, Youtube, Send, Facebook, ArrowUpRight } from 'lucide-react';
+import { Send, ArrowUpRight } from 'lucide-react';
 import { QuizTrigger } from './QuizTrigger';
+
+// Встроенные SVG иконки для соцсетей, чтобы избежать конфликтов с lucide-react
+const InstagramIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+);
+
+const FacebookIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  </svg>
+);
+
+const YoutubeIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M2.5 7.1C2.6 5.9 3.5 4.9 4.7 4.8 8.1 4.5 12 4.5 15.3 4.8c1.2.1 2.1 1.1 2.2 2.3.2 1.6.2 3.3.2 4.9s0 3.3-.2 4.9c-.1 1.2-1 2.2-2.3 2.3-3.3.3-7.2.3-10.6 0-1.2-.1-2.1-1.1-2.2-2.3-.2-1.6-.2-3.3-.2-4.9s0-3.3.2-4.9z"/>
+    <path d="m10 15 5-3-5-3v6z"/>
+  </svg>
+);
 
 export function Footer() {
   const quickLinks = [
@@ -75,16 +97,16 @@ export function Footer() {
               </a>
               <div className="flex gap-4 mt-4">
                 <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <Instagram className="w-5 h-5" />
+                  <InstagramIcon className="w-5 h-5" />
                 </a>
                 <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <Facebook className="w-5 h-5" />
+                  <FacebookIcon className="w-5 h-5" />
                 </a>
                 <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
                   <Send className="w-5 h-5" />
                 </a>
                 <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <Youtube className="w-5 h-5" />
+                  <YoutubeIcon className="w-5 h-5" />
                 </a>
               </div>
             </div>
