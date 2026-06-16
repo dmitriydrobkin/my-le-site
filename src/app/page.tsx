@@ -194,26 +194,27 @@ export default function B2BHomePage() {
             ПОЧЕМУ ВЫБРАТЬ MALYSHEV.DEV?
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+          {/* Исправлена сетка для мобильных: убрана жесткая высота строк на мобильном */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:auto-rows-[250px]">
             {/* Карточка 1 - Светлая (Широкая) */}
-            <div className="md:col-span-2 bg-surface rounded-[2rem] p-10 flex flex-col justify-center border border-ink/5 hover:border-ink/10 transition-colors">
+            <div className="md:col-span-2 bg-surface rounded-[2rem] p-8 md:p-10 flex flex-col justify-center border border-ink/5 hover:border-ink/10 transition-colors min-h-[250px]">
               <span className="text-coral font-bold font-sans text-sm tracking-widest uppercase mb-4">Наш подход</span>
-              <h3 className="font-display text-3xl md:text-4xl font-bold text-ink leading-tight">
+              <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-ink leading-tight">
                 Мы не просто пишем код, мы строим архитектуру ваших будущих продаж.
               </h3>
             </div>
 
             {/* Карточка 2 - Темная (Инвертированная) */}
-            <div className="bg-ink rounded-[2rem] p-10 flex flex-col items-center justify-center text-center relative overflow-hidden group">
+            <div className="bg-ink rounded-[2rem] p-8 md:p-10 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[250px]">
               <div className="absolute inset-0 bg-gradient-to-br from-coral/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <div className="relative z-10">
-                <span className="font-display text-7xl font-bold text-white mb-2 block">275+</span>
+                <span className="font-display text-6xl md:text-7xl font-bold text-white mb-2 block">275+</span>
                 <span className="font-sans text-sm text-white/60">успешно запущенных проектов</span>
               </div>
             </div>
 
             {/* Карточка 3 - Темная (Иконка кода) */}
-            <div className="bg-ink rounded-[2rem] p-10 flex flex-col items-center justify-center group relative overflow-hidden">
+            <div className="bg-ink rounded-[2rem] p-8 md:p-10 flex flex-col items-center justify-center group relative overflow-hidden min-h-[250px] hidden md:flex">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <div className="text-white text-6xl group-hover:text-cyan-400 transition-colors duration-500 font-mono relative z-10">
                 &lt; / &gt;
@@ -221,20 +222,22 @@ export default function B2BHomePage() {
             </div>
 
             {/* Карточка 4 - Светлая (Акцент) */}
-            <div className="bg-surface rounded-[2rem] p-10 flex flex-col justify-center border border-ink/5 hover:border-ink/10 transition-colors">
+            <div className="bg-surface rounded-[2rem] p-8 md:p-10 flex flex-col justify-center border border-ink/5 hover:border-ink/10 transition-colors min-h-[200px] md:min-h-[250px]">
               <p className="font-sans text-ink/70 font-medium leading-relaxed">
                 Чистый код, прозрачные процессы и соблюдение сроков. Каждая строка кода работает на ваш результат.
               </p>
             </div>
 
             {/* Карточка 5 - CTA Акцентная */}
-            <div className="bg-gradient-to-br from-coral to-cyan-500 rounded-[2rem] p-10 flex flex-col justify-center text-white relative overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-shadow">
+            <div className="bg-gradient-to-br from-coral to-cyan-500 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between text-white relative overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-shadow min-h-[200px] md:min-h-[250px]">
               <Link href="/services/sites-and-bots" className="absolute inset-0 z-20" />
               <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500" />
-              <h3 className="relative z-10 font-display text-3xl font-bold mb-4">
-                Узнать больше о наших продуктах
+              <h3 className="relative z-10 font-display text-2xl md:text-3xl font-bold max-w-[200px] md:max-w-full">
+                Узнать больше о продуктах
               </h3>
-              <ArrowUpRight className="relative z-10 w-10 h-10 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500" />
+              <div className="relative z-10 self-end md:self-start mt-4 md:mt-0">
+                <ArrowUpRight className="w-10 h-10 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500" />
+              </div>
             </div>
 
           </div>
@@ -259,6 +262,42 @@ export default function B2BHomePage() {
             <div className="px-6 py-3 rounded-full border border-ink/20 text-ink font-bold font-sans text-sm hover:border-ink hover:bg-white transition-colors cursor-pointer bg-transparent">Tailwind CSS</div>
             <div className="px-6 py-3 rounded-full border border-ink/20 text-ink font-bold font-sans text-sm hover:border-ink hover:bg-white transition-colors cursor-pointer bg-transparent">Framer Motion</div>
             <div className="px-6 py-3 rounded-full border border-ink/20 text-ink font-bold font-sans text-sm hover:border-ink hover:bg-white transition-colors cursor-pointer bg-transparent">Telegram API</div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
+      <section className="py-12 md:py-24 bg-white">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="bg-ink rounded-[2.5rem] p-10 md:p-16 lg:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
+            
+            {/* Фоновое 3D Изображение */}
+            <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full opacity-40 lg:opacity-100 pointer-events-none">
+              <Image 
+                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200" 
+                fill 
+                className="object-cover object-right" 
+                alt="Abstract 3D Shape" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-ink via-ink/80 to-transparent" />
+            </div>
+
+            {/* Контент */}
+            <div className="relative z-10 max-w-xl w-full">
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                Давайте поговорим
+                <br className="hidden md:block" />
+                о вашем проекте
+              </h2>
+              <p className="font-sans text-white/50 text-sm md:text-base leading-relaxed mb-10 max-w-sm uppercase tracking-wide">
+                Обращайтесь к нам за бесплатной консультацией, это возможность обсудить свои идеи с экспертами по диджитализации. Оставьте свой номер, мы перезвоним!
+              </p>
+              
+              <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-8 py-4 md:px-10 md:py-5 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-neon-coral hover:-translate-y-1 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit group">
+                Обсудить проект
+                <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+              </QuizTrigger>
+            </div>
           </div>
         </div>
       </section>
