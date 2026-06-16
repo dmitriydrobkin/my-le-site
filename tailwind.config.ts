@@ -6,25 +6,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        /** Светло-серый/белый фон для ощущения легкости */
-        cloud: {
-          DEFAULT: "#ffffff",
-          50: "#fafafa",
-          100: "#f4f4f5",
-          200: "#e4e4e7",
+        /** Светлый фон */
+        surface: {
+          DEFAULT: "#f8f9fa",
+          50: "#ffffff",
+          100: "#f1f3f5",
         },
-        /** Глубокий графитовый текст */
-        graphite: {
-          DEFAULT: "#18181b",
-          light: "#3f3f46",
-          lighter: "#71717a",
+        /** Темный текст */
+        ink: {
+          DEFAULT: "#111111",
+          light: "#333333",
         },
-        /** Электрический синий/пурпурный для акцентов и Call to Action */
-        electric: {
-          DEFAULT: "#2563eb",
-          light: "#3b82f6",
-          glow: "#60a5fa",
-          purple: "#8b5cf6",
+        /** Акцентный сочный цвет (сочный коралл/красно-оранжевый) */
+        coral: {
+          DEFAULT: "#FF4D4D",
+          hover: "#FF2A2A",
+          glow: "rgba(255, 77, 77, 0.4)",
+        },
+        /** Дополнительный акцент (неоновый циан) */
+        cyan: {
+          DEFAULT: "#00E5FF",
+          glow: "rgba(0, 229, 255, 0.4)",
         },
       },
       fontFamily: {
@@ -32,8 +34,9 @@ export default {
         display: ["var(--font-display)", ...fontFamily.sans],
       },
       boxShadow: {
-        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
-        'glass-hover': '0 8px 32px 0 rgba(37, 99, 235, 0.15)',
+        'glass': '0 8px 32px 0 rgba(17, 17, 17, 0.05)',
+        'glass-hover': '0 8px 32px 0 rgba(255, 77, 77, 0.15)',
+        'neon-coral': '0 0 20px 0 rgba(255, 77, 77, 0.5)',
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-out forwards",

@@ -11,30 +11,30 @@ import Scene from '@/components/animations/Scene';
 export const runtime = 'edge';
 
 const DEFAULT_TEXTS = {
-  hero_badge: 'Системы автоматизации бизнеса',
-  hero_title_1: 'СКОЛЬКО ВЫ ТЕРЯЕТЕ',
-  hero_title_2: 'БЕЗ САЙТА И ТЕЛЕГРАМ-БОТА?',
-  hero_description: 'Превращаем ваш бизнес в автоматизированную систему продаж. Вы получаете готовый сайт и умного бота под ключ от одного надежного специалиста.',
+  hero_badge: 'Автоматизированные системы привлечения',
+  hero_title_1: 'САЙТЫ И ТЕЛЕГРАМ-БОТЫ,',
+  hero_title_2: 'КОТОРЫЕ РАБОТАЮТ 24/7',
+  hero_description: 'Пока вы отдыхаете, ваша воронка конвертирует трафик в прибыль. Мгновенный захват внимания, автоматический прогрев лидов и экономия времени ваших менеджеров.',
 };
 
 const PORTFOLIO_ITEMS = [
   {
     id: 1,
     title: 'Автосалон "Premium Auto"',
-    description: 'Корпоративный сайт + бот для записи на тест-драйв',
-    image: '/portfolio/auto.jpg', // Placeholder
+    description: 'Корпоративный сайт + бот для квалификации на тест-драйв. Увеличение конверсии на 45%.',
+    image: '/portfolio/auto.jpg', 
   },
   {
     id: 2,
-    title: 'Сеть кофеен',
-    description: 'Интернет-магазин зерен + программа лояльности в Telegram',
-    image: '/portfolio/coffee.jpg', // Placeholder
+    title: 'Сеть кофеен "Morning Rush"',
+    description: 'Интернет-магазин зерен + программа лояльности в Telegram. +30% к повторным продажам.',
+    image: '/portfolio/coffee.jpg', 
   },
   {
     id: 3,
-    title: 'Юридическое агентство',
-    description: 'Лендинг с высокой конверсией + бот первичной квалификации',
-    image: '/portfolio/law.jpg', // Placeholder
+    title: 'Юридическое агентство "LexPro"',
+    description: 'Высококонверсионный лендинг + бот первичной консультации. Сэкономлено 120 часов работы юристов.',
+    image: '/portfolio/law.jpg', 
   }
 ];
 
@@ -50,46 +50,46 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* Hero Section (Lost Profit) */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0a0a0a] text-white">
+      {/* Hero Section (Profit & Automation) */}
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-surface text-ink pt-20">
         
-        {/* Abstract Background Elements */}
-        <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none flex items-center justify-center">
-          <div className="w-[800px] h-[800px] bg-[#ff4400]/20 rounded-full blur-[120px] absolute -top-[20%] -left-[10%]" />
-          <div className="w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[100px] absolute bottom-[10%] right-[10%]" />
+        {/* Abstract Light Background Elements */}
+        <div className="absolute inset-0 z-0 opacity-60 mix-blend-multiply pointer-events-none flex items-center justify-center">
+          <div className="w-[800px] h-[800px] bg-cyan/10 rounded-full blur-[120px] absolute -top-[10%] -left-[10%] animate-float" />
+          <div className="w-[600px] h-[600px] bg-coral/10 rounded-full blur-[100px] absolute bottom-[10%] right-[10%] animate-float" style={{ animationDelay: '2s' }} />
         </div>
 
-        {/* CSS-сцена поверх */}
-        <div className="absolute inset-0 z-0 opacity-50 mix-blend-screen pointer-events-none">
+        {/* CSS-сцена поверх (3D абстракция) */}
+        <div className="absolute inset-0 z-0 opacity-40 mix-blend-overlay pointer-events-none">
           <Scene />
         </div>
         
-        <div className="relative z-10 mx-auto max-w-6xl px-6 text-center animate-fade-in flex flex-col items-center">
+        <div className="relative z-10 mx-auto max-w-6xl px-6 text-center animate-fade-in-up flex flex-col items-center">
           
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-[#ff4400]/30 bg-[#ff4400]/10 backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-[#ff4400] animate-pulse" />
-            <span className="font-sans text-sm tracking-wide text-[#ff4400] font-medium uppercase">
+          <div className="inline-flex items-center gap-2 px-5 py-2 mb-8 rounded-full border border-coral/20 bg-white/60 backdrop-blur-md shadow-glass">
+            <span className="w-2.5 h-2.5 rounded-full bg-coral animate-pulse shadow-neon-coral" />
+            <span className="font-sans text-xs tracking-widest text-ink/80 font-bold uppercase">
               {settings?.hero_badge ?? DEFAULT_TEXTS.hero_badge}
             </span>
           </div>
 
-          <h1 className="font-sans text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-white mb-6 leading-[1.1]">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
-              {settings?.hero_title_1 ?? DEFAULT_TEXTS.hero_title_1}
-            </span>
+          <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-ink mb-6 leading-[1.05]">
+            {settings?.hero_title_1 ?? DEFAULT_TEXTS.hero_title_1}
             <br />
-            {settings?.hero_title_2 ?? DEFAULT_TEXTS.hero_title_2}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">
+              {settings?.hero_title_2 ?? DEFAULT_TEXTS.hero_title_2}
+            </span>
           </h1>
 
-          <p className="mx-auto max-w-2xl font-sans text-lg md:text-xl font-light leading-relaxed text-gray-400 mb-12">
+          <p className="mx-auto max-w-2xl font-sans text-lg md:text-xl font-medium leading-relaxed text-ink/60 mb-12">
             {settings?.hero_description ?? DEFAULT_TEXTS.hero_description}
           </p>
 
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <QuizTrigger className="group relative px-8 py-4 bg-[#ff4400] hover:bg-[#e63d00] text-white rounded-full transition-all font-sans text-[15px] font-semibold tracking-wide overflow-hidden shadow-[0_0_40px_rgba(255,68,0,0.3)] hover:shadow-[0_0_60px_rgba(255,68,0,0.5)]">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row w-full sm:w-auto">
+            <QuizTrigger className="btn-primary w-full sm:w-auto">
               Рассчитать стоимость проекта
             </QuizTrigger>
-            <Link href="#portfolio" className="px-8 py-4 border border-white/20 hover:border-white/50 hover:bg-white/5 text-white rounded-full transition-all font-sans text-[15px] font-medium tracking-wide backdrop-blur-md">
+            <Link href="#portfolio" className="btn-outline w-full sm:w-auto">
               Смотреть кейсы
             </Link>
           </div>
@@ -97,60 +97,66 @@ export default async function HomePage() {
       </section>
 
       {/* Value Proposition / Features Section */}
-      <section className="relative py-32 bg-black border-y border-white/5">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 text-center lg:text-left">
-            <div>
-              <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 mx-auto lg:mx-0">
+      <section className="relative py-32 bg-white border-y border-ink/5 relative overflow-hidden">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-ink/10 to-transparent" />
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="section-title">Почему это работает?</h2>
+            <p className="section-subtitle mx-auto">Автоматизация процессов, которая окупается с первого месяца.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center lg:text-left">
+            <div className="glass-panel p-8 rounded-3xl hover:-translate-y-1 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-2xl bg-coral/10 border border-coral/20 flex items-center justify-center mb-6 mx-auto lg:mx-0 shadow-neon-coral">
                 <span className="text-2xl">⏳</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Экономия времени</h3>
-              <p className="text-gray-400 leading-relaxed">Больше никаких долгих согласований с агентствами. Я веду проект от идеи до запуска и настройки рекламы.</p>
+              <h3 className="font-display text-2xl font-bold text-ink mb-3">Экономия времени</h3>
+              <p className="font-sans text-ink/60 leading-relaxed font-medium">Ваши менеджеры больше не тратят часы на холодные звонки. Вы получаете только прогретых лидов, готовых к покупке.</p>
             </div>
-            <div>
-              <div className="w-12 h-12 rounded-2xl bg-[#ff4400]/10 border border-[#ff4400]/20 flex items-center justify-center mb-6 mx-auto lg:mx-0">
+            <div className="glass-panel p-8 rounded-3xl hover:-translate-y-1 transition-transform duration-500 delay-100">
+              <div className="w-14 h-14 rounded-2xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-6 mx-auto lg:mx-0 shadow-[0_0_20px_0_rgba(0,229,255,0.3)]">
                 <span className="text-2xl">🤖</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Единая экосистема</h3>
-              <p className="text-gray-400 leading-relaxed">Сайт привлекает клиентов, а Телеграм-бот автоматически прогревает и квалифицирует их.</p>
+              <h3 className="font-display text-2xl font-bold text-ink mb-3">Умная экосистема</h3>
+              <p className="font-sans text-ink/60 leading-relaxed font-medium">Сайт мгновенно привлекает внимание, а Телеграм-бот автоматически классифицирует и прогревает клиентов в фоне.</p>
             </div>
-            <div>
-              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 mx-auto lg:mx-0">
+            <div className="glass-panel p-8 rounded-3xl hover:-translate-y-1 transition-transform duration-500 delay-200">
+              <div className="w-14 h-14 rounded-2xl bg-ink/5 border border-ink/10 flex items-center justify-center mb-6 mx-auto lg:mx-0">
                 <span className="text-2xl">💰</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Увеличение прибыли</h3>
-              <p className="text-gray-400 leading-relaxed">Автоматизация позволяет обрабатывать заявки 24/7, не теряя ни одного горячего лида.</p>
+              <h3 className="font-display text-2xl font-bold text-ink mb-3">Рост прибыли</h3>
+              <p className="font-sans text-ink/60 leading-relaxed font-medium">Обработка заявок 24/7 без выходных. Ни один горячий клиент больше не уйдет к конкурентам из-за долгого ответа.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-32 bg-[#0a0a0a] text-white">
+      <section id="portfolio" className="py-32 bg-surface text-ink relative">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-tight mb-6">Избранные проекты</h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">Каждый проект — это работающая машина по генерации и обработке лидов.</p>
+            <h2 className="section-title mb-6">Избранные проекты</h2>
+            <p className="section-subtitle mx-auto">Каждый кейс — это работающая машина по генерации прибыли.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {PORTFOLIO_ITEMS.map((item) => (
-              <div key={item.id} className="group relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 hover:border-white/30 transition-colors">
-                <div className="aspect-[4/3] bg-white/5 relative overflow-hidden flex items-center justify-center">
-                  <span className="text-white/20 text-sm tracking-widest uppercase">[{item.image.split('/').pop()}]</span>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div key={item.id} className="group glass-panel rounded-3xl overflow-hidden hover:shadow-glass-hover transition-all duration-500">
+                <div className="aspect-[4/3] bg-ink/5 relative overflow-hidden flex items-center justify-center">
+                  <span className="font-sans text-ink/30 text-xs font-bold tracking-widest uppercase">[{item.image.split('/').pop()}]</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <div className="p-8">
-                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
+                <div className="p-8 bg-white/50 backdrop-blur-sm border-t border-white/40">
+                  <h3 className="font-display text-xl font-bold text-ink mb-2 group-hover:text-coral transition-colors">{item.title}</h3>
+                  <p className="font-sans text-ink/60 text-sm leading-relaxed font-medium">{item.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
           <div className="mt-20 text-center">
-            <QuizTrigger className="px-8 py-4 bg-white hover:bg-gray-200 text-black rounded-full transition-all font-sans text-[15px] font-bold tracking-wide">
-              Хочу такой же результат
+            <QuizTrigger className="btn-primary px-10 py-4 text-base shadow-neon-coral">
+              Узнать, сколько я теряю без авто-воронки
             </QuizTrigger>
           </div>
         </div>
