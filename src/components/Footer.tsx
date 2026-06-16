@@ -96,7 +96,6 @@ export function Footer() {
                 contact@nashe.agency
               </a>
               <div className="flex gap-3 mt-2">
-                {/* ⚡ ВНИМАНИЕ СЮДА: ТЕПЕРЬ ТУТ НАПИСАНО Icon ⚡ */}
                 <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
                   <InstagramIcon className="w-4 h-4" />
                 </a>
@@ -116,4 +115,11 @@ export function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold uppercase tracking-widest text-white/40">
+          <p>© {new Date().getFullYear()} — MALYSHEV.DEV.</p>
+          <p>Сайты и Telegram-боты, которые приносят прибыль 24/7.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
