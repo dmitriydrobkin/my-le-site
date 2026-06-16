@@ -185,7 +185,6 @@ export default function B2BHomePage() {
           {/* Right padding explicit spacer */}
           <div style={{ minWidth: paddingLeft - 24 }} className="flex-shrink-0" />
         </div>
-      </section>        </div>
       </section>
 
       {/* 3. BENTO GRID (ПОЧЕМУ ВЫБРАТЬ MALYSHEV.DEV) */}
