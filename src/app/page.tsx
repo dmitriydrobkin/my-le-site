@@ -270,7 +270,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 4. ПРИМЕРЫ РАБОТ */}
-      <section className="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-surface border-t border-ink/5">
+      <section className="pt-24 pb-6 lg:pt-32 lg:pb-8 bg-surface border-t border-ink/5">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase">
@@ -317,9 +317,9 @@ export default function B2BHomePage() {
       <FAQSection />
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
-      <section className="py-6 md:py-8 bg-white">
+      <section className="py-4 md:py-6 bg-white">
         <div className="max-w-[1400px] mx-auto px-6">
-          <div className="bg-ink rounded-[2.5rem] p-6 md:p-8 lg:p-10 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          <div className="bg-ink rounded-[2rem] p-6 lg:p-8 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6">
             
             {/* Фоновое 3D Изображение */}
             <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full opacity-40 lg:opacity-100 pointer-events-none">
@@ -334,12 +334,12 @@ export default function B2BHomePage() {
 
             {/* Контент */}
             <div className="relative z-10 max-w-xl w-full">
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
                 Давайте поговорим
                 <br className="hidden md:block" />
                 о вашем проекте
               </h2>
-              <p className="font-sans text-white/50 text-sm md:text-base leading-relaxed mb-10 max-w-sm">
+              <p className="font-sans text-white/50 text-xs md:text-sm leading-relaxed mb-6 max-w-sm">
                 Обращайтесь к нам за бесплатной консультацией, это возможность обсудить свои идеи с экспертами по диджитализации. Оставьте свой номер, мы перезвоним!
               </p>
               

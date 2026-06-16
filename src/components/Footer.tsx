@@ -39,34 +39,34 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-ink text-white pt-20 pb-10 mt-auto rounded-t-[3rem] overflow-hidden">
+    <footer className="bg-ink text-white pt-12 pb-6 mt-auto rounded-t-[3rem] overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 border-b border-white/10 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6 border-b border-white/10 pb-10">
           
           {/* Column 1: Consultation Card (Col Span 4) */}
           <div className="lg:col-span-4 flex">
-            <QuizTrigger className="w-full relative overflow-hidden bg-[#E5FF38] text-ink rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between group hover:scale-[1.02] transition-transform duration-300 shadow-lg text-left h-full min-h-[350px]">
+            <QuizTrigger className="w-full relative overflow-hidden bg-[#E5FF38] text-ink rounded-[2rem] p-6 md:p-8 flex flex-col justify-between group hover:scale-[1.02] transition-transform duration-300 shadow-lg text-left h-full min-h-[220px]">
               {/* Abstract Shape Background */}
-              <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-gradient-to-tr from-cyan-400 via-blue-500 to-transparent rounded-full mix-blend-multiply opacity-80 blur-2xl group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
-              <div className="absolute -bottom-10 left-10 w-60 h-60 bg-gradient-to-tr from-emerald-400 to-transparent rounded-full mix-blend-multiply opacity-60 blur-xl pointer-events-none" />
+              <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-gradient-to-tr from-cyan-400 via-blue-500 to-transparent rounded-full mix-blend-multiply opacity-80 blur-2xl group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+              <div className="absolute -bottom-10 left-10 w-48 h-48 bg-gradient-to-tr from-emerald-400 to-transparent rounded-full mix-blend-multiply opacity-60 blur-xl pointer-events-none" />
               
-              <h3 className="relative z-10 font-display text-4xl md:text-5xl font-bold leading-[1.1]">
+              <h3 className="relative z-10 font-display text-3xl lg:text-4xl font-bold leading-[1.1] break-words">
                 Получить<br />
                 консультацию
               </h3>
               
-              <div className="relative z-10 flex justify-end mt-10">
-                <div className="w-14 h-14 rounded-full border border-ink/20 flex items-center justify-center group-hover:bg-ink group-hover:text-white group-hover:border-transparent transition-colors duration-300">
-                  <ArrowUpRight className="w-6 h-6 group-hover:rotate-45 transition-transform" />
+              <div className="relative z-10 flex justify-end mt-6">
+                <div className="w-12 h-12 rounded-full border border-ink/20 flex items-center justify-center group-hover:bg-ink group-hover:text-white group-hover:border-transparent transition-colors duration-300">
+                  <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
                 </div>
               </div>
             </QuizTrigger>
           </div>
 
           {/* Column 2: Quick Links (Col Span 5) */}
-          <div className="lg:col-span-5 flex flex-col justify-center lg:pl-10">
-            <h4 className="font-display text-2xl font-bold mb-8 flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-white opacity-50" />
+          <div className="lg:col-span-5 flex flex-col justify-center lg:pl-8">
+            <h4 className="font-display text-xl font-bold mb-6 flex items-center gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-white opacity-50" />
               Быстрые ссылки
             </h4>
             <div className="flex flex-wrap gap-3">
@@ -84,29 +84,29 @@ export function Footer() {
 
           {/* Column 3: Contacts (Col Span 3) */}
           <div className="lg:col-span-3 flex flex-col justify-center">
-            <h4 className="font-display text-2xl font-bold mb-8 flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-white opacity-50" />
+            <h4 className="font-display text-xl font-bold mb-6 flex items-center gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-white opacity-50" />
               Контакты
             </h4>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
               <a href="tel:+380988567777" className="font-mono text-xl font-medium hover:text-coral transition-colors">
                 +38 098 856 77 77
               </a>
               <a href="mailto:contact@nashe.agency" className="font-sans text-white/70 hover:text-white transition-colors">
                 contact@nashe.agency
               </a>
-              <div className="flex gap-4 mt-4">
-                <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <InstagramIcon className="w-5 h-5" />
+              <div className="flex gap-3 mt-2">
+                <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
+                  <Instagram className="w-4 h-4" />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <FacebookIcon className="w-5 h-5" />
+                <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
+                  <Facebook className="w-4 h-4" />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <Send className="w-5 h-5" />
+                <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
+                  <Send className="w-4 h-4" />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <YoutubeIcon className="w-5 h-5" />
+                <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
+                  <Youtube className="w-4 h-4" />
                 </a>
               </div>
             </div>

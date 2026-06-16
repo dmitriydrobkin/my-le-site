@@ -35,7 +35,7 @@ export function FAQSection() {
   const [phone, setPhone] = useState<string>();
 
   return (
-    <section className="pt-12 pb-24 bg-surface">
+    <section className="pt-6 pb-24 bg-surface">
       <div className="max-w-[1400px] mx-auto px-6">
         {/* Заголовок для мобильных, чтобы он оставался сверху, а форма уходила вниз */}
         <div className="lg:hidden mb-12">
