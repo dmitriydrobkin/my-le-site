@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { QuizTrigger } from '@/components/QuizTrigger';
-import { FAQSection } from '@/components/FAQSection';
+import { CustomCursor } from '@/components/CustomCursor';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef, useEffect, useState } from 'react';
 
@@ -375,9 +375,6 @@ export default function B2BHomePage() {
           </div>
         </div>
       </section>
-
-      {/* 5. ЧАСТЫЕ ВОПРОСЫ (FAQ) */}
-      <FAQSection />
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
       <section className="py-12 lg:py-16 bg-white">

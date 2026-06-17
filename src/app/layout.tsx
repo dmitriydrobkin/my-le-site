@@ -6,6 +6,7 @@ import { Preloader } from '@/components/Preloader';
 import { CustomCursor } from '@/components/CustomCursor';
 import { getSiteSettings } from '@/server/functions/settings';
 import { QuizModal } from '@/components/QuizModal';
+import { FAQSection } from '@/components/FAQSection';
 import './globals.css';
 
 // ⚡ КРИТИЧНО: Переводим весь Layout в Edge, чтобы не было конфликтов с page.tsx
@@ -59,6 +60,7 @@ export default async function RootLayout({
         {/* Главный контент */}
         <main className="flex-grow">{children}</main>
 
+        <FAQSection />
         <Footer />
 
         {/* Global Modal */}

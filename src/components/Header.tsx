@@ -27,8 +27,8 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-6 left-0 right-0 z-50 pointer-events-none px-6">
-        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
+      <header className="fixed top-6 left-0 right-0 z-50 pointer-events-none">
+        <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
           {/* Логотип */}
           <Link 
             href="/"
