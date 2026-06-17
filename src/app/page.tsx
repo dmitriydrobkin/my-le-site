@@ -213,7 +213,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 3. BENTO GRID (ПОЧЕМУ ВЫБРАТЬ MALYSHEV.DEV) */}
-      <section className="pt-12 pb-24 lg:pt-16 lg:pb-32 bg-white">
+      <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-white">
         <div className="max-w-[1400px] mx-auto px-6">
           <h2 className="font-display text-3xl md:text-5xl font-bold text-ink mb-16 uppercase">
             ПОЧЕМУ ВЫБРАТЬ MALYSHEV.DEV?
@@ -270,7 +270,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 4. ПРИМЕРЫ РАБОТ */}
-      <section className="pt-24 pb-6 lg:pt-32 lg:pb-8 bg-surface border-t border-ink/5">
+      <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-surface border-t border-ink/5">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase">
@@ -317,9 +317,9 @@ export default function B2BHomePage() {
       <FAQSection />
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
-      <section className="py-4 md:py-6 bg-white">
+      <section className="py-12 lg:py-16 bg-white">
         <div className="max-w-[1400px] mx-auto px-6">
-          <div className="bg-ink rounded-[2rem] p-6 lg:p-8 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="bg-ink rounded-[2rem] p-8 lg:p-12 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
             
             {/* Фоновое 3D Изображение */}
             <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full opacity-40 lg:opacity-100 pointer-events-none">
@@ -334,12 +334,12 @@ export default function B2BHomePage() {
 
             {/* Контент */}
             <div className="relative z-10 max-w-xl w-full">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-light text-white mb-3 tracking-wide leading-tight">
                 Давайте поговорим
                 <br className="hidden md:block" />
                 о вашем проекте
               </h2>
-              <p className="font-sans text-white/50 text-xs md:text-sm leading-relaxed mb-6 max-w-sm">
+              <p className="font-sans text-white/50 text-xs md:text-sm font-light leading-relaxed mb-6 max-w-sm">
                 Обращайтесь к нам за бесплатной консультацией, это возможность обсудить свои идеи с экспертами по диджитализации. Оставьте свой номер, мы перезвоним!
               </p>
               

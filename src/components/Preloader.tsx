@@ -33,12 +33,11 @@ export function Preloader() {
         >
           <motion.div
             exit={{ 
-              scale: 0.5, 
+              scale: 0.9, 
               opacity: 0, 
-              y: typeof window !== 'undefined' ? -window.innerHeight / 2 + 40 : -300, 
-              x: typeof window !== 'undefined' ? -window.innerWidth / 2 + 100 : -300
+              y: -50 
             }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
             className="flex items-center gap-3 font-display font-bold text-3xl sm:text-4xl md:text-6xl text-ink tracking-tight"
           >
             <motion.div 
