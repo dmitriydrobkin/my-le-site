@@ -28,14 +28,12 @@ const YoutubeIcon = ({ className }: { className?: string }) => (
 
 export function Footer() {
   const quickLinks = [
-    { label: 'Реклама', href: '#' },
-    { label: 'Разработка', href: '#' },
-    { label: 'Дизайн', href: '#' },
-    { label: 'Продакшн', href: '#' },
-    { label: 'Супровод', href: '#' },
-    { label: 'Про нас', href: '#' },
-    { label: 'Отзывы', href: '#' },
-    { label: 'FAQ', href: '#' },
+    { label: 'Главная', href: '/' },
+    { label: 'Сайты и боты', href: '/services/sites-and-bots' },
+    { label: 'Корпоративные', href: '/services/corporate' },
+    { label: 'Магазины', href: '/services/ecommerce' },
+    { label: 'Обо мне', href: '/about' },
+    { label: 'Контакты', href: '/contact' },
   ];
 
   return (

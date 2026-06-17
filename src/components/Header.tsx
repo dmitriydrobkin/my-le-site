@@ -17,11 +17,10 @@ export function Header() {
 
   const menuItems = [
     { label: 'Главная', href: '/' },
+    { label: 'Обо мне', href: '/about' },
     { label: 'Разработка сайтов + боты', href: '/services/sites-and-bots' },
-    { label: 'Корпоративные порталы', href: '/services/portals' },
+    { label: 'Корпоративные сайты', href: '/services/corporate' },
     { label: 'E-commerce решения', href: '/services/ecommerce' },
-    { label: 'Мобильные приложения', href: '/services/mobile' },
-    { label: 'Интеграция CRM', href: '/services/crm' },
     { label: 'Контакты', href: '/contact' },
   ];
 
