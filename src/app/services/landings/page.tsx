@@ -10,22 +10,22 @@ export default function LandingsPage() {
     <div className="bg-white min-h-screen">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[90vh] flex items-center px-6 max-w-[1400px] mx-auto pt-32 pb-16">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-coral/10 via-orange-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
+      <section className="relative min-h-[85vh] lg:h-screen flex items-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-0">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-coral/10 via-orange-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
         
         <div className="max-w-5xl relative z-10">
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-coral/20 bg-coral/5 text-coral font-bold font-sans text-xs uppercase tracking-widest mb-8">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-coral/20 bg-coral/5 text-coral font-bold font-sans text-xs uppercase tracking-widest mb-6">
             <span className="w-2 h-2 rounded-full bg-coral animate-pulse" />
             Быстрый старт продаж
           </div>
           
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-8 uppercase">
+          <h1 className="font-display text-4xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase">
             Разработка <br className="hidden md:block" />
             лендингов с <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-[#ff5a36]">высокой конверсией</span>
           </h1>
           
-          <p className="font-sans text-xl text-ink/60 max-w-3xl font-medium leading-relaxed mb-12">
+          <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-3xl font-medium leading-relaxed mb-8">
             Одностраничный сайт, который быстро запускается, моментально загружается и превращает посетителей в клиентов. Идеально для старта продаж, рекламы конкретной услуги или тестирования новой ниши.
           </p>
           
@@ -86,7 +86,7 @@ export default function LandingsPage() {
             {/* Card 3 */}
             <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-blue-500/20 transition-all duration-500 group">
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <Send className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors" />
+                <Send className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors -ml-1 mt-1" />
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-4">
                 Заявки в Telegram
@@ -113,20 +113,20 @@ export default function LandingsPage() {
       </section>
 
       {/* 3. КИЛЛЕР-ФИЧА (АКЦЕНТНЫЙ БЛОК) */}
-      <section className="py-24 lg:py-32 bg-ink text-white relative overflow-hidden">
+      <section className="py-16 lg:py-20 bg-ink text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-transparent" />
         
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="max-w-4xl">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 font-bold font-sans text-xs uppercase tracking-widest mb-8 text-white/70">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 font-bold font-sans text-xs uppercase tracking-widest mb-6 text-white/70">
               <span className="text-coral">✦</span> Главная фишка
             </span>
-            <h2 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight leading-[1.05] mb-10">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-8">
               Никаких <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-[#ff5a36]">тяжелых движков.</span>
             </h2>
-            <p className="font-sans text-xl md:text-2xl text-white/60 font-light leading-relaxed max-w-2xl border-l-2 border-coral pl-6">
+            <p className="font-sans text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-2xl border-l-2 border-coral pl-6">
               Ваш лендинг будет загружаться <strong className="font-bold text-white">за доли секунды</strong>, сохраняя рекламный бюджет и удерживая внимание клиентов с первой же секунды.
             </p>
           </div>
