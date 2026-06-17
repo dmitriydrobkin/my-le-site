@@ -12,31 +12,31 @@ const SERVICES = [
     id: '01/',
     title: 'Telegram Боты',
     description: 'Умные агенты для автоматизации бизнеса 24/7. Квалификация лидов, прием оплат и поддержка клиентов прямо в мессенджере.',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800',
+    gradient: 'from-blue-500 to-cyan-400',
   },
   {
     id: '02/',
     title: 'Лендинги',
     description: 'Одностраничные сайты с высокой конверсией для быстрого запуска продукта, сбора лидов и тестирования гипотез.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+    gradient: 'from-coral to-orange-400',
   },
   {
     id: '03/',
     title: 'Сайты-визитки',
     description: 'Компактное, стильное и информативное представительство вашего бизнеса в интернете для формирования сильного имиджа.',
-    image: 'https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&q=80&w=800',
+    gradient: 'from-emerald-400 to-teal-400',
   },
   {
     id: '04/',
     title: 'Корпоративные сайты',
     description: 'Многостраничные решения для бизнеса. Инструмент для презентации компании, повышения лояльности и привлечения крупных клиентов.',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
+    gradient: 'from-indigo-500 to-purple-500',
   },
   {
     id: '05/',
     title: 'Интернет магазин',
     description: 'Мы создаем магазины для eCommerce, которые помогают не только продавать, но и завоевывать сердца клиентов. Удобный каталог и онлайн-оплата.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800',
+    gradient: 'from-rose-400 to-red-500',
   }
 ];
 
@@ -184,10 +184,21 @@ export default function B2BHomePage() {
                 </div>
               </div>
 
-              {/* Action Button Bottom (Round Button) */}
+              {/* Action Button Bottom (Expanding Pill on Hover) */}
               <div className="relative z-10 mt-auto flex justify-start">
-                <div className="w-16 h-16 rounded-full border border-ink/10 bg-white flex items-center justify-center text-ink group-hover:bg-coral group-hover:text-white group-hover:border-transparent transition-colors duration-500 shadow-sm">
-                  <ArrowUpRight className="w-6 h-6 group-hover:rotate-45 transition-transform" />
+                <div className="relative overflow-hidden rounded-full border border-ink/10 bg-white transition-all duration-500 ease-out flex items-center justify-center group-hover:justify-between p-1.5 w-16 h-16 group-hover:w-full group-hover:border-transparent">
+                  {/* Background Gradient inside the expanded pill */}
+                  <div className={`absolute inset-0 z-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r ${service.gradient} transition-opacity duration-500 ease-in-out pointer-events-none`} />
+                  
+                  {/* Hover text */}
+                  <span className="relative z-10 opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto text-white font-bold font-sans tracking-wide group-hover:ml-6 whitespace-nowrap overflow-hidden transition-all duration-500">
+                    Подробнее
+                  </span>
+                  
+                  {/* The round arrow button */}
+                  <div className="relative z-10 w-12 h-12 shrink-0 rounded-full flex items-center justify-center text-ink bg-white group-hover:bg-white group-hover:text-ink transition-colors duration-500 shadow-sm">
+                    <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -195,6 +206,52 @@ export default function B2BHomePage() {
 
           {/* Right padding explicit spacer */}
           <div style={{ minWidth: paddingLeft }} className="flex-shrink-0" />
+        </div>
+      </section>
+
+      {/* 2.5 ОБО МНЕ */}
+      <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-white border-t border-ink/5">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="relative bg-ink rounded-[2rem] p-8 lg:p-16 flex flex-col lg:flex-row gap-12 overflow-hidden shadow-2xl">
+            {/* Декоративные фоновые элементы */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-cyan-500/20 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-coral/20 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+            {/* Левая часть: Акцентный заголовок */}
+            <div className="relative z-10 lg:w-1/3 flex flex-col justify-between">
+              <div>
+                <span className="font-sans text-xs font-bold text-white/50 uppercase tracking-widest mb-4 block">Обо мне</span>
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight">
+                  Привет, <br/>
+                  я Дмитрий <span className="text-coral">👋</span>
+                </h2>
+              </div>
+              
+              <div className="hidden lg:flex items-center gap-4 mt-12">
+                 <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/50">
+                    <span className="font-mono text-sm">&lt;/&gt;</span>
+                 </div>
+                 <span className="font-sans text-xs font-bold text-white/30 uppercase tracking-widest">
+                   Разработчик / Дизайнер
+                 </span>
+              </div>
+            </div>
+
+            {/* Правая часть: текст */}
+            <div className="relative z-10 lg:w-2/3 flex flex-col justify-center">
+              <div className="space-y-6 font-sans text-white/70 text-base md:text-lg leading-relaxed font-light">
+                <p>
+                  Я частный веб-дизайнер и разработчик. Моя главная специализация — <strong className="font-medium text-white">создание современных, легких сайтов и умных Telegram-ботов</strong>.
+                </p>
+                <p>
+                  Я не сторонник переусложнения. Малому и среднему бизнесу не нужны тяжелые корпоративные порталы, которые делаются полгода. Бизнесу нужен рабочий инструмент, который загружается за секунду, понятно рассказывает об услуге и стабильно приносит заявки.
+                </p>
+                <p>
+                  Именно такие продукты я и собираю, используя передовой стек технологий.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -209,11 +266,11 @@ export default function B2BHomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:auto-rows-[250px]">
             {/* Карточка 1 - 100% фокус */}
             <div className="md:col-span-2 bg-surface rounded-[2rem] p-8 md:p-10 flex flex-col justify-center border border-ink/5 hover:border-ink/10 transition-colors min-h-[250px]">
-              <span className="text-coral font-bold font-sans text-sm tracking-widest uppercase mb-4">100% фокус на проекте</span>
-              <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-ink leading-tight">
+              <span className="text-coral font-bold font-sans text-xs tracking-widest uppercase mb-3">100% фокус на проекте</span>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-ink leading-snug mb-3 max-w-2xl">
                 Вы общаетесь напрямую с разработчиком, а не через цепочку менеджеров.
               </h3>
-              <p className="mt-4 font-sans text-ink/60 font-medium max-w-lg">
+              <p className="font-sans text-sm md:text-base text-ink/60 font-medium">
                 Это экономит время и исключает эффект «испорченного телефона».
               </p>
             </div>
@@ -222,9 +279,9 @@ export default function B2BHomePage() {
             <div className="bg-ink rounded-[2rem] p-8 md:p-10 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[250px]">
               <div className="absolute inset-0 bg-gradient-to-br from-coral/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <div className="relative z-10">
-                <span className="font-display text-6xl md:text-7xl font-bold text-white mb-2 block">5 лет</span>
-                <span className="font-sans text-sm text-white/60 mb-4 block">в веб-дизайне и разработке</span>
-                <p className="font-sans text-xs text-white/40 leading-relaxed">
+                <span className="font-display text-5xl md:text-6xl font-bold text-white mb-2 block">5 лет</span>
+                <span className="font-sans text-xs text-white/60 mb-3 block uppercase tracking-wider">в веб-дизайне и разработке</span>
+                <p className="font-sans text-[11px] md:text-xs text-white/40 leading-relaxed max-w-[200px] mx-auto">
                   Знаю, как сделать не просто красиво, но и технически грамотно для SEO и быстрой загрузки.
                 </p>
               </div>
@@ -233,9 +290,9 @@ export default function B2BHomePage() {
             {/* Карточка 3 - 0$ хостинг */}
             <div className="bg-surface rounded-[2rem] p-8 md:p-10 flex flex-col justify-center text-center relative overflow-hidden border border-ink/5 hover:border-ink/10 transition-colors group min-h-[250px]">
               <div className="relative z-10 flex flex-col items-center">
-                <span className="font-display text-5xl md:text-6xl font-bold text-ink mb-2 block">0 $</span>
-                <span className="font-sans text-sm font-bold text-coral uppercase tracking-wider mb-4 block">в месяц за хостинг</span>
-                <p className="font-sans text-sm text-ink/60 leading-relaxed">
+                <span className="font-display text-4xl md:text-5xl font-bold text-ink mb-2 block">0 $</span>
+                <span className="font-sans text-xs font-bold text-coral uppercase tracking-wider mb-3 block">в месяц за хостинг</span>
+                <p className="font-sans text-[11px] md:text-xs text-ink/60 leading-relaxed max-w-[220px] mx-auto">
                   Использую современные технологии Cloudflare. Ваши лендинги и боты работают стабильно без аренды серверов.
                 </p>
               </div>
