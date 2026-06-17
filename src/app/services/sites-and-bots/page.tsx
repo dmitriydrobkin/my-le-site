@@ -1,21 +1,9 @@
-/**
- * Главная страница агентства: сайты и боты под ключ.
- */
+'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { getSiteSettings } from '@/server/functions/settings';
 import { QuizTrigger } from '@/components/QuizTrigger';
-import Scene from '@/components/animations/Scene';
-
-export const runtime = 'edge';
-
-const DEFAULT_TEXTS = {
-  hero_badge: 'Автоматизированные системы привлечения клиентов',
-  hero_title_1: 'САЙТЫ И TG-БОТЫ,',
-  hero_title_2: 'КОТОРЫЕ РАБОТАЮТ 24/7',
-  hero_description: 'Пока вы отдыхаете, ваша воронка конвертирует трафик в прибыль. Мгновенный захват внимания, автоматический прогрев лидов и экономия времени ваших менеджеров.',
-};
+import { ArrowUpRight, Clock, Bot, TrendingUp, Blocks, CheckCircle, Zap } from 'lucide-react';
 
 const PORTFOLIO_ITEMS = [
   {
@@ -23,195 +11,244 @@ const PORTFOLIO_ITEMS = [
     title: 'Автосалон "Premium Auto"',
     description: 'Корпоративный сайт + бот для квалификации на тест-драйв. Увеличение конверсии на 45%.',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800', 
+    tag: 'АВТОБИЗНЕС'
   },
   {
     id: 2,
     title: 'Сеть кофеен "Morning Rush"',
     description: 'Интернет-магазин зерен + программа лояльности в Telegram. +30% к повторным продажам.',
     image: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800', 
+    tag: 'E-COMMERCE'
   },
   {
     id: 3,
     title: 'Юридическое агентство "LexPro"',
     description: 'Высококонверсионный лендинг + бот первичной консультации. Сэкономлено 120 часов работы юристов.',
     image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800', 
+    tag: 'B2B УСЛУГИ'
   }
 ];
 
-export default async function HomePage() {
-  let settings;
-  
-  try {
-    settings = await getSiteSettings();
-  } catch (error) {
-    console.error('Ошибка загрузки настроек:', error);
-    settings = {}; 
-  }
-
+export default function SitesAndBotsPage() {
   return (
-    <>
-      {/* Hero Section (Profit & Automation) */}
-      <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-surface text-ink pt-32 pb-20">
+    <div className="bg-white min-h-screen">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative min-h-[85vh] lg:h-screen flex items-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-0">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-cyan-400/10 via-coral/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-coral/10 via-orange-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
         
-        {/* Abstract Light Background Elements */}
-        <div className="absolute inset-0 z-0 opacity-60 mix-blend-multiply pointer-events-none flex items-center justify-center">
-          <div className="w-[800px] h-[800px] bg-cyan/10 rounded-full blur-[120px] absolute -top-[10%] -left-[10%] animate-float" />
-          <div className="w-[600px] h-[600px] bg-coral/10 rounded-full blur-[100px] absolute bottom-[10%] right-[10%] animate-float" style={{ animationDelay: '2s' }} />
-        </div>
-
-        {/* CSS-сцена поверх (3D абстракция) */}
-        <div className="absolute inset-0 z-0 opacity-40 mix-blend-overlay pointer-events-none">
-          <Scene />
-        </div>
-        
-        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center animate-fade-in-up flex flex-col items-center">
-          
-          <div className="inline-flex items-center gap-2 px-6 py-2.5 mb-10 rounded-full border border-coral/20 bg-white/60 backdrop-blur-md shadow-glass">
-            <span className="w-2 h-2 rounded-full bg-coral animate-pulse shadow-neon-coral" />
-            <span className="font-sans text-[11px] tracking-widest text-ink/80 font-bold uppercase">
-              {settings?.hero_badge ?? DEFAULT_TEXTS.hero_badge}
-            </span>
+        <div className="max-w-5xl relative z-10">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-600 font-bold font-sans text-xs uppercase tracking-widest mb-6">
+            <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+            Комплексная автоматизация
           </div>
-
-          <h1 className="font-display text-4xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-ink mb-8 leading-[1.1]">
-            {settings?.hero_title_1 ?? DEFAULT_TEXTS.hero_title_1}
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan drop-shadow-sm">
-              {settings?.hero_title_2 ?? DEFAULT_TEXTS.hero_title_2}
-            </span>
+          
+          <h1 className="font-display text-4xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase">
+            Сайты и TG-боты, <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-coral">которые работают</span> <br className="hidden md:block" />
+            24/7
           </h1>
-
-          <p className="mx-auto max-w-2xl font-sans text-lg font-medium leading-relaxed text-ink/60 mb-14">
-            {settings?.hero_description ?? DEFAULT_TEXTS.hero_description}
+          
+          <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-3xl font-medium leading-relaxed mb-8">
+            Пока вы отдыхаете, ваша автоворонка конвертирует трафик в прибыль. Мы создаем экосистемы: сайт мгновенно захватывает внимание, а Telegram-бот автоматически прогревает лидов, экономя десятки часов вашим менеджерам.
           </p>
-
-          <div className="flex flex-col items-center justify-center gap-5 sm:flex-row w-full sm:w-auto">
-            <QuizTrigger className="btn-primary w-full sm:w-auto text-base px-10 py-4 shadow-neon-coral">
-              Рассчитать стоимость проекта
+          
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <QuizTrigger className="bg-ink hover:bg-ink/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-xl hover:-translate-y-1 flex items-center gap-3 group w-full sm:w-auto justify-center">
+              Рассчитать проект
+              <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </QuizTrigger>
-            <Link href="#portfolio" className="btn-outline w-full sm:w-auto text-base px-10 py-4 border-ink/20 hover:bg-white">
+            <Link href="#portfolio" className="flex items-center gap-3 text-ink font-bold hover:text-cyan-600 transition-colors group">
+              <span className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center bg-surface group-hover:border-cyan-500/30 transition-colors shadow-sm">
+                <ArrowUpRight className="w-5 h-5" />
+              </span>
               Смотреть кейсы
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Value Proposition / Features Section */}
-      <section id="how-it-works" className="relative py-32 bg-white border-y border-ink/5 relative overflow-hidden">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-ink/10 to-transparent" />
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="section-title">Почему это работает?</h2>
-            <p className="section-subtitle mx-auto">Синергия сайта и мессенджера дает максимальный результат с первого месяца.</p>
+      {/* 2. ПОЧЕМУ ЭТО РАБОТАЕТ (BENTO GRID) */}
+      <section className="py-12 lg:py-24 bg-surface border-y border-ink/5 relative overflow-hidden">
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight">
+              Синергия, которая приносит деньги
+            </h2>
+            <p className="font-sans text-ink/50 leading-relaxed font-medium max-w-sm">
+              Сайт собирает целевой трафик, а мессенджер доводит его до оплаты. Идеальная связка для современного бизнеса.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center lg:text-left">
-            <div className="glass-panel p-10 rounded-3xl hover:-translate-y-2 transition-transform duration-500 shadow-sm hover:shadow-glass">
-              <div className="w-14 h-14 rounded-2xl bg-coral/10 border border-coral/20 flex items-center justify-center mb-8 mx-auto lg:mx-0 shadow-neon-coral">
-                <span className="text-2xl">⏳</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Card 1 */}
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-cyan-500/20 transition-all duration-500 group">
+              <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                <Clock className="w-8 h-8 text-ink/40 group-hover:text-cyan-500 transition-colors" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-4">Экономия времени</h3>
-              <p className="font-sans text-ink/60 leading-relaxed font-medium">Ваши менеджеры больше не тратят часы на холодные звонки. Вы получаете только прогретых лидов, готовых к покупке.</p>
+              <h3 className="font-display text-2xl font-bold text-ink mb-4">
+                Экономия времени
+              </h3>
+              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
+                Ваши менеджеры больше не тратят часы на холодные звонки. Вы получаете только квалифицированных лидов, готовых к покупке.
+              </p>
             </div>
-            <div className="glass-panel p-10 rounded-3xl hover:-translate-y-2 transition-transform duration-500 delay-100 shadow-sm hover:shadow-glass">
-              <div className="w-14 h-14 rounded-2xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-8 mx-auto lg:mx-0 shadow-[0_0_20px_0_rgba(0,229,255,0.3)]">
-                <span className="text-2xl">🤖</span>
+
+            {/* Card 2 */}
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-coral/20 transition-all duration-500 group">
+              <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                <Bot className="w-8 h-8 text-ink/40 group-hover:text-coral transition-colors" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-4">Умная экосистема</h3>
-              <p className="font-sans text-ink/60 leading-relaxed font-medium">Сайт мгновенно привлекает внимание, а Телеграм-бот автоматически классифицирует и прогревает клиентов в фоне.</p>
+              <h3 className="font-display text-2xl font-bold text-ink mb-4">
+                Умная экосистема
+              </h3>
+              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
+                Сайт мгновенно привлекает внимание шикарным дизайном, а Telegram-бот автоматически общается и прогревает клиентов в фоне.
+              </p>
             </div>
-            <div className="glass-panel p-10 rounded-3xl hover:-translate-y-2 transition-transform duration-500 delay-200 shadow-sm hover:shadow-glass">
-              <div className="w-14 h-14 rounded-2xl bg-ink/5 border border-ink/10 flex items-center justify-center mb-8 mx-auto lg:mx-0">
-                <span className="text-2xl">💰</span>
+
+            {/* Card 3 */}
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-emerald-500/20 transition-all duration-500 group">
+              <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                <TrendingUp className="w-8 h-8 text-ink/40 group-hover:text-emerald-500 transition-colors" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-4">Рост прибыли</h3>
-              <p className="font-sans text-ink/60 leading-relaxed font-medium">Обработка заявок 24/7 без выходных. Ни один горячий клиент больше не уйдет к конкурентам из-за долгого ответа.</p>
+              <h3 className="font-display text-2xl font-bold text-ink mb-4">
+                Рост прибыли
+              </h3>
+              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
+                Обработка заявок происходит 24/7 без выходных. Ни один горячий клиент больше не уйдет к конкурентам из-за долгого ответа.
+              </p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-blue-500/20 transition-all duration-500 group">
+              <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                <Blocks className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors" />
+              </div>
+              <h3 className="font-display text-2xl font-bold text-ink mb-4">
+                Бесшовная интеграция
+              </h3>
+              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
+                Связываем лендинги, квизы и ботов напрямую с вашей AmoCRM, Bitrix24, системами оплат (Stripe) и сквозной аналитикой.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Integrations Section */}
-      <section id="integrations" className="relative py-32 bg-surface text-ink overflow-hidden border-b border-ink/5">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2 text-center lg:text-left">
-              <h2 className="section-title mb-6">Бесшовная интеграция с вашим бизнесом</h2>
-              <p className="section-subtitle mx-auto lg:mx-0 mb-10">Связываем лендинги, квизы и ботов напрямую с вашей любимой CRM, системами оплаты и аналитикой.</p>
-              
-              <ul className="space-y-6 font-sans text-ink/80 text-lg font-medium text-left max-w-md mx-auto lg:mx-0">
-                <li className="flex items-center gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-coral/10 text-coral flex items-center justify-center">✓</span>
-                  Выгрузка лидов в AmoCRM, Bitrix24
-                </li>
-                <li className="flex items-center gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-cyan/10 text-cyan-600 flex items-center justify-center">✓</span>
-                  Оплата прямо в Telegram (Stripe, ЮKassa)
-                </li>
-                <li className="flex items-center gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-ink/10 text-ink flex items-center justify-center">✓</span>
-                  Сквозная аналитика трафика
-                </li>
-              </ul>
-            </div>
-            
-            <div className="lg:w-1/2 w-full grid grid-cols-2 gap-4">
-              <div className="glass-panel p-8 rounded-3xl flex flex-col items-center justify-center aspect-square gap-4 hover:shadow-neon-coral transition-shadow duration-300">
-                <div className="text-4xl">📱</div>
-                <span className="font-display font-bold text-ink">Telegram</span>
-              </div>
-              <div className="glass-panel p-8 rounded-3xl flex flex-col items-center justify-center aspect-square gap-4 hover:shadow-[0_0_20px_0_rgba(0,229,255,0.4)] transition-shadow duration-300 mt-8">
-                <div className="text-4xl">📊</div>
-                <span className="font-display font-bold text-ink">AmoCRM</span>
-              </div>
-              <div className="glass-panel p-8 rounded-3xl flex flex-col items-center justify-center aspect-square gap-4 hover:shadow-glass transition-shadow duration-300 -mt-8">
-                <div className="text-4xl">💳</div>
-                <span className="font-display font-bold text-ink">Stripe</span>
-              </div>
-              <div className="glass-panel p-8 rounded-3xl flex flex-col items-center justify-center aspect-square gap-4 hover:shadow-glass transition-shadow duration-300">
-                <div className="text-4xl">🤖</div>
-                <span className="font-display font-bold text-ink">AI Agents</span>
-              </div>
-            </div>
+      {/* 3. КИЛЛЕР-ФИЧА (АКЦЕНТНЫЙ БЛОК) */}
+      <section className="py-16 lg:py-20 bg-ink text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-transparent" />
+        
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+          <div className="max-w-4xl">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 font-bold font-sans text-xs uppercase tracking-widest mb-6 text-white/70">
+              <span className="text-cyan-400">✦</span> Формула успеха
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-8">
+              Безупречный <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-coral">клиентский путь.</span>
+            </h2>
+            <p className="font-sans text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-2xl border-l-2 border-cyan-400 pl-6">
+              Мы проектируем <strong className="font-bold text-white">путь от первого клика до финальной оплаты</strong>. Клиент видит красивую рекламу → переходит на быстрый сайт → оставляет заявку → попадает в бота → бот греет его контентом → вы получаете деньги. И всё это работает полностью автоматически на мощных облачных серверах.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-32 bg-white text-ink relative">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="section-title mb-6">Избранные проекты</h2>
-            <p className="section-subtitle mx-auto">Каждый кейс — это работающая машина по генерации прибыли.</p>
+      {/* 4. ИЗБРАННЫЕ ПРОЕКТЫ (PORTFOLIO GRID) */}
+      <section id="portfolio" className="py-16 lg:py-24 bg-white border-b border-ink/5">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight">
+              Избранные проекты
+            </h2>
+            <p className="font-sans text-ink/50 leading-relaxed font-medium max-w-sm">
+              Каждый кейс — это не просто красивый код, а полноценная работающая машина по генерации прибыли.
+            </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PORTFOLIO_ITEMS.map((item) => (
-              <div key={item.id} className="group glass-panel rounded-[2rem] overflow-hidden hover:shadow-glass-hover transition-all duration-500 hover:-translate-y-2 border border-ink/5">
-                <div className="aspect-[4/3] bg-surface relative overflow-hidden flex items-center justify-center">
-                  <Image 
-                    src={item.image} 
-                    alt={item.title} 
-                    fill 
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Link href="#" key={item.id} className="flex flex-col group cursor-pointer">
+                <div className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden mb-6 shadow-glass border border-ink/5">
+                  <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
                 </div>
-                <div className="p-8 bg-white backdrop-blur-sm relative z-10 border-t border-ink/5">
-                  <h3 className="font-display text-xl font-bold text-ink mb-3 group-hover:text-coral transition-colors">{item.title}</h3>
-                  <p className="font-sans text-ink/60 text-sm leading-relaxed font-medium">{item.description}</p>
+                <div className="flex justify-between items-start gap-4 h-full px-2">
+                  <div className="flex flex-col">
+                    <span className="font-sans text-xs font-bold tracking-widest text-ink/40 uppercase block mb-3">
+                      {item.tag}
+                    </span>
+                    <h3 className="font-display text-2xl font-bold text-ink mb-3 group-hover:text-coral transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed max-w-sm mt-auto">
+                      {item.description}
+                    </p>
+                  </div>
+                  <div className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center text-ink bg-white border border-ink/10 group-hover:bg-coral group-hover:text-white group-hover:border-transparent transition-colors shadow-sm">
+                    <ArrowUpRight className="w-5 h-5" />
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-24 text-center">
-            <QuizTrigger className="btn-primary px-12 py-5 text-lg shadow-neon-coral">
-              Узнать, сколько я теряю без авто-воронки
-            </QuizTrigger>
+      {/* 5. CTA БЛОК */}
+      <section className="py-16 lg:py-24 bg-surface">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[3rem] p-10 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12">
+            
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-cyan-400/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10 max-w-2xl">
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 leading-tight">
+                Узнайте, сколько вы теряете <br/>без автоворонки
+              </h2>
+              <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">
+                Запишитесь на бесплатный аудит. Я проанализирую вашу текущую воронку продаж и покажу точки роста, где сайт и бот могут увеличить вашу выручку.
+              </p>
+              
+              <QuizTrigger className="bg-ink hover:bg-ink/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-xl hover:-translate-y-1 inline-flex items-center gap-4 group">
+                Рассчитать стоимость
+                <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+              </QuizTrigger>
+            </div>
+            
+            {/* Дополнительный визуальный элемент или статистика */}
+            <div className="relative z-10 w-full lg:w-1/3">
+               <div className="bg-white rounded-[2rem] p-8 border border-ink/5 shadow-glass flex flex-col gap-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                      <CheckCircle className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <div className="font-bold font-display text-xl text-ink">До 45%</div>
+                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">Рост конверсии</div>
+                    </div>
+                  </div>
+                  <div className="w-full h-px bg-ink/5" />
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
+                      <Zap className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <div className="font-bold font-display text-xl text-ink">10+ часов</div>
+                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">Экономии в неделю</div>
+                    </div>
+                  </div>
+               </div>
+            </div>
+
           </div>
         </div>
       </section>
-    </>
+      
+    </div>
   );
 }
