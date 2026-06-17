@@ -1,17 +1,18 @@
 'use client';
 
 import { QuizTrigger } from '@/components/QuizTrigger';
-import { ArrowUpRight, Mail, Phone, Send, MapPin } from 'lucide-react';
+import { ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
+import { TelegramIcon } from '@/components/TelegramIcon';
 
 export default function ContactPage() {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-surface min-h-screen flex flex-col justify-center">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[70vh] lg:h-[80vh] flex items-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-0">
+      <section className="relative flex items-center px-6 max-w-[1400px] mx-auto pt-32 lg:pt-40 pb-24 w-full">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-ink/5 via-ink/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
         
-        <div className="max-w-7xl relative z-10 pt-12 lg:pt-0 flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
+        <div className="max-w-7xl relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
           
           {/* TEXT CONTENT */}
           <div className="w-full lg:w-1/2">
@@ -39,9 +40,9 @@ export default function ContactPage() {
           <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
             
             {/* Telegram */}
-            <a href="https://t.me/malyshev_dev" target="_blank" rel="noreferrer" className="bg-surface rounded-[2rem] p-8 border border-ink/5 hover:border-blue-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
+            <a href="https://t.me/malyshev_dev" target="_blank" rel="noreferrer" className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-blue-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
               <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                <Send className="w-6 h-6 text-blue-500 translate-x-[2px] -translate-y-[2px]" />
+                <TelegramIcon className="w-8 h-8 text-blue-500" />
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-2">Telegram</h3>
               <p className="font-sans text-ink/60 font-medium mb-4">Самый быстрый способ связи</p>
@@ -51,7 +52,7 @@ export default function ContactPage() {
             </a>
 
             {/* Email */}
-            <a href="mailto:contact@nashe.agency" className="bg-surface rounded-[2rem] p-8 border border-ink/5 hover:border-coral/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
+            <a href="mailto:contact@nashe.agency" className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-coral/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
               <div className="w-14 h-14 rounded-full bg-coral/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <Mail className="w-6 h-6 text-coral" />
               </div>
@@ -63,7 +64,7 @@ export default function ContactPage() {
             </a>
 
             {/* Phone */}
-            <a href="tel:+380988567777" className="bg-surface rounded-[2rem] p-8 border border-ink/5 hover:border-emerald-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
+            <a href="tel:+380988567777" className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-emerald-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
               <div className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <Phone className="w-6 h-6 text-emerald-500" />
               </div>
@@ -75,7 +76,7 @@ export default function ContactPage() {
             </a>
 
             {/* Location */}
-            <div className="bg-surface rounded-[2rem] p-8 border border-ink/5 hover:border-purple-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
+            <div className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-purple-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
               <div className="w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <MapPin className="w-6 h-6 text-purple-500" />
               </div>
@@ -89,9 +90,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* spacer to make it sit nicely above footer */}
-      <div className="bg-surface h-24" />
       
     </div>
   );

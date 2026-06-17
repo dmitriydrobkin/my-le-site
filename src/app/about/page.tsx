@@ -10,10 +10,10 @@ export default function AboutPage() {
     <div className="bg-white min-h-screen">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[70vh] lg:h-[80vh] flex items-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-0">
+      <section className="relative min-h-[85vh] flex items-center px-6 max-w-[1400px] mx-auto pt-32 lg:pt-40 pb-24">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-ink/5 via-ink/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
         
-        <div className="max-w-5xl relative z-10 pt-12 lg:pt-0">
+        <div className="max-w-5xl relative z-10">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-ink/10 bg-surface font-bold font-sans text-xs uppercase tracking-widest mb-6 text-ink/70">
             <span className="text-coral">✦</span> Обо мне
           </div>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { QuizTrigger } from '@/components/QuizTrigger';
 import { ArrowUpRight, CheckCircle, Store, Box, Smartphone, ServerOff, Frown, Database, DollarSign, MousePointerClick, Send, Zap } from 'lucide-react';
+import { TelegramIcon } from '@/components/TelegramIcon';
 
 export default function EcommercePage() {
   return (
@@ -200,7 +201,7 @@ export default function EcommercePage() {
             {/* Tech Point 2 */}
             <div className="flex gap-6 items-start">
                <div className="w-16 h-16 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                 <Send className="w-8 h-8 text-blue-400 translate-x-[3px] -translate-y-[3px]" />
+                 <TelegramIcon className="w-8 h-8 text-blue-400" />
                </div>
                <div>
                   <h3 className="font-display text-2xl font-bold mb-3">Моментальное уведомление в Telegram</h3>
@@ -271,7 +272,7 @@ export default function EcommercePage() {
                   <div className="w-full h-px bg-ink/5" />
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
-                      <Send className="w-6 h-6 translate-x-[2px] -translate-y-[2px]" />
+                      <TelegramIcon className="w-6 h-6" />
                     </div>
                     <div>
                       <div className="font-bold font-display text-xl text-ink">Без админок</div>

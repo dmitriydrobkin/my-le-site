@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { QuizTrigger } from '@/components/QuizTrigger';
 import { ArrowUpRight, CheckCircle2, Zap, LayoutPanelLeft, ShieldCheck, Send } from 'lucide-react';
+import { TelegramIcon } from '@/components/TelegramIcon';
 
 export default function LandingsPage() {
   return (
@@ -86,7 +87,7 @@ export default function LandingsPage() {
             {/* Card 3 */}
             <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-blue-500/20 transition-all duration-500 group">
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <Send className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors translate-x-[3px] -translate-y-[3px]" />
+                <TelegramIcon className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors" />
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-4">
                 Заявки в Telegram

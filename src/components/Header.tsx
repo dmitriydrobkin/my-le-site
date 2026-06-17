@@ -2,13 +2,25 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Блокируем скролл страницы когда открыто меню
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
 
   // Скрываем меню в админке
   if (pathname.startsWith('/admin')) {
@@ -17,10 +29,19 @@ export function Header() {
 
   const menuItems = [
     { label: 'Главная', href: '/' },
+    { 
+      label: 'Услуги', 
+      subItems: [
+        { label: 'Лендинги', href: '/services/landings' },
+        { label: 'Telegram-боты', href: '/services/telegram-bots' },
+        { label: 'Интернет-магазины', href: '/services/ecommerce' },
+        { label: 'Корпоративные сайты', href: '/services/corporate' },
+        { label: 'Магазин + Бот', href: '/services/sites-and-bots' },
+        { label: 'Сайты-визитки', href: '/services/business-cards' },
+      ]
+    },
     { label: 'Обо мне', href: '/about' },
-    { label: 'Разработка сайтов + боты', href: '/services/sites-and-bots' },
-    { label: 'Корпоративные сайты', href: '/services/corporate' },
-    { label: 'E-commerce решения', href: '/services/ecommerce' },
+    { label: 'Портфолио', href: '/portfolio' },
     { label: 'Контакты', href: '/contact' },
   ];
 
@@ -42,7 +63,7 @@ export function Header() {
             onClick={() => setIsMenuOpen(true)}
             className="pointer-events-auto bg-white/80 backdrop-blur-md shadow-glass rounded-full px-8 py-4 flex items-center gap-4 text-ink font-bold transition-transform hover:scale-105 group"
           >
-            <span>Меню</span>
+            <span className="hidden sm:block">Меню</span>
             <div className="w-8 h-8 rounded-full bg-ink flex items-center justify-center text-white group-hover:bg-coral transition-colors">
               <Menu className="w-4 h-4" />
             </div>
@@ -57,34 +78,57 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-ink/95 backdrop-blur-xl flex flex-col justify-center items-center"
+            className="fixed inset-0 z-[60] bg-ink/95 backdrop-blur-xl overflow-y-auto"
           >
-            <button 
-              onClick={() => setIsMenuOpen(false)}
-              className="absolute top-10 right-10 w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-coral transition-colors"
-            >
-              <X className="w-8 h-8" />
-            </button>
+            <div className="min-h-screen py-24 px-6 flex flex-col justify-center items-center relative">
+              <button 
+                onClick={() => setIsMenuOpen(false)}
+                className="absolute top-6 right-6 md:top-10 md:right-10 w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-coral transition-colors"
+              >
+                <X className="w-8 h-8" />
+              </button>
 
-            <nav className="flex flex-col gap-6 text-center">
-              {menuItems.map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Link 
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="font-display text-4xl md:text-5xl font-bold text-white hover:text-cyan-400 transition-colors relative group"
+              <nav className="flex flex-col gap-10 text-center w-full max-w-lg">
+                {menuItems.map((item, i) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: i * 0.1 }}
                   >
-                    {item.label}
-                    <span className="absolute -bottom-2 left-0 right-0 h-1 bg-cyan-400 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
-                  </Link>
-                </motion.div>
-              ))}
-            </nav>
+                    {item.href ? (
+                      <Link 
+                        href={item.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="font-display text-4xl md:text-5xl font-bold text-white hover:text-cyan-400 transition-colors relative group inline-block"
+                      >
+                        {item.label}
+                        <span className="absolute -bottom-2 left-0 right-0 h-1 bg-cyan-400 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                      </Link>
+                    ) : (
+                      <div className="flex flex-col items-center bg-white/5 rounded-[3rem] p-8 md:p-12 border border-white/10">
+                        <div className="font-sans text-sm md:text-base font-bold text-white/40 mb-8 cursor-default tracking-widest uppercase">
+                          {item.label}
+                        </div>
+                        <div className="flex flex-col gap-6 items-center">
+                          {item.subItems?.map((sub) => (
+                            <Link 
+                              key={sub.label}
+                              href={sub.href}
+                              onClick={() => setIsMenuOpen(false)}
+                              className="font-display text-2xl md:text-4xl font-bold text-white hover:text-cyan-400 transition-colors relative group inline-block"
+                            >
+                              {sub.label}
+                              <span className="absolute -bottom-1 left-0 right-0 h-1 bg-cyan-400 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
+              </nav>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Send, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { QuizTrigger } from './QuizTrigger';
+import { TelegramIcon } from './TelegramIcon';
 
 // Встроенные SVG иконки для соцсетей, чтобы избежать конфликтов с lucide-react
 const InstagramIcon = ({ className }: { className?: string }) => (
@@ -28,10 +29,11 @@ const YoutubeIcon = ({ className }: { className?: string }) => (
 
 export function Footer() {
   const quickLinks = [
-    { label: 'Главная', href: '/' },
-    { label: 'Сайты и боты', href: '/services/sites-and-bots' },
-    { label: 'Корпоративные', href: '/services/corporate' },
-    { label: 'Магазины', href: '/services/ecommerce' },
+    { label: 'Портфолио', href: '/portfolio' },
+    { label: 'Лендинг', href: '/services/landings' },
+    { label: 'Корпоративный', href: '/services/corporate' },
+    { label: 'Магазин', href: '/services/ecommerce' },
+    { label: 'Боты ТГ', href: '/services/telegram-bots' },
     { label: 'Обо мне', href: '/about' },
     { label: 'Контакты', href: '/contact' },
   ];
@@ -101,7 +103,7 @@ export function Footer() {
                   <FacebookIcon className="w-4 h-4" />
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <Send className="w-4 h-4" />
+                  <TelegramIcon className="w-4 h-4" />
                 </a>
               </div>
             </div>

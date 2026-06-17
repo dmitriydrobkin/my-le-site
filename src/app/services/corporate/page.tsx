@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { QuizTrigger } from '@/components/QuizTrigger';
 import { ArrowUpRight, CheckCircle, Zap, ShieldCheck, Building2, Search, Layers, LayoutTemplate, Send, Globe } from 'lucide-react';
+import { TelegramIcon } from '@/components/TelegramIcon';
 
 export default function CorporatePage() {
   return (
@@ -194,7 +195,7 @@ export default function CorporatePage() {
             {/* Tech Point 2 */}
             <div className="flex gap-6 items-start">
                <div className="w-16 h-16 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                 <Send className="w-8 h-8 text-blue-400 translate-x-[3px] -translate-y-[3px]" />
+                 <TelegramIcon className="w-8 h-8 text-blue-400" />
                </div>
                <div>
                   <h3 className="font-display text-2xl font-bold mb-3">Интеграция с Telegram</h3>
