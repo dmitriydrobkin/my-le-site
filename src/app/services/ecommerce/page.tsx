@@ -7,11 +7,11 @@ import { TelegramIcon } from '@/components/TelegramIcon';
 
 export default function EcommercePage() {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[85vh] lg:h-screen flex items-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-0">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-rose-400/10 via-red-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
+      <section className="relative min-h-[100dvh] lg:min-h-[85vh] flex items-center px-6 max-w-[1400px] mx-auto pt-32 pb-16 lg:py-0">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-emerald-500/10 via-teal-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
         
         <div className="max-w-5xl relative z-10">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-rose-500/20 bg-rose-500/5 text-rose-600 font-bold font-sans text-xs uppercase tracking-widest mb-6">

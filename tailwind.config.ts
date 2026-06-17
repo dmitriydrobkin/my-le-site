@@ -67,5 +67,10 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss/plugin')(function({ addVariant }: any) {
+      addVariant('group-hover', ['.group:hover &', '.group[data-mobile-hover="true"] &']);
+      addVariant('hover', ['&:hover', '&[data-mobile-hover="true"]']);
+    }),
+  ],
 } satisfies Config;

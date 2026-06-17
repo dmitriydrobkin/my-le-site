@@ -7,10 +7,10 @@ import { TelegramIcon } from '@/components/TelegramIcon';
 
 export default function CorporatePage() {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[85vh] lg:h-screen flex items-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-0">
+      <section className="relative min-h-[100dvh] lg:min-h-[85vh] flex items-center px-6 max-w-[1400px] mx-auto pt-32 lg:pt-40 pb-24">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
         
         <div className="max-w-5xl relative z-10 pt-16 lg:pt-0">

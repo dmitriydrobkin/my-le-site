@@ -18,7 +18,7 @@ export default function AboutPage() {
             <span className="text-coral">✦</span> Обо мне
           </div>
           
-          <h1 className="font-display text-4xl md:text-5xl lg:text-[5rem] font-bold tracking-tight text-ink leading-[1.05] mb-8 uppercase">
+          <h1 className="font-display text-3xl md:text-5xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase">
             Разрабатываю сайты <br className="hidden md:block" />
             и <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">Telegram-боты</span>, <br className="hidden md:block" />
             которые приносят прибыль

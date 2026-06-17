@@ -61,12 +61,15 @@ export function Header() {
           {/* Кнопка Меню */}
           <button 
             onClick={() => setIsMenuOpen(true)}
-            className="pointer-events-auto bg-white/80 backdrop-blur-md shadow-glass rounded-full px-8 py-4 flex items-center gap-4 text-ink font-bold transition-transform hover:scale-105 group"
+            className="pointer-events-auto bg-white/80 backdrop-blur-md shadow-glass rounded-full w-14 h-14 sm:w-auto sm:h-auto sm:px-8 sm:py-4 flex items-center justify-center sm:gap-4 text-ink font-bold transition-transform hover:scale-105 group"
           >
             <span className="hidden sm:block">Меню</span>
-            <div className="w-8 h-8 rounded-full bg-ink flex items-center justify-center text-white group-hover:bg-coral transition-colors">
+            {/* Иконка для ПК (внутри черного кружка) */}
+            <div className="hidden sm:flex w-8 h-8 rounded-full bg-ink items-center justify-center text-white group-hover:bg-coral transition-colors">
               <Menu className="w-4 h-4" />
             </div>
+            {/* Иконка для мобилок (просто иконка) */}
+            <Menu className="w-6 h-6 sm:hidden group-hover:text-coral transition-colors" />
           </button>
         </div>
       </header>
@@ -88,35 +91,35 @@ export function Header() {
                 <X className="w-8 h-8" />
               </button>
 
-              <nav className="flex flex-col gap-10 text-center w-full max-w-lg">
+              <nav className="flex flex-col gap-6 md:gap-8 text-center w-full max-w-lg">
                 {menuItems.map((item, i) => (
                   <motion.div
                     key={item.label}
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: i * 0.1 }}
+                    transition={{ delay: i * 0.05 }}
                   >
                     {item.href ? (
                       <Link 
                         href={item.href}
                         onClick={() => setIsMenuOpen(false)}
-                        className="font-display text-4xl md:text-5xl font-bold text-white hover:text-cyan-400 transition-colors relative group inline-block"
+                        className="font-display text-3xl md:text-4xl font-bold text-white hover:text-cyan-400 transition-colors relative group inline-block"
                       >
                         {item.label}
                         <span className="absolute -bottom-2 left-0 right-0 h-1 bg-cyan-400 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
                       </Link>
                     ) : (
-                      <div className="flex flex-col items-center bg-white/5 rounded-[3rem] p-8 md:p-12 border border-white/10">
-                        <div className="font-sans text-sm md:text-base font-bold text-white/40 mb-8 cursor-default tracking-widest uppercase">
+                      <div className="flex flex-col items-center bg-white/5 rounded-[2rem] p-6 md:p-8 border border-white/10">
+                        <div className="font-sans text-xs md:text-sm font-bold text-white/40 mb-6 cursor-default tracking-widest uppercase">
                           {item.label}
                         </div>
-                        <div className="flex flex-col gap-6 items-center">
+                        <div className="flex flex-col gap-4 items-center">
                           {item.subItems?.map((sub) => (
                             <Link 
                               key={sub.label}
                               href={sub.href}
                               onClick={() => setIsMenuOpen(false)}
-                              className="font-display text-2xl md:text-4xl font-bold text-white hover:text-cyan-400 transition-colors relative group inline-block"
+                              className="font-sans text-xl md:text-2xl font-medium text-white/90 hover:text-cyan-400 transition-colors relative group inline-block"
                             >
                               {sub.label}
                               <span className="absolute -bottom-1 left-0 right-0 h-1 bg-cyan-400 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />

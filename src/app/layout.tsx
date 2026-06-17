@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Preloader } from '@/components/Preloader';
 import { CustomCursor } from '@/components/CustomCursor';
+import { MobileHoverSync } from '@/components/MobileHoverSync';
 import { getSiteSettings } from '@/server/functions/settings';
 import { QuizModal } from '@/components/QuizModal';
 import { FAQSection } from '@/components/FAQSection';
@@ -52,6 +53,7 @@ export default async function RootLayout({
   return (
     <html lang="ru" className={`${unbounded.variable} ${manrope.variable}`}>
       <body className="font-sans text-ink bg-surface min-h-screen flex flex-col">
+        <MobileHoverSync />
         <Preloader />
         <CustomCursor />
         
