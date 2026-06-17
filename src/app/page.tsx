@@ -26,6 +26,7 @@ const SERVICES = [
     title: 'Сайты-визитки',
     description: 'Компактное, стильное и информативное представительство вашего бизнеса в интернете для формирования сильного имиджа.',
     gradient: 'from-emerald-400 to-teal-400',
+    href: '/services/business-cards',
   },
   {
     id: '04/',
