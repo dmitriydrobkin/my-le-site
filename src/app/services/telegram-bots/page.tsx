@@ -61,7 +61,7 @@ export default function TelegramBotsPage() {
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <GitFork className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-4">
+              <h3 className="font-display text-xl font-bold text-ink mb-4 leading-tight">
                 Проектирование логики
               </h3>
               <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
@@ -136,7 +136,7 @@ export default function TelegramBotsPage() {
       </section>
 
       {/* 4. CTA БЛОК ИЗ ГЛАВНОЙ СТРАНИЦЫ */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-surface">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="bg-gradient-to-br from-surface to-white border border-ink/5 rounded-[3rem] p-10 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12">
             

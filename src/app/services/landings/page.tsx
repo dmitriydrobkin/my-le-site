@@ -86,7 +86,7 @@ export default function LandingsPage() {
             {/* Card 3 */}
             <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-blue-500/20 transition-all duration-500 group">
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <Send className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors translate-x-[2px] -translate-y-[2px]" />
+                <Send className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors translate-x-[3px] -translate-y-[3px]" />
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-4">
                 Заявки в Telegram
@@ -134,7 +134,7 @@ export default function LandingsPage() {
       </section>
 
       {/* 4. CTA БЛОК */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-surface">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="bg-gradient-to-br from-surface to-white border border-ink/5 rounded-[3rem] p-10 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12">
             

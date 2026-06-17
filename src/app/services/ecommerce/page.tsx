@@ -52,9 +52,12 @@ export default function EcommercePage() {
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-ink/10 bg-white font-bold font-sans text-xs uppercase tracking-widest mb-6 text-ink/50">
                 <span className="text-red-500">✕</span> Проблема
               </span>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-ink uppercase leading-tight mb-6">
-                Почему <br className="hidden lg:block" />классические <br className="hidden lg:block" />магазины <br className="hidden lg:block" />теряют <br className="hidden lg:block" />ваши деньги?
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-ink uppercase leading-tight mb-4">
+                Почему классические магазины теряют деньги?
               </h2>
+              <p className="font-sans text-ink/50 leading-relaxed font-medium">
+                Громоздкие админки, дорогие сервера и сложная регистрация убивают конверсию на каждом этапе.
+              </p>
             </div>
 
             <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -197,7 +200,7 @@ export default function EcommercePage() {
             {/* Tech Point 2 */}
             <div className="flex gap-6 items-start">
                <div className="w-16 h-16 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                 <Send className="w-8 h-8 text-blue-400 translate-x-[2px] -translate-y-[2px]" />
+                 <Send className="w-8 h-8 text-blue-400 translate-x-[3px] -translate-y-[3px]" />
                </div>
                <div>
                   <h3 className="font-display text-2xl font-bold mb-3">Моментальное уведомление в Telegram</h3>
@@ -233,14 +236,14 @@ export default function EcommercePage() {
       </section>
 
       {/* 5. CTA БЛОК */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-surface">
         <div className="max-w-[1400px] mx-auto px-6">
-          <div className="bg-gradient-to-br from-surface to-white border border-ink/5 rounded-[3rem] p-10 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[2rem] p-8 lg:p-12 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-10">
             
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-rose-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-rose-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 max-w-2xl">
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 leading-tight">
+            <div className="relative z-10 max-w-xl">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-6 leading-tight">
                 Запустите онлайн-продажи <br/>без лишних сложностей
               </h2>
               <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">
@@ -268,7 +271,7 @@ export default function EcommercePage() {
                   <div className="w-full h-px bg-ink/5" />
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
-                      <Send className="w-6 h-6 translate-x-0.5 -translate-y-0.5" />
+                      <Send className="w-6 h-6 translate-x-[2px] -translate-y-[2px]" />
                     </div>
                     <div>
                       <div className="font-bold font-display text-xl text-ink">Без админок</div>

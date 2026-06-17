@@ -12,13 +12,13 @@ export default function CorporatePage() {
       <section className="relative min-h-[85vh] lg:h-screen flex items-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-0">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
         
-        <div className="max-w-5xl relative z-10">
+        <div className="max-w-5xl relative z-10 pt-16 lg:pt-0">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/5 text-indigo-600 font-bold font-sans text-xs uppercase tracking-widest mb-6">
             <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
             Фундамент для SEO
           </div>
           
-          <h1 className="font-display text-4xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase">
             Современный <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">корпоративный сайт</span> <br className="hidden md:block" />
             для вашего бизнеса
@@ -194,7 +194,7 @@ export default function CorporatePage() {
             {/* Tech Point 2 */}
             <div className="flex gap-6 items-start">
                <div className="w-16 h-16 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                 <Send className="w-8 h-8 text-blue-400 translate-x-[2px] -translate-y-[2px]" />
+                 <Send className="w-8 h-8 text-blue-400 translate-x-[3px] -translate-y-[3px]" />
                </div>
                <div>
                   <h3 className="font-display text-2xl font-bold mb-3">Интеграция с Telegram</h3>
@@ -208,14 +208,14 @@ export default function CorporatePage() {
       </section>
 
       {/* 5. CTA БЛОК */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-surface">
         <div className="max-w-[1400px] mx-auto px-6">
-          <div className="bg-gradient-to-br from-surface to-white border border-ink/5 rounded-[3rem] p-10 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[2rem] p-8 lg:p-12 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-10">
             
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-indigo-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-indigo-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 max-w-2xl">
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 leading-tight">
+            <div className="relative z-10 max-w-xl">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-6 leading-tight">
                 Нужен сайт, который работает на репутацию и продажи?
               </h2>
               <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">

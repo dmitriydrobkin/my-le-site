@@ -381,7 +381,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
-      <section className="py-12 lg:py-16 bg-white">
+      <section className="py-12 lg:py-16 bg-surface">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="bg-ink rounded-[2rem] p-8 lg:p-12 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
             

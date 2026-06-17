@@ -133,7 +133,7 @@ export default function BusinessCardsPage() {
       </section>
 
       {/* 4. CTA БЛОК ИЗ ГЛАВНОЙ СТРАНИЦЫ */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-surface">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="bg-gradient-to-br from-surface to-white border border-ink/5 rounded-[3rem] p-10 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12">
             
