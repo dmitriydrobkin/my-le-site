@@ -19,6 +19,7 @@ const SERVICES = [
     title: 'Лендинги',
     description: 'Одностраничные сайты с высокой конверсией для быстрого запуска продукта, сбора лидов и тестирования гипотез.',
     gradient: 'from-coral to-orange-400',
+    href: '/services/landings',
   },
   {
     id: '03/',
@@ -186,20 +187,37 @@ export default function B2BHomePage() {
 
               {/* Action Button Bottom (Expanding Pill on Hover) */}
               <div className="relative z-10 mt-auto flex justify-start">
-                <div className="relative overflow-hidden rounded-full border border-ink/10 bg-white transition-all duration-500 ease-out flex items-center justify-center group-hover:justify-between p-1.5 w-16 h-16 group-hover:w-full group-hover:border-transparent">
-                  {/* Background Gradient inside the expanded pill */}
-                  <div className={`absolute inset-0 z-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r ${service.gradient} transition-opacity duration-500 ease-in-out pointer-events-none`} />
-                  
-                  {/* Hover text */}
-                  <span className="relative z-10 opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto text-white font-bold font-sans tracking-wide group-hover:ml-6 whitespace-nowrap overflow-hidden transition-all duration-500">
-                    Подробнее
-                  </span>
-                  
-                  {/* The round arrow button */}
-                  <div className="relative z-10 w-12 h-12 shrink-0 rounded-full flex items-center justify-center text-ink bg-white group-hover:bg-white group-hover:text-ink transition-colors duration-500 shadow-sm">
-                    <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+                {service.href ? (
+                  <Link href={service.href} className="relative overflow-hidden rounded-full border border-ink/10 bg-white transition-all duration-500 ease-out flex items-center justify-center group-hover:justify-between p-1.5 w-16 h-16 group-hover:w-full group-hover:border-transparent">
+                    {/* Background Gradient inside the expanded pill */}
+                    <div className={`absolute inset-0 z-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r ${service.gradient} transition-opacity duration-500 ease-in-out pointer-events-none`} />
+                    
+                    {/* Hover text */}
+                    <span className="relative z-10 opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto text-white font-bold font-sans tracking-wide group-hover:ml-6 whitespace-nowrap overflow-hidden transition-all duration-500">
+                      Подробнее
+                    </span>
+                    
+                    {/* The round arrow button */}
+                    <div className="relative z-10 w-12 h-12 shrink-0 rounded-full flex items-center justify-center text-ink bg-white group-hover:bg-white group-hover:text-ink transition-colors duration-500 shadow-sm">
+                      <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+                    </div>
+                  </Link>
+                ) : (
+                  <div className="relative overflow-hidden rounded-full border border-ink/10 bg-white transition-all duration-500 ease-out flex items-center justify-center group-hover:justify-between p-1.5 w-16 h-16 group-hover:w-full group-hover:border-transparent">
+                    {/* Background Gradient inside the expanded pill */}
+                    <div className={`absolute inset-0 z-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r ${service.gradient} transition-opacity duration-500 ease-in-out pointer-events-none`} />
+                    
+                    {/* Hover text */}
+                    <span className="relative z-10 opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto text-white font-bold font-sans tracking-wide group-hover:ml-6 whitespace-nowrap overflow-hidden transition-all duration-500">
+                      Подробнее
+                    </span>
+                    
+                    {/* The round arrow button */}
+                    <div className="relative z-10 w-12 h-12 shrink-0 rounded-full flex items-center justify-center text-ink bg-white group-hover:bg-white group-hover:text-ink transition-colors duration-500 shadow-sm">
+                      <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           ))}
@@ -241,7 +259,7 @@ export default function B2BHomePage() {
             <div className="relative z-10 lg:w-2/3 flex flex-col justify-center">
               <div className="space-y-6 font-sans text-white/70 text-base md:text-lg leading-relaxed font-light">
                 <p>
-                  Я частный веб-дизайнер и разработчик. Моя главная специализация — <strong className="font-medium text-white">создание современных, легких сайтов и умных Telegram-ботов</strong>.
+                  Я частный веб-дизайнер и разработчик. Моя главная <strong className="font-medium text-white"> специализация — создание современных, легких сайтов и умных Telegram-ботов</strong>.
                 </p>
                 <p>
                   Я не сторонник переусложнения. Малому и среднему бизнесу не нужны тяжелые корпоративные порталы, которые делаются полгода. Бизнесу нужен рабочий инструмент, который загружается за секунду, понятно рассказывает об услуге и стабильно приносит заявки.
