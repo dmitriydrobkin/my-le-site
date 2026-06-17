@@ -10,33 +10,33 @@ import { useRef, useEffect, useState } from 'react';
 const SERVICES = [
   {
     id: '01/',
+    title: 'Telegram Боты',
+    description: 'Умные агенты для автоматизации бизнеса 24/7. Квалификация лидов, прием оплат и поддержка клиентов прямо в мессенджере.',
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: '02/',
     title: 'Лендинги',
     description: 'Одностраничные сайты с высокой конверсией для быстрого запуска продукта, сбора лидов и тестирования гипотез.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
   },
   {
-    id: '02/',
+    id: '03/',
     title: 'Сайты-визитки',
     description: 'Компактное, стильное и информативное представительство вашего бизнеса в интернете для формирования сильного имиджа.',
     image: 'https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&q=80&w=800',
   },
   {
-    id: '03/',
+    id: '04/',
     title: 'Корпоративные сайты',
     description: 'Многостраничные решения для бизнеса. Инструмент для презентации компании, повышения лояльности и привлечения крупных клиентов.',
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
   },
   {
-    id: '04/',
+    id: '05/',
     title: 'Интернет магазин',
     description: 'Мы создаем магазины для eCommerce, которые помогают не только продавать, но и завоевывать сердца клиентов. Удобный каталог и онлайн-оплата.',
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: '05/',
-    title: 'Telegram Боты',
-    description: 'Умные агенты для автоматизации бизнеса 24/7. Квалификация лидов, прием оплат и поддержка клиентов прямо в мессенджере.',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800',
   }
 ];
 
@@ -109,7 +109,7 @@ export default function B2BHomePage() {
             ДЛЯ <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">БИЗНЕСА</span>
           </h1>
           <p className="font-sans text-xl text-ink/60 max-w-2xl font-medium leading-relaxed mb-12">
-            Проектируем, разрабатываем и запускаем высококонверсионные веб-системы и Telegram-боты, которые работают на рост вашей прибыли 24/7.
+            Проектирую, разрабатываю и запускаю высококонверсионные веб-системы и Telegram-боты, которые работают на рост вашей прибыли 24/7.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-neon-coral hover:-translate-y-1 flex items-center gap-3 group">
@@ -161,7 +161,7 @@ export default function B2BHomePage() {
           }}
         >
           {/* Explicit spacer element to align the first card perfectly without using paddingLeft on the flex container, which can cause scrolling bugs */}
-          <div style={{ minWidth: paddingLeft - 24 }} className="flex-shrink-0" />
+          <div style={{ minWidth: paddingLeft }} className="flex-shrink-0" />
 
           {SERVICES.map((service, index) => (
             <div 
@@ -184,31 +184,17 @@ export default function B2BHomePage() {
                 </div>
               </div>
 
-              {/* Action Button Bottom (Expanding Pill on Hover) */}
+              {/* Action Button Bottom (Round Button) */}
               <div className="relative z-10 mt-auto flex justify-start">
-                <div className="relative overflow-hidden rounded-full border border-ink/10 bg-white transition-all duration-500 ease-out flex items-center justify-center group-hover:justify-between p-1.5 w-24 h-16 group-hover:w-full group-hover:border-transparent">
-                  {/* Background Image inside the expanded pill */}
-                  <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out pointer-events-none">
-                    <Image src={service.image} fill className="object-cover" alt="" />
-                    <div className="absolute inset-0 bg-ink/40" />
-                  </div>
-                  
-                  {/* Hover text */}
-                  <span className="relative z-10 opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto text-white font-bold font-sans tracking-wide group-hover:ml-6 whitespace-nowrap overflow-hidden transition-all duration-500">
-                    Подробнее
-                  </span>
-                  
-                  {/* The round arrow button */}
-                  <div className="relative z-10 w-12 h-12 shrink-0 rounded-full flex items-center justify-center text-ink bg-white group-hover:bg-coral group-hover:text-white transition-colors duration-500 shadow-sm">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </div>
+                <div className="w-16 h-16 rounded-full border border-ink/10 bg-white flex items-center justify-center text-ink group-hover:bg-coral group-hover:text-white group-hover:border-transparent transition-colors duration-500 shadow-sm">
+                  <ArrowUpRight className="w-6 h-6 group-hover:rotate-45 transition-transform" />
                 </div>
               </div>
             </div>
           ))}
 
           {/* Right padding explicit spacer */}
-          <div style={{ minWidth: paddingLeft - 24 }} className="flex-shrink-0" />
+          <div style={{ minWidth: paddingLeft }} className="flex-shrink-0" />
         </div>
       </section>
 
@@ -221,40 +207,42 @@ export default function B2BHomePage() {
 
           {/* Исправлена сетка для мобильных: убрана жесткая высота строк на мобильном */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:auto-rows-[250px]">
-            {/* Карточка 1 - Светлая (Широкая) */}
+            {/* Карточка 1 - 100% фокус */}
             <div className="md:col-span-2 bg-surface rounded-[2rem] p-8 md:p-10 flex flex-col justify-center border border-ink/5 hover:border-ink/10 transition-colors min-h-[250px]">
-              <span className="text-coral font-bold font-sans text-sm tracking-widest uppercase mb-4">Наш подход</span>
+              <span className="text-coral font-bold font-sans text-sm tracking-widest uppercase mb-4">100% фокус на проекте</span>
               <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-ink leading-tight">
-                Мы не просто пишем код, мы строим архитектуру ваших будущих продаж.
+                Вы общаетесь напрямую с разработчиком, а не через цепочку менеджеров.
               </h3>
-            </div>
-
-            {/* Карточка 2 - Темная (Инвертированная) */}
-            <div className="bg-ink rounded-[2rem] p-8 md:p-10 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[250px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-coral/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              <div className="relative z-10">
-                <span className="font-display text-6xl md:text-7xl font-bold text-white mb-2 block">275+</span>
-                <span className="font-sans text-sm text-white/60">успешно запущенных проектов</span>
-              </div>
-            </div>
-
-            {/* Карточка 3 - Темная (Иконка кода) */}
-            <div className="bg-ink rounded-[2rem] p-8 md:p-10 flex flex-col items-center justify-center group relative overflow-hidden min-h-[250px] hidden md:flex">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              <div className="text-white text-6xl group-hover:text-cyan-400 transition-colors duration-500 font-mono relative z-10">
-                &lt; / &gt;
-              </div>
-            </div>
-
-            {/* Карточка 4 - Светлая (Акцент) */}
-            <div className="bg-surface rounded-[2rem] p-8 md:p-10 flex flex-col justify-center border border-ink/5 hover:border-ink/10 transition-colors min-h-[200px] md:min-h-[250px]">
-              <p className="font-sans text-ink/70 font-medium leading-relaxed">
-                Чистый код, прозрачные процессы и соблюдение сроков. Каждая строка кода работает на ваш результат.
+              <p className="mt-4 font-sans text-ink/60 font-medium max-w-lg">
+                Это экономит время и исключает эффект «испорченного телефона».
               </p>
             </div>
 
-            {/* Карточка 5 - CTA Акцентная */}
-            <div className="bg-gradient-to-br from-coral to-cyan-500 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between text-white relative overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-shadow min-h-[200px] md:min-h-[250px]">
+            {/* Карточка 2 - 5 лет опыта */}
+            <div className="bg-ink rounded-[2rem] p-8 md:p-10 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[250px]">
+              <div className="absolute inset-0 bg-gradient-to-br from-coral/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="relative z-10">
+                <span className="font-display text-6xl md:text-7xl font-bold text-white mb-2 block">5 лет</span>
+                <span className="font-sans text-sm text-white/60 mb-4 block">в веб-дизайне и разработке</span>
+                <p className="font-sans text-xs text-white/40 leading-relaxed">
+                  Знаю, как сделать не просто красиво, но и технически грамотно для SEO и быстрой загрузки.
+                </p>
+              </div>
+            </div>
+
+            {/* Карточка 3 - 0$ хостинг */}
+            <div className="bg-surface rounded-[2rem] p-8 md:p-10 flex flex-col justify-center text-center relative overflow-hidden border border-ink/5 hover:border-ink/10 transition-colors group min-h-[250px]">
+              <div className="relative z-10 flex flex-col items-center">
+                <span className="font-display text-5xl md:text-6xl font-bold text-ink mb-2 block">0 $</span>
+                <span className="font-sans text-sm font-bold text-coral uppercase tracking-wider mb-4 block">в месяц за хостинг</span>
+                <p className="font-sans text-sm text-ink/60 leading-relaxed">
+                  Использую современные технологии Cloudflare. Ваши лендинги и боты работают стабильно без аренды серверов.
+                </p>
+              </div>
+            </div>
+
+            {/* Карточка 4 - CTA Акцентная */}
+            <div className="md:col-span-2 bg-gradient-to-br from-coral to-cyan-500 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between text-white relative overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-shadow min-h-[200px] md:min-h-[250px]">
               <Link href="/services/sites-and-bots" className="absolute inset-0 z-20" />
               <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500" />
               <h3 className="relative z-10 font-display text-2xl md:text-3xl font-bold max-w-[200px] md:max-w-full">
@@ -334,7 +322,7 @@ export default function B2BHomePage() {
 
             {/* Контент */}
             <div className="relative z-10 max-w-xl w-full">
-              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-light text-white mb-3 tracking-wide leading-tight">
+              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 tracking-wide leading-tight">
                 Давайте поговорим
                 <br className="hidden md:block" />
                 о вашем проекте
