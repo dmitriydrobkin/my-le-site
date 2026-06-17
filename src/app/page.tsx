@@ -13,6 +13,7 @@ const SERVICES = [
     title: 'Telegram Боты',
     description: 'Умные агенты для автоматизации бизнеса 24/7. Квалификация лидов, прием оплат и поддержка клиентов прямо в мессенджере.',
     gradient: 'from-blue-500 to-cyan-400',
+    href: '/services/telegram-bots',
   },
   {
     id: '02/',
