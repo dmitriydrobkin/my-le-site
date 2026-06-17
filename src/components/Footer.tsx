@@ -45,18 +45,18 @@ export function Footer() {
           
           {/* Column 1: Consultation Card (Col Span 4) */}
           <div className="order-2 lg:order-1 lg:col-span-4 flex">
-            <QuizTrigger className="w-full relative overflow-hidden bg-gradient-to-br from-coral to-[#ff5a36] text-white rounded-[2rem] p-6 md:p-8 flex flex-col justify-between group hover:scale-[1.02] transition-transform duration-300 shadow-lg text-left h-full min-h-[220px]">
+            <QuizTrigger className="w-full relative overflow-hidden bg-[#E5FF38] text-ink rounded-[2rem] p-6 md:p-8 flex flex-col justify-between group hover:scale-[1.02] transition-transform duration-300 shadow-lg text-left h-full min-h-[220px]">
               {/* Abstract Shape Background */}
-              <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-white rounded-full mix-blend-overlay opacity-20 blur-2xl group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
-              <div className="absolute -top-10 -right-10 w-48 h-48 bg-white rounded-full mix-blend-overlay opacity-10 blur-xl pointer-events-none" />
+              <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-gradient-to-tr from-cyan-400 via-blue-500 to-transparent rounded-full mix-blend-multiply opacity-80 blur-2xl group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+              <div className="absolute -bottom-10 left-10 w-48 h-48 bg-gradient-to-tr from-emerald-400 to-transparent rounded-full mix-blend-multiply opacity-60 blur-xl pointer-events-none" />
               
-              <h3 className="relative z-10 font-display text-3xl lg:text-4xl font-bold leading-[1.1] break-words drop-shadow-sm">
+              <h3 className="relative z-10 font-display text-3xl lg:text-4xl font-bold leading-[1.1] break-words">
                 Получить<br />
                 консультацию
               </h3>
               
               <div className="relative z-10 flex justify-end mt-6">
-                <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-white group-hover:text-coral group-hover:border-transparent transition-colors duration-300">
+                <div className="w-12 h-12 rounded-full border border-ink/20 flex items-center justify-center group-hover:bg-ink group-hover:text-white group-hover:border-transparent transition-colors duration-300">
                   <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
                 </div>
               </div>
@@ -97,13 +97,16 @@ export function Footer() {
               </a>
               <div className="flex gap-3 mt-2">
                 <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <Instagram className="w-4 h-4" />
+                  <InstagramIcon className="w-4 h-4" />
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <Facebook className="w-4 h-4" />
+                  <FacebookIcon className="w-4 h-4" />
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
                   <Send className="w-4 h-4" />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
+                  <YoutubeIcon className="w-4 h-4" />
                 </a>
               </div>
             </div>
