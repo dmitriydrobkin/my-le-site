@@ -29,13 +29,13 @@ const YoutubeIcon = ({ className }: { className?: string }) => (
 
 export function Footer() {
   const quickLinks = [
-    { label: 'Портфолио', href: '/portfolio' },
     { label: 'Лендинг', href: '/services/landings' },
+    { label: 'Сайт-визитка', href: '/services/business-cards' },
     { label: 'Корпоративный', href: '/services/corporate' },
     { label: 'Магазин', href: '/services/ecommerce' },
-    { label: 'Боты ТГ', href: '/services/telegram-bots' },
+    { label: 'TG-боты', href: '/services/telegram-bots' },
+    { label: 'Портфолио', href: '/portfolio' },
     { label: 'Обо мне', href: '/about' },
-    { label: 'Контакты', href: '/contact' },
   ];
 
   return (
