@@ -322,7 +322,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 4. ПРИМЕРЫ РАБОТ */}
-      <section className="pt-12 pb-6 lg:pt-16 lg:pb-8 bg-surface border-t border-ink/5">
+      <section className="pt-12 pb-2 lg:pt-16 lg:pb-2 bg-surface border-t border-ink/5">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase">
@@ -366,7 +366,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
-      <section className="pt-6 pb-12 lg:pt-8 lg:pb-16 bg-surface">
+      <section className="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-surface">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="bg-ink rounded-[2rem] p-8 lg:p-12 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
             

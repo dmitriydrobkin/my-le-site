@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, CheckCircle2, Loader2 } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import { captureLeadAction } from '@/server/actions/leads';
 
 const FAQS = [
   {
@@ -33,6 +34,35 @@ export function FAQSection() {
   // ⚡ ИСПРАВЛЕНИЕ ЗДЕСЬ: добавили ?. и ?? null, чтобы удовлетворить строгий TypeScript
   const [openId, setOpenId] = useState<string | null>(FAQS[0]?.id ?? null);
   const [phone, setPhone] = useState<string>();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!phone) return;
+    
+    setIsSubmitting(true);
+    try {
+      const formData = new FormData();
+      formData.append('name', 'Аноним (FAQ Форма)');
+      formData.append('contactInfo', phone);
+      formData.append('answers', JSON.stringify({ source: 'FAQ Section' }));
+      
+      const result = await captureLeadAction(formData);
+      
+      if (result.success) {
+        setIsSuccess(true);
+        setPhone('');
+        setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        alert(result.error || 'Произошла ошибка при отправке');
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-surface">
@@ -64,7 +94,7 @@ export function FAQSection() {
               </p>
             </div>
             
-            <form className="hidden lg:flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="hidden lg:flex flex-col gap-4" onSubmit={handleSubmit}>
               <div className="relative flex flex-col border border-ink/20 rounded-[1.5rem] bg-white focus-within:border-ink focus-within:ring-1 focus-within:ring-ink transition-all group py-2 px-1">
                 <span className="text-[10px] text-ink/40 uppercase font-bold tracking-wider mb-0.5 px-4 pt-1">Номер телефона *</span>
                 <div className="px-4 pb-1">
@@ -112,12 +142,31 @@ export function FAQSection() {
                   }
                 `}} />
               </div>
-              <button 
-                type="submit" 
-                className="bg-coral hover:bg-coral/90 text-white rounded-[1.5rem] py-5 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-neon-coral hover:-translate-y-1 w-full mt-2 flex justify-center"
-              >
-                Заказать консультацию
-              </button>
+              
+              <AnimatePresence mode="wait">
+                {isSuccess ? (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="bg-emerald-500/10 text-emerald-600 rounded-[1.5rem] py-4 px-6 font-bold font-sans text-sm text-center flex items-center justify-center gap-2 mt-2"
+                  >
+                    <CheckCircle2 className="w-5 h-5" />
+                    Заявка успешно отправлена!
+                  </motion.div>
+                ) : (
+                  <motion.button 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    type="submit" 
+                    disabled={isSubmitting || !phone}
+                    className="bg-coral hover:bg-coral/90 text-white rounded-[1.5rem] py-5 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-neon-coral hover:-translate-y-1 w-full mt-2 flex justify-center items-center gap-2 disabled:opacity-50 disabled:hover:-translate-y-0 disabled:shadow-none"
+                  >
+                    {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Заказать консультацию'}
+                  </motion.button>
+                )}
+              </AnimatePresence>
             </form>
           </div>
 
