@@ -4,7 +4,12 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getRequestContext } from '@cloudflare/next-on-pages';
 
-// Removed generateHash
+async function generateHash(message: string): Promise<string> {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+}
 
 
 /**
@@ -39,8 +44,8 @@ export async function loginAdmin(formData: FormData) {
     return { error: `Неверный пароль (введено: ${inputPwd.length} симв, ждем: ${targetPwd.length} симв, env: ${!!correctPassword}, process: ${!!process.env.ADMIN_PASSWORD})` };
   }
 
-  // Создаем простой сессионный токен
-  const sessionToken = crypto.randomUUID();
+  // Создаем детерминированный токен для проверки в middleware
+  const sessionToken = await generateHash(`${targetPwd}-secret-salt-2026`);
 
   // Устанавливаем супер-защищенную куку на 7 дней
   cookies().set('admin_session', sessionToken, {
