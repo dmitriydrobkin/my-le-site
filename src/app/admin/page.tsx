@@ -12,13 +12,14 @@ import { getRequestContext } from '@cloudflare/next-on-pages';
 import { drizzle } from 'drizzle-orm/d1';
 import { leads, quizAnswers } from '@/server/db/schema';
 import { desc } from 'drizzle-orm';
+import { verifyAdmin } from '@/server/functions/auth-guard';
 
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 async function getLeadsWithAnswers() {
   const { env } = getRequestContext();
-  const db = drizzle(env.DB);
+  const db = drizzle((env as any).DB);
   
   const allLeads = await db.select().from(leads).orderBy(desc(leads.createdAt)).all();
   const allAnswers = await db.select().from(quizAnswers).all();
@@ -34,6 +35,9 @@ export default async function AdminPage({
 }: {
   searchParams: { route?: string };
 }) {
+  // ⚡ ЗАПУСКАЕМ НАДЕЖНУЮ ПРОВЕРКУ ПАРОЛЯ И СЕССИИ
+  await verifyAdmin();
+
   const settings = await getSiteSettings();
   const selectedRoute = searchParams.route || '/';
   const content = await getPageContent(selectedRoute) || {};
