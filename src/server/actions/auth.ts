@@ -2,6 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { getRequestContext } from '@cloudflare/next-on-pages';
 
 /**
  * Хелпер для создания SHA-256 хэша с использованием встроенного Web Crypto API.
@@ -19,23 +20,34 @@ async function generateHash(message: string): Promise<string> {
  */
 export async function loginAdmin(formData: FormData) {
   const passwordInput = formData.get('password') as string;
-  const adminPassword = process.env.ADMIN_PASSWORD;
+  
+  // ⚡ ПРАВИЛЬНО: берем переменную из контекста Cloudflare
+  let correctPassword;
+  try {
+    const { env } = getRequestContext();
+    correctPassword = env.ADMIN_PASSWORD;
+  } catch (e) {
+    // игнорируем ошибку если контекста нет
+  }
+  
+  // Запасной вариант для локальной разработки
+  const finalCorrectPassword = correctPassword || process.env.ADMIN_PASSWORD;
 
   // Если пароль на хостинге вообще не задан, блокируем вход в целях безопасности
-  if (!adminPassword) {
+  if (!finalCorrectPassword) {
     return { error: 'Критическая ошибка: ADMIN_PASSWORD не настроен на сервере.' };
   }
 
   // Сравниваем хэши введенного пароля и серверного пароля
   const inputHash = await generateHash(passwordInput);
-  const targetHash = await generateHash(adminPassword);
+  const targetHash = await generateHash(finalCorrectPassword);
 
   if (inputHash !== targetHash) {
     return { error: 'Неверный пароль администратора' };
   }
 
   // Создаем уникальный сессионный токен на основе пароля и секретной соли сервера
-  const sessionToken = await generateHash(`${adminPassword}-secret-salt-2026`);
+  const sessionToken = await generateHash(`${finalCorrectPassword}-secret-salt-2026`);
 
   // Устанавливаем супер-защищенную куку на 7 дней
   cookies().set('admin_session', sessionToken, {
