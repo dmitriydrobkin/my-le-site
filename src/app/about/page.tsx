@@ -10,7 +10,7 @@ export default function AboutPage() {
     <div className="bg-white min-h-screen">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-32 lg:pt-40 pb-24">
+      <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-32 lg:pt-32 pb-24">
         <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-coral/10 via-orange-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
         
         <div className="max-w-5xl relative z-10">
@@ -18,7 +18,7 @@ export default function AboutPage() {
             <span className="text-coral">✦</span> Обо мне
           </div>
           
-          <h1 className="font-display text-3xl md:text-5xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase">
+          <h1 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase">
             Разрабатываю сайты <br className="hidden md:block" />
             и <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">Telegram-боты</span>, <br className="hidden md:block" />
             которые приносят прибыль

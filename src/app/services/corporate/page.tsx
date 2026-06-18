@@ -10,7 +10,7 @@ export default function CorporatePage() {
     <div className="bg-white min-h-screen overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-32 lg:pt-40 pb-24">
+      <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-32 pb-16 lg:pb-24">
         <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-indigo-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
         
         <div className="max-w-5xl relative z-10 pt-16 lg:pt-0">
@@ -19,7 +19,7 @@ export default function CorporatePage() {
             Фундамент для SEO
           </div>
           
-          <h1 className="font-display text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase break-words">
+          <h1 className="font-display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase break-words">
             Современный <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">корпоративный<br className="md:hidden" /> сайт</span> <br className="hidden md:block" />
             для вашего бизнеса
