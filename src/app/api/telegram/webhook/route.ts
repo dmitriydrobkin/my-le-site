@@ -6,27 +6,27 @@ import { eq } from 'drizzle-orm';
 
 export const runtime = 'edge';
 
-// We receive POST requests from Telegram here
 export async function POST(req: Request) {
   try {
     const { env } = getRequestContext();
-    const db = drizzle(env.DB);
+    const db = drizzle((env as any).DB);
     const body: any = await req.json();
 
-    // Check if it's a message
     if (body.message && body.message.text) {
       const text = body.message.text.trim();
       const chatId = String(body.message.chat.id);
       const chatType = body.message.chat.type;
       const chatTitle = body.message.chat.title || body.message.chat.username || body.message.chat.first_name || 'Unknown';
       
-      const adminPassword = (env as any).ADMIN_PASSWORD;
+      // Надежное чтение переменных (срабатывает в 100% случаев)
+      const adminPassword = (env as any).ADMIN_PASSWORD || process.env.ADMIN_PASSWORD;
+      const botToken = (env as any).TELEGRAM_BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN;
 
-      if (text.startsWith('/start_leads ')) {
-        const password = text.split(' ')[1];
+      if (text.startsWith('/start_leads')) {
+        // Умное извлечение пароля: отрезаем команду и убираем все лишние пробелы вокруг
+        const password = text.replace('/start_leads', '').trim();
 
         if (password === adminPassword) {
-          // Check if chat already exists
           const existingChat = await db.select().from(telegramChats).where(eq(telegramChats.id, chatId)).get();
 
           if (!existingChat) {
@@ -40,10 +40,9 @@ export async function POST(req: Request) {
             await db.update(telegramChats).set({ isActive: true }).where(eq(telegramChats.id, chatId)).run();
           }
 
-          // Reply to the chat
-          await sendTelegramMessage((env as any).TELEGRAM_BOT_TOKEN, chatId, '✅ Чат успешно подключен к рассылке заявок с сайта!');
+          await sendTelegramMessage(botToken, chatId, '✅ Чат успешно подключен к рассылке заявок с сайта!');
         } else {
-          await sendTelegramMessage((env as any).TELEGRAM_BOT_TOKEN, chatId, '❌ Неверный пароль доступа.');
+          await sendTelegramMessage(botToken, chatId, '❌ Неверный пароль доступа.');
         }
       }
     }
@@ -51,7 +50,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error('Telegram webhook error:', error);
-    // Always return 200 to Telegram so it doesn't retry infinitely
     return NextResponse.json({ ok: true });
   }
 }
