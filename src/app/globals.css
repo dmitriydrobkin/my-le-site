@@ -7,6 +7,10 @@
  * Светлый воздушный минимализм, эффект стекла, неоновые акценты.
  */
 @layer base {
+  :root {
+    color-scheme: light only;
+  }
+  
   html {
     scroll-behavior: smooth;
   }

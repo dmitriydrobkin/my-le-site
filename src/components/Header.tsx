@@ -33,11 +33,11 @@ export function Header() {
       label: 'Услуги', 
       subItems: [
         { label: 'Лендинги', href: '/services/landings' },
-        { label: 'Telegram-боты', href: '/services/telegram-bots' },
-        { label: 'Интернет-магазины', href: '/services/ecommerce' },
-        { label: 'Корпоративные сайты', href: '/services/corporate' },
-        { label: 'Магазин + Бот', href: '/services/sites-and-bots' },
         { label: 'Сайты-визитки', href: '/services/business-cards' },
+        { label: 'Корпоративные сайты', href: '/services/corporate' },
+        { label: 'Интернет-магазины', href: '/services/ecommerce' },
+        { label: 'Магазин + TG Бот', href: '/services/sites-and-bots' },
+        { label: 'Telegram-боты', href: '/services/telegram-bots' },
       ]
     },
     { label: 'Обо мне', href: '/about' },

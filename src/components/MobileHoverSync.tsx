@@ -1,9 +1,10 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 
 export function MobileHoverSync() {
   const pathname = usePathname();
+  const timeoutsRef = useRef<Map<Element, NodeJS.Timeout>>(new Map());
 
   useEffect(() => {
     // Работает только на мобилках
@@ -13,8 +14,17 @@ export function MobileHoverSync() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.setAttribute('data-mobile-hover', 'true');
+            // Задержка 1 секунда для плавности
+            const timeout = setTimeout(() => {
+              entry.target.setAttribute('data-mobile-hover', 'true');
+            }, 1000);
+            timeoutsRef.current.set(entry.target, timeout);
           } else {
+            const timeout = timeoutsRef.current.get(entry.target);
+            if (timeout) {
+              clearTimeout(timeout);
+              timeoutsRef.current.delete(entry.target);
+            }
             entry.target.removeAttribute('data-mobile-hover');
           }
         });
@@ -22,11 +32,15 @@ export function MobileHoverSync() {
       { threshold: 0.6 }
     );
 
-    // Наблюдаем за всеми элементами, которые имеют группу или карточками
-    const elements = document.querySelectorAll('.group');
+    // Наблюдаем только за карточками (у них rounded-[2rem] и класс group), чтобы кнопки не анимировались
+    const elements = document.querySelectorAll('.group.rounded-\\[2rem\\]');
     elements.forEach((el) => observer.observe(el));
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      timeoutsRef.current.forEach((timeout) => clearTimeout(timeout));
+      timeoutsRef.current.clear();
+    };
   }, [pathname]);
 
   return null;

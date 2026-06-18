@@ -19,9 +19,9 @@ export default function CorporatePage() {
             Фундамент для SEO
           </div>
           
-          <h1 className="font-display text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase break-words">
             Современный <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">корпоративный сайт</span> <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">корпоративный<br className="md:hidden" /> сайт</span> <br className="hidden md:block" />
             для вашего бизнеса
           </h1>
           
@@ -97,7 +97,7 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      {/* 3. ЧТО ВХОДИТ В РАЗРАБОТКУ (BENTO GRID) */}
+      {/* 2. ЧТО ВЫ ПОЛУЧАЕТЕ (BENTO) */}
       <section className="py-12 lg:py-24 bg-surface border-b border-ink/5 relative overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="mb-16">
