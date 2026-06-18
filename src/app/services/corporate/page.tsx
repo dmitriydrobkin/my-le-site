@@ -51,7 +51,7 @@ export default function CorporatePage() {
             
             <div className="lg:w-1/3">
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-ink uppercase leading-tight mb-6">
-                Зачем вам <br className="hidden lg:block" />сайт, если есть соцсети?
+                Зачем вам сайт, <br className="hidden lg:block" />если есть соцсети?
               </h2>
               <p className="font-sans text-ink/50 leading-relaxed font-medium">
                 Здесь мы продаем не просто страницы, а статус, абсолютное доверие ваших партнеров и прочный фундамент для органического роста.
