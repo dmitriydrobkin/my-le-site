@@ -14,6 +14,7 @@ import { leads, quizAnswers } from '@/server/db/schema';
 import { desc } from 'drizzle-orm';
 
 export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
 async function getLeadsWithAnswers() {
   const { env } = getRequestContext();
