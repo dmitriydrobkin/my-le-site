@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { QuizTrigger } from '@/components/QuizTrigger';
 import { CustomCursor } from '@/components/CustomCursor';
+import { ProductMenuModal } from '@/components/ProductMenuModal';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef, useEffect, useState } from 'react';
 
@@ -45,33 +46,12 @@ const SERVICES = [
   }
 ];
 
-const PORTFOLIO = [
-  {
-    tag: 'REAL ESTATE',
-    title: 'РИЕЛ: электронная площадка для...',
-    description: 'Разработали комплекс решений, которые повысили продажи в три раза',
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800',
-    span: 'lg:col-span-3'
-  },
-  {
-    tag: 'ECOMMERCE',
-    title: 'Anabel Arto: лучший производитель женского белья в Украине',
-    description: 'Новый уровень eCommerce для лучшего производителя женского белья в Украине',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200',
-    span: 'lg:col-span-4'
-  },
-  {
-    tag: 'MEDIA',
-    title: 'Украина.info: диджитал-платформа...',
-    description: 'С нуля создали масштабную новостную платформу: веб-ресурсы, мобильное приложение и мульти-админпанель',
-    image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=800',
-    span: 'lg:col-span-3'
-  }
-];
+import { PORTFOLIO_PROJECTS } from '@/data/portfolio';
 
 export default function B2BHomePage() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [paddingLeft, setPaddingLeft] = useState(24);
+  const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
 
   // Динамически высчитываем отступ слева, чтобы слайдер был в одной линии с контейнером (max-w 1400 + px-6)
   useEffect(() => {
@@ -101,6 +81,9 @@ export default function B2BHomePage() {
       scrollRef.current.scrollBy({ left: 420, behavior: 'smooth' });
     }
   };
+
+  const topProjects = PORTFOLIO_PROJECTS.filter(p => p.isTop).slice(0, 3);
+  const spans = ['lg:col-span-3', 'lg:col-span-4', 'lg:col-span-3'];
 
   return (
     <div className="bg-white min-h-screen">
@@ -321,8 +304,10 @@ export default function B2BHomePage() {
             </div>
 
             {/* Карточка 4 - CTA Акцентная */}
-            <div className="md:col-span-2 bg-gradient-to-br from-coral to-cyan-500 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between text-white relative overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-shadow min-h-[200px] md:min-h-[250px]">
-              <Link href="/services/sites-and-bots" className="absolute inset-0 z-20" />
+            <div 
+              onClick={() => setIsProductMenuOpen(true)}
+              className="md:col-span-2 bg-gradient-to-br from-coral to-cyan-500 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between text-white relative overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-shadow min-h-[200px] md:min-h-[250px]"
+            >
               <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500" />
               <h3 className="relative z-10 font-display text-2xl md:text-3xl font-bold max-w-[200px] md:max-w-full">
                 Узнать больше о продуктах
@@ -337,7 +322,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 4. ПРИМЕРЫ РАБОТ */}
-      <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-surface border-t border-ink/5">
+      <section className="pt-12 pb-6 lg:pt-16 lg:pb-8 bg-surface border-t border-ink/5">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase">
@@ -352,10 +337,10 @@ export default function B2BHomePage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-2 lg:gap-6">
-            {PORTFOLIO.map((item, index) => (
-              <Link href="#" key={index} className={`flex flex-col group cursor-pointer ${item.span}`}>
+            {topProjects.map((item, index) => (
+              <Link href={`/portfolio/${item.slug}`} key={item.id} className={`flex flex-col group cursor-pointer ${spans[index] || 'lg:col-span-3'}`}>
                 <div className={`relative w-full aspect-[4/3] lg:aspect-auto ${index === 1 ? 'lg:h-[500px]' : 'lg:h-[400px]'} rounded-[2rem] overflow-hidden mb-4 lg:mb-8 shadow-glass border border-ink/5`}>
-                  <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <Image src={item.coverImage} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
                 </div>
                 <div className="flex justify-between items-start gap-4 h-full">
@@ -363,11 +348,11 @@ export default function B2BHomePage() {
                     <span className="font-sans text-xs font-bold tracking-widest text-ink/40 uppercase block mb-3">
                       {item.tag}
                     </span>
-                    <h3 className="font-display text-2xl md:text-3xl font-bold text-ink mb-4 group-hover:text-coral transition-colors">
+                    <h3 className="font-display text-2xl md:text-3xl font-bold text-ink mb-4 group-hover:text-coral transition-colors line-clamp-2">
                       {item.title}
                     </h3>
-                    <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed max-w-sm mt-auto">
-                      {item.description}
+                    <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed max-w-sm mt-auto line-clamp-3">
+                      {item.shortDescription}
                     </p>
                   </div>
                   <div className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center text-ink bg-white border border-ink/10 group-hover:bg-coral group-hover:text-white group-hover:border-transparent transition-colors shadow-sm">
@@ -381,7 +366,7 @@ export default function B2BHomePage() {
       </section>
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
-      <section className="py-12 lg:py-16 bg-surface">
+      <section className="pt-6 pb-12 lg:pt-8 lg:pb-16 bg-surface">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="bg-ink rounded-[2rem] p-8 lg:p-12 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
             
@@ -422,6 +407,11 @@ export default function B2BHomePage() {
           display: none;
         }
       `}} />
+
+      <ProductMenuModal 
+        isOpen={isProductMenuOpen} 
+        onClose={() => setIsProductMenuOpen(false)} 
+      />
     </div>
   );
 }
