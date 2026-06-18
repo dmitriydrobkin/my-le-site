@@ -154,7 +154,7 @@ export default function B2BHomePage() {
           {SERVICES.map((service, index) => (
             <div 
               key={index} 
-              className="snap-start flex-shrink-0 w-[85vw] sm:w-[420px] bg-surface rounded-[2.5rem] p-8 lg:p-10 flex flex-col h-[380px] justify-between group relative mobile-hover-card"
+              className="snap-start flex-shrink-0 w-[85vw] sm:w-[420px] bg-surface rounded-[2.5rem] p-8 lg:p-10 flex flex-col min-h-[380px] h-auto justify-between group relative mobile-hover-card"
             >
               {/* Content Top */}
               <div className="relative z-10 flex flex-col">
@@ -166,7 +166,7 @@ export default function B2BHomePage() {
                   <span className="font-mono text-sm font-bold text-ink/40 shrink-0 mt-1">
                     {service.id}
                   </span>
-                  <p className="font-sans text-sm leading-relaxed text-ink/60 font-medium line-clamp-4">
+                  <p className="font-sans text-sm leading-relaxed text-ink/60 font-medium">
                     {service.description}
                   </p>
                 </div>
@@ -180,7 +180,7 @@ export default function B2BHomePage() {
                     <div className={`absolute inset-0 z-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r ${service.gradient} transition-opacity duration-500 ease-in-out pointer-events-none`} />
                     
                     {/* Hover text */}
-                    <span className="relative z-10 opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto text-white font-bold font-sans tracking-wide group-hover:ml-6 whitespace-nowrap overflow-hidden transition-all duration-500">
+                    <span className="relative z-10 opacity-0 group-hover:opacity-100 max-w-0 group-hover:max-w-[120px] text-white font-bold font-sans tracking-wide group-hover:ml-5 whitespace-nowrap overflow-hidden transition-all duration-500">
                       Подробнее
                     </span>
                     
@@ -195,7 +195,7 @@ export default function B2BHomePage() {
                     <div className={`absolute inset-0 z-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r ${service.gradient} transition-opacity duration-500 ease-in-out pointer-events-none`} />
                     
                     {/* Hover text */}
-                    <span className="relative z-10 opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto text-white font-bold font-sans tracking-wide group-hover:ml-6 whitespace-nowrap overflow-hidden transition-all duration-500">
+                    <span className="relative z-10 opacity-0 group-hover:opacity-100 max-w-0 group-hover:max-w-[120px] text-white font-bold font-sans tracking-wide group-hover:ml-5 whitespace-nowrap overflow-hidden transition-all duration-500">
                       Подробнее
                     </span>
                     

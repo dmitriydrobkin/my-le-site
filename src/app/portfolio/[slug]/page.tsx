@@ -83,7 +83,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
         
         {/* Meta Info Row */}
         {(project.clientName || project.timeline) && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {project.clientName && (
               <div className="bg-white rounded-2xl p-6 border border-ink/5 flex flex-col justify-center">
                 <span className="font-sans text-xs font-bold tracking-widest text-ink/40 uppercase mb-2">Клиент</span>

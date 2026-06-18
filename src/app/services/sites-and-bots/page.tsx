@@ -83,7 +83,7 @@ export default function SitesAndBotsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Card 1 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-cyan-500/20 transition-all duration-500 group">
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-cyan-500/20 transition-all duration-500 group mobile-hover-card">
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <Clock className="w-8 h-8 text-ink/40 group-hover:text-cyan-500 transition-colors" />
               </div>
@@ -96,7 +96,7 @@ export default function SitesAndBotsPage() {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-coral/20 transition-all duration-500 group">
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-coral/20 transition-all duration-500 group mobile-hover-card">
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <Bot className="w-8 h-8 text-ink/40 group-hover:text-coral transition-colors" />
               </div>
@@ -109,7 +109,7 @@ export default function SitesAndBotsPage() {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-emerald-500/20 transition-all duration-500 group">
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-emerald-500/20 transition-all duration-500 group mobile-hover-card">
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <TrendingUp className="w-8 h-8 text-ink/40 group-hover:text-emerald-500 transition-colors" />
               </div>
@@ -122,7 +122,7 @@ export default function SitesAndBotsPage() {
             </div>
 
             {/* Card 4 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-blue-500/20 transition-all duration-500 group">
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-blue-500/20 transition-all duration-500 group mobile-hover-card">
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <Blocks className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors" />
               </div>

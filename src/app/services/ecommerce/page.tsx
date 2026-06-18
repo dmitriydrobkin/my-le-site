@@ -111,7 +111,7 @@ export default function EcommercePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Card 1 */}
-            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-rose-500/20 transition-all duration-500 group">
+            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-rose-500/20 transition-all duration-500 group mobile-hover-card">
               <div className="w-16 h-16 rounded-full bg-white border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <Store className="w-8 h-8 text-ink/40 group-hover:text-rose-500 transition-colors" />
               </div>
@@ -124,7 +124,7 @@ export default function EcommercePage() {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-orange-500/20 transition-all duration-500 group">
+            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-orange-500/20 transition-all duration-500 group mobile-hover-card">
               <div className="w-16 h-16 rounded-full bg-white border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <Box className="w-8 h-8 text-ink/40 group-hover:text-orange-500 transition-colors" />
               </div>
@@ -137,7 +137,7 @@ export default function EcommercePage() {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-red-500/20 transition-all duration-500 group">
+            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-red-500/20 transition-all duration-500 group mobile-hover-card">
               <div className="w-16 h-16 rounded-full bg-white border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <Smartphone className="w-8 h-8 text-ink/40 group-hover:text-red-500 transition-colors" />
               </div>
@@ -150,7 +150,7 @@ export default function EcommercePage() {
             </div>
 
             {/* Card 4 */}
-            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-coral/20 transition-all duration-500 group">
+            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-coral/20 transition-all duration-500 group mobile-hover-card">
               <div className="w-16 h-16 rounded-full bg-white border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <ServerOff className="w-8 h-8 text-ink/40 group-hover:text-coral transition-colors" />
               </div>

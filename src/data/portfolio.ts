@@ -29,7 +29,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     tag: 'E-COMMERCE',
     shortDescription: 'Новый уровень eCommerce для лучшего производителя женского белья в Украине. Полная синхронизация 1С и кастомная корзина.',
     isTop: true,
-    coverImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200',
+    coverImage: '/portfolio/project1.jpg',
     clientName: 'Anabel Arto',
     timeline: '3 месяца',
     challenge: 'Старый сайт не справлялся с нагрузками в период распродаж, конверсия в корзине падала из-за долгой загрузки и сложного процесса оформления заказа.',

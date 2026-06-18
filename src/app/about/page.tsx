@@ -64,7 +64,7 @@ export default function AboutPage() {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-cyan-500/20 transition-all duration-500 group">
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-cyan-500/20 transition-all duration-500 group mobile-hover-card">
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <HeartHandshake className="w-8 h-8 text-ink/40 group-hover:text-cyan-500 transition-colors" />
               </div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-emerald-500/20 transition-all duration-500 group">
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-emerald-500/20 transition-all duration-500 group mobile-hover-card">
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <Eye className="w-8 h-8 text-ink/40 group-hover:text-emerald-500 transition-colors" />
               </div>
