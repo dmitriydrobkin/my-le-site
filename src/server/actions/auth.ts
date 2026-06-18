@@ -25,7 +25,7 @@ export async function loginAdmin(formData: FormData) {
   let correctPassword;
   try {
     const { env } = getRequestContext();
-    correctPassword = env.ADMIN_PASSWORD;
+    correctPassword = (env as any).ADMIN_PASSWORD;
   } catch (e) {
     // игнорируем ошибку если контекста нет
   }
