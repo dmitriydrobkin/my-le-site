@@ -31,23 +31,27 @@ export async function loginAdmin(formData: FormData) {
   }
   
   // Запасной вариант для локальной разработки
-  const finalCorrectPassword = correctPassword || process.env.ADMIN_PASSWORD;
+  const finalCorrectPassword = correctPassword || process.env.ADMIN_PASSWORD || '';
+
+  // Очищаем от случайных пробелов
+  const targetPwd = String(finalCorrectPassword).trim();
+  const inputPwd = String(passwordInput).trim();
 
   // Если пароль на хостинге вообще не задан, блокируем вход в целях безопасности
-  if (!finalCorrectPassword) {
+  if (!targetPwd || targetPwd === 'undefined') {
     return { error: 'Критическая ошибка: ADMIN_PASSWORD не настроен на сервере.' };
   }
 
   // Сравниваем хэши введенного пароля и серверного пароля
-  const inputHash = await generateHash(passwordInput);
-  const targetHash = await generateHash(finalCorrectPassword);
+  const inputHash = await generateHash(inputPwd);
+  const targetHash = await generateHash(targetPwd);
 
   if (inputHash !== targetHash) {
-    return { error: 'Неверный пароль администратора' };
+    return { error: `Неверный пароль (введено: ${inputPwd.length} симв, ждем: ${targetPwd.length} симв, env: ${!!correctPassword}, process: ${!!process.env.ADMIN_PASSWORD})` };
   }
 
   // Создаем уникальный сессионный токен на основе пароля и секретной соли сервера
-  const sessionToken = await generateHash(`${finalCorrectPassword}-secret-salt-2026`);
+  const sessionToken = await generateHash(`${targetPwd}-secret-salt-2026`);
 
   // Устанавливаем супер-защищенную куку на 7 дней
   cookies().set('admin_session', sessionToken, {

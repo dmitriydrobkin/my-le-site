@@ -41,3 +41,14 @@ export const quizAnswers = sqliteTable('quiz_answers', {
     .notNull()
     .$defaultFn(() => new Date()),
 });
+
+// Авторизованные Telegram чаты для получения заявок
+export const telegramChats = sqliteTable('telegram_chats', {
+  id: text('id').primaryKey(), // Telegram chat_id (переводим в строку на всякий случай)
+  title: text('title'), // Имя пользователя или название группы
+  type: text('type'), // private, group, supergroup, channel
+  isActive: integer('is_active', { mode: 'boolean' }).notNull().default(true),
+  createdAt: integer('created_at', { mode: 'timestamp' })
+    .notNull()
+    .$defaultFn(() => new Date()),
+});

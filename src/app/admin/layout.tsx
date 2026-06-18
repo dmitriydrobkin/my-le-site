@@ -31,6 +31,13 @@ export default function AdminLayout({
               >
                 Статистика
               </Link>
+              <Link
+                href="/admin/telegram"
+                className="text-sm font-bold tracking-wide text-ink/70 transition-colors hover:text-cyan-600 flex items-center gap-2"
+              >
+                Telegram 
+                <span className="px-1.5 py-0.5 bg-coral text-white text-[10px] rounded-md leading-none">NEW</span>
+              </Link>
             </nav>
           </div>
         </div>

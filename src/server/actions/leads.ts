@@ -3,7 +3,8 @@
 import { getRequestContext } from '@cloudflare/next-on-pages';
 import { drizzle } from 'drizzle-orm/d1';
 import { z } from 'zod';
-import { leads, quizAnswers } from '../db/schema';
+import { leads, quizAnswers, telegramChats } from '../db/schema';
+import { eq } from 'drizzle-orm';
 
 const captureLeadSchema = z.object({
   name: z.string().min(2, "Имя слишком короткое"),
@@ -55,6 +56,50 @@ export async function captureLeadAction(formData: FormData | Record<string, any>
         answersJson: answers,
       }).run();
     }
+
+    // --- ОТПРАВКА В TELEGRAM ---
+    try {
+      const activeChats = await db.select().from(telegramChats).where(eq(telegramChats.isActive, true)).all();
+      
+      if (activeChats.length > 0) {
+        const token = (env as any).TELEGRAM_BOT_TOKEN;
+        if (token) {
+          // Формируем красивое сообщение
+          let message = `🔔 <b>Новая заявка с сайта!</b>\n\n`;
+          message += `👤 <b>Имя:</b> ${name}\n`;
+          message += `📞 <b>Контакты:</b> ${contactInfo}\n`;
+          if (estimatedBudget) {
+            message += `💰 <b>Бюджет:</b> ${estimatedBudget}\n`;
+          }
+          
+          if (answers && Object.keys(answers).length > 0) {
+            message += `\n📝 <b>Ответы из формы/квиза:</b>\n`;
+            for (const [key, value] of Object.entries(answers)) {
+              if (key === 'source') continue; // пропускаем техническое поле
+              message += `• <i>${key}</i>: ${value}\n`;
+            }
+          }
+
+          // Асинхронно отправляем во все чаты
+          const sendPromises = activeChats.map(chat => 
+            fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: chat.id,
+                text: message,
+                parse_mode: 'HTML'
+              })
+            })
+          );
+          
+          await Promise.allSettled(sendPromises);
+        }
+      }
+    } catch (tgError) {
+      console.error('Telegram broadcast error:', tgError);
+    }
+    // ---------------------------
 
     return { success: true };
   } catch (error) {
