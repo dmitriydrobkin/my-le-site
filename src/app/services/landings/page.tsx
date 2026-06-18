@@ -11,8 +11,8 @@ export default function LandingsPage() {
     <div className="bg-white min-h-screen">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[100dvh] lg:min-h-[85vh] flex items-center px-6 max-w-[1400px] mx-auto pt-32 pb-16 lg:py-0">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-ink/5 via-ink/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
+      <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-32 pb-16 lg:py-0 w-full">
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-coral/10 via-orange-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
         
         <div className="max-w-5xl relative z-10">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-coral/20 bg-coral/5 text-coral font-bold font-sans text-xs uppercase tracking-widest mb-6">

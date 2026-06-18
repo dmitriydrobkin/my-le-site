@@ -106,7 +106,7 @@ export default function B2BHomePage() {
     <div className="bg-white min-h-screen">
       
       {/* 1. HERO SECTION (Centered full height) */}
-      <section className="relative min-h-screen flex items-center px-6 max-w-[1400px] mx-auto pt-24">
+      <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-24 pb-24">
         <div className="max-w-4xl">
           <h1 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight text-ink leading-[1.05] mb-10">
             DIGITAL РЕШЕНИЯ
@@ -171,7 +171,7 @@ export default function B2BHomePage() {
           {SERVICES.map((service, index) => (
             <div 
               key={index} 
-              className="snap-start flex-shrink-0 w-[85vw] sm:w-[420px] bg-surface rounded-[2.5rem] p-8 lg:p-10 flex flex-col h-[380px] justify-between group relative"
+              className="snap-start flex-shrink-0 w-[85vw] sm:w-[420px] bg-surface rounded-[2.5rem] p-8 lg:p-10 flex flex-col h-[380px] justify-between group relative mobile-hover-card"
             >
               {/* Content Top */}
               <div className="relative z-10 flex flex-col">

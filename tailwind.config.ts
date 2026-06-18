@@ -1,7 +1,9 @@
 import { type Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
+import plugin from 'tailwindcss/plugin';
 
-export default {
+const config: Config = {
+  darkMode: 'class',
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
@@ -69,8 +71,10 @@ export default {
   },
   plugins: [
     require('tailwindcss/plugin')(function({ addVariant }: any) {
-      addVariant('group-hover', ['.group:hover &', '.group[data-mobile-hover="true"] &']);
+      addVariant('group-hover', ['.group:hover &', '.group.mobile-hover-card[data-mobile-hover="true"] &']);
       addVariant('hover', ['&:hover', '&[data-mobile-hover="true"]']);
     }),
   ],
-} satisfies Config;
+};
+
+export default config;

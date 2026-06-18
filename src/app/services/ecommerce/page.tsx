@@ -10,8 +10,8 @@ export default function EcommercePage() {
     <div className="bg-white min-h-screen overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen lg:min-h-[85vh] flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-32 pb-24 lg:py-0 w-full">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-emerald-500/10 via-teal-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
+      <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-32 pb-24 lg:py-0 w-full">
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-bl from-emerald-500/10 via-teal-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
         
         <div className="max-w-5xl relative z-10">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-rose-500/20 bg-rose-500/5 text-rose-600 font-bold font-sans text-xs uppercase tracking-widest mb-6">

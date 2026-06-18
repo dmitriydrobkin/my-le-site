@@ -9,8 +9,8 @@ export default function ContactPage() {
     <div className="bg-surface min-h-screen flex flex-col justify-center">
       
       {/* 1. HERO SECTION */}
-      <section className="relative flex items-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-32 pb-16 w-full">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-ink/5 via-ink/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
+      <section className="relative min-h-[100vh] h-full flex items-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-32 pb-16 w-full">
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-bl from-ink/5 via-ink/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
         
         <div className="max-w-7xl relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
           

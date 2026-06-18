@@ -10,8 +10,8 @@ export default function CorporatePage() {
     <div className="bg-white min-h-screen overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[100dvh] lg:min-h-[85vh] flex items-center px-6 max-w-[1400px] mx-auto pt-32 lg:pt-40 pb-24">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
+      <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-32 lg:pt-40 pb-24">
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-indigo-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
         
         <div className="max-w-5xl relative z-10 pt-16 lg:pt-0">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/5 text-indigo-600 font-bold font-sans text-xs uppercase tracking-widest mb-6">
@@ -29,8 +29,8 @@ export default function CorporatePage() {
             Полноценное представительство компании в сети без лишнего визуального шума и тяжелого кода. Создаем сайты, которые вызывают доверие у клиентов, отлично индексируются в Google и превращают посетителей в реальные заявки.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-            <QuizTrigger className="bg-ink hover:bg-ink/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-xl hover:-translate-y-1 flex items-center gap-3 group w-full sm:w-auto justify-center">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 w-full max-w-full">
+            <QuizTrigger className="bg-ink hover:bg-ink/90 text-white rounded-full px-6 sm:px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-xl hover:-translate-y-1 flex items-center gap-3 group w-full sm:w-auto justify-center">
               Рассчитать стоимость проекта
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </QuizTrigger>
