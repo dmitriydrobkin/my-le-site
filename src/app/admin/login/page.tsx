@@ -14,12 +14,22 @@ export default function AdminLoginPage() {
     setError(null);
     setLoading(true);
 
-    const formData = new FormData(e.currentTarget);
-    const result = await loginAdmin(formData);
+    try {
+      const formData = new FormData(e.currentTarget);
+      const result = await loginAdmin(formData);
 
-    // Если экшн вернул ошибку, выводим её на экран
-    if (result?.error) {
-      setError(result.error);
+      // Если экшн вернул ошибку, выводим её на экран
+      if (result?.error) {
+        setError(result.error);
+        setLoading(false);
+      }
+    } catch (err: any) {
+      // Игнорируем ошибку редиректа NEXT_REDIRECT
+      if (err?.message === 'NEXT_REDIRECT') {
+        return;
+      }
+      console.error(err);
+      setError('Неизвестная ошибка: ' + (err?.message || 'сбой на сервере'));
       setLoading(false);
     }
   };
