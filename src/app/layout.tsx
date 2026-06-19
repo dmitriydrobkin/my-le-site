@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
 import { Manrope, Unbounded } from 'next/font/google';
 import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
 import { Preloader } from '@/components/Preloader';
 import { CustomCursor } from '@/components/CustomCursor';
 import { MobileHoverSync } from '@/components/MobileHoverSync';
 import { getSiteSettings } from '@/server/functions/settings';
 import { QuizModal } from '@/components/QuizModal';
-import { FAQSection } from '@/components/FAQSection';
+import { ConditionalFooter } from '@/components/ConditionalFooter';
 import './globals.css';
 
 // ⚡ КРИТИЧНО: Переводим весь Layout в Edge, чтобы не было конфликтов с page.tsx
@@ -62,8 +61,7 @@ export default async function RootLayout({
         {/* Главный контент */}
         <main className="flex-grow">{children}</main>
 
-        <FAQSection />
-        <Footer />
+        <ConditionalFooter />
 
         {/* Global Modal */}
         <QuizModal />

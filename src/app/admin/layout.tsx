@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { LogoutButton } from './LogoutButton';
 
 export const runtime = 'edge';
 
@@ -45,6 +46,9 @@ export default function AdminLayout({
                 <span className="px-1.5 py-0.5 bg-coral text-white text-[10px] rounded-md leading-none">NEW</span>
               </Link>
             </nav>
+            <div className="ml-auto">
+              <LogoutButton />
+            </div>
           </div>
         </div>
       </header>

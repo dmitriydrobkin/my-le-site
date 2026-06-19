@@ -1,6 +1,10 @@
 'use client';
 
+<<<<<<< Updated upstream
 import React, { useState } from 'react';
+=======
+import { useState, Fragment } from 'react';
+>>>>>>> Stashed changes
 import { updateLeadStatus } from '@/server/actions/leads';
 import { ChevronDown, ChevronUp, User, Phone, CheckCircle2, Clock, XCircle, FileQuestion, Send } from 'lucide-react';
 
@@ -53,7 +57,7 @@ export default function LeadsCRM({ initialLeads, answersMap }: { initialLeads: a
               const isExpanded = expandedId === lead.id;
 
               return (
-                <React.Fragment key={lead.id}>
+                <Fragment key={lead.id}>
                   <tr className={`transition-colors hover:bg-surface/30 ${loadingId === lead.id ? 'opacity-50' : ''}`}>
                     <td className="px-6 py-4">
                       <div className="font-bold text-ink">
