@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getRequestContext } from '@cloudflare/next-on-pages';
 import { drizzle } from 'drizzle-orm/d1';
-import { telegramChats } from '@/server/db/schema';
+import { telegramChats, leads } from '@/server/db/schema';
 import { eq } from 'drizzle-orm';
 
 export const runtime = 'edge';
@@ -45,6 +45,67 @@ export async function POST(req: Request) {
           await sendTelegramMessage(botToken, chatId, '✅ Чат успешно подключен к рассылке заявок с сайта!');
         } else {
           await sendTelegramMessage(botToken, chatId, '❌ Неверный пароль доступа.');
+        }
+      }
+    }
+
+    if (body.callback_query) {
+      const callbackQuery = body.callback_query;
+      const data = callbackQuery.data; // e.g. "s:123:contacted"
+      const chatId = String(callbackQuery.message?.chat?.id);
+      const messageId = callbackQuery.message?.message_id;
+      const botToken = ((env as any).TELEGRAM_BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '').trim();
+
+      if (data && data.startsWith('s:')) {
+        const parts = data.split(':');
+        if (parts.length === 3) {
+          const leadId = Number(parts[1]);
+          const newStatus = parts[2]; // 'contacted' | 'converted' | 'rejected'
+
+          // Обновляем статус в БД
+          await db.update(leads)
+            .set({ status: newStatus as any })
+            .where(eq(leads.id, leadId))
+            .run();
+
+          // Определяем красивый текст статуса
+          let statusText = '';
+          if (newStatus === 'contacted') statusText = '📞 В работе';
+          else if (newStatus === 'converted') statusText = '✅ Наш клиент';
+          else if (newStatus === 'rejected') statusText = '❌ Отказ/Спам';
+
+          const oldText = callbackQuery.message?.text || '';
+          // Добавляем к старому тексту статус, если его там еще нет
+          let newText = oldText;
+          if (newText.includes('--- СТАТУС:')) {
+            newText = newText.replace(/--- СТАТУС: .*? ---/, `--- СТАТУС: ${statusText} ---`);
+          } else {
+            newText = `${newText}\n\n--- СТАТУС: ${statusText} ---`;
+          }
+
+          // Редактируем сообщение (убираем кнопки или обновляем текст)
+          await fetch(`https://api.telegram.org/bot${botToken}/editMessageText`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: chatId,
+              message_id: messageId,
+              text: newText,
+              parse_mode: 'HTML',
+              // Больше не отправляем кнопки, так как статус изменен
+              reply_markup: { inline_keyboard: [] }
+            })
+          });
+
+          // Отвечаем на callback_query, чтобы убрать часики в Telegram
+          await fetch(`https://api.telegram.org/bot${botToken}/answerCallbackQuery`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              callback_query_id: callbackQuery.id,
+              text: `Статус изменен на: ${statusText}`
+            })
+          });
         }
       }
     }

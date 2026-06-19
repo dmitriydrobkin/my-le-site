@@ -88,7 +88,18 @@ export async function captureLeadAction(formData: FormData | Record<string, any>
               body: JSON.stringify({
                 chat_id: chat.id,
                 text: message,
-                parse_mode: 'HTML'
+                parse_mode: 'HTML',
+                reply_markup: {
+                  inline_keyboard: [
+                    [
+                      { text: '📞 В работу', callback_data: `s:${newLead.id}:contacted` },
+                      { text: '✅ Наш клиент', callback_data: `s:${newLead.id}:converted` }
+                    ],
+                    [
+                      { text: '❌ Отказ/Спам', callback_data: `s:${newLead.id}:rejected` }
+                    ]
+                  ]
+                }
               })
             })
           );
