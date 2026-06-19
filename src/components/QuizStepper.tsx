@@ -30,7 +30,7 @@ const STEPS: Step[] = [
     id: 'budget',
     question: 'На какой бюджет вы рассчитываете?',
     type: 'choice',
-    options: ['Минимальный (до $200)', 'Средний (до $350)', 'Больше $350'],
+    options: ['Минимальный (до $200)', 'Средний (до $500)', 'Свой вариант'],
   },
   {
     id: 'contact',
@@ -59,7 +59,9 @@ export default function QuizStepper() {
 
   const handleSelect = (id: string, value: string) => {
     setAnswers(prev => ({ ...prev, [id]: value }));
-    setTimeout(handleNext, 300); // Автопереход после выбора
+    if (value !== 'Свой вариант') {
+      setTimeout(handleNext, 300); // Автопереход после выбора
+    }
   };
 
   const handleChange = (id: string, value: string) => {
@@ -73,7 +75,8 @@ export default function QuizStepper() {
     const formData = new FormData();
     formData.append('name', answers['name'] || 'Аноним');
     formData.append('contactInfo', answers['contactInfo'] || '');
-    formData.append('estimatedBudget', answers['budget'] || '');
+    const budget = answers['budget'] === 'Свой вариант' ? answers['budget_custom'] : answers['budget'];
+    formData.append('estimatedBudget', budget || '');
     
     // Остальные ответы сохраняем в JSON
     const quizData = { ...answers };
@@ -165,6 +168,16 @@ export default function QuizStepper() {
                     {opt}
                   </button>
                 ))}
+                {answers[step?.id || ''] === 'Свой вариант' && (
+                  <input
+                    type="text"
+                    value={answers[`${step?.id}_custom`] || ''}
+                    onChange={e => handleChange(`${step?.id}_custom`, e.target.value)}
+                    placeholder="Напишите ваш вариант..."
+                    className="col-span-1 sm:col-span-2 mt-2 w-full bg-surface border border-ink/10 rounded-2xl p-5 text-ink placeholder:text-ink/40 focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral transition-all shadow-inner"
+                    autoFocus
+                  />
+                )}
               </div>
             )}
 

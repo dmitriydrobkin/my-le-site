@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getRequestContext } from '@cloudflare/next-on-pages';
 import { drizzle } from 'drizzle-orm/d1';
 import { telegramChats, leads } from '@/server/db/schema';
-import { eq } from 'drizzle-orm';
+import { eq, desc } from 'drizzle-orm';
 
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic'; // Отключаем кэширование Cloudflare
@@ -46,6 +46,52 @@ export async function POST(req: Request) {
         } else {
           await sendTelegramMessage(botToken, chatId, '❌ Неверный пароль доступа.');
         }
+      } else if (text.startsWith('/leads')) {
+        const existingChat = await db.select().from(telegramChats).where(eq(telegramChats.id, chatId)).get();
+        if (existingChat && existingChat.isActive) {
+          const recentLeads = await db.select().from(leads).orderBy(desc(leads.createdAt)).limit(5).all();
+          if (recentLeads.length === 0) {
+            await sendTelegramMessage(botToken, chatId, 'Нет недавних заявок.');
+          } else {
+            for (const lead of recentLeads) {
+              let statusText = '';
+              if (lead.status === 'new') statusText = '🆕 Новая';
+              if (lead.status === 'contacted') statusText = '📞 В работе';
+              if (lead.status === 'converted') statusText = '✅ Наш клиент';
+              if (lead.status === 'rejected') statusText = '❌ Отказ/Спам';
+
+              let message = `👤 <b>Имя:</b> ${lead.name}\n`;
+              message += `📞 <b>Контакты:</b> ${lead.contactInfo}\n`;
+              if (lead.estimatedBudget) {
+                message += `💰 <b>Бюджет:</b> ${lead.estimatedBudget}\n`;
+              }
+              message += `\n--- СТАТУС: ${statusText} ---`;
+
+              await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  chat_id: chatId,
+                  text: message,
+                  parse_mode: 'HTML',
+                  reply_markup: {
+                    inline_keyboard: [
+                      [
+                        { text: '📞 В работу', callback_data: `s:${lead.id}:contacted` },
+                        { text: '✅ Наш клиент', callback_data: `s:${lead.id}:converted` }
+                      ],
+                      [
+                        { text: '❌ Отказ/Спам', callback_data: `s:${lead.id}:rejected` }
+                      ]
+                    ]
+                  }
+                })
+              });
+            }
+          }
+        } else {
+          await sendTelegramMessage(botToken, chatId, '❌ Ваш чат не авторизован. Введите пароль командой /start_leads ПАРОЛЬ');
+        }
       }
     }
 
@@ -83,7 +129,7 @@ export async function POST(req: Request) {
             newText = `${newText}\n\n--- СТАТУС: ${statusText} ---`;
           }
 
-          // Редактируем сообщение (убираем кнопки или обновляем текст)
+          // Редактируем сообщение (обновляем текст, оставляем кнопки)
           await fetch(`https://api.telegram.org/bot${botToken}/editMessageText`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -92,8 +138,18 @@ export async function POST(req: Request) {
               message_id: messageId,
               text: newText,
               parse_mode: 'HTML',
-              // Больше не отправляем кнопки, так как статус изменен
-              reply_markup: { inline_keyboard: [] }
+              // Оставляем кнопки, чтобы статус можно было менять снова
+              reply_markup: {
+                inline_keyboard: [
+                  [
+                    { text: '📞 В работу', callback_data: `s:${leadId}:contacted` },
+                    { text: '✅ Наш клиент', callback_data: `s:${leadId}:converted` }
+                  ],
+                  [
+                    { text: '❌ Отказ/Спам', callback_data: `s:${leadId}:rejected` }
+                  ]
+                ]
+              }
             })
           });
 
