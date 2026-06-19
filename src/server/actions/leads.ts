@@ -108,3 +108,20 @@ export async function captureLeadAction(formData: FormData | Record<string, any>
     return { success: false, error: 'Не удалось сохранить заявку. Попробуйте позже.' };
   }
 }
+
+export async function updateLeadStatus(id: number, newStatus: 'new' | 'contacted' | 'converted' | 'rejected') {
+  try {
+    const { env } = getRequestContext();
+    const db = drizzle((env as any).DB);
+
+    await db.update(leads)
+      .set({ status: newStatus })
+      .where(eq(leads.id, id))
+      .run();
+
+    return { success: true };
+  } catch (error) {
+    console.error('Failed to update lead status:', error);
+    return { success: false };
+  }
+}

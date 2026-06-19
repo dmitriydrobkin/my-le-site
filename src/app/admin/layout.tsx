@@ -17,13 +17,19 @@ export default function AdminLayout({
                 href="/admin"
                 className="text-sm font-bold tracking-wide text-ink/70 transition-colors hover:text-coral"
               >
-                Настройки страниц
+                Заявки
               </Link>
               <Link
                 href="/admin/catalog"
-                className="text-sm font-bold tracking-wide text-ink/70 transition-colors hover:text-coral"
+                className="text-sm font-bold tracking-wide text-ink/70 transition-colors hover:text-coral hidden"
               >
                 Каталог
+              </Link>
+              <Link
+                href="/admin/settings"
+                className="text-sm font-bold tracking-wide text-ink/70 transition-colors hover:text-coral"
+              >
+                Настройки
               </Link>
               <Link
                 href="/admin/stats"
