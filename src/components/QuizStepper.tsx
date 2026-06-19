@@ -22,9 +22,9 @@ const STEPS: Step[] = [
   },
   {
     id: 'needs',
-    question: 'Какая автоматизация вам нужна?',
+    question: 'Что именно вам нужно разработать?',
     type: 'choice',
-    options: ['Только сайт (лендинг/корпоративный)', 'Только Telegram-бот', 'Сайт + Бот (Единая система)'],
+    options: ['Лендинг', 'Корпоративный сайт', 'Интернет-магазин', 'Telegram-бот', 'Сайт + Бот'],
   },
   {
     id: 'budget',
@@ -93,9 +93,12 @@ export default function QuizStepper() {
   };
 
   if (isSuccess) {
-    let estimatedCost = 'от $1,500';
-    if (answers['needs'] === 'Только сайт (лендинг/корпоративный)') estimatedCost = 'от $800';
-    if (answers['needs'] === 'Только Telegram-бот') estimatedCost = 'от $500';
+    let estimatedCost = 'от $100';
+    if (answers['needs'] === 'Лендинг') estimatedCost = 'от $100';
+    if (answers['needs'] === 'Корпоративный сайт') estimatedCost = 'от $200';
+    if (answers['needs'] === 'Интернет-магазин') estimatedCost = 'от $250';
+    if (answers['needs'] === 'Telegram-бот') estimatedCost = 'от $50';
+    if (answers['needs'] === 'Сайт + Бот') estimatedCost = 'от $200';
 
     return (
       <motion.div 
