@@ -45,12 +45,20 @@ export default async function SettingsPage({
         <h2 className="font-display text-2xl font-bold mb-8 text-ink">Глобальные переменные</h2>
         
         <form 
-          action={async (formData: FormData) => {
+         action={async (formData: FormData) => {
             'use server';
-            await updateSiteSettings('global_phone', formData.get('phone') as string);
-            await updateSiteSettings('global_email', formData.get('email') as string);
-            await updateSiteSettings('global_tg', formData.get('tg') as string);
-          }} 
+            
+            // Создаем единый пакет данных
+            const settingsData = new FormData();
+            
+            // Аккуратно складываем туда все настройки под правильными ключами
+            settingsData.append('global_phone', formData.get('phone') as string || '');
+            settingsData.append('global_email', formData.get('email') as string || '');
+            settingsData.append('global_tg', formData.get('tg') as string || '');
+            
+            // Отправляем ровно ОДИН аргумент, как и требует TypeScript
+            await updateSiteSettings(settingsData);
+          }}
           className="space-y-6"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
