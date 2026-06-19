@@ -18,16 +18,15 @@ export async function updateSiteSettings(formData: FormData) {
 
   const db = drizzle(env.DB);
 
-  // 2. Достаем данные из формы
-  const title = formData.get('site_title') as string;
-  const description = formData.get('site_description') as string;
-  const indexingEnabled = formData.get('seo_indexing_enabled') === 'on' ? 'true' : 'false';
-
-  const settingsToSave = [
-    { key: 'site_title', value: title },
-    { key: 'site_description', value: description },
-    { key: 'seo_indexing_enabled', value: indexingEnabled },
-  ];
+  // 2. Достаем все данные из формы динамически
+  const settingsToSave: { key: string, value: string }[] = [];
+  
+  formData.forEach((value, key) => {
+    // Игнорируем внутренние поля Next.js (обычно начинаются с $)
+    if (typeof value === 'string' && !key.startsWith('$')) {
+      settingsToSave.push({ key, value });
+    }
+  });
 
   // 3. Сохраняем в D1
   for (const setting of settingsToSave) {
