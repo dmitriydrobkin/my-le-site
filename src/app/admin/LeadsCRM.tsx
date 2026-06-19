@@ -1,10 +1,7 @@
 'use client';
 
-<<<<<<< Updated upstream
 import React, { useState } from 'react';
-=======
 import { useState, Fragment } from 'react';
->>>>>>> Stashed changes
 import { updateLeadStatus } from '@/server/actions/leads';
 import { ChevronDown, ChevronUp, User, Phone, CheckCircle2, Clock, XCircle, FileQuestion, Send } from 'lucide-react';
 
