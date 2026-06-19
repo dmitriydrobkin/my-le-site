@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
 import { useState, Fragment } from 'react';
 import { updateLeadStatus } from '@/server/actions/leads';
-import { ChevronDown, ChevronUp, User, Phone, CheckCircle2, Clock, XCircle, FileQuestion, Send } from 'lucide-react';
+import { ChevronDown, ChevronUp, User, Phone, CheckCircle2, Clock, XCircle, FileQuestion } from 'lucide-react';
 
 const STATUS_LABELS: Record<string, { label: string, color: string, icon: any }> = {
   'new': { label: 'Новая заявка', color: 'bg-blue-100 text-blue-700 border-blue-200', icon: Clock },
@@ -49,7 +48,6 @@ export default function LeadsCRM({ initialLeads, answersMap }: { initialLeads: a
                 </td>
               </tr>
             ) : leads.map((lead) => {
-              const StatusIcon = STATUS_LABELS[lead.status]?.icon || Clock;
               const hasAnswers = answersMap[lead.id];
               const isExpanded = expandedId === lead.id;
 
@@ -128,7 +126,7 @@ export default function LeadsCRM({ initialLeads, answersMap }: { initialLeads: a
                       </td>
                     </tr>
                   )}
-                </React.Fragment>
+                </Fragment>
               );
             })}
           </tbody>
