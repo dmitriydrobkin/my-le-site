@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { updateLeadStatus } from '@/server/actions/leads';
 import { ChevronDown, ChevronUp, User, Phone, CheckCircle2, Clock, XCircle, FileQuestion, Send } from 'lucide-react';
 
