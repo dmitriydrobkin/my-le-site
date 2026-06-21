@@ -4,8 +4,7 @@
 
 import { getSiteSettings } from '@/server/functions/settings';
 import { updateSiteSettings } from '@/server/actions/settings';
-import { getPageContent } from '@/server/functions/page-content';
-import { savePageContent } from '@/server/actions/page-content';
+
 import { SubmitButton } from '@/components/SubmitButton';
 import { verifyAdmin } from '@/server/functions/auth-guard';
 
@@ -20,18 +19,7 @@ export default async function SettingsPage({
   await verifyAdmin();
 
   const settings = await getSiteSettings();
-  const selectedRoute = searchParams.route || '/';
-  const content = await getPageContent(selectedRoute) || {};
 
-  const pagesList = [
-    { name: 'Главная', route: '/' },
-    { name: 'Корпоративные', route: '/services/corporate' },
-    { name: 'Лендинги', route: '/services/landings' },
-    { name: 'Интернет-магазины', route: '/services/ecommerce' },
-    { name: 'Магазин в TG', route: '/services/sites-and-bots' },
-    { name: 'О нас', route: '/about' },
-    { name: 'Контакты', route: '/contact' },
-  ];
 
   return (
     <div className="space-y-12">
@@ -81,60 +69,6 @@ export default async function SettingsPage({
         </form>
       </div>
 
-      {/* ================= БЛОК 2: КОНТЕНТ СТРАНИЦ ================= */}
-      <div className="mx-auto max-w-4xl bg-surface/50 p-10 rounded-3xl border border-ink/5">
-        <h2 className="font-display text-2xl font-bold mb-8 text-ink">Настройки страниц (SEO)</h2>
-        
-        <form 
-          action={async (formData: FormData) => {
-            'use server';
-            const data = {
-              route: formData.get('route') as string,
-              h1: formData.get('h1') as string,
-              seoTitle: formData.get('seoTitle') as string,
-              description: formData.get('description') as string,
-            };
-            await savePageContent(data);
-          }} 
-          className="space-y-6"
-        >
-          <div className="mb-6">
-            <label className="block text-sm font-bold text-ink/80 mb-2">Выберите страницу для редактирования:</label>
-            <div className="flex flex-wrap gap-2">
-              {pagesList.map((page) => (
-                <a 
-                  key={page.route} 
-                  href={`?route=${page.route}`}
-                  className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${
-                    selectedRoute === page.route 
-                      ? 'bg-coral text-white shadow-md' 
-                      : 'bg-white text-ink/60 hover:bg-ink/5 border border-ink/5'
-                  }`}
-                >
-                  {page.name}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <input type="hidden" name="route" value={selectedRoute} />
-          <div>
-            <label className="block text-sm font-bold text-ink/80 mb-2">H1 заголовок</label>
-            <input name="h1" defaultValue={content.h1 || ''} placeholder="Главный заголовок страницы" className="w-full p-4 bg-white border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
-          </div>
-          <div>
-            <label className="block text-sm font-bold text-ink/80 mb-2">SEO Title страницы</label>
-            <input name="seoTitle" defaultValue={content.seoTitle || ''} placeholder="SEO Title для этой страницы" className="w-full p-4 bg-white border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
-          </div>
-          <div>
-            <label className="block text-sm font-bold text-ink/80 mb-2">Описание (Description)</label>
-            <textarea rows={3} name="description" defaultValue={content.description || ''} placeholder="Описание страницы" className="w-full p-4 bg-white border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors resize-none" />
-          </div>
-          <div className="pt-2">
-            <SubmitButton defaultText="Сохранить контент" />
-          </div>
-        </form>
-      </div>
     </div>
   );
 }
