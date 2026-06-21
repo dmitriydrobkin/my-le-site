@@ -53,8 +53,16 @@ export const telegramChats = sqliteTable('telegram_chats', {
 // Проекты портфолио
 export const projects = sqliteTable('projects', {
   id: text('id').primaryKey().notNull(),
+  slug: text('slug').unique().notNull(),
   title: text('title').notNull(),
+  category: text('category').default('САЙТЫ').notNull(),
   description: text('description'),
+  clientName: text('client_name'),
+  timeline: text('timeline'),
+  challenge: text('challenge'),
+  solution: text('solution'),
+  resultsJson: text('results_json', { mode: 'json' }),
+  stackJson: text('stack_json', { mode: 'json' }),
   projectLink: text('project_link'),
   imageUrl: text('image_url'),
   tags: text('tags'), 

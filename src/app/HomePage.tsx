@@ -335,7 +335,7 @@ export default function B2BHomePage({ projectsData }: { projectsData: any[] }) {
 
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-2 lg:gap-6">
             {topProjects.map((item, index) => (
-              <Link href={item.projectLink || `#`} key={item.id} className={`flex flex-col group cursor-pointer ${spans[index] || 'lg:col-span-3'}`}>
+              <Link href={`/portfolio/${item.slug}`} key={item.id} className={`flex flex-col group cursor-pointer ${spans[index] || 'lg:col-span-3'}`}>
                 <div className={`relative w-full aspect-[4/3] lg:aspect-auto ${index === 1 ? 'lg:h-[500px]' : 'lg:h-[400px]'} rounded-[2rem] overflow-hidden mb-4 lg:mb-8 shadow-glass border border-ink/5`}>
                   {item.imageUrl ? (
                     <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />

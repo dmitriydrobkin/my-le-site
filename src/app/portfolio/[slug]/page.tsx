@@ -1,25 +1,26 @@
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight, CheckCircle2 } from 'lucide-react';
-import { PORTFOLIO_PROJECTS, getProjectBySlug } from '@/data/portfolio';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { QuizTrigger } from '@/components/QuizTrigger';
+import { getRequestContext } from '@cloudflare/next-on-pages';
+import { drizzle } from 'drizzle-orm/d1';
+import { projects } from '@/server/db/schema';
+import { eq } from 'drizzle-orm';
 
 export const runtime = 'edge';
 
-// We can optionally generate static params for edge, though Cloudflare Pages adapter handles this well.
-export function generateStaticParams() {
-  return PORTFOLIO_PROJECTS.map((project) => ({
-    slug: project.slug,
-  }));
-}
-
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
-  const project = getProjectBySlug(params.slug);
+export default async function ProjectDetailPage({ params }: { params: { slug: string } }) {
+  const { env } = getRequestContext();
+  const db = drizzle((env as any).DB);
+  
+  const project = await db.select().from(projects).where(eq(projects.slug, params.slug)).get();
 
   if (!project) {
     notFound();
   }
+
+  const stack = project.stackJson ? (typeof project.stackJson === 'string' ? JSON.parse(project.stackJson) : project.stackJson) : [];
+  const results = project.resultsJson ? (typeof project.resultsJson === 'string' ? JSON.parse(project.resultsJson) : project.resultsJson) : [];
 
   return (
     <div className="bg-surface min-h-screen pb-24">
@@ -40,7 +41,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-ink/10 bg-surface font-bold font-sans text-xs uppercase tracking-widest mb-6 text-ink/70">
                 <span className="w-2 h-2 rounded-full bg-coral animate-pulse" />
-                {project.tag}
+                {project.category || project.tags || 'ПРОЕКТ'}
               </div>
               
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-ink leading-[1.05] mb-6">
@@ -48,13 +49,13 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
               </h1>
               
               <p className="font-sans text-lg lg:text-xl text-ink/60 font-medium leading-relaxed">
-                {project.shortDescription}
+                {project.description}
               </p>
             </div>
             
-            {project.liveLink && (
+            {project.projectLink && (
               <a 
-                href={project.liveLink}
+                href={project.projectLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="shrink-0 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white border border-ink/10 hover:border-ink/30 text-ink font-bold font-sans text-sm uppercase tracking-widest transition-all hover:shadow-lg group"
@@ -66,14 +67,18 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
           </div>
           
           {/* Main Image Cover */}
-          <div className="w-full aspect-[16/9] md:aspect-[21/9] relative rounded-[2rem] overflow-hidden border border-ink/5 shadow-glass">
-            <Image 
-              src={project.coverImage} 
-              alt={project.title}
-              fill
-              className="object-cover"
-              priority
-            />
+          <div className="w-full aspect-[16/9] md:aspect-[21/9] relative rounded-[2rem] overflow-hidden border border-ink/5 shadow-glass bg-surface/50">
+            {project.imageUrl ? (
+              <img 
+                src={project.imageUrl} 
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-ink/20 font-bold text-3xl">
+                Нет обложки
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -82,7 +87,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
       <section className="pt-24 px-6 max-w-[1200px] mx-auto">
         
         {/* Meta Info Row */}
-        {(project.clientName || project.timeline) && (
+        {(project.clientName || project.timeline || stack.length > 0) && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {project.clientName && (
               <div className="bg-white rounded-2xl p-6 border border-ink/5 flex flex-col justify-center">
@@ -96,51 +101,58 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                 <span className="font-display text-xl font-bold text-ink">{project.timeline}</span>
               </div>
             )}
-            <div className="bg-white rounded-2xl p-6 border border-ink/5 flex flex-col justify-center md:col-span-2">
-              <span className="font-sans text-xs font-bold tracking-widest text-ink/40 uppercase mb-3">Технологии</span>
-              <div className="flex flex-wrap gap-2">
-                {project.stack.map(tech => (
-                  <span key={tech} className="px-3 py-1 bg-surface text-ink/70 rounded-md text-xs font-bold font-sans border border-ink/5">
-                    {tech}
-                  </span>
-                ))}
+            {stack.length > 0 && (
+              <div className="bg-white rounded-2xl p-6 border border-ink/5 flex flex-col justify-center md:col-span-2">
+                <span className="font-sans text-xs font-bold tracking-widest text-ink/40 uppercase mb-3">Технологии</span>
+                <div className="flex flex-wrap gap-2">
+                  {stack.map((tech: string) => (
+                    <span key={tech} className="px-3 py-1 bg-surface text-ink/70 rounded-md text-xs font-bold font-sans border border-ink/5">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-16">
-          {/* Challenge */}
-          <div className="bg-white rounded-[2rem] p-8 lg:p-12 border border-ink/5 shadow-sm">
-            <h3 className="font-display text-3xl font-bold text-ink mb-6 flex items-center gap-4">
-              <span className="w-10 h-10 rounded-full bg-rose-500/10 text-rose-500 flex items-center justify-center text-lg">!</span>
-              Задача
-            </h3>
-            <p className="font-sans text-ink/60 font-medium leading-relaxed text-lg">
-              {project.challenge}
-            </p>
+        {/* Challenge & Solution */}
+        {(project.challenge || project.solution) && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-16">
+            {project.challenge && (
+              <div className="bg-white rounded-[2rem] p-8 lg:p-12 border border-ink/5 shadow-sm">
+                <h3 className="font-display text-3xl font-bold text-ink mb-6 flex items-center gap-4">
+                  <span className="w-10 h-10 rounded-full bg-rose-500/10 text-rose-500 flex items-center justify-center text-lg">!</span>
+                  Задача
+                </h3>
+                <p className="font-sans text-ink/60 font-medium leading-relaxed text-lg whitespace-pre-wrap">
+                  {project.challenge}
+                </p>
+              </div>
+            )}
+            
+            {project.solution && (
+              <div className="bg-white rounded-[2rem] p-8 lg:p-12 border border-ink/5 shadow-sm">
+                <h3 className="font-display text-3xl font-bold text-ink mb-6 flex items-center gap-4">
+                  <span className="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg">✓</span>
+                  Решение
+                </h3>
+                <p className="font-sans text-ink/60 font-medium leading-relaxed text-lg whitespace-pre-wrap">
+                  {project.solution}
+                </p>
+              </div>
+            )}
           </div>
-          
-          {/* Solution */}
-          <div className="bg-white rounded-[2rem] p-8 lg:p-12 border border-ink/5 shadow-sm">
-            <h3 className="font-display text-3xl font-bold text-ink mb-6 flex items-center gap-4">
-              <span className="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg">✓</span>
-              Решение
-            </h3>
-            <p className="font-sans text-ink/60 font-medium leading-relaxed text-lg">
-              {project.solution}
-            </p>
-          </div>
-        </div>
+        )}
 
         {/* Results */}
-        {project.results.length > 0 && (
+        {results.length > 0 && (
           <div className="bg-ink text-white rounded-[2rem] p-8 lg:p-12 relative overflow-hidden shadow-2xl mb-24">
             <div className="absolute inset-0 bg-gradient-to-r from-coral/20 to-transparent mix-blend-overlay" />
             <h3 className="relative z-10 font-display text-3xl font-bold mb-10">Результаты работы</h3>
             
             <div className="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-8">
-              {project.results.map((res, i) => (
+              {results.map((res: {label: string, value: string}, i: number) => (
                 <div key={i} className="flex flex-col">
                   <span className="font-display text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 mb-3">
                     {res.value}
@@ -154,7 +166,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
           </div>
         )}
 
-        {/* CTA */}
+        {/* CTA - Хотите такой же результат? */}
         <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[3rem] p-10 lg:p-16 text-center max-w-4xl mx-auto shadow-xl">
           <h2 className="font-display text-3xl md:text-5xl font-bold text-ink mb-6">
             Хотите такой же результат?

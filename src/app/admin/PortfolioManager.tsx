@@ -1,22 +1,44 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { Eye, EyeOff, Copy, Trash2, Edit2, Plus, Image as ImageIcon } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { Eye, EyeOff, Copy, Trash2, Edit2, Plus, Image as ImageIcon, X } from 'lucide-react';
 import { saveProjectAction, toggleProjectVisibilityAction, duplicateProjectAction, deleteProjectAction } from '@/server/actions/projects';
-import Image from 'next/image';
 
 export default function PortfolioManager({ initialProjects }: { initialProjects: any[] }) {
   const [editingId, setEditingId] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const [results, setResults] = useState<{label: string, value: string}[]>([]);
 
   const editingProject = editingId ? initialProjects.find(p => p.id === editingId) : null;
 
+  useEffect(() => {
+    if (editingProject && editingProject.resultsJson) {
+      try {
+        setResults(typeof editingProject.resultsJson === 'string' ? JSON.parse(editingProject.resultsJson) : editingProject.resultsJson);
+      } catch(e) { setResults([]); }
+    } else {
+      setResults([]);
+    }
+  }, [editingProject]);
+
   async function handleSubmit(formData: FormData) {
     if (editingId) formData.append('id', editingId);
+    
+    // Добавляем результаты в JSON
+    formData.append('resultsJson', JSON.stringify(results));
+
     await saveProjectAction(formData);
     setEditingId(null);
+    setResults([]);
     formRef.current?.reset();
   }
+
+  const addResult = () => setResults([...results, { label: '', value: '' }]);
+  const updateResult = (index: number, field: 'label'|'value', val: string) => {
+    const newResults = results.map((r, i) => i === index ? { ...r, [field]: val } : r);
+    setResults(newResults);
+  };
+  const removeResult = (index: number) => setResults(results.filter((_, i) => i !== index));
 
   return (
     <div className="space-y-8">
@@ -27,25 +49,90 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
         </h3>
         
         <form ref={formRef} action={handleSubmit} encType="multipart/form-data" className="space-y-6">
+          {/* Базовые данные */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-bold text-ink/80 mb-2">Название проекта *</label>
-              <input required name="title" defaultValue={editingProject?.title || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Например: Разработка Telegram-бота..." />
+              <input required name="title" defaultValue={editingProject?.title || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Название" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-ink/80 mb-2">Ссылка на проект</label>
+              <label className="block text-sm font-bold text-ink/80 mb-2">URL / Slug (оставьте пустым для авто)</label>
+              <input name="slug" defaultValue={editingProject?.slug || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="my-project-slug" />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Категория</label>
+              <select name="category" defaultValue={editingProject?.category || 'САЙТЫ'} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors">
+                <option value="САЙТЫ">САЙТЫ</option>
+                <option value="E-COMMERCE">E-COMMERCE</option>
+                <option value="TELEGRAM-БОТЫ">TELEGRAM-БОТЫ</option>
+                <option value="WEB-ПРИЛОЖЕНИЯ">WEB-ПРИЛОЖЕНИЯ</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Клиент</label>
+              <input name="clientName" defaultValue={editingProject?.clientName || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Название компании" />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Сроки</label>
+              <input name="timeline" defaultValue={editingProject?.timeline || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Например: 2 месяца" />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Внешняя ссылка на проект (кнопка)</label>
               <input name="projectLink" defaultValue={editingProject?.projectLink || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="https://" />
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-bold text-ink/80 mb-2">Описание</label>
-            <textarea rows={3} name="description" defaultValue={editingProject?.description || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors resize-none" placeholder="Кратко о проекте" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+               <label className="block text-sm font-bold text-ink/80 mb-2">Короткий Тег (ярлык)</label>
+               <input name="tags" defaultValue={editingProject?.tags || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="REAL ESTATE, E-COMMERCE..." />
+            </div>
+            <div>
+               <label className="block text-sm font-bold text-ink/80 mb-2">Технологии (через запятую)</label>
+               <input name="stack" defaultValue={editingProject?.stackJson ? (typeof editingProject.stackJson === 'string' ? JSON.parse(editingProject.stackJson).join(', ') : editingProject.stackJson.join(', ')) : ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Next.js, Tailwind, 1C..." />
+            </div>
           </div>
 
           <div>
-            <label className="block text-sm font-bold text-ink/80 mb-2">Теги (через запятую)</label>
-            <input name="tags" defaultValue={editingProject?.tags || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Telegram-бот, React, AI..." />
+            <label className="block text-sm font-bold text-ink/80 mb-2">Краткое описание (в карточке)</label>
+            <textarea rows={2} name="description" defaultValue={editingProject?.description || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors resize-none" placeholder="Кратко о проекте" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Задача</label>
+              <textarea rows={4} name="challenge" defaultValue={editingProject?.challenge || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors resize-none" placeholder="С чем пришел клиент?" />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Решение</label>
+              <textarea rows={4} name="solution" defaultValue={editingProject?.solution || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors resize-none" placeholder="Как мы решили задачу?" />
+            </div>
+          </div>
+
+          {/* Результаты работы */}
+          <div className="bg-surface/50 p-6 rounded-2xl border border-ink/5">
+            <div className="flex justify-between items-center mb-4">
+              <label className="block text-sm font-bold text-ink/80">Результаты работы (Цифры)</label>
+              <button type="button" onClick={addResult} className="text-xs font-bold bg-white border border-ink/10 px-3 py-1.5 rounded-full hover:border-coral hover:text-coral transition-colors flex items-center gap-1">
+                <Plus className="w-3 h-3" /> Добавить
+              </button>
+            </div>
+            {results.length === 0 && <p className="text-xs text-ink/40 font-medium">Нет результатов. Добавьте первую цифру.</p>}
+            <div className="space-y-3">
+              {results.map((res, i) => (
+                <div key={i} className="flex gap-4 items-start">
+                  <div className="flex-1">
+                    <input value={res.label} onChange={e => updateResult(i, 'label', e.target.value)} placeholder="Описание (напр. Конверсия)" className="w-full p-3 text-sm bg-white border border-ink/10 rounded-xl focus:outline-none focus:border-coral" />
+                  </div>
+                  <div className="flex-1">
+                    <input value={res.value} onChange={e => updateResult(i, 'value', e.target.value)} placeholder="Значение (напр. +45%)" className="w-full p-3 text-sm bg-white border border-ink/10 rounded-xl focus:outline-none focus:border-coral" />
+                  </div>
+                  <button type="button" onClick={() => removeResult(i)} className="p-3 text-ink/30 hover:text-red-500 hover:bg-red-500/10 rounded-xl transition-colors">
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div>
@@ -60,13 +147,13 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
             </div>
           </div>
 
-          <div className="flex gap-4 pt-2">
+          <div className="flex gap-4 pt-4">
             <button type="submit" className="px-8 py-4 bg-coral text-white font-bold rounded-full hover:bg-coral/90 transition-colors flex items-center gap-2">
               {editingProject ? <Edit2 className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
               {editingProject ? 'Сохранить изменения' : 'Добавить проект'}
             </button>
             {editingProject && (
-              <button type="button" onClick={() => { setEditingId(null); formRef.current?.reset(); }} className="px-8 py-4 bg-surface text-ink font-bold rounded-full hover:bg-ink/5 transition-colors">
+              <button type="button" onClick={() => { setEditingId(null); setResults([]); formRef.current?.reset(); }} className="px-8 py-4 bg-surface text-ink font-bold rounded-full hover:bg-ink/5 transition-colors">
                 Отмена
               </button>
             )}
@@ -82,7 +169,7 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
               <tr className="bg-surface/50 border-b border-ink/5 text-ink/60 font-sans text-sm uppercase tracking-wider">
                 <th className="p-6 font-bold w-16">Фото</th>
                 <th className="p-6 font-bold">Название</th>
-                <th className="p-6 font-bold">Теги</th>
+                <th className="p-6 font-bold">Категория</th>
                 <th className="p-6 font-bold">Дата</th>
                 <th className="p-6 font-bold text-right">Действия</th>
               </tr>
@@ -109,10 +196,11 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
                         {project.title}
                         {project.isHidden === 1 && <span className="text-[10px] uppercase tracking-wider bg-ink/10 text-ink/60 px-2 py-0.5 rounded-full">Скрыт</span>}
                       </div>
-                      {project.projectLink && <a href={project.projectLink} target="_blank" rel="noreferrer" className="text-sm text-cyan hover:underline">{project.projectLink}</a>}
+                      <div className="text-sm text-ink/40 font-mono">/{project.slug}</div>
                     </td>
                     <td className="p-6">
-                      <div className="text-sm text-ink/60 font-medium">{project.tags || '—'}</div>
+                      <div className="text-sm font-bold text-ink/80">{project.category || '—'}</div>
+                      <div className="text-xs text-ink/50 mt-1">{project.clientName || 'Без клиента'}</div>
                     </td>
                     <td className="p-6 text-sm text-ink/60 whitespace-nowrap">
                       {new Date(project.createdAt).toLocaleDateString('ru-RU')}
