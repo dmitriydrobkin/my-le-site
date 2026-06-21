@@ -86,15 +86,9 @@ export default async function SettingsPage({
         <h2 className="font-display text-2xl font-bold mb-8 text-ink">Настройки страниц (SEO)</h2>
         
         <form 
-          action={async (formData: FormData) => {
+          action={async (formData) => {
             'use server';
-            const data = {
-              route: formData.get('route') as string,
-              h1: formData.get('h1') as string,
-              seoTitle: formData.get('seoTitle') as string,
-              description: formData.get('description') as string,
-            };
-            await savePageContent(data);
+            await savePageContent(formData);
           }} 
           className="space-y-6"
         >
@@ -118,18 +112,47 @@ export default async function SettingsPage({
           </div>
 
           <input type="hidden" name="route" value={selectedRoute} />
-          <div>
-            <label className="block text-sm font-bold text-ink/80 mb-2">H1 заголовок</label>
-            <input name="h1" defaultValue={content.h1 || ''} placeholder="Главный заголовок страницы" className="w-full p-4 bg-white border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
+          
+          <div className="space-y-6 bg-white p-6 rounded-2xl border border-ink/5">
+            <h3 className="font-bold text-lg text-ink">Главный экран (Hero)</h3>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">H1 заголовок</label>
+              <input name="h1" defaultValue={content?.h1 || ''} placeholder="Главный заголовок страницы" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Подзаголовок (Hero Subtitle)</label>
+              <textarea rows={2} name="heroSubtitle" defaultValue={content?.heroSubtitle || ''} placeholder="Текст под главным заголовком" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors resize-none" />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Фоновое изображение</label>
+              <div className="flex flex-col gap-2">
+                {content?.heroImage && (
+                  <div className="text-sm text-ink/60 mb-2">
+                    Текущий фон: <a href={content.heroImage} target="_blank" rel="noreferrer" className="text-coral underline">посмотреть</a>
+                  </div>
+                )}
+                <input type="file" name="heroImageFile" accept="image/*" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-coral/10 file:text-coral hover:file:bg-coral/20 cursor-pointer" />
+              </div>
+            </div>
           </div>
-          <div>
-            <label className="block text-sm font-bold text-ink/80 mb-2">SEO Title страницы</label>
-            <input name="seoTitle" defaultValue={content.seoTitle || ''} placeholder="SEO Title для этой страницы" className="w-full p-4 bg-white border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
-          </div>
-          <div>
-            <label className="block text-sm font-bold text-ink/80 mb-2">Описание (Description)</label>
-            <textarea rows={3} name="description" defaultValue={content.description || ''} placeholder="Описание страницы" className="w-full p-4 bg-white border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors resize-none" />
-          </div>
+
+          <details className="group bg-white rounded-2xl border border-ink/5 open:ring-1 open:ring-ink/5">
+            <summary className="font-bold text-lg text-ink p-6 cursor-pointer select-none flex justify-between items-center">
+              Настройки SEO
+              <span className="text-ink/40 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <div className="p-6 pt-0 space-y-6 border-t border-ink/5">
+              <p className="text-sm text-ink/60">Если оставить SEO Title пустым, сгенерируется из H1.</p>
+              <div>
+                <label className="block text-sm font-bold text-ink/80 mb-2">SEO Title страницы</label>
+                <input name="seoTitle" defaultValue={content?.seoTitle || ''} placeholder="SEO Title для этой страницы" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-ink/80 mb-2">Описание (Description)</label>
+                <textarea rows={3} name="description" defaultValue={content?.description || ''} placeholder="Описание страницы для поисковиков" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors resize-none" />
+              </div>
+            </div>
+          </details>
           <div className="pt-2">
             <SubmitButton defaultText="Сохранить контент" />
           </div>

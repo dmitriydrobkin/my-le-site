@@ -1,66 +1,46 @@
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { getRequestContext } from '@cloudflare/next-on-pages';
 
-export interface UploadResult {
-  success: boolean;
-  url?: string;
-  key?: string;
-  error?: string;
-}
+export async function uploadImageToR2(file: File): Promise<string> {
+  const { env } = getRequestContext();
+  
+  const accountId = (env as any).CLOUDFLARE_ACCOUNT_ID || process.env.CLOUDFLARE_ACCOUNT_ID;
+  const accessKeyId = (env as any).R2_ACCESS_KEY_ID || process.env.R2_ACCESS_KEY_ID;
+  const secretAccessKey = (env as any).R2_SECRET_ACCESS_KEY || process.env.R2_SECRET_ACCESS_KEY;
+  const bucketName = (env as any).R2_BUCKET_NAME || process.env.R2_BUCKET_NAME;
+  const publicUrl = (env as any).R2_PUBLIC_URL || process.env.R2_PUBLIC_URL;
 
-export async function uploadToR2(
-  file: File,
-  folder: string = 'products'
-): Promise<UploadResult> {
-  try {
-    const { env } = getRequestContext();
-
-    if (!file || file.size === 0) {
-      return { success: false, error: 'Файл не выбран' };
-    }
-
-    // Генерируем уникальное имя файла (чтобы избежать конфликтов)
-    const timestamp = Date.now();
-    const randomId = Math.random().toString(36).substring(2, 15);
-    const extension = file.name.split('.').pop() || 'jpg';
-    const key = `${folder}/${timestamp}_${randomId}.${extension}`;
-
-    // Конвертируем картинку в массив байтов для отправки
-    const arrayBuffer = await file.arrayBuffer();
-
-    // Отправляем в R2. (env as any) используем, чтобы строгий TypeScript не ругался на новую привязку
-    const bucket = (env as any).R2_IMAGES;
-    
-    if (!bucket) {
-      throw new Error("Хранилище R2_IMAGES не привязано к проекту!");
-    }
-
-    const result = await bucket.put(key, arrayBuffer, {
-      httpMetadata: {
-        contentType: file.type,
-        cacheControl: 'public, max-age=31536000', // Кешируем на год для скорости
-      },
-      customMetadata: {
-        originalName: file.name,
-      },
-    });
-
-    if (!result) {
-      return { success: false, error: 'Cloudflare отклонил файл' };
-    }
-
-    // Формируем ту самую ссылку, которую ты мне скинул
-    const publicUrl = `https://pub-836bbe909b5140948d4894910cd8b9e4.r2.dev/${key}`;
-
-    return {
-      success: true,
-      url: publicUrl,
-      key: key,
-    };
-  } catch (error) {
-    console.error('R2 upload error:', error);
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : 'Upload failed',
-    };
+  if (!accountId || !accessKeyId || !secretAccessKey || !bucketName || !publicUrl) {
+    throw new Error('R2 credentials are not fully configured in environment variables.');
   }
+
+  const s3Client = new S3Client({
+    region: 'auto',
+    endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
+    credentials: {
+      accessKeyId,
+      secretAccessKey,
+    },
+  });
+
+  const buffer = await file.arrayBuffer();
+  
+  // Safe extract extension
+  const fileNameParts = file.name.split('.');
+  const fileExtension = fileNameParts.length > 1 ? fileNameParts.pop() : 'bin';
+  
+  // Generate unique filename
+  const fileName = `uploads/${Date.now()}-${Math.random().toString(36).substring(2, 9)}.${fileExtension}`;
+
+  await s3Client.send(
+    new PutObjectCommand({
+      Bucket: bucketName,
+      Key: fileName,
+      Body: new Uint8Array(buffer),
+      ContentType: file.type || 'application/octet-stream',
+    })
+  );
+
+  const baseUrl = publicUrl.endsWith('/') ? publicUrl.slice(0, -1) : publicUrl;
+  return `${baseUrl}/${fileName}`;
 }

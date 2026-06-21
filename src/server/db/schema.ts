@@ -13,6 +13,8 @@ export const siteSettings = sqliteTable('settings', {
 export const pageContent = sqliteTable('page_content', {
   route: text('route').primaryKey(),
   h1: text('h1'),
+  heroSubtitle: text('heroSubtitle'),
+  heroImage: text('heroImage'),
   seoTitle: text('seoTitle'),
   description: text('description'),
   updatedAt: integer('updatedAt', { mode: 'timestamp' })
@@ -46,6 +48,19 @@ export const telegramChats = sqliteTable('telegram_chats', {
   type: text('type'), // private, group, supergroup, channel
   isActive: integer('is_active', { mode: 'boolean' }).notNull().default(true),
   createdAt: integer('created_at', { mode: 'timestamp' })
+    .notNull()
+    .$defaultFn(() => new Date()),
+});
+
+// Портфолио проектов
+export const projects = sqliteTable('projects', {
+  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+  title: text('title').notNull(),
+  description: text('description').notNull(),
+  slug: text('slug').notNull().unique(),
+  imageUrl: text('imageUrl'),
+  content: text('content'),
+  createdAt: integer('createdAt', { mode: 'timestamp' })
     .notNull()
     .$defaultFn(() => new Date()),
 });
