@@ -49,3 +49,16 @@ export const telegramChats = sqliteTable('telegram_chats', {
     .notNull()
     .$defaultFn(() => new Date()),
 });
+
+// Проекты портфолио
+export const projects = sqliteTable('projects', {
+  id: text('id').primaryKey().notNull(),
+  title: text('title').notNull(),
+  description: text('description'),
+  projectLink: text('project_link'),
+  imageUrl: text('image_url'),
+  tags: text('tags'), 
+  isHidden: integer('is_hidden').default(0).notNull(), 
+  sortOrder: integer('sort_order').default(0).notNull(),
+  createdAt: integer('created_at').notNull(),
+});
