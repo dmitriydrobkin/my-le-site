@@ -24,7 +24,7 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
       <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-24 pb-24">
         <div className="max-w-4xl">
           <h1 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight text-ink leading-[1.05] mb-10">
-            {(dict?.hero?.title || '').split('БИЗНЕСА')[0].split('БІЗНЕСУ')[0]}
+            {(dict?.hero?.title || '').split(/БИЗНЕСА|БІЗНЕСУ/)[0]}
             <br />
             {lang === 'ru' ? (
               <>ДЛЯ <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">БИЗНЕСА</span></>
