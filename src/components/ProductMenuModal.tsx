@@ -31,14 +31,6 @@ export function ProductMenuModal({ isOpen, onClose, lang }: { isOpen: boolean; o
   const footerDict = getDictionary(lang)?.footer?.links;
   const linkPrefix = lang === 'uk' ? '' : '/ru';
 
-  const PRODUCTS = [
-    { label: footerDict?.landing || 'Лендинг', href: `${linkPrefix}/services/landings` },
-    { label: footerDict?.businessCard || 'Сайт-визитка', href: `${linkPrefix}/services/business-cards` },
-    { label: footerDict?.corporate || 'Корпоративный сайт', href: `${linkPrefix}/services/corporate` },
-    { label: footerDict?.ecommerce || 'Интернет-магазин', href: `${linkPrefix}/services/ecommerce` },
-    { label: 'Магазин + TG Бот', href: `${linkPrefix}/services/sites-and-bots` },
-    { label: footerDict?.tgBots || 'Telegram-боты', href: `${linkPrefix}/services/telegram-bots` },
-  ];
 
   return createPortal(
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 animate-fade-in">
@@ -60,34 +52,36 @@ export function ProductMenuModal({ isOpen, onClose, lang }: { isOpen: boolean; o
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-4">
           <div>
             <h3 className="font-display text-2xl font-bold text-ink mb-6 pr-12">
-              {dict?.popularTypes}
+              {lang === 'uk' ? 'Популярні типи сайтів' : 'Популярные типы сайтов'}
             </h3>
             <div className="flex flex-col gap-3">
-              {PRODUCTS.map((product) => (
+              {niches.slice(0, 9).map((niche) => {
+                const nicheName = typeof niche.name === 'object' ? (niche.name as any)[lang as 'uk' | 'ru'] : niche.name;
+                return (
                 <Link 
-                  key={product.label}
-                  href={product.href}
+                  key={niche.slug}
+                  href={`${linkPrefix}/solutions/${niche.slug}`}
                   onClick={onClose}
                   className="group relative overflow-hidden bg-white rounded-2xl p-5 border border-ink/5 hover:border-coral/30 hover:shadow-lg transition-all flex items-center justify-between"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-coral/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                   <span className="relative z-10 font-sans font-bold text-ink group-hover:text-coral transition-colors">
-                    {product.label}
+                    {nicheName}
                   </span>
                   <div className="relative z-10 w-8 h-8 rounded-full bg-surface flex items-center justify-center text-ink/40 group-hover:bg-coral group-hover:text-white transition-colors shadow-sm">
                     <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </Link>
-              ))}
+              )})}
             </div>
           </div>
           
           <div>
             <h3 className="font-display text-2xl font-bold text-ink mb-6">
-              {dict?.industrySolutions}
+              {lang === 'uk' ? 'Галузеві рішення для бізнесу' : 'Отраслевые решения для бизнеса'}
             </h3>
             <div className="flex flex-col gap-3">
-              {niches.slice(0, 5).map((niche) => {
+              {niches.slice(9).map((niche) => {
                 const nicheName = typeof niche.name === 'object' ? (niche.name as any)[lang as 'uk' | 'ru'] : niche.name;
                 return (
                 <Link 
