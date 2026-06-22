@@ -34,6 +34,11 @@ export async function saveProjectAction(formData: FormData) {
   const timeline = formData.get('timeline') as string;
   const challenge = formData.get('challenge') as string;
   const solution = formData.get('solution') as string;
+
+  const titleUk = formData.get('titleUk')?.toString() || null;
+  const descriptionUk = formData.get('descriptionUk')?.toString() || null;
+  const challengeUk = formData.get('challengeUk')?.toString() || null;
+  const solutionUk = formData.get('solutionUk')?.toString() || null;
   const isTop = formData.get('isTop') === 'on' ? 1 : 0;
 
   const stackStr = formData.get('stack') as string;
@@ -57,14 +62,18 @@ export async function saveProjectAction(formData: FormData) {
     id,
     slug,
     title,
+    titleUk,
     category,
     description,
+    descriptionUk,
     projectLink,
     tags,
     clientName,
     timeline,
     challenge,
+    challengeUk,
     solution,
+    solutionUk,
     isTop,
     resultsJson: resultsArray,
     stackJson: stackArray,
@@ -77,14 +86,18 @@ export async function saveProjectAction(formData: FormData) {
     set: {
       slug,
       title,
+      titleUk,
       category,
       description,
+      descriptionUk,
       projectLink,
       tags,
       clientName,
       timeline,
       challenge,
+      challengeUk,
       solution,
+      solutionUk,
       isTop,
       resultsJson: resultsArray,
       stackJson: stackArray,

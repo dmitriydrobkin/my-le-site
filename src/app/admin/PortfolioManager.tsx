@@ -25,10 +25,7 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
 
   async function handleSubmit(formData: FormData) {
     if (editingId) formData.append('id', editingId);
-    
-    // Добавляем результаты в JSON
     formData.append('resultsJson', JSON.stringify(results));
-
     await saveProjectAction(formData);
     setEditingId(null);
     setResults([]);
@@ -51,19 +48,22 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
 
   return (
     <div className="space-y-8">
-      {/* Форма добавления / редактирования */}
       <div className="bg-white p-6 md:p-8 rounded-[2rem] border border-ink/5 shadow-sm">
         <h3 className="font-display text-2xl font-bold text-ink mb-6">
           {editingProject ? 'Редактировать проект' : 'Добавить новый проект'}
         </h3>
         
         <form ref={formRef} action={handleSubmit} encType="multipart/form-data" className="space-y-6">
-          {/* Базовые данные */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-bold text-ink/80 mb-2">Название проекта *</label>
-              <input required name="title" defaultValue={editingProject?.title || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Название" />
+              <label className="block text-sm font-bold text-ink/80 mb-2">Название (RU) *</label>
+              <input required name="title" defaultValue={editingProject?.title || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Название на русском" />
             </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Название (UA)</label>
+              <input name="titleUk" defaultValue={editingProject?.titleUk || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Назва українською" />
+            </div>
+            
             <div>
               <label className="block text-sm font-bold text-ink/80 mb-2">URL / Slug (оставьте пустым для авто)</label>
               <input name="slug" defaultValue={editingProject?.slug || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="my-project-slug" />
@@ -77,6 +77,7 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
                 <option value="WEB-ПРИЛОЖЕНИЯ">WEB-ПРИЛОЖЕНИЯ</option>
               </select>
             </div>
+            
             <div>
               <label className="block text-sm font-bold text-ink/80 mb-2">Клиент</label>
               <input name="clientName" defaultValue={editingProject?.clientName || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Название компании" />
@@ -85,18 +86,17 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
               <label className="block text-sm font-bold text-ink/80 mb-2">Сроки</label>
               <input name="timeline" defaultValue={editingProject?.timeline || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Например: 2 месяца" />
             </div>
+            
             <div>
-              <label className="block text-sm font-bold text-ink/80 mb-2">Внешняя ссылка на проект (кнопка)</label>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Внешняя ссылка на проект</label>
               <input name="projectLink" defaultValue={editingProject?.projectLink || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="https://" />
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
                <label className="block text-sm font-bold text-ink/80 mb-2">Короткий Тег (ярлык)</label>
                <input name="tags" defaultValue={editingProject?.tags || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="REAL ESTATE, E-COMMERCE..." />
             </div>
-            <div>
+            
+            <div className="md:col-span-2">
                <label className="block text-sm font-bold text-ink/80 mb-2">Технологии (через запятую)</label>
                <input name="stack" defaultValue={editingProject?.stackJson ? (typeof editingProject.stackJson === 'string' ? JSON.parse(editingProject.stackJson).join(', ') : editingProject.stackJson.join(', ')) : ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Next.js, Tailwind, 1C..." />
             </div>
@@ -107,23 +107,35 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
             <label htmlFor="isTop" className="text-sm font-bold text-ink/80 cursor-pointer">Топ проект (Выделять на странице портфолио)</label>
           </div>
 
-          <div>
-            <label className="block text-sm font-bold text-ink/80 mb-2">Краткое описание (в карточке)</label>
-            <textarea rows={2} name="description" defaultValue={editingProject?.description || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors resize-none" placeholder="Кратко о проекте" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
             <div>
-              <label className="block text-sm font-bold text-ink/80 mb-2">Задача</label>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Краткое описание (RU)</label>
+              <textarea rows={3} name="description" defaultValue={editingProject?.description || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors resize-none" placeholder="Кратко о проекте" />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Краткое описание (UA)</label>
+              <textarea rows={3} name="descriptionUk" defaultValue={editingProject?.descriptionUk || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors resize-none" placeholder="Коротко про проєкт" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Задача (RU)</label>
               <textarea rows={4} name="challenge" defaultValue={editingProject?.challenge || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors resize-none" placeholder="С чем пришел клиент?" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-ink/80 mb-2">Решение</label>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Задача (UA)</label>
+              <textarea rows={4} name="challengeUk" defaultValue={editingProject?.challengeUk || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors resize-none" placeholder="З чим прийшов клієнт?" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Решение (RU)</label>
               <textarea rows={4} name="solution" defaultValue={editingProject?.solution || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors resize-none" placeholder="Как мы решили задачу?" />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Решение (UA)</label>
+              <textarea rows={4} name="solutionUk" defaultValue={editingProject?.solutionUk || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors resize-none" placeholder="Як ми вирішили задачу?" />
             </div>
           </div>
 
-          {/* Результаты работы */}
           <div className="bg-surface/50 p-6 rounded-2xl border border-ink/5">
             <div className="flex justify-between items-center mb-4">
               <label className="block text-sm font-bold text-ink/80">Результаты работы (Цифры)</label>
@@ -175,10 +187,7 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
         </form>
       </div>
 
-      {/* Список проектов */}
       <div className="bg-white rounded-[2rem] border border-ink/5 overflow-hidden shadow-sm">
-        
-        {/* Фильтры и поиск */}
         <div className="p-6 border-b border-ink/5 flex flex-col md:flex-row gap-4 items-center justify-between bg-surface/30">
           <input 
             type="text" 

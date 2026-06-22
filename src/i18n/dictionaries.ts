@@ -5,6 +5,8 @@ export type Dictionary = {
     contact: string;
     getStarted: string;
     lang: string;
+    home: string;
+    about: string;
   };
   footer: {
     brandName: string;
@@ -93,6 +95,8 @@ const uk: Dictionary = {
     contact: 'Контакти',
     getStarted: 'Обговорити проект',
     lang: 'RU',
+    home: 'Головна',
+    about: 'Про мене',
   },
   footer: {
     brandName: 'Dmitriy M.',
@@ -232,6 +236,8 @@ const ru: Dictionary = {
     contact: 'Контакты',
     getStarted: 'Обсудить проект',
     lang: 'UA',
+    home: 'Главная',
+    about: 'Обо мне',
   },
   footer: {
     brandName: 'Dmitriy M.',

@@ -24,13 +24,11 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
       <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-24 pb-24">
         <div className="max-w-4xl">
           <h1 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight text-ink leading-[1.05] mb-10">
-            {(dict?.hero?.title || '').split(/БИЗНЕСА|БІЗНЕСУ/)[0]}
+            {(dict?.hero?.title || '').split('ДЛЯ')[0]}
             <br />
-            {lang === 'ru' ? (
-              <>ДЛЯ <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">БИЗНЕСА</span></>
-            ) : (
-              <>ДЛЯ <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">БІЗНЕСУ</span></>
-            )}
+            ДЛЯ <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">
+              {lang === 'ru' ? 'БИЗНЕСА' : 'БІЗНЕСУ'}
+            </span>
           </h1>
           <p className="font-sans text-xl text-ink/60 max-w-2xl font-medium leading-relaxed mb-12">
             {dict?.hero?.subtitle}
@@ -50,18 +48,16 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
         </div>
       </section>
 
-      {/* 2. РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА (SPLIT + HORIZONTAL SCROLL) */}
+      {/* 2. РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА */}
       <ServicesSlider lang={lang} />
 
       {/* 2.5 ОБО МНЕ */}
       <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-white border-t border-ink/5">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="relative bg-ink rounded-[2rem] p-8 lg:p-16 flex flex-col lg:flex-row gap-12 overflow-hidden shadow-2xl">
-            {/* Декоративные фоновые элементы */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-cyan-500/20 to-transparent rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-coral/20 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            {/* Левая часть: Акцентный заголовок */}
             <div className="relative z-10 lg:w-1/3 flex flex-col justify-between">
               <div>
                 <span className="font-sans text-xs font-bold text-white/50 uppercase tracking-widest mb-4 block">{dict?.about?.badge}</span>
@@ -81,7 +77,6 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
               </div>
             </div>
 
-            {/* Правая часть: текст */}
             <div className="relative z-10 lg:w-2/3 flex flex-col justify-center">
               <div className="space-y-6 font-sans text-white/70 text-base md:text-lg leading-relaxed font-light">
                 <p dangerouslySetInnerHTML={{ __html: (dict?.about?.p1 || '').replace('специализация — создание современных, легких сайтов и умных Telegram-ботов', '<strong class="font-medium text-white">специализация — создание современных, легких сайтов и умных Telegram-ботов</strong>').replace('спеціалізація — створення сучасних, швидких сайтів та розумних Telegram-ботів', '<strong class="font-medium text-white">спеціалізація — створення сучасних, швидких сайтів та розумних Telegram-ботів</strong>') }} />
@@ -102,7 +97,6 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
       <FinalCTA lang={lang} />
       
-      {/* Hide global scrollbar for horizontal lists */}
       <style dangerouslySetInnerHTML={{__html: `
         .hide-scrollbar::-webkit-scrollbar {
           display: none;

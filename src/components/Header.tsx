@@ -32,19 +32,19 @@ export function Header({ lang }: { lang: string }) {
   const linkPrefix = lang === 'ru' ? '/ru' : '';
 
   const menuItems = [
-    { label: 'Главная', href: `${linkPrefix}/` },
+    { label: dict.header.home, href: `${linkPrefix}/` },
     { 
       label: dict.header.services, 
       subItems: [
-        { label: 'Лендинги', href: `${linkPrefix}/services/landings` },
-        { label: 'Сайты-визитки', href: `${linkPrefix}/services/business-cards` },
-        { label: 'Корпоративные сайты', href: `${linkPrefix}/services/corporate` },
-        { label: 'Интернет-магазины', href: `${linkPrefix}/services/ecommerce` },
+        { label: dict.footer.links.landing, href: `${linkPrefix}/services/landings` },
+        { label: dict.footer.links.businessCard, href: `${linkPrefix}/services/business-cards` },
+        { label: dict.footer.links.corporate, href: `${linkPrefix}/services/corporate` },
+        { label: dict.footer.links.ecommerce, href: `${linkPrefix}/services/ecommerce` },
         { label: 'Магазин + TG Бот', href: `${linkPrefix}/services/sites-and-bots` },
-        { label: 'Telegram-боты', href: `${linkPrefix}/services/telegram-bots` },
+        { label: dict.footer.links.tgBots, href: `${linkPrefix}/services/telegram-bots` },
       ]
     },
-    { label: 'Обо мне', href: `${linkPrefix}/about` },
+    { label: dict.header.about, href: `${linkPrefix}/about` },
     { label: dict.header.portfolio, href: `${linkPrefix}/portfolio` },
     { label: dict.header.contact, href: `${linkPrefix}/contact` },
   ];
@@ -73,7 +73,7 @@ export function Header({ lang }: { lang: string }) {
               onClick={() => setIsMenuOpen(true)}
               className="bg-white/80 backdrop-blur-md shadow-glass rounded-full w-14 h-14 sm:w-auto sm:h-auto sm:px-8 sm:py-4 flex items-center justify-center sm:gap-4 text-ink font-bold transition-transform hover:scale-105 group"
             >
-              <span className="hidden sm:block">Меню</span>
+              <span className="hidden sm:block">{lang === 'uk' ? 'Меню' : 'Меню'}</span>
             {/* Иконка для ПК (внутри черного кружка) */}
             <div className="hidden sm:flex w-8 h-8 rounded-full bg-ink items-center justify-center text-white group-hover:bg-coral transition-colors">
               <Menu className="w-4 h-4" />

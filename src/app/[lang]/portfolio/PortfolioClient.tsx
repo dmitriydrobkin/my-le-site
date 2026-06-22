@@ -69,7 +69,11 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
-            {filteredProjects.map((project, index) => (
+            {filteredProjects.map((project, index) => {
+              const displayTitle = lang === 'uk' ? (project.titleUk || project.title) : project.title;
+              const displayDescription = lang === 'uk' ? (project.descriptionUk || project.description) : project.description;
+              
+              return (
               <Link 
                 href={`${linkPrefix}/portfolio/${project.slug}`} 
                 key={project.id} 
@@ -79,7 +83,7 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
                   {project.imageUrl ? (
                     <img 
                       src={project.imageUrl} 
-                      alt={project.title} 
+                      alt={displayTitle} 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                     />
                   ) : (
@@ -102,10 +106,10 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
                       {project.tags || project.category || 'ПРОЕКТ'}
                     </span>
                     <h3 className="font-display text-2xl md:text-3xl font-bold text-ink mb-4 group-hover:text-coral transition-colors line-clamp-2">
-                      {project.title}
+                      {displayTitle}
                     </h3>
                     <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed max-w-sm mt-auto line-clamp-3">
-                      {project.description}
+                      {displayDescription}
                     </p>
                   </div>
                   
@@ -114,7 +118,7 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
                   </div>
                 </div>
               </Link>
-            ))}
+            )})}
           </div>
         )}
       </section>
