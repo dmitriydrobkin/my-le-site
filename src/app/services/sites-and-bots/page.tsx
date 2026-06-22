@@ -51,7 +51,7 @@ export default function SitesAndBotsPage() {
           </h1>
           
           <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-3xl font-medium leading-relaxed mb-8">
-            Пока вы отдыхаете, ваша автоворонка конвертирует трафик в прибыль. Мы создаем экосистемы: сайт мгновенно захватывает внимание, а Telegram-бот автоматически прогревает лидов, экономя десятки часов вашим менеджерам.
+            Пока вы отдыхаете, ваша автоворонка конвертирует трафик в прибыль. Я создаю экосистемы: сайт мгновенно захватывает внимание, а Telegram-бот автоматически прогревает лидов, экономя десятки часов вашим менеджерам.
           </p>
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
@@ -152,7 +152,7 @@ export default function SitesAndBotsPage() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-coral">клиентский путь.</span>
             </h2>
             <p className="font-sans text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-2xl border-l-2 border-cyan-400 pl-6">
-              Мы проектируем <strong className="font-bold text-white">путь от первого клика до финальной оплаты</strong>. Клиент видит красивую рекламу → переходит на быстрый сайт → оставляет заявку → попадает в бота → бот греет его контентом → вы получаете деньги. И всё это работает полностью автоматически на мощных облачных серверах.
+              Я проектирую <strong className="font-bold text-white">путь от первого клика до финальной оплаты</strong>. Клиент видит рекламу → переходит на быстрый сайт → оставляет заявку → попадает в бота → бот греет его контентом → вы получаете деньги. И всё это работает полностью автоматически.
             </p>
           </div>
         </div>

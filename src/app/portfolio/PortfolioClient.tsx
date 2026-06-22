@@ -32,7 +32,7 @@ export default function PortfolioClient({ initialProjects }: { initialProjects: 
           </h1>
           
           <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-2xl font-medium leading-relaxed">
-            Каждый проект — это инструмент для бизнеса. Изучите, как мы помогаем компаниям увеличивать продажи, автоматизировать процессы и выделяться на фоне конкурентов.
+            Каждый проект — это инструмент для бизнеса. Изучите, как я помогаю компаниям увеличивать продажи, автоматизировать процессы и выделяться на фоне конкурентов.
           </p>
         </div>
       </section>

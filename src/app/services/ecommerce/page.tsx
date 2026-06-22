@@ -180,7 +180,7 @@ export default function EcommercePage() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-400">продажи.</span>
             </h2>
             <p className="font-sans text-lg text-white/60 font-light leading-relaxed mb-6">
-              Забудьте слово «каталог» и брошенные корзины. Мы создаем инструмент, который устраняет трение между желанием клиента и вашей кассой.
+              Забудьте слово «каталог» и брошенные корзины. Я создаю инструмент, который устраняет трение между желанием клиента и вашей кассой.
             </p>
           </div>
 

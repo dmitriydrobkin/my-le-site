@@ -178,7 +178,7 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
             Хотите такой же результат?
           </h2>
           <p className="font-sans text-lg text-ink/60 font-medium mb-10 max-w-2xl mx-auto">
-            Оставьте заявку, и мы обсудим ваш проект. Найдем идеальное решение для вашего бизнеса и рассчитаем стоимость реализации.
+            Оставьте заявку, и мы обсудим ваш проект. Я подберу идеальное решение для вашего бизнеса и рассчитаю стоимость реализации.
           </p>
           <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-xl hover:-translate-y-1 inline-flex items-center gap-4 group">
             Оставить заявку

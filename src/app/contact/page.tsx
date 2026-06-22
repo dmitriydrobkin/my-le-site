@@ -30,7 +30,7 @@ export default async function ContactPage() {
             </h1>
             
             <p className="font-sans text-lg lg:text-xl text-ink/60 font-medium leading-relaxed mb-10 max-w-lg">
-              Я всегда открыт к новым интересным задачам. Напишите мне в любой удобный мессенджер, и мы оперативно решим ваш вопрос.
+              Я всегда открыт к новым интересным задачам. Напишите мне в любой удобный мессенджер, и я оперативно помогу решить ваш вопрос.
             </p>
             
             <QuizTrigger className="bg-ink hover:bg-ink/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-xl hover:-translate-y-1 flex items-center gap-3 group w-full sm:w-max justify-center">

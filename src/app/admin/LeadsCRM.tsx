@@ -7,7 +7,7 @@ import { ChevronDown, ChevronUp, User, Phone, CheckCircle2, Clock, XCircle, File
 const STATUS_LABELS: Record<string, { label: string, color: string, icon: any }> = {
   'new': { label: 'Новая заявка', color: 'bg-blue-100 text-blue-700 border-blue-200', icon: Clock },
   'contacted': { label: 'Взят в работу', color: 'bg-yellow-100 text-yellow-700 border-yellow-200', icon: Phone },
-  'converted': { label: 'Клиент наш', color: 'bg-emerald-100 text-emerald-700 border-emerald-200', icon: CheckCircle2 },
+  'converted': { label: 'Сделка успешна', color: 'bg-emerald-100 text-emerald-700 border-emerald-200', icon: CheckCircle2 },
   'rejected': { label: 'Отказ / Спам', color: 'bg-red-100 text-red-700 border-red-200', icon: XCircle },
 };
 
@@ -82,7 +82,7 @@ export default function LeadsCRM({ initialLeads, answersMap }: { initialLeads: a
                       >
                         <option value="new">Новая заявка</option>
                         <option value="contacted">Взят в работу</option>
-                        <option value="converted">Клиент наш</option>
+                        <option value="converted">Сделка успешна</option>
                         <option value="rejected">Отказ / Спам</option>
                       </select>
                     </td>
