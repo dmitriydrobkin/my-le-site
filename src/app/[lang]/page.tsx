@@ -1,5 +1,5 @@
 import { getLocalizedProjects } from '@/server/functions/getProjects';
-import B2BHomePage from '../HomePage';
+import B2BHomePage from './HomePage';
 
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
