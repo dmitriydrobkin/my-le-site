@@ -114,7 +114,7 @@ export default async function CityPage({ params }: { params: { slug: string } })
             <div className="relative z-10 lg:w-2/3 flex flex-col justify-center">
               <div className="space-y-6 font-sans text-white/70 text-base md:text-lg leading-relaxed font-light">
                 <p>
-                  Хоть я и могу находиться в другом городе, современные технологии стирают все границы. Я успешно сотрудничаю с предпринимателями {city.namePrepositional} и по всей Украине. Решив <strong>заказать сайт {city.name}</strong> именно у меня, вы получите премиальное качество по справедливой цене.
+                  Хоть я и могу находиться в другом городе, современные технологии стирают все границы. Я успешно сотрудничаю с предпринимателями {city.namePrepositional} и по всей Украине.
                 </p>
                 <p>
                   Мой фокус — <strong className="font-medium text-white">современные, легкие сайты и умные Telegram-боты</strong>. Малому и среднему бизнесу нужен рабочий инструмент, который загружается за секунду и стабильно приносит заявки.
