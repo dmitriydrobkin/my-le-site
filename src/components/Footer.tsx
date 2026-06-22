@@ -41,6 +41,7 @@ export function Footer({ settings }: { settings?: any }) {
     { label: 'TG-боты', href: '/services/telegram-bots' },
     { label: 'Портфолио', href: '/portfolio' },
     { label: 'Обо мне', href: '/about' },
+    { label: 'Отраслевые решения', href: '/solutions' },
     { label: 'География', href: '/locations' },
   ];
 

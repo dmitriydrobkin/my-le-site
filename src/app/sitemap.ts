@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { CITIES } from '@/data/cities';
+import { niches } from '@/data/niches';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://malyshev.dev'; // Укажите реальный домен сайта
@@ -31,6 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
+  // Страницы ниш и категорий
+  const nicheRoutes = niches.map((niche) => ({
+    url: `${baseUrl}/solutions/${niche.slug}`,
+    lastModified: new Date().toISOString().split('T')[0],
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
 
-  return [...routes, ...cityRoutes];
+  return [...routes, ...cityRoutes, ...nicheRoutes];
 }
