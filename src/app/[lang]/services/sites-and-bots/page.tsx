@@ -1,37 +1,15 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { QuizTrigger } from '@/components/QuizTrigger';
 import { ArrowUpRight, Clock, Bot, TrendingUp, Blocks, CheckCircle, Zap } from 'lucide-react';
 import { getDictionary } from '@/i18n/dictionaries';
+import { TopPortfolio } from '@/components/TopPortfolio';
+import { getLocalizedProjects } from '@/server/functions/getProjects';
 
-const PORTFOLIO_ITEMS = [
-  {
-    id: 1,
-    title: 'Автосалон "Premium Auto"',
-    description: 'Корпоративный сайт + бот для квалификации на тест-драйв. Увеличение конверсии на 45%.',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800', 
-    tag: 'АВТОБИЗНЕС'
-  },
-  {
-    id: 2,
-    title: 'Сеть кофеен "Morning Rush"',
-    description: 'Интернет-магазин зерен + программа лояльности в Telegram. +30% к повторным продажам.',
-    image: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800', 
-    tag: 'E-COMMERCE'
-  },
-  {
-    id: 3,
-    title: 'Юридическое агентство "LexPro"',
-    description: 'Высококонверсионный лендинг + бот первичной консультации. Сэкономлено 120 часов работы юристов.',
-    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800', 
-    tag: 'B2B УСЛУГИ'
-  }
-];
-
-export default function SitesAndBotsPage({ params }: { params: { lang: string } }) {
+export default async function SitesAndBotsPage({ params }: { params: { lang: string } }) {
   const dict = getDictionary(params.lang).servicesPages.sitesAndBots;
+  let projectsData: any[] = [];
+  try { projectsData = await getLocalizedProjects(params.lang); } catch (e) {}
 
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
@@ -61,7 +39,7 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
               {dict.btnCalc}
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </QuizTrigger>
-            <Link href={`/${params.lang}#portfolio`} className="flex items-center gap-3 text-ink font-bold hover:text-cyan-600 transition-colors group">
+            <Link href={`${params.lang === 'uk' ? '' : '/ru'}/portfolio`} className="flex items-center gap-3 text-ink font-bold hover:text-cyan-600 transition-colors group">
               <span className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center bg-surface group-hover:border-cyan-500/30 transition-colors shadow-sm">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
@@ -172,46 +150,10 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
         </div>
       </section>
 
-      {/* 5. ИЗБРАННЫЕ ПРОЕКТЫ (PORTFOLIO GRID) - Not translated statically as they might be dynamic, but left as is */}
-      <section id="portfolio" className="py-16 lg:py-24 bg-white border-b border-ink/5">
-        <div className="max-w-[1400px] mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight">
-              {params.lang === 'ru' ? 'Избранные проекты' : 'Вибрані проєкти'}
-            </h2>
-            <p className="font-sans text-ink/50 leading-relaxed font-medium max-w-sm">
-              {params.lang === 'ru' ? 'Каждый кейс — это не просто красивый код, а полноценная работающая машина по генерации прибыли.' : 'Кожен кейс — це не просто гарний код, а повноцінна працююча машина з генерації прибутку.'}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PORTFOLIO_ITEMS.map((item) => (
-              <Link href="#" key={item.id} className="flex flex-col group cursor-pointer">
-                <div className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden mb-6 shadow-glass border border-ink/5">
-                  <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
-                </div>
-                <div className="flex justify-between items-start gap-4 h-full px-2">
-                  <div className="flex flex-col">
-                    <span className="font-sans text-xs font-bold tracking-widest text-ink/40 uppercase block mb-3">
-                      {item.tag}
-                    </span>
-                    <h3 className="font-display text-2xl font-bold text-ink mb-3 group-hover:text-coral transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed max-w-sm mt-auto">
-                      {item.description}
-                    </p>
-                  </div>
-                  <div className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center text-ink bg-white border border-ink/10 group-hover:bg-coral group-hover:text-white group-hover:border-transparent transition-colors shadow-sm">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 5. ИЗБРАННЫЕ ПРОЕКТЫ (PORTFOLIO GRID) */}
+      <div id="portfolio">
+        <TopPortfolio projectsData={projectsData} lang={params.lang} />
+      </div>
 
       {/* 6. CTA БЛОК */}
       <section className="py-16 lg:py-24 bg-surface">

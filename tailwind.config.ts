@@ -4,7 +4,7 @@ import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   darkMode: 'class',
-  content: ["./src/**/*.tsx"],
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
