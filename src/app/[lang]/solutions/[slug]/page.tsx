@@ -130,10 +130,10 @@ export default async function NichePage({ params }: { params: { slug: string, la
       </section>
 
       {/* 3. РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА (SPLIT + HORIZONTAL SCROLL) */}
-      <ServicesSlider title={`РЕШЕНИЯ ДЛЯ ВАШЕГО БИЗНЕСА`} />
+      <ServicesSlider lang={params.lang} title={`РЕШЕНИЯ ДЛЯ ВАШЕГО БИЗНЕСА`} />
 
       {/* 4. ЧТО ВЫ ПОЛУЧАЕТЕ (BENTO GRID ИЗ ГЛАВНОЙ/ГОРОДОВ) */}
-      <ProductMenuWrapper />
+      <ProductMenuWrapper lang={params.lang} />
 
       {/* 5. КАК ЭТО РАБОТАЕТ (ТЕХНИЧЕСКИЙ КОЗЫРЬ) - Темный блок */}
       <section className="py-16 lg:py-24 bg-ink text-white relative overflow-hidden">

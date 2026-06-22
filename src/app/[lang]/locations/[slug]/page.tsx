@@ -79,7 +79,7 @@ export default async function CityPage({ params }: { params: { slug: string, lan
       </section>
 
       {/* 2. РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА (SPLIT + HORIZONTAL SCROLL) */}
-      <ServicesSlider title={`РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА ${city.namePrepositional.toUpperCase()}`} />
+      <ServicesSlider lang={params.lang} title={`РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА ${city.namePrepositional.toUpperCase()}`} />
 
       {/* 2.5 ОБО МНЕ (Адаптация) */}
       <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-white border-t border-ink/5">
@@ -128,13 +128,13 @@ export default async function CityPage({ params }: { params: { slug: string, lan
       </section>
 
       {/* 3. BENTO GRID */}
-      <ProductMenuWrapper />
+      <ProductMenuWrapper lang={params.lang} />
 
       {/* 4. ПРИМЕРЫ РАБОТ */}
       <TopPortfolio projectsData={projectsData} lang={params.lang} />
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
-      <FinalCTA />
+      <FinalCTA lang={params.lang} />
       
     </div>
   );
