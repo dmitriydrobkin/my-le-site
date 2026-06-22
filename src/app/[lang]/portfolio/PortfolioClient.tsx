@@ -7,7 +7,8 @@ import { ArrowUpRight, Filter, Image as ImageIcon } from 'lucide-react';
 export type ProjectCategory = 'САЙТЫ' | 'E-COMMERCE' | 'TELEGRAM-БОТЫ' | 'WEB-ПРИЛОЖЕНИЯ';
 const CATEGORIES: ('ВСЕ' | ProjectCategory)[] = ['ВСЕ', 'САЙТЫ', 'E-COMMERCE', 'TELEGRAM-БОТЫ', 'WEB-ПРИЛОЖЕНИЯ'];
 
-export default function PortfolioClient({ initialProjects }: { initialProjects: any[] }) {
+export default function PortfolioClient({ initialProjects, lang }: { initialProjects: any[], lang: string }) {
+  const linkPrefix = lang === 'ru' ? '/ru' : '';
   const [activeFilter, setActiveFilter] = useState<'ВСЕ' | ProjectCategory>('ВСЕ');
 
   const filteredProjects = initialProjects.filter(
@@ -70,7 +71,7 @@ export default function PortfolioClient({ initialProjects }: { initialProjects: 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
             {filteredProjects.map((project, index) => (
               <Link 
-                href={`/portfolio/${project.slug}`} 
+                href={`${linkPrefix}/portfolio/${project.slug}`} 
                 key={project.id} 
                 className={`flex flex-col group cursor-pointer ${project.isTop === 1 ? 'md:col-span-2' : ''}`}
               >
