@@ -15,7 +15,7 @@ import { getDictionary } from '@/i18n/dictionaries';
 
 export default function B2BHomePage({ projectsData, lang }: { projectsData: any[], lang: string }) {
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
-  const dict = getDictionary(lang);
+  const dict = getDictionary(lang) || getDictionary('uk');
 
   return (
     <div className="bg-white min-h-screen">
@@ -24,7 +24,7 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
       <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-24 pb-24">
         <div className="max-w-4xl">
           <h1 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight text-ink leading-[1.05] mb-10">
-            {dict.hero.title.split('БИЗНЕСА')[0].split('БІЗНЕСУ')[0]}
+            {(dict?.hero?.title || '').split('БИЗНЕСА')[0].split('БІЗНЕСУ')[0]}
             <br />
             {lang === 'ru' ? (
               <>ДЛЯ <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">БИЗНЕСА</span></>
@@ -33,18 +33,18 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
             )}
           </h1>
           <p className="font-sans text-xl text-ink/60 max-w-2xl font-medium leading-relaxed mb-12">
-            {dict.hero.subtitle}
+            {dict?.hero?.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-neon-coral hover:-translate-y-1 flex items-center gap-3 group">
-              {dict.hero.primaryBtn}
+              {dict?.hero?.primaryBtn}
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </QuizTrigger>
             <Link href={`${lang === 'ru' ? '/ru' : ''}/services/sites-and-bots`} className="flex items-center gap-3 text-ink font-bold hover:text-cyan transition-colors group">
               <span className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center bg-surface group-hover:border-cyan/30 transition-colors">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
-              {dict.hero.secondaryBtn}
+              {dict?.hero?.secondaryBtn}
             </Link>
           </div>
         </div>
@@ -64,10 +64,10 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
             {/* Левая часть: Акцентный заголовок */}
             <div className="relative z-10 lg:w-1/3 flex flex-col justify-between">
               <div>
-                <span className="font-sans text-xs font-bold text-white/50 uppercase tracking-widest mb-4 block">{dict.about.badge}</span>
+                <span className="font-sans text-xs font-bold text-white/50 uppercase tracking-widest mb-4 block">{dict?.about?.badge}</span>
                 <h2 
                   className="font-display text-4xl md:text-5xl font-bold text-white leading-tight"
-                  dangerouslySetInnerHTML={{ __html: dict.about.title }}
+                  dangerouslySetInnerHTML={{ __html: dict?.about?.title || '' }}
                 />
               </div>
               
@@ -76,7 +76,7 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
                     <span className="font-mono text-sm">&lt;/&gt;</span>
                  </div>
                  <span className="font-sans text-xs font-bold text-white/30 uppercase tracking-widest">
-                   {dict.about.role}
+                   {dict?.about?.role}
                  </span>
               </div>
             </div>
@@ -84,9 +84,9 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
             {/* Правая часть: текст */}
             <div className="relative z-10 lg:w-2/3 flex flex-col justify-center">
               <div className="space-y-6 font-sans text-white/70 text-base md:text-lg leading-relaxed font-light">
-                <p dangerouslySetInnerHTML={{ __html: dict.about.p1.replace('специализация — создание современных, легких сайтов и умных Telegram-ботов', '<strong class="font-medium text-white">специализация — создание современных, легких сайтов и умных Telegram-ботов</strong>').replace('спеціалізація — створення сучасних, швидких сайтів та розумних Telegram-ботів', '<strong class="font-medium text-white">спеціалізація — створення сучасних, швидких сайтів та розумних Telegram-ботів</strong>') }} />
-                <p>{dict.about.p2}</p>
-                <p>{dict.about.p3}</p>
+                <p dangerouslySetInnerHTML={{ __html: (dict?.about?.p1 || '').replace('специализация — создание современных, легких сайтов и умных Telegram-ботов', '<strong class="font-medium text-white">специализация — создание современных, легких сайтов и умных Telegram-ботов</strong>').replace('спеціалізація — створення сучасних, швидких сайтів та розумних Telegram-ботів', '<strong class="font-medium text-white">спеціалізація — створення сучасних, швидких сайтів та розумних Telegram-ботів</strong>') }} />
+                <p>{dict?.about?.p2}</p>
+                <p>{dict?.about?.p3}</p>
               </div>
             </div>
           </div>

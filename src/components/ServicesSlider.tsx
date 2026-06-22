@@ -7,8 +7,8 @@ import { useRef, useEffect, useState } from 'react';
 import { getDictionary } from '@/i18n/dictionaries';
 
 export function ServicesSlider({ title, lang }: { title?: string, lang: string }) {
-  const dict = getDictionary(lang);
-  const SERVICES = dict.servicesSlider.items;
+  const dict = getDictionary(lang) || getDictionary('uk');
+  const SERVICES = dict?.servicesSlider?.items || [];
   const scrollRef = useRef<HTMLDivElement>(null);
   const [paddingLeft, setPaddingLeft] = useState(24);
 
@@ -46,11 +46,11 @@ export function ServicesSlider({ title, lang }: { title?: string, lang: string }
         {/* Header Split */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10">
           <h2 className="font-display text-4xl md:text-6xl font-bold text-ink leading-[1.1] max-w-2xl uppercase">
-            {title || dict.servicesSlider.defaultTitle}
+            {title || dict?.servicesSlider?.defaultTitle}
           </h2>
           <div className="flex flex-col items-start lg:items-end gap-8 lg:max-w-md">
             <p className="font-sans text-ink/50 leading-relaxed font-medium lg:text-right">
-              {dict.servicesSlider.subtitle}
+              {dict?.servicesSlider?.subtitle}
             </p>
             {/* Sliders Navigation */}
             <div className="flex gap-4">
@@ -107,7 +107,7 @@ export function ServicesSlider({ title, lang }: { title?: string, lang: string }
                   
                   {/* Hover text */}
                   <span className="relative z-10 opacity-0 group-hover:opacity-100 max-w-0 group-hover:max-w-[120px] text-white font-bold font-sans tracking-wide group-hover:ml-5 whitespace-nowrap overflow-hidden transition-all duration-500">
-                    {dict.common.moreInfo}
+                    {dict?.common?.moreInfo}
                   </span>
                   
                   {/* The round arrow button */}
@@ -119,7 +119,7 @@ export function ServicesSlider({ title, lang }: { title?: string, lang: string }
                 <div className="relative overflow-hidden rounded-full border border-ink/10 bg-white transition-all duration-500 ease-out flex items-center justify-center group-hover:justify-between p-1.5 w-16 h-16 group-hover:w-full group-hover:border-transparent">
                   <div className={`absolute inset-0 z-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r ${service.gradient} transition-opacity duration-500 ease-in-out pointer-events-none`} />
                   <span className="relative z-10 opacity-0 group-hover:opacity-100 max-w-0 group-hover:max-w-[120px] text-white font-bold font-sans tracking-wide group-hover:ml-5 whitespace-nowrap overflow-hidden transition-all duration-500">
-                    {dict.common.moreInfo}
+                    {dict?.common?.moreInfo}
                   </span>
                   <div className="relative z-10 w-12 h-12 shrink-0 rounded-full flex items-center justify-center text-ink bg-white group-hover:bg-white group-hover:text-ink transition-colors duration-500 shadow-sm">
                     <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
