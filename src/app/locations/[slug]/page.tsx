@@ -62,7 +62,7 @@ export default async function CityPage({ params }: { params: { slug: string } })
             ДЛЯ БИЗНЕСА <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan uppercase">{city.nameGenitive}</span>
           </h1>
           <p className="font-sans text-xl text-ink/60 max-w-2xl font-medium leading-relaxed mb-12">
-            Ищете надежного разработчика {city.namePrepositional}? Я проектирую и запускаю высококонверсионные веб-системы и Telegram-боты, которые работают на рост вашей прибыли 24/7. Если вам нужно <strong>заказать сайт в {city.namePrepositional}</strong> — вы по адресу.
+            Ищете надежного разработчика {city.namePrepositional}? Я проектирую и запускаю высококонверсионные веб-системы и Telegram-боты, которые работают на рост вашей прибыли 24/7. Если вам нужно <strong>заказать сайт {city.namePrepositional}</strong> — вы по адресу.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-neon-coral hover:-translate-y-1 flex items-center gap-3 group">

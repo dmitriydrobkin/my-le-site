@@ -79,7 +79,7 @@ export default async function SettingsPage({
              <h3 className="font-display text-xl font-bold mb-4 text-ink">SEO: Индексация</h3>
              <div className="flex items-center gap-3 mb-2">
                 <input type="checkbox" id="seo_indexing" name="seo_indexing" defaultChecked={settings.seo_indexing_enabled === 'true'} className="w-5 h-5 accent-coral" />
-                <label htmlFor="seo_indexing" className="text-sm font-bold text-ink/80 cursor-pointer">Разрешить поисковым роботам (Google, Yandex) индексировать сайт</label>
+                <label htmlFor="seo_indexing" className="text-sm font-bold text-ink/80 cursor-pointer">Разрешить поисковым роботам (Google, Bing) индексировать сайт</label>
              </div>
              <p className="text-sm text-ink/60">Если выключено, на все страницы сайта будет добавлен метатег "noindex, nofollow", который скроет сайт из результатов поиска.</p>
           </div>

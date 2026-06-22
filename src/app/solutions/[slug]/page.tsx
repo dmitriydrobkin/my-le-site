@@ -42,6 +42,11 @@ export default async function NichePage({ params }: { params: { slug: string } }
     console.error('Failed to fetch projects on niche page:', error);
   }
 
+  const nameLower = niche.name.toLowerCase();
+  const seoPrefix = nameLower.startsWith('заказать') 
+    ? `Вам нужно ${nameLower}?`
+    : `Вам нужно заказать ${nameLower}?`;
+
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
       
@@ -62,7 +67,7 @@ export default async function NichePage({ params }: { params: { slug: string } }
           </h1>
           
           <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-3xl font-medium leading-relaxed mb-12">
-            {niche.heroSubtitle}
+            <strong className="text-ink/80">{seoPrefix}</strong> {niche.heroSubtitle}
           </p>
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 w-full max-w-full">
