@@ -79,7 +79,7 @@ export default function B2BHomePage({ projectsData }: { projectsData: any[] }) {
     }
   };
 
-  const topProjects = projectsData.slice(0, 3);
+  const topProjects = projectsData.filter(p => p.isTop === 1).slice(0, 3);
   const spans = ['lg:col-span-3', 'lg:col-span-4', 'lg:col-span-3'];
 
   return (

@@ -22,7 +22,11 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
   const stack = project.stackJson ? (typeof project.stackJson === 'string' ? JSON.parse(project.stackJson) : project.stackJson) : [];
   const results = project.resultsJson ? (typeof project.resultsJson === 'string' ? JSON.parse(project.resultsJson) : project.resultsJson) : [];
 
-  const absoluteLink = project.projectLink ? (project.projectLink.startsWith('http') ? project.projectLink : `https://${project.projectLink}`) : '';
+  const absoluteLink = project.projectLink ? (
+    project.projectLink.startsWith('http') || project.projectLink.startsWith('/') 
+      ? project.projectLink 
+      : `https://${project.projectLink}`
+  ) : '';
 
   return (
     <div className="bg-surface min-h-screen pb-24">

@@ -31,6 +31,8 @@ export function Footer({ settings }: { settings?: any }) {
   const phone = settings?.global_phone || '+38 098 856 77 77';
   const email = settings?.global_email || 'contact@nashe.agency';
   const tg = settings?.global_tg || 'https://t.me/malyshev_dev';
+  const inst = settings?.global_inst;
+  const fb = settings?.global_fb;
   const quickLinks = [
     { label: 'Лендинг', href: '/services/landings' },
     { label: 'Сайт-визитка', href: '/services/business-cards' },
@@ -99,12 +101,16 @@ export function Footer({ settings }: { settings?: any }) {
                 {email}
               </a>
               <div className="flex gap-3 mt-2">
-                <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <InstagramIcon className="w-4 h-4" />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
-                  <FacebookIcon className="w-4 h-4" />
-                </a>
+                {inst && (
+                  <a href={inst} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
+                    <InstagramIcon className="w-4 h-4" />
+                  </a>
+                )}
+                {fb && (
+                  <a href={fb} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
+                    <FacebookIcon className="w-4 h-4" />
+                  </a>
+                )}
                 <a href={tg} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
                   <TelegramIcon className="w-4 h-4" />
                 </a>

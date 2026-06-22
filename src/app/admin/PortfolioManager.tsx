@@ -8,6 +8,8 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
   const [editingId, setEditingId] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const [results, setResults] = useState<{label: string, value: string}[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterCategory, setFilterCategory] = useState<string>('ВСЕ');
 
   const editingProject = editingId ? initialProjects.find(p => p.id === editingId) : null;
 
@@ -39,6 +41,13 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
     setResults(newResults);
   };
   const removeResult = (index: number) => setResults(results.filter((_, i) => i !== index));
+
+  const filteredProjects = initialProjects.filter(p => {
+    const matchesSearch = (p.title?.toLowerCase() || '').includes(searchQuery.toLowerCase()) || 
+                          (p.clientName?.toLowerCase() || '').includes(searchQuery.toLowerCase());
+    const matchesCategory = filterCategory === 'ВСЕ' || p.category === filterCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="space-y-8">
@@ -168,6 +177,29 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
 
       {/* Список проектов */}
       <div className="bg-white rounded-[2rem] border border-ink/5 overflow-hidden shadow-sm">
+        
+        {/* Фильтры и поиск */}
+        <div className="p-6 border-b border-ink/5 flex flex-col md:flex-row gap-4 items-center justify-between bg-surface/30">
+          <input 
+            type="text" 
+            placeholder="Поиск по названию или клиенту..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full md:max-w-xs p-3 bg-white border border-ink/10 rounded-xl focus:outline-none focus:border-coral text-sm"
+          />
+          <select 
+            value={filterCategory} 
+            onChange={(e) => setFilterCategory(e.target.value)}
+            className="w-full md:w-auto p-3 bg-white border border-ink/10 rounded-xl focus:outline-none focus:border-coral text-sm"
+          >
+            <option value="ВСЕ">Все категории</option>
+            <option value="САЙТЫ">САЙТЫ</option>
+            <option value="E-COMMERCE">E-COMMERCE</option>
+            <option value="TELEGRAM-БОТЫ">TELEGRAM-БОТЫ</option>
+            <option value="WEB-ПРИЛОЖЕНИЯ">WEB-ПРИЛОЖЕНИЯ</option>
+          </select>
+        </div>
+
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[800px]">
             <thead>
@@ -180,12 +212,12 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
               </tr>
             </thead>
             <tbody>
-              {initialProjects.length === 0 ? (
+              {filteredProjects.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="p-8 text-center text-ink/40 font-medium">Нет проектов. Добавьте первый проект выше.</td>
+                  <td colSpan={5} className="p-8 text-center text-ink/40 font-medium">Проекты не найдены.</td>
                 </tr>
               ) : (
-                initialProjects.map((project) => (
+                filteredProjects.map((project) => (
                   <tr key={project.id} className={`border-b border-ink/5 hover:bg-surface/30 transition-colors ${project.isHidden ? 'opacity-50 bg-surface/50' : ''}`}>
                     <td className="p-6">
                       <div className="w-12 h-12 rounded-lg overflow-hidden bg-surface flex items-center justify-center border border-ink/10 relative">
@@ -200,6 +232,7 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
                       <div className="font-bold text-ink mb-1 flex items-center gap-2">
                         {project.title}
                         {project.isHidden === 1 && <span className="text-[10px] uppercase tracking-wider bg-ink/10 text-ink/60 px-2 py-0.5 rounded-full">Скрыт</span>}
+                        {project.isTop === 1 && <span className="text-[10px] uppercase tracking-wider bg-coral text-white px-2 py-0.5 rounded-full">Топ</span>}
                       </div>
                       <div className="text-sm text-ink/40 font-mono">/{project.slug}</div>
                     </td>

@@ -43,6 +43,8 @@ export default async function SettingsPage({
             settingsData.append('global_phone', formData.get('phone') as string || '');
             settingsData.append('global_email', formData.get('email') as string || '');
             settingsData.append('global_tg', formData.get('tg') as string || '');
+            settingsData.append('global_inst', formData.get('inst') as string || '');
+            settingsData.append('global_fb', formData.get('fb') as string || '');
             settingsData.append('seo_indexing_enabled', formData.get('seo_indexing') === 'on' ? 'true' : 'false');
             
             // Отправляем ровно ОДИН аргумент, как и требует TypeScript
@@ -62,6 +64,14 @@ export default async function SettingsPage({
             <div className="md:col-span-2">
               <label className="block text-sm font-bold text-ink/80 mb-2">Telegram (ссылка на аккаунт/канал)</label>
               <input name="tg" defaultValue={settings.global_tg || ''} placeholder="https://t.me/nashe_agency" className="w-full p-4 bg-white border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Instagram (ссылка)</label>
+              <input name="inst" defaultValue={settings.global_inst || ''} placeholder="https://instagram.com/..." className="w-full p-4 bg-white border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-ink/80 mb-2">Facebook (ссылка)</label>
+              <input name="fb" defaultValue={settings.global_fb || ''} placeholder="https://facebook.com/..." className="w-full p-4 bg-white border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
             </div>
           </div>
 
