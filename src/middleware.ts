@@ -1,22 +1,22 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+export const config = {
+  // Игнорируем API, статику, картинки, фавиконки, админку
+  matcher: ['/((?!api|_next/static|_next/image|admin|icon|apple-icon|favicon.ico|.*\\..*).*)'],
+};
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Если пытаются зайти в админку (но не на страницу входа)
-  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
-    const sessionCookie = request.cookies.get('admin_session')?.value;
-    
-    // Базовая проверка: если куки вообще нет, кидаем на логин
-    if (!sessionCookie) {
-      return NextResponse.redirect(new URL('/admin/login', request.url));
-    }
+  // Если URL начинается с /ru/ или равен /ru, то язык русский - ничего не перехватываем
+  if (pathname.startsWith('/ru/') || pathname === '/ru') {
+    return NextResponse.next();
   }
 
-  return NextResponse.next();
+  // Во всех остальных случаях считаем, что это украинская версия (по умолчанию).
+  // Делаем скрытый Rewrite на /uk/..., чтобы App Router поймал папку [lang]
+  const newUrl = request.nextUrl.clone();
+  newUrl.pathname = `/uk${pathname}`;
+  return NextResponse.rewrite(newUrl);
 }
-
-export const config = {
-  matcher: ['/admin/:path*'],
-};
