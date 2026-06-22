@@ -62,7 +62,7 @@ export default async function CityPage({ params }: { params: { slug: string } })
             ДЛЯ БИЗНЕСА <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan uppercase">{city.nameGenitive}</span>
           </h1>
           <p className="font-sans text-xl text-ink/60 max-w-2xl font-medium leading-relaxed mb-12">
-            Ищете надежного разработчика {city.namePrepositional}? Я проектирую и запускаю высококонверсионные веб-системы и Telegram-боты, которые работают на рост вашей прибыли 24/7.
+            Ищете надежного разработчика {city.namePrepositional}? Я проектирую и запускаю высококонверсионные веб-системы и Telegram-боты, которые работают на рост вашей прибыли 24/7. Если вам нужно <strong>заказать сайт в {city.namePrepositional}</strong> — вы по адресу.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-neon-coral hover:-translate-y-1 flex items-center gap-3 group">
@@ -80,7 +80,7 @@ export default async function CityPage({ params }: { params: { slug: string } })
       </section>
 
       {/* 2. РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА (SPLIT + HORIZONTAL SCROLL) */}
-      <ServicesSlider />
+      <ServicesSlider title={`РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА ${city.namePrepositional.toUpperCase()}`} />
 
       {/* 2.5 ОБО МНЕ (Адаптация) */}
       <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-white border-t border-ink/5">
@@ -114,7 +114,7 @@ export default async function CityPage({ params }: { params: { slug: string } })
             <div className="relative z-10 lg:w-2/3 flex flex-col justify-center">
               <div className="space-y-6 font-sans text-white/70 text-base md:text-lg leading-relaxed font-light">
                 <p>
-                  Хоть я и могу находиться в другом городе, современные технологии стирают все границы. Я успешно сотрудничаю с предпринимателями {city.namePrepositional} и по всей Украине.
+                  Хоть я и могу находиться в другом городе, современные технологии стирают все границы. Я успешно сотрудничаю с предпринимателями {city.namePrepositional} и по всей Украине. Решив <strong>заказать сайт {city.name}</strong> именно у меня, вы получите премиальное качество по справедливой цене.
                 </p>
                 <p>
                   Мой фокус — <strong className="font-medium text-white">современные, легкие сайты и умные Telegram-боты</strong>. Малому и среднему бизнесу нужен рабочий инструмент, который загружается за секунду и стабильно приносит заявки.
