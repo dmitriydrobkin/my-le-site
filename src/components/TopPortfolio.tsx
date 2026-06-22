@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
+import { getDictionary } from '@/i18n/dictionaries';
 
-export function TopPortfolio({ projectsData }: { projectsData: any[] }) {
+export function TopPortfolio({ projectsData, lang }: { projectsData: any[], lang: string }) {
+  const dict = getDictionary(lang);
+  const linkPrefix = lang === 'ru' ? '/ru' : '';
   const topProjects = projectsData.filter(p => p.isTop === 1).slice(0, 3);
   const spans = ['lg:col-span-3', 'lg:col-span-4', 'lg:col-span-3'];
 
@@ -10,10 +13,10 @@ export function TopPortfolio({ projectsData }: { projectsData: any[] }) {
       <div className="max-w-[1400px] mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase">
-            Примеры работ
+            {dict.common.portfolio}
           </h2>
-          <Link href="/portfolio" className="flex items-center gap-3 font-bold font-sans text-sm tracking-widest uppercase hover:text-coral transition-colors group">
-            Смотреть все
+          <Link href={`${linkPrefix}/portfolio`} className="flex items-center gap-3 font-bold font-sans text-sm tracking-widest uppercase hover:text-coral transition-colors group">
+            {dict.common.moreInfo}
             <span className="w-10 h-10 rounded-full border border-ink/10 bg-white flex items-center justify-center group-hover:border-coral transition-colors shadow-sm">
               <ArrowUpRight className="w-4 h-4" />
             </span>
@@ -22,7 +25,7 @@ export function TopPortfolio({ projectsData }: { projectsData: any[] }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-10 gap-2 lg:gap-6">
           {topProjects.map((item, index) => (
-            <Link href={`/portfolio/${item.slug}`} key={item.id} className={`flex flex-col group cursor-pointer ${spans[index] || 'lg:col-span-3'}`}>
+            <Link href={`${linkPrefix}/portfolio/${item.slug}`} key={item.id} className={`flex flex-col group cursor-pointer ${spans[index] || 'lg:col-span-3'}`}>
               <div className={`relative w-full aspect-[4/3] lg:aspect-auto ${index === 1 ? 'lg:h-[500px]' : 'lg:h-[400px]'} rounded-[2rem] overflow-hidden mb-4 lg:mb-8 shadow-glass border border-ink/5`}>
                 {item.imageUrl ? (
                   <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />

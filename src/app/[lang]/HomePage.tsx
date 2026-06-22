@@ -11,7 +11,7 @@ import { BentoAdvantages } from '@/components/BentoAdvantages';
 import { TopPortfolio } from '@/components/TopPortfolio';
 import { FinalCTA } from '@/components/FinalCTA';
 
-export default function B2BHomePage({ projectsData }: { projectsData: any[] }) {
+export default function B2BHomePage({ projectsData, lang }: { projectsData: any[], lang: string }) {
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
 
   return (
@@ -96,7 +96,7 @@ export default function B2BHomePage({ projectsData }: { projectsData: any[] }) {
       <BentoAdvantages onOpenProductMenu={() => setIsProductMenuOpen(true)} />
 
       {/* 4. ПРИМЕРЫ РАБОТ */}
-      <TopPortfolio projectsData={projectsData} />
+      <TopPortfolio projectsData={projectsData} lang={lang} />
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
       <FinalCTA />

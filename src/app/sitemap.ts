@@ -40,5 +40,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...routes, ...cityRoutes, ...nicheRoutes];
+  const allRoutes = [...routes, ...cityRoutes, ...nicheRoutes];
+  const ruRoutes = allRoutes.map(route => ({
+    ...route,
+    url: route.url.replace(baseUrl, `${baseUrl}/ru`),
+  }));
+
+  return [...allRoutes, ...ruRoutes];
 }

@@ -5,8 +5,9 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { getDictionary } from '@/i18n/dictionaries';
 
-export function Header() {
+export function Header({ lang }: { lang: string }) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -27,23 +28,29 @@ export function Header() {
     return null;
   }
 
+  const dict = getDictionary(lang);
+  const linkPrefix = lang === 'ru' ? '/ru' : '';
+
   const menuItems = [
-    { label: 'Главная', href: '/' },
+    { label: 'Главная', href: `${linkPrefix}/` },
     { 
-      label: 'Услуги', 
+      label: dict.header.services, 
       subItems: [
-        { label: 'Лендинги', href: '/services/landings' },
-        { label: 'Сайты-визитки', href: '/services/business-cards' },
-        { label: 'Корпоративные сайты', href: '/services/corporate' },
-        { label: 'Интернет-магазины', href: '/services/ecommerce' },
-        { label: 'Магазин + TG Бот', href: '/services/sites-and-bots' },
-        { label: 'Telegram-боты', href: '/services/telegram-bots' },
+        { label: 'Лендинги', href: `${linkPrefix}/services/landings` },
+        { label: 'Сайты-визитки', href: `${linkPrefix}/services/business-cards` },
+        { label: 'Корпоративные сайты', href: `${linkPrefix}/services/corporate` },
+        { label: 'Интернет-магазины', href: `${linkPrefix}/services/ecommerce` },
+        { label: 'Магазин + TG Бот', href: `${linkPrefix}/services/sites-and-bots` },
+        { label: 'Telegram-боты', href: `${linkPrefix}/services/telegram-bots` },
       ]
     },
-    { label: 'Обо мне', href: '/about' },
-    { label: 'Портфолио', href: '/portfolio' },
-    { label: 'Контакты', href: '/contact' },
+    { label: 'Обо мне', href: `${linkPrefix}/about` },
+    { label: dict.header.portfolio, href: `${linkPrefix}/portfolio` },
+    { label: dict.header.contact, href: `${linkPrefix}/contact` },
   ];
+
+  // Language switcher logic
+  const switchLangHref = lang === 'ru' ? pathname.replace(/^\/ru/, '') || '/' : `/ru${pathname === '/' ? '' : pathname}`;
 
   return (
     <>
@@ -51,7 +58,7 @@ export function Header() {
         <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
           {/* Логотип */}
           <Link 
-            href="/"
+            href={`${linkPrefix}/`}
             className="pointer-events-auto bg-white/80 backdrop-blur-md shadow-glass rounded-full px-8 py-4 font-display font-bold text-ink tracking-tight flex items-center gap-2 transition-transform hover:scale-105"
           >
             <div className="w-2 h-2 rounded-full bg-cyan-500 shadow-neon-cyan"></div>
@@ -59,11 +66,19 @@ export function Header() {
           </Link>
 
           {/* Кнопка Меню */}
-          <button 
-            onClick={() => setIsMenuOpen(true)}
-            className="pointer-events-auto bg-white/80 backdrop-blur-md shadow-glass rounded-full w-14 h-14 sm:w-auto sm:h-auto sm:px-8 sm:py-4 flex items-center justify-center sm:gap-4 text-ink font-bold transition-transform hover:scale-105 group"
-          >
-            <span className="hidden sm:block">Меню</span>
+          <div className="pointer-events-auto flex items-center gap-2">
+            <Link 
+              href={switchLangHref}
+              className="bg-white/80 backdrop-blur-md shadow-glass rounded-full px-4 py-4 font-display font-bold text-ink text-sm transition-transform hover:scale-105 uppercase"
+            >
+              {dict.header.lang}
+            </Link>
+
+            <button 
+              onClick={() => setIsMenuOpen(true)}
+              className="bg-white/80 backdrop-blur-md shadow-glass rounded-full w-14 h-14 sm:w-auto sm:h-auto sm:px-8 sm:py-4 flex items-center justify-center sm:gap-4 text-ink font-bold transition-transform hover:scale-105 group"
+            >
+              <span className="hidden sm:block">Меню</span>
             {/* Иконка для ПК (внутри черного кружка) */}
             <div className="hidden sm:flex w-8 h-8 rounded-full bg-ink items-center justify-center text-white group-hover:bg-coral transition-colors">
               <Menu className="w-4 h-4" />
@@ -71,6 +86,7 @@ export function Header() {
             {/* Иконка для мобилок (просто иконка) */}
             <Menu className="w-6 h-6 sm:hidden group-hover:text-coral transition-colors" />
           </button>
+          </div>
         </div>
       </header>
 

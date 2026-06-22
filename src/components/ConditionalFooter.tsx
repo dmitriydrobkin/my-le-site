@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { Footer } from './Footer';
 import { FAQSection } from './FAQSection';
 
-export function ConditionalFooter({ settings }: { settings?: any }) {
+export function ConditionalFooter({ settings, lang }: { settings?: any, lang: string }) {
   const pathname = usePathname();
   
   // Если мы в админке, не показываем футер и частые вопросы
@@ -14,8 +14,8 @@ export function ConditionalFooter({ settings }: { settings?: any }) {
 
   return (
     <>
-      <FAQSection />
-      <Footer settings={settings} />
+      <FAQSection lang={lang} />
+      <Footer settings={settings} lang={lang} />
     </>
   );
 }

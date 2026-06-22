@@ -12,6 +12,7 @@ import { drizzle } from 'drizzle-orm/d1';
 import { projects } from '@/server/db/schema';
 import { desc } from 'drizzle-orm';
 import { ProductMenuWrapper } from './ProductMenuWrapper';
+import { getLocalizedProjects } from '@/server/functions/getProjects';
 
 export const runtime = 'edge';
 
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function CityPage({ params }: { params: { slug: string } }) {
+export default async function CityPage({ params }: { params: { slug: string, lang: string } }) {
   const city = CITIES.find(c => c.slug === params.slug);
   
   if (!city) {
@@ -38,9 +39,7 @@ export default async function CityPage({ params }: { params: { slug: string } })
 
   let projectsData: any[] = [];
   try {
-    const dbContext = getRequestContext().env.DB;
-    const db = drizzle(dbContext);
-    projectsData = await db.select().from(projects).orderBy(desc(projects.sortOrder));
+    projectsData = await getLocalizedProjects(params.lang);
   } catch (error) {
     console.error('Failed to fetch projects on city page:', error);
   }
@@ -132,7 +131,7 @@ export default async function CityPage({ params }: { params: { slug: string } })
       <ProductMenuWrapper />
 
       {/* 4. ПРИМЕРЫ РАБОТ */}
-      <TopPortfolio projectsData={projectsData} />
+      <TopPortfolio projectsData={projectsData} lang={params.lang} />
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
       <FinalCTA />

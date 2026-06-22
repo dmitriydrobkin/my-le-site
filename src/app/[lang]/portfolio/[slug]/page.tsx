@@ -6,18 +6,23 @@ import { getRequestContext } from '@cloudflare/next-on-pages';
 import { drizzle } from 'drizzle-orm/d1';
 import { projects } from '@/server/db/schema';
 import { eq } from 'drizzle-orm';
+import { localizeProject } from '@/server/functions/getProjects';
 
 export const runtime = 'edge';
 
-export default async function ProjectDetailPage({ params }: { params: { slug: string } }) {
+export default async function ProjectDetailPage({ params }: { params: { slug: string, lang: string } }) {
   const { env } = getRequestContext();
   const db = drizzle((env as any).DB);
   
-  const project = await db.select().from(projects).where(eq(projects.slug, params.slug)).get();
+  const rawProject = await db.select().from(projects).where(eq(projects.slug, params.slug)).get();
 
-  if (!project) {
+  if (!rawProject) {
     notFound();
   }
+
+  const project = localizeProject(rawProject, params.lang);
+
+
 
   const stack = project.stackJson ? (typeof project.stackJson === 'string' ? JSON.parse(project.stackJson) : project.stackJson) : [];
   const results = project.resultsJson ? (typeof project.resultsJson === 'string' ? JSON.parse(project.resultsJson) : project.resultsJson) : [];
@@ -36,11 +41,11 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
         
         <div className="max-w-[1200px] mx-auto px-6 relative z-10">
           <Link 
-            href="/portfolio" 
+            href={`/${params.lang === 'ru' ? 'ru/' : ''}portfolio`} 
             className="inline-flex items-center gap-2 text-ink/50 hover:text-ink font-bold font-sans text-xs uppercase tracking-widest transition-colors mb-12 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Вернуться в портфолио
+            {params.lang === 'ru' ? 'Вернуться в портфолио' : 'Повернутися до портфоліо'}
           </Link>
           
           <div className="flex flex-col lg:flex-row gap-12 lg:items-end justify-between mb-16">

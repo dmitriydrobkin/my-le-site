@@ -6,7 +6,7 @@ import { X } from 'lucide-react';
 import QuizStepper from './QuizStepper';
 import { useEffect } from 'react';
 
-export function QuizModal() {
+export function QuizModal({ lang }: { lang?: string }) {
   const isOpen = useQuizStore((state) => state.isOpen);
   const closeQuiz = useQuizStore((state) => state.closeQuiz);
 

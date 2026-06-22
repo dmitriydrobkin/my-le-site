@@ -1,12 +1,8 @@
 import type { Metadata } from 'next';
 import { Manrope, Unbounded } from 'next/font/google';
-import { Header } from '@/components/Header';
-import { Preloader } from '@/components/Preloader';
 import { CustomCursor } from '@/components/CustomCursor';
 import { MobileHoverSync } from '@/components/MobileHoverSync';
 import { getSiteSettings } from '@/server/functions/settings';
-import { QuizModal } from '@/components/QuizModal';
-import { ConditionalFooter } from '@/components/ConditionalFooter';
 import './globals.css';
 
 // ⚡ КРИТИЧНО: Переводим весь Layout в Edge, чтобы не было конфликтов с page.tsx
@@ -53,18 +49,8 @@ export default async function RootLayout({
     <html lang="ru" className={`${unbounded.variable} ${manrope.variable}`}>
       <body className="font-sans text-ink bg-surface min-h-screen flex flex-col">
         <MobileHoverSync />
-        <Preloader />
         <CustomCursor />
-        
-        <Header />
-        
-        {/* Главный контент */}
-        <main className="flex-grow">{children}</main>
-
-        <ConditionalFooter settings={settings} />
-
-        {/* Global Modal */}
-        <QuizModal />
+        {children}
       </body>
     </html>
   );

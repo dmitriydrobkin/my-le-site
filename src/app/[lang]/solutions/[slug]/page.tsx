@@ -9,8 +9,9 @@ import { getRequestContext } from '@cloudflare/next-on-pages';
 import { drizzle } from 'drizzle-orm/d1';
 import { projects } from '@/server/db/schema';
 import { desc } from 'drizzle-orm';
-import { ProductMenuWrapper } from '@/app/locations/[slug]/ProductMenuWrapper';
+import { ProductMenuWrapper } from '@/app/[lang]/locations/[slug]/ProductMenuWrapper';
 import { TelegramIcon } from '@/components/TelegramIcon';
+import { getLocalizedProjects } from '@/server/functions/getProjects';
 
 export const runtime = 'edge';
 
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function NichePage({ params }: { params: { slug: string } }) {
+export default async function NichePage({ params }: { params: { slug: string, lang: string } }) {
   const niche = niches.find(n => n.slug === params.slug);
   
   if (!niche) {
@@ -35,9 +36,7 @@ export default async function NichePage({ params }: { params: { slug: string } }
 
   let projectsData: any[] = [];
   try {
-    const dbContext = getRequestContext().env.DB;
-    const db = drizzle(dbContext);
-    projectsData = await db.select().from(projects).orderBy(desc(projects.sortOrder));
+    projectsData = await getLocalizedProjects(params.lang);
   } catch (error) {
     console.error('Failed to fetch projects on niche page:', error);
   }
@@ -186,7 +185,7 @@ export default async function NichePage({ params }: { params: { slug: string } }
       </section>
 
       {/* 6. ПРИМЕРЫ РАБОТ */}
-      <TopPortfolio projectsData={projectsData} />
+      <TopPortfolio projectsData={projectsData} lang={params.lang} />
 
       {/* 7. CTA БЛОК (Rich Corporate Style) */}
       <section className="py-16 lg:py-24 bg-surface">

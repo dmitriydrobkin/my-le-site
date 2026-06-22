@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { QuizTrigger } from './QuizTrigger';
 import { TelegramIcon } from './TelegramIcon';
+import { getDictionary } from '@/i18n/dictionaries';
 
 // Встроенные SVG иконки для соцсетей, чтобы избежать конфликтов с lucide-react
 const InstagramIcon = ({ className }: { className?: string }) => (
@@ -27,22 +28,26 @@ const YoutubeIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export function Footer({ settings }: { settings?: any }) {
+export function Footer({ settings, lang }: { settings?: any, lang: string }) {
+  const dict = getDictionary(lang);
+  const linkPrefix = lang === 'ru' ? '/ru' : '';
+
   const phone = settings?.global_phone || '+38 098 856 77 77';
   const email = settings?.global_email || 'contact@nashe.agency';
   const tg = settings?.global_tg || 'https://t.me/malyshev_dev';
   const inst = settings?.global_inst;
   const fb = settings?.global_fb;
+  
   const quickLinks = [
-    { label: 'Лендинг', href: '/services/landings' },
-    { label: 'Сайт-визитка', href: '/services/business-cards' },
-    { label: 'Корпоративный', href: '/services/corporate' },
-    { label: 'Магазин', href: '/services/ecommerce' },
-    { label: 'TG-боты', href: '/services/telegram-bots' },
-    { label: 'Портфолио', href: '/portfolio' },
-    { label: 'Обо мне', href: '/about' },
-    { label: 'Отраслевые решения', href: '/solutions' },
-    { label: 'География', href: '/locations' },
+    { label: dict.footer.links.landing, href: `${linkPrefix}/services/landings` },
+    { label: dict.footer.links.businessCard, href: `${linkPrefix}/services/business-cards` },
+    { label: dict.footer.links.corporate, href: `${linkPrefix}/services/corporate` },
+    { label: dict.footer.links.ecommerce, href: `${linkPrefix}/services/ecommerce` },
+    { label: dict.footer.links.tgBots, href: `${linkPrefix}/services/telegram-bots` },
+    { label: dict.footer.links.portfolio, href: `${linkPrefix}/portfolio` },
+    { label: dict.footer.links.about, href: `${linkPrefix}/about` },
+    { label: dict.footer.links.solutions, href: `${linkPrefix}/solutions` },
+    { label: dict.footer.links.locations, href: `${linkPrefix}/locations` },
   ];
 
   return (
@@ -57,10 +62,10 @@ export function Footer({ settings }: { settings?: any }) {
               <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-white rounded-full mix-blend-overlay opacity-20 blur-2xl group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
               <div className="absolute -top-10 -right-10 w-48 h-48 bg-white rounded-full mix-blend-overlay opacity-10 blur-xl pointer-events-none" />
               
-              <h3 className="relative z-10 font-display text-3xl lg:text-4xl font-bold leading-[1.1] break-words drop-shadow-sm">
-                Получить<br />
-                консультацию
-              </h3>
+              <h3 
+                className="relative z-10 font-display text-3xl lg:text-4xl font-bold leading-[1.1] break-words drop-shadow-sm"
+                dangerouslySetInnerHTML={{ __html: dict.footer.consultation }}
+              />
               
               <div className="relative z-10 flex justify-end mt-6">
                 <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-white group-hover:text-coral group-hover:border-transparent transition-colors duration-300">
@@ -74,7 +79,7 @@ export function Footer({ settings }: { settings?: any }) {
           <div className="order-1 lg:order-2 lg:col-span-5 flex flex-col justify-center lg:pl-8">
             <h4 className="font-display text-xl font-bold mb-6 flex items-center gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-white opacity-50" />
-              Быстрые ссылки
+              {dict.footer.quickLinksTitle}
             </h4>
             <div className="flex flex-wrap gap-3">
               {quickLinks.map((link) => (
@@ -93,7 +98,7 @@ export function Footer({ settings }: { settings?: any }) {
           <div className="order-3 lg:col-span-3 flex flex-col justify-center">
             <h4 className="font-display text-xl font-bold mb-6 flex items-center gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-white opacity-50" />
-              Контакты
+              {dict.footer.contactsTitle}
             </h4>
             <div className="flex flex-col gap-4">
               <a href={`tel:${phone.replace(/[^\d+]/g, '')}`} className="font-mono text-xl font-medium hover:text-coral transition-colors">
@@ -124,8 +129,8 @@ export function Footer({ settings }: { settings?: any }) {
 
         {/* Footer Bottom */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold uppercase tracking-widest text-white/40">
-          <p>© {new Date().getFullYear()} — MALYSHEV.DEV.</p>
-          <p>Сайты и Telegram-боты, которые приносят прибыль 24/7.</p>
+          <p>© {new Date().getFullYear()} — {dict.footer.brandName.toUpperCase()}</p>
+          <p>{dict.footer.description}</p>
         </div>
       </div>
     </footer>
