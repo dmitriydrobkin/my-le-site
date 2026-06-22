@@ -53,7 +53,7 @@ export function QuizModal({ lang }: { lang?: string }) {
             </button>
 
             {/* Reuse existing QuizStepper */}
-            <QuizStepper />
+            <QuizStepper lang={lang || 'uk'} />
           </motion.div>
         </div>
       )}

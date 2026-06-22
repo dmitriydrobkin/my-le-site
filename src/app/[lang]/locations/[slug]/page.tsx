@@ -16,7 +16,7 @@ import { getLocalizedProjects } from '@/server/functions/getProjects';
 
 export const runtime = 'edge';
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: { slug: string, lang: string } }) {
   const city = CITIES.find(c => c.slug === params.slug);
   if (!city) {
     return {
@@ -24,9 +24,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
   }
 
+  const lang = (params.lang === 'ru' || params.lang === 'uk') ? params.lang : 'uk';
+
   return {
-    title: `Разработка сайтов и Telegram ботов ${city.namePrepositional} | Malyshev.Dev`,
-    description: `Профессиональная разработка сайтов, лендингов, визиток и умных Telegram ботов для бизнеса ${city.namePrepositional}. 100% фокус на вашем проекте и современные решения.`,
+    title: `Разработка сайтов и Telegram ботов ${city.namePrepositional[lang]} | Malyshev.Dev`,
+    description: `Профессиональная разработка сайтов, лендингов, визиток и умных Telegram ботов для бизнеса ${city.namePrepositional[lang]}. 100% фокус на вашем проекте и современные решения.`,
   };
 }
 
@@ -36,6 +38,8 @@ export default async function CityPage({ params }: { params: { slug: string, lan
   if (!city) {
     notFound();
   }
+
+  const lang = (params.lang === 'ru' || params.lang === 'uk') ? params.lang : 'uk';
 
   let projectsData: any[] = [];
   try {
@@ -58,10 +62,10 @@ export default async function CityPage({ params }: { params: { slug: string, lan
           <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-10">
             DIGITAL РЕШЕНИЯ
             <br />
-            ДЛЯ БИЗНЕСА <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan uppercase">{city.nameGenitive}</span>
+            ДЛЯ БИЗНЕСА <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan uppercase">{city.nameGenitive[lang]}</span>
           </h1>
           <p className="font-sans text-xl text-ink/60 max-w-2xl font-medium leading-relaxed mb-12">
-            Ищете надежного разработчика {city.namePrepositional}? Я проектирую и запускаю высококонверсионные веб-системы и Telegram-боты, которые работают на рост вашей прибыли 24/7. Если вам нужно <strong>заказать сайт {city.namePrepositional}</strong> — вы по адресу.
+            Ищете надежного разработчика {city.namePrepositional[lang]}? Я проектирую и запускаю высококонверсионные веб-системы и Telegram-боты, которые работают на рост вашей прибыли 24/7. Если вам нужно <strong>заказать сайт {city.namePrepositional[lang]}</strong> — вы по адресу.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-neon-coral hover:-translate-y-1 flex items-center gap-3 group">
@@ -79,7 +83,7 @@ export default async function CityPage({ params }: { params: { slug: string, lan
       </section>
 
       {/* 2. РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА (SPLIT + HORIZONTAL SCROLL) */}
-      <ServicesSlider lang={params.lang} title={`РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА ${city.namePrepositional.toUpperCase()}`} />
+      <ServicesSlider lang={params.lang} title={`РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА ${city.namePrepositional[lang].toUpperCase()}`} />
 
       {/* 2.5 ОБО МНЕ (Адаптация) */}
       <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-white border-t border-ink/5">
@@ -113,7 +117,7 @@ export default async function CityPage({ params }: { params: { slug: string, lan
             <div className="relative z-10 lg:w-2/3 flex flex-col justify-center">
               <div className="space-y-6 font-sans text-white/70 text-base md:text-lg leading-relaxed font-light">
                 <p>
-                  Хоть я и могу находиться в другом городе, современные технологии стирают все границы. Я успешно сотрудничаю с предпринимателями {city.namePrepositional} и по всей Украине.
+                  Хоть я и могу находиться в другом городе, современные технологии стирают все границы. Я успешно сотрудничаю с предпринимателями {city.namePrepositional[lang]} и по всей Украине.
                 </p>
                 <p>
                   Мой фокус — <strong className="font-medium text-white">современные, легкие сайты и умные Telegram-боты</strong>. Малому и среднему бизнесу нужен рабочий инструмент, который загружается за секунду и стабильно приносит заявки.

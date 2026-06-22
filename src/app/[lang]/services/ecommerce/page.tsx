@@ -2,10 +2,13 @@
 
 import Link from 'next/link';
 import { QuizTrigger } from '@/components/QuizTrigger';
-import { ArrowUpRight, CheckCircle, Store, Box, Smartphone, ServerOff, Frown, Database, DollarSign, MousePointerClick, Send, Zap } from 'lucide-react';
+import { ArrowUpRight, CheckCircle, Store, Box, Smartphone, ServerOff, Frown, Database, DollarSign, MousePointerClick, Zap } from 'lucide-react';
 import { TelegramIcon } from '@/components/TelegramIcon';
+import { getDictionary } from '@/i18n/dictionaries';
 
-export default function EcommercePage() {
+export default function EcommercePage({ params }: { params: { lang: string } }) {
+  const dict = getDictionary(params.lang).servicesPages.ecommerce;
+
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
       
@@ -16,29 +19,28 @@ export default function EcommercePage() {
         <div className="max-w-5xl relative z-10">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-rose-500/20 bg-rose-500/5 text-rose-600 font-bold font-sans text-xs uppercase tracking-widest mb-6">
             <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
-            Быстрый e-commerce
+            {dict.heroBadge}
           </div>
           
-          <h1 className="font-display text-4xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase">
-            Быстрый <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500">интернет-магазин</span> <br className="hidden md:block" />
-            с приемом заказов
-          </h1>
+          <h1 
+            className="font-display text-4xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase"
+            dangerouslySetInnerHTML={{ __html: dict.heroTitle }}
+          />
           
           <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-3xl font-medium leading-relaxed mb-8">
-            Продавайте товары без сложных регистраций, брошенных корзин и громоздких админ-панелей. Клиент оформляет заказ в 1 клик, а вы получаете готовую заявку с деталями прямо в свой Telegram. Идеально для крафтовых брендов и локального бизнеса.
+            {dict.heroDesc}
           </p>
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <QuizTrigger className="bg-ink hover:bg-ink/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-xl hover:-translate-y-1 flex items-center gap-3 group w-full sm:w-auto justify-center">
-              Хочу такой магазин
+              {dict.btnCalc}
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </QuizTrigger>
-            <Link href="/portfolio" className="flex items-center gap-3 text-ink font-bold hover:text-rose-600 transition-colors group">
+            <Link href={`/${params.lang}/portfolio`} className="flex items-center gap-3 text-ink font-bold hover:text-rose-600 transition-colors group">
               <span className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center bg-surface group-hover:border-rose-500/30 transition-colors shadow-sm">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
-              Посмотреть примеры
+              {dict.btnPortfolio}
             </Link>
           </div>
         </div>
@@ -51,49 +53,33 @@ export default function EcommercePage() {
             
             <div className="lg:w-1/3">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-ink/10 bg-white font-bold font-sans text-xs uppercase tracking-widest mb-6 text-ink/50">
-                <span className="text-red-500">✕</span> Проблема
+                <span className="text-red-500">✕</span> {dict.whyBadge}
               </span>
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-ink uppercase leading-tight mb-4">
-                Почему классические магазины теряют деньги?
-              </h2>
+              <h2 
+                className="font-display text-3xl lg:text-4xl font-bold text-ink uppercase leading-tight mb-4"
+                dangerouslySetInnerHTML={{ __html: dict.whyTitle }}
+              />
               <p className="font-sans text-ink/50 leading-relaxed font-medium">
-                Громоздкие админки, дорогие сервера и сложная регистрация убивают конверсию на каждом этапе.
+                {dict.whyDesc}
               </p>
             </div>
 
             <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Point 1 */}
-              <div className="bg-white rounded-[2rem] p-8 border border-ink/5">
-                <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-6">
-                  <Frown className="w-6 h-6 text-red-500" />
+              {[
+                { icon: <Frown className="w-6 h-6 text-red-500" />, bg: 'bg-red-50' },
+                { icon: <Database className="w-6 h-6 text-orange-500" />, bg: 'bg-orange-50' },
+                { icon: <DollarSign className="w-6 h-6 text-rose-500" />, bg: 'bg-rose-50' }
+              ].map((item, idx) => (
+                <div key={idx} className="bg-white rounded-[2rem] p-8 border border-ink/5">
+                  <div className={`w-12 h-12 rounded-full ${item.bg} flex items-center justify-center mb-6`}>
+                    {item.icon}
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-ink mb-3">{dict.whyPoints[idx]?.title}</h3>
+                  <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed">
+                    {dict.whyPoints[idx]?.desc}
+                  </p>
                 </div>
-                <h3 className="font-display text-xl font-bold text-ink mb-3">Сложная регистрация</h3>
-                <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed">
-                  До 70% пользователей бросают корзину, если их заставляют создавать личный кабинет, придумывать пароль и подтверждать email перед покупкой.
-                </p>
-              </div>
-
-              {/* Point 2 */}
-              <div className="bg-white rounded-[2rem] p-8 border border-ink/5">
-                <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mb-6">
-                  <Database className="w-6 h-6 text-orange-500" />
-                </div>
-                <h3 className="font-display text-xl font-bold text-ink mb-3">Тяжелая админка</h3>
-                <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed">
-                  Вам приходится часами разбираться, как добавить один товар или найти информацию о заказе в громоздкой CMS-системе из 2000-х.
-                </p>
-              </div>
-
-              {/* Point 3 */}
-              <div className="bg-white rounded-[2rem] p-8 border border-ink/5">
-                <div className="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center mb-6">
-                  <DollarSign className="w-6 h-6 text-rose-500" />
-                </div>
-                <h3 className="font-display text-xl font-bold text-ink mb-3">Дорогое обслуживание</h3>
-                <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed">
-                  Классические магазины с базами данных требуют покупки мощных серверов, защиты от взломов плагинов и постоянной оплаты техподдержки.
-                </p>
-              </div>
+              ))}
             </div>
 
           </div>
@@ -104,63 +90,31 @@ export default function EcommercePage() {
       <section className="py-12 lg:py-24 bg-white border-b border-ink/5 relative overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="mb-16">
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight">
-              Что получает <br/>ваш бизнес
-            </h2>
+            <h2 
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight"
+              dangerouslySetInnerHTML={{ __html: dict.bentoTitle }}
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Card 1 */}
-            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-rose-500/20 transition-all duration-500 group mobile-hover-card">
-              <div className="w-16 h-16 rounded-full bg-white border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <Store className="w-8 h-8 text-ink/40 group-hover:text-rose-500 transition-colors" />
+            {[
+              { icon: <Store className="w-8 h-8 text-ink/40 group-hover:text-rose-500 transition-colors" />, hoverColor: 'hover:border-rose-500/20' },
+              { icon: <Box className="w-8 h-8 text-ink/40 group-hover:text-orange-500 transition-colors" />, hoverColor: 'hover:border-orange-500/20' },
+              { icon: <Smartphone className="w-8 h-8 text-ink/40 group-hover:text-red-500 transition-colors" />, hoverColor: 'hover:border-red-500/20' },
+              { icon: <ServerOff className="w-8 h-8 text-ink/40 group-hover:text-coral transition-colors" />, hoverColor: 'hover:border-coral/20' }
+            ].map((item, idx) => (
+              <div key={idx} className={`bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl ${item.hoverColor} transition-all duration-500 group mobile-hover-card`}>
+                <div className="w-16 h-16 rounded-full bg-white border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                  {item.icon}
+                </div>
+                <h3 className="font-display text-2xl font-bold text-ink mb-4">
+                  {dict.bentoPoints[idx]?.title}
+                </h3>
+                <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
+                  {dict.bentoPoints[idx]?.desc}
+                </p>
               </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-4">
-                Удобная витрина
-              </h3>
-              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
-                Понятный каталог с категориями и быстрыми фильтрами. Клиент мгновенно находит то, что ему нужно.
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-orange-500/20 transition-all duration-500 group mobile-hover-card">
-              <div className="w-16 h-16 rounded-full bg-white border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <Box className="w-8 h-8 text-ink/40 group-hover:text-orange-500 transition-colors" />
-              </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-4">
-                Продающие карточки
-              </h3>
-              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
-                Сочные фотогалереи, подробное описание, вариации (размеры/цвета) и четкая цена. Никакого визуального мусора.
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-red-500/20 transition-all duration-500 group mobile-hover-card">
-              <div className="w-16 h-16 rounded-full bg-white border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <Smartphone className="w-8 h-8 text-ink/40 group-hover:text-red-500 transition-colors" />
-              </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-4">
-                Mobile First дизайн
-              </h3>
-              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
-                Свыше 80% покупок делается с телефона. Ваш магазин будет выглядеть и работать как дорогое мобильное приложение.
-              </p>
-            </div>
-
-            {/* Card 4 */}
-            <div className="bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-coral/20 transition-all duration-500 group mobile-hover-card">
-              <div className="w-16 h-16 rounded-full bg-white border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <ServerOff className="w-8 h-8 text-ink/40 group-hover:text-coral transition-colors" />
-              </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-4">
-                Нет абонентской платы
-              </h3>
-              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
-                Полное отсутствие абонентской платы за содержание тяжелого сервера или аренду "коробочных" платформ.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -173,65 +127,34 @@ export default function EcommercePage() {
         <div className="max-w-[1400px] mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24">
           <div className="lg:w-5/12">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 font-bold font-sans text-xs uppercase tracking-widest mb-6 text-white/70">
-              <span className="text-rose-400">✦</span> Наше решение
+              {dict.techBadge}
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-8">
-              Быстрые <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-400">продажи.</span>
-            </h2>
+            <h2 
+              className="font-display text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-8"
+              dangerouslySetInnerHTML={{ __html: dict.techTitle }}
+            />
             <p className="font-sans text-lg text-white/60 font-light leading-relaxed mb-6">
-              Забудьте слово «каталог» и брошенные корзины. Я создаю инструмент, который устраняет трение между желанием клиента и вашей кассой.
+              {dict.techDesc}
             </p>
           </div>
 
           <div className="lg:w-7/12 flex flex-col gap-10">
-            {/* Tech Point 1 */}
-            <div className="flex gap-6 items-start">
-               <div className="w-16 h-16 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                 <MousePointerClick className="w-8 h-8 text-rose-400" />
-               </div>
-               <div>
-                  <h3 className="font-display text-2xl font-bold mb-3">Покупка в 1 клик</h3>
-                  <p className="font-sans text-white/60 leading-relaxed font-light">
-                    Клиент выбирает товар, вводит номер телефона или имя — всё. Никаких утомительных регистраций. Конверсия во вменяемые заявки взлетает в разы.
-                  </p>
-               </div>
-            </div>
-
-            {/* Tech Point 2 */}
-            <div className="flex gap-6 items-start">
-               <div className="w-16 h-16 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                 <TelegramIcon className="w-8 h-8 text-blue-400" />
-               </div>
-               <div>
-                  <h3 className="font-display text-2xl font-bold mb-3">Моментальное уведомление в Telegram</h3>
-                  <p className="font-sans text-white/60 leading-relaxed font-light">
-                    Специальный бот присылает вам аккуратное сообщение: <br/>
-                    <span className="inline-block mt-3 p-3 bg-white/5 rounded-xl border border-white/10 font-mono text-sm text-white/80">
-                      📦 <strong>Новый заказ!</strong><br/>
-                      Товар: Кроссовки Nike<br/>
-                      Размер: 42<br/>
-                      Клиент: Алексей<br/>
-                      Тел: +380...
-                    </span>
-                    <br/>
-                    <span className="inline-block mt-3">Вы просто звоните и подтверждаете сделку.</span>
-                  </p>
-               </div>
-            </div>
-            
-            {/* Tech Point 3 */}
-            <div className="flex gap-6 items-start">
-               <div className="w-16 h-16 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                 <Zap className="w-8 h-8 text-yellow-400" />
-               </div>
-               <div>
-                  <h3 className="font-display text-2xl font-bold mb-3">Мгновенная загрузка витрины</h3>
-                  <p className="font-sans text-white/60 leading-relaxed font-light">
-                    Магазин работает на современной облачной архитектуре. Изображения оптимизируются на лету, а товары открываются без задержек.
-                  </p>
-               </div>
-            </div>
+            {dict.techPoints.map((point, idx) => (
+              <div key={idx} className="flex gap-6 items-start">
+                 <div className="w-16 h-16 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                   {idx === 0 && <MousePointerClick className="w-8 h-8 text-rose-400" />}
+                   {idx === 1 && <TelegramIcon className="w-8 h-8 text-blue-400" />}
+                   {idx === 2 && <Zap className="w-8 h-8 text-yellow-400" />}
+                 </div>
+                 <div>
+                    <h3 className="font-display text-2xl font-bold mb-3">{point.title}</h3>
+                    <p 
+                      className="font-sans text-white/60 leading-relaxed font-light"
+                      dangerouslySetInnerHTML={{ __html: point.desc.replace('\n', '<br/>') }}
+                    />
+                 </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -244,20 +167,20 @@ export default function EcommercePage() {
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-rose-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 max-w-xl">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-6 leading-tight">
-                Запустите онлайн-продажи <br/>без лишних сложностей
-              </h2>
+              <h2 
+                className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-6 leading-tight"
+                dangerouslySetInnerHTML={{ __html: dict.ctaTitle }}
+              />
               <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">
-                Переведите торговлю из Instagram-директа в удобный, автоматизированный магазин, который будет сам собирать и систематизировать заказы для вас.
+                {dict.ctaDesc}
               </p>
               
               <QuizTrigger className="bg-rose-600 hover:bg-rose-700 text-white rounded-full px-10 py-5 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-xl hover:-translate-y-1 inline-flex items-center gap-4 group">
-                Обсудить проект
+                {dict.ctaBtn}
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
               </QuizTrigger>
             </div>
             
-            {/* Дополнительный визуальный элемент или статистика */}
             <div className="relative z-10 w-full lg:w-1/3">
                <div className="bg-white rounded-[2rem] p-8 border border-ink/5 shadow-glass flex flex-col gap-6">
                   <div className="flex items-center gap-4">
@@ -265,8 +188,8 @@ export default function EcommercePage() {
                       <CheckCircle className="w-6 h-6" />
                     </div>
                     <div>
-                      <div className="font-bold font-display text-xl text-ink">В 3 раза</div>
-                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">Выше конверсия</div>
+                      <div className="font-bold font-display text-xl text-ink">{dict.ctaStat1Title}</div>
+                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">{dict.ctaStat1Desc}</div>
                     </div>
                   </div>
                   <div className="w-full h-px bg-ink/5" />
@@ -275,8 +198,8 @@ export default function EcommercePage() {
                       <TelegramIcon className="w-6 h-6" />
                     </div>
                     <div>
-                      <div className="font-bold font-display text-xl text-ink">Без админок</div>
-                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">Всё в Telegram</div>
+                      <div className="font-bold font-display text-xl text-ink">{dict.ctaStat2Title}</div>
+                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">{dict.ctaStat2Desc}</div>
                     </div>
                   </div>
                </div>

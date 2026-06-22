@@ -4,8 +4,11 @@ import Link from 'next/link';
 import { QuizTrigger } from '@/components/QuizTrigger';
 import { ArrowUpRight, CheckCircle, Code2, Zap, Rocket, ShieldCheck, HeartHandshake, Eye } from 'lucide-react';
 import Image from 'next/image';
+import { getDictionary } from '@/i18n/dictionaries';
 
-export default function AboutPage() {
+export default function AboutPage({ params }: { params: { lang: string } }) {
+  const dict = getDictionary(params.lang).aboutPage;
+
   return (
     <div className="bg-white min-h-screen">
       
@@ -15,22 +18,21 @@ export default function AboutPage() {
         
         <div className="max-w-5xl relative z-10">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-ink/10 bg-surface font-bold font-sans text-xs uppercase tracking-widest mb-6 text-ink/70">
-            <span className="text-coral">✦</span> Обо мне
+            {dict.hero.badge}
           </div>
           
-          <h1 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase">
-            Разрабатываю сайты <br className="hidden md:block" />
-            и <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">Telegram-боты</span>, <br className="hidden md:block" />
-            которые приносят прибыль
-          </h1>
+          <h1 
+            className="font-display text-3xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase"
+            dangerouslySetInnerHTML={{ __html: dict.hero.title }}
+          />
           
           <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-2xl font-medium leading-relaxed mb-10">
-            Привет! Я частный веб-дизайнер и разработчик с более чем 5-летним опытом. Моя цель — не просто нарисовать красивую картинку, а создать мощный инструмент, который будет работать на ваш бизнес 24/7.
+            {dict.hero.desc}
           </p>
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <QuizTrigger className="bg-ink hover:bg-ink/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-xl hover:-translate-y-1 flex items-center gap-3 group w-full sm:w-auto justify-center">
-              Обсудить проект
+              {dict.hero.btn}
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </QuizTrigger>
           </div>
@@ -41,11 +43,12 @@ export default function AboutPage() {
       <section className="py-12 lg:py-24 bg-surface border-y border-ink/5 relative overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight">
-              Мой подход <br/> к работе
-            </h2>
+            <h2 
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight"
+              dangerouslySetInnerHTML={{ __html: dict.bento.title }}
+            />
             <p className="font-sans text-ink/50 leading-relaxed font-medium max-w-sm">
-              Я ценю ваше время и деньги, поэтому строю работу максимально прозрачно и эффективно.
+              {dict.bento.desc}
             </p>
           </div>
 
@@ -56,10 +59,10 @@ export default function AboutPage() {
                 <Code2 className="w-8 h-8 text-ink/40 group-hover:text-coral transition-colors" />
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-4">
-                Красота + Технологии
+                {dict.bento.c1_title}
               </h3>
               <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed max-w-lg mt-auto">
-                Многие делают либо красиво, либо технически грамотно. Я объединяю оба подхода. Вы получаете потрясающий дизайн, который идеально оптимизирован под SEO, мгновенно загружается и без ошибок работает на любых устройствах.
+                {dict.bento.c1_desc}
               </p>
             </div>
 
@@ -69,10 +72,10 @@ export default function AboutPage() {
                 <HeartHandshake className="w-8 h-8 text-ink/40 group-hover:text-cyan-500 transition-colors" />
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-4">
-                100% Фокус на вас
+                {dict.bento.c2_title}
               </h3>
               <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
-                Вы общаетесь напрямую со мной, а не через глухой телефон менеджеров. Я беру ограниченное число проектов, чтобы погрузиться в каждый из них с головой.
+                {dict.bento.c2_desc}
               </p>
             </div>
 
@@ -82,10 +85,10 @@ export default function AboutPage() {
                 <Eye className="w-8 h-8 text-ink/40 group-hover:text-emerald-500 transition-colors" />
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-4">
-                Прозрачность процессов
+                {dict.bento.c3_title}
               </h3>
               <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
-                Никаких "черных ящиков". Я рассказываю, за что вы платите, какие этапы мы проходим и как каждое мое решение повлияет на ваши продажи.
+                {dict.bento.c3_desc}
               </p>
             </div>
 
@@ -95,10 +98,10 @@ export default function AboutPage() {
                 <Rocket className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors" />
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-4">
-                Передовые инструменты
+                {dict.bento.c4_title}
               </h3>
               <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed max-w-lg mt-auto">
-                Я не использую устаревшие, медленные движки. В моем арсенале Next.js, React, Tailwind CSS и Cloudflare Workers. Это обеспечивает вашим проектам безопасность банковского уровня и скорость загрузки за миллисекунды.
+                {dict.bento.c4_desc}
               </p>
             </div>
           </div>
@@ -113,34 +116,24 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
           <div className="lg:w-1/2">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 font-bold font-sans text-xs uppercase tracking-widest mb-6 text-white/70">
-              <span className="text-yellow-400">✦</span> 5 лет опыта
+              {dict.experience.badge}
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] mb-8">
-              Разрабатываю то, <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">что работает.</span>
-            </h2>
+            <h2 
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] mb-8"
+              dangerouslySetInnerHTML={{ __html: dict.experience.title }}
+            />
             <p className="font-sans text-lg text-white/60 font-light leading-relaxed">
-              За годы работы я выработал идеальную формулу создания цифровых продуктов. Мои сайты не висят в воздухе — они становятся фундаментом вашего маркетинга. Мои боты не просто отвечают на команды — они строят полноценные автоворонки.
+              {dict.experience.desc}
             </p>
           </div>
 
           <div className="lg:w-1/2 grid grid-cols-2 gap-6">
-            <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <div className="font-display text-4xl lg:text-5xl font-bold text-white mb-2">5+</div>
-              <div className="font-sans text-xs uppercase tracking-widest text-white/50 font-bold">Лет опыта</div>
-            </div>
-            <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <div className="font-display text-4xl lg:text-5xl font-bold text-white mb-2">24/7</div>
-              <div className="font-sans text-xs uppercase tracking-widest text-white/50 font-bold">Поддержка</div>
-            </div>
-            <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <div className="font-display text-4xl lg:text-5xl font-bold text-white mb-2">SEO</div>
-              <div className="font-sans text-xs uppercase tracking-widest text-white/50 font-bold">Оптимизация</div>
-            </div>
-            <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <div className="font-display text-4xl lg:text-5xl font-bold text-white mb-2">∞</div>
-              <div className="font-sans text-xs uppercase tracking-widest text-white/50 font-bold">Вовлеченность</div>
-            </div>
+            {dict.experience.stats.map((stat, idx) => (
+              <div key={idx} className="bg-white/5 border border-white/10 rounded-[2rem] p-8 backdrop-blur-sm hover:bg-white/10 transition-colors">
+                <div className="font-display text-4xl lg:text-5xl font-bold text-white mb-2">{stat.val}</div>
+                <div className="font-sans text-xs uppercase tracking-widest text-white/50 font-bold">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -153,15 +146,16 @@ export default function AboutPage() {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-coral/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 max-w-2xl">
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 leading-tight">
-                Готовы начать <br/>работу?
-              </h2>
+              <h2 
+                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 leading-tight"
+                dangerouslySetInnerHTML={{ __html: dict.cta.title }}
+              />
               <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">
-                Оставьте заявку, и я свяжусь с вами, чтобы обсудить ваш проект, предложить лучшие технические решения и рассчитать точную стоимость.
+                {dict.cta.desc}
               </p>
               
               <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-xl hover:-translate-y-1 inline-flex items-center gap-4 group">
-                Связаться со мной
+                {dict.cta.btn}
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
               </QuizTrigger>
             </div>

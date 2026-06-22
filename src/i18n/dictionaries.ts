@@ -1,3 +1,5 @@
+import { staticPagesDictUk, staticPagesDictRu } from './dictionaries.static';
+
 export type Dictionary = {
   header: {
     portfolio: string;
@@ -35,7 +37,13 @@ export type Dictionary = {
     success: string;
     buttonText: string;
     loading: string;
-    items: Array<{ id: string; question: string; answer: string }>;
+    anonLabel: string;
+    errorMsg: string;
+    items: {
+      id: string;
+      question: string;
+      answer: string;
+    }[];
   };
   hero: {
     badge: string;
@@ -86,7 +94,39 @@ export type Dictionary = {
     moreInfo: string;
     portfolio: string;
   };
-};
+  productMenu: {
+    popularTypes: string;
+    industrySolutions: string;
+    notFound: string;
+    leaveRequest: string;
+    allSolutions: string;
+  };
+  quiz: {
+    step: string;
+    outOf: string;
+    contactDesc: string;
+    customOption: string;
+    customPlaceholder: string;
+    textPlaceholder: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    contactLabel: string;
+    contactPlaceholder: string;
+    btnNext: string;
+    btnSubmit: string;
+    successTitle: string;
+    successSubtitle: string;
+    successDesc: string;
+    errorMsg: string;
+    fromPrefix: string;
+    steps: {
+      niche: { question: string; options: string[] };
+      needs: { question: string; options: string[] };
+      budget: { question: string; options: string[] };
+      contact: { question: string };
+    };
+  };
+} & typeof staticPagesDictUk;
 
 const uk: Dictionary = {
   header: {
@@ -125,6 +165,8 @@ const uk: Dictionary = {
     success: 'Заявку успішно відправлено!',
     buttonText: 'Замовити консультацію',
     loading: 'Відправка...',
+    anonLabel: 'Анонім (FAQ Форма)',
+    errorMsg: 'Сталася помилка під час відправлення',
     items: [
       {
         id: '01',
@@ -227,6 +269,50 @@ const uk: Dictionary = {
     moreInfo: 'Детальніше',
     portfolio: 'Портфоліо',
   },
+  productMenu: {
+    popularTypes: 'Популярні типи сайтів',
+    industrySolutions: 'Галузеві рішення для бізнесу',
+    notFound: 'Не знайшли потрібний варіант?',
+    leaveRequest: 'Залишити заявку',
+    allSolutions: 'Всі рішення',
+  },
+  quiz: {
+    step: 'Крок',
+    outOf: 'з',
+    contactDesc: 'Залиште контакт, щоб побачити попередню оцінку вартості.',
+    customOption: 'Свій варіант',
+    customPlaceholder: 'Напишіть ваш варіант...',
+    textPlaceholder: 'Напишіть тут...',
+    nameLabel: 'Ваше ім\'я *',
+    namePlaceholder: 'Олександр',
+    contactLabel: 'Email або Telegram *',
+    contactPlaceholder: '@username або пошта',
+    btnNext: 'Далі',
+    btnSubmit: 'Отримати розрахунок',
+    successTitle: 'Оцінка готова!',
+    successSubtitle: 'Попередня вартість вашого проєкту:',
+    successDesc: 'Я вже отримав вашу заявку і скоро зв\'яжусь з вами за вказаними контактами, щоб уточнити деталі та надати точний кошторис.',
+    errorMsg: 'Сталася помилка під час відправлення',
+    fromPrefix: 'від $',
+    steps: {
+      niche: {
+        question: 'В якій ніші працює ваш бізнес?',
+        options: ['Послуги (салони, ремонт тощо)', 'E-commerce / Товари', 'Інфобізнес / Навчання', 'B2B / Складні продажі', 'Інше']
+      },
+      needs: {
+        question: 'Що саме вам потрібно розробити?',
+        options: ['Лендінг', 'Корпоративний сайт', 'Інтернет-магазин', 'Telegram-бот', 'Сайт + Бот']
+      },
+      budget: {
+        question: 'На який бюджет ви розраховуєте?',
+        options: ['Мінімальний (до $200)', 'Середній (до $500)', 'Свій варіант']
+      },
+      contact: {
+        question: 'Куди надіслати розрахунок вартості?'
+      }
+    }
+  },
+  ...staticPagesDictUk,
 };
 
 const ru: Dictionary = {
@@ -266,6 +352,8 @@ const ru: Dictionary = {
     success: 'Заявка успешно отправлена!',
     buttonText: 'Заказать консультацию',
     loading: 'Отправка...',
+    anonLabel: 'Аноним (FAQ Форма)',
+    errorMsg: 'Произошла ошибка при отправке',
     items: [
       {
         id: '01',
@@ -368,6 +456,50 @@ const ru: Dictionary = {
     moreInfo: 'Подробнее',
     portfolio: 'Портфолио',
   },
+  productMenu: {
+    popularTypes: 'Популярные типы сайтов',
+    industrySolutions: 'Отраслевые решения для бизнеса',
+    notFound: 'Не нашли нужный вариант?',
+    leaveRequest: 'Оставьте заявку',
+    allSolutions: 'Все решения',
+  },
+  quiz: {
+    step: 'Шаг',
+    outOf: 'из',
+    contactDesc: 'Оставьте контакт, чтобы увидеть предварительную оценку стоимости.',
+    customOption: 'Свой вариант',
+    customPlaceholder: 'Напишите ваш вариант...',
+    textPlaceholder: 'Напишите здесь...',
+    nameLabel: 'Ваше имя *',
+    namePlaceholder: 'Александр',
+    contactLabel: 'Email или Telegram *',
+    contactPlaceholder: '@username или почта',
+    btnNext: 'Далее',
+    btnSubmit: 'Получить расчет',
+    successTitle: 'Оценка готова!',
+    successSubtitle: 'Предварительная стоимость вашего проекта:',
+    successDesc: 'Я уже получил вашу заявку и скоро свяжусь с вами по указанным контактам, чтобы уточнить детали и дать точную смету.',
+    errorMsg: 'Произошла ошибка при отправке',
+    fromPrefix: 'от $',
+    steps: {
+      niche: {
+        question: 'В какой нише работает ваш бизнес?',
+        options: ['Услуги (салоны, ремонт и т.д.)', 'E-commerce / Товары', 'Инфобизнес / Обучение', 'B2B / Сложные продажи', 'Другое']
+      },
+      needs: {
+        question: 'Что именно вам нужно разработать?',
+        options: ['Лендинг', 'Корпоративный сайт', 'Интернет-магазин', 'Telegram-бот', 'Сайт + Бот']
+      },
+      budget: {
+        question: 'На какой бюджет вы рассчитываете?',
+        options: ['Минимальный (до $200)', 'Средний (до $500)', 'Свой вариант']
+      },
+      contact: {
+        question: 'Куда отправить расчет стоимости?'
+      }
+    }
+  },
+  ...staticPagesDictRu,
 };
 
 export function getDictionary(lang: string): Dictionary {

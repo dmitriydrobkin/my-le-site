@@ -2,12 +2,16 @@ import { QuizTrigger } from '@/components/QuizTrigger';
 import { ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import { TelegramIcon } from '@/components/TelegramIcon';
 import { getSiteSettings } from '@/server/functions/settings';
+import { getDictionary } from '@/i18n/dictionaries';
 
-export default async function ContactPage() {
+export default async function ContactPage({ params }: { params: { lang: string } }) {
   const settings = await getSiteSettings();
   const phone = settings.global_phone || '+38 098 856 77 77';
   const email = settings.global_email || 'contact@nashe.agency';
   const tg = settings.global_tg || 'https://t.me/malyshev_dev';
+  
+  const dict = getDictionary(params.lang).contactPage;
+
   return (
     <div className="bg-surface min-h-screen flex flex-col justify-center">
       
@@ -21,20 +25,20 @@ export default async function ContactPage() {
           <div className="w-full lg:w-1/2">
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-ink/10 bg-surface font-bold font-sans text-xs uppercase tracking-widest mb-6 text-ink/70">
               <span className="w-2 h-2 rounded-full bg-ink animate-pulse" />
-              Связь со мной
+              {dict.badge}
             </div>
             
-            <h1 className="font-display text-4xl md:text-5xl lg:text-[5rem] font-bold tracking-tight text-ink leading-[1.05] mb-8 uppercase">
-              Давайте обсудим <br className="hidden lg:block" />
-              ваш проект
-            </h1>
+            <h1 
+              className="font-display text-4xl md:text-5xl lg:text-[5rem] font-bold tracking-tight text-ink leading-[1.05] mb-8 uppercase"
+              dangerouslySetInnerHTML={{ __html: dict.title }}
+            />
             
             <p className="font-sans text-lg lg:text-xl text-ink/60 font-medium leading-relaxed mb-10 max-w-lg">
-              Я всегда открыт к новым интересным задачам. Напишите мне в любой удобный мессенджер, и я оперативно помогу решить ваш вопрос.
+              {dict.desc}
             </p>
             
             <QuizTrigger className="bg-ink hover:bg-ink/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-xl hover:-translate-y-1 flex items-center gap-3 group w-full sm:w-max justify-center">
-              Оставить заявку на сайте
+              {dict.btn}
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </QuizTrigger>
           </div>
@@ -47,10 +51,10 @@ export default async function ContactPage() {
               <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <TelegramIcon className="w-8 h-8 text-blue-500" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-2">Telegram</h3>
-              <p className="font-sans text-ink/60 font-medium mb-4">Самый быстрый способ связи</p>
+              <h3 className="font-display text-2xl font-bold text-ink mb-2">{dict.tgTitle}</h3>
+              <p className="font-sans text-ink/60 font-medium mb-4">{dict.tgDesc}</p>
               <div className="mt-auto font-sans font-bold text-blue-500 flex items-center gap-2">
-                Написать <ArrowUpRight className="w-4 h-4" />
+                {dict.tgLink} <ArrowUpRight className="w-4 h-4" />
               </div>
             </a>
 
@@ -59,8 +63,8 @@ export default async function ContactPage() {
               <div className="w-14 h-14 rounded-full bg-coral/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <Mail className="w-6 h-6 text-coral" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-2">Email</h3>
-              <p className="font-sans text-ink/60 font-medium mb-4">Для подробных ТЗ и брифов</p>
+              <h3 className="font-display text-2xl font-bold text-ink mb-2">{dict.emailTitle}</h3>
+              <p className="font-sans text-ink/60 font-medium mb-4">{dict.emailDesc}</p>
               <div className="mt-auto font-sans font-bold text-coral flex items-center gap-2">
                 {email}
               </div>
@@ -71,8 +75,8 @@ export default async function ContactPage() {
               <div className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <Phone className="w-6 h-6 text-emerald-500" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-2">Телефон</h3>
-              <p className="font-sans text-ink/60 font-medium mb-4">Для срочных вопросов</p>
+              <h3 className="font-display text-2xl font-bold text-ink mb-2">{dict.phoneTitle}</h3>
+              <p className="font-sans text-ink/60 font-medium mb-4">{dict.phoneDesc}</p>
               <div className="mt-auto font-sans font-bold text-emerald-500 flex items-center gap-2">
                 {phone}
               </div>
@@ -83,10 +87,10 @@ export default async function ContactPage() {
               <div className="w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <MapPin className="w-6 h-6 text-purple-500" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-2">Локация</h3>
-              <p className="font-sans text-ink/60 font-medium mb-4">Работаю со всем миром (Remote)</p>
+              <h3 className="font-display text-2xl font-bold text-ink mb-2">{dict.locTitle}</h3>
+              <p className="font-sans text-ink/60 font-medium mb-4">{dict.locDesc}</p>
               <div className="mt-auto font-sans font-bold text-purple-500 flex items-center gap-2">
-                Online
+                {dict.locVal}
               </div>
             </div>
 

@@ -13,6 +13,7 @@ export function ProductMenuWrapper({ lang }: { lang: string }) {
       <ProductMenuModal 
         isOpen={isProductMenuOpen} 
         onClose={() => setIsProductMenuOpen(false)} 
+        lang={lang}
       />
     </>
   );

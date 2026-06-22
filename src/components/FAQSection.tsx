@@ -25,7 +25,7 @@ export function FAQSection({ lang }: { lang: string }) {
     setIsSubmitting(true);
     try {
       const formData = new FormData();
-      formData.append('name', 'Аноним (FAQ Форма)');
+      formData.append('name', dict.faq.anonLabel);
       formData.append('contactInfo', phone);
       formData.append('answers', JSON.stringify({ source: 'FAQ Section' }));
       
@@ -36,7 +36,7 @@ export function FAQSection({ lang }: { lang: string }) {
         setPhone('');
         setTimeout(() => setIsSuccess(false), 5000);
       } else {
-        alert(result.error || 'Произошла ошибка при отправке');
+        alert(result.error || dict.faq.errorMsg);
       }
     } catch (error) {
       console.error(error);

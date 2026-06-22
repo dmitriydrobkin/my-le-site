@@ -38,12 +38,12 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
               {dict?.hero?.primaryBtn}
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </QuizTrigger>
-            <Link href={`${lang === 'ru' ? '/ru' : ''}/services/sites-and-bots`} className="flex items-center gap-3 text-ink font-bold hover:text-cyan transition-colors group">
+            <button onClick={() => setIsProductMenuOpen(true)} className="flex items-center gap-3 text-ink font-bold hover:text-cyan transition-colors group">
               <span className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center bg-surface group-hover:border-cyan/30 transition-colors">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
               {dict?.hero?.secondaryBtn}
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -106,6 +106,7 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
       <ProductMenuModal 
         isOpen={isProductMenuOpen} 
         onClose={() => setIsProductMenuOpen(false)} 
+        lang={lang}
       />
     </div>
   );

@@ -2,140 +2,144 @@
 
 import Link from 'next/link';
 import { QuizTrigger } from '@/components/QuizTrigger';
-import { ArrowUpRight, CheckCircle, Zap, GitFork, MessageSquare, CloudCog, ArrowLeftRight } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, MessageCircle, Bot, PhoneCall, HandCoins, Smartphone, ShieldCheck, Cog } from 'lucide-react';
+import { TelegramIcon } from '@/components/TelegramIcon';
+import { getDictionary } from '@/i18n/dictionaries';
 
-export default function TelegramBotsPage() {
+export default function TelegramBotsPage({ params }: { params: { lang: string } }) {
+  const dict = getDictionary(params.lang).servicesPages.telegramBots;
+
   return (
     <div className="bg-white min-h-screen">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-32 pb-24 lg:py-0 w-full">
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-bl from-blue-500/10 via-cyan-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
+      <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-32 pb-16 lg:py-0 w-full">
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-blue-500/10 via-cyan-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
         
         <div className="max-w-5xl relative z-10">
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-600 font-bold font-sans text-xs uppercase tracking-widest mb-6">
-            <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
-            Автоматизация рутины
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-600 font-bold font-sans text-xs uppercase tracking-widest mb-6">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+            {dict.heroBadge}
           </div>
           
-          <h1 className="font-display text-4xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase">
-            Разработка <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">Telegram-ботов</span> <br className="hidden md:block" />
-            для бизнеса
-          </h1>
+          <h1 
+            className="font-display text-4xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase"
+            dangerouslySetInnerHTML={{ __html: dict.heroTitle }}
+          />
           
           <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-3xl font-medium leading-relaxed mb-8">
-            Создаю надежных умных агентов: от компактных ботов-визиток и агрегаторов заявок до кастомных решений со сложной логикой. Ваш цифровой сотрудник, который работает 24/7 без выходных.
+            {dict.heroDesc}
           </p>
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <QuizTrigger className="bg-ink hover:bg-ink/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-xl hover:-translate-y-1 flex items-center gap-3 group w-full sm:w-auto justify-center">
-              Заказать бота
+              {dict.btnCalc}
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </QuizTrigger>
-            <Link href="/portfolio" className="flex items-center gap-3 text-ink font-bold hover:text-cyan-600 transition-colors group">
-              <span className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center bg-surface group-hover:border-cyan-500/30 transition-colors shadow-sm">
+            <Link href={`/${params.lang}/portfolio`} className="flex items-center gap-3 text-ink font-bold hover:text-blue-600 transition-colors group">
+              <span className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center bg-surface group-hover:border-blue-500/30 transition-colors shadow-sm">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
-              Посмотреть примеры
+              {dict.btnPortfolio}
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 2. ЧТО ВХОДИТ В СТОИМОСТЬ (BENTO GRID) */}
-      <section className="py-12 lg:py-24 bg-surface border-y border-ink/5 relative overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight">
-              Что может ваш бот?
-            </h2>
-            <p className="font-sans text-ink/50 leading-relaxed font-medium max-w-sm">
-              Индивидуальное проектирование архитектуры, чтобы бот точно решал задачи именно вашего бизнеса.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Card 1 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-blue-500/20 transition-all duration-500 group mobile-hover-card">
-              <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <GitFork className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors" />
-              </div>
-              <h3 className="font-display text-xl font-bold text-ink mb-4 leading-tight">
-                Проектирование логики
-              </h3>
-              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
-                Детальная проработка маршрутов пользователя (Customer Journey). Бот проведет клиента за руку до нужного вам целевого действия.
+      {/* 2. ЗАЧЕМ ВАМ БОТ (WHY SECTION) */}
+      <section className="py-12 lg:py-24 bg-surface border-y border-ink/5">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="flex flex-col md:flex-row gap-12 lg:gap-24">
+            <div className="lg:w-1/3">
+              <h2 
+                className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-ink uppercase leading-tight mb-6"
+                dangerouslySetInnerHTML={{ __html: dict.whyTitle }}
+              />
+              <p className="font-sans text-ink/50 leading-relaxed font-medium">
+                {dict.whyDesc}
               </p>
             </div>
-
-            {/* Card 2 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-cyan-500/20 transition-all duration-500 group mobile-hover-card">
-              <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <MessageSquare className="w-8 h-8 text-ink/40 group-hover:text-cyan-500 transition-colors" />
-              </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-4">
-                Боты-визитки
-              </h3>
-              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
-                Идеально для первого контакта: красиво расскажут о вашей компании, автоматически выдадут прайс и закроют частые вопросы (FAQ).
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-teal-500/20 transition-all duration-500 group mobile-hover-card">
-              <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <ArrowLeftRight className="w-8 h-8 text-ink/40 group-hover:text-teal-500 transition-colors" />
-              </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-4">
-                Агрегаторы заявок
-              </h3>
-              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
-                Связка вашего сайта и CRM с Telegram. Вы и ваши менеджеры получаете новые лиды и уведомления моментально прямо в мессенджер.
-              </p>
-            </div>
-
-            {/* Card 4 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-emerald-500/20 transition-all duration-500 group mobile-hover-card">
-              <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <CloudCog className="w-8 h-8 text-ink/40 group-hover:text-emerald-500 transition-colors" />
-              </div>
-              <h3 className="font-display text-2xl font-bold text-ink mb-4">
-                Бессерверная база
-              </h3>
-              <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
-                Разработка на передовой Serverless архитектуре (worker.js). Максимальная скорость, стабильность и независимость от тяжелых серверов.
-              </p>
+            <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
+              {dict.whyPoints.map((point, idx) => (
+                <div key={idx} className={idx === 2 ? 'md:col-span-2' : ''}>
+                  <h3 className="font-display text-xl font-bold text-ink mb-3">{point.title}</h3>
+                  <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed max-w-xl">
+                    {point.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. КИЛЛЕР-ФИЧА (АКЦЕНТНЫЙ БЛОК) */}
+      {/* 3. BENTO GRID */}
+      <section className="py-12 lg:py-24 bg-white border-b border-ink/5 relative overflow-hidden">
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
+            <h2 
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight"
+              dangerouslySetInnerHTML={{ __html: dict.bentoTitle }}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: <MessageCircle className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors" />, hoverColor: 'hover:border-blue-500/20' },
+              { icon: <PhoneCall className="w-8 h-8 text-ink/40 group-hover:text-emerald-500 transition-colors" />, hoverColor: 'hover:border-emerald-500/20' },
+              { icon: <HandCoins className="w-8 h-8 text-ink/40 group-hover:text-yellow-500 transition-colors" />, hoverColor: 'hover:border-yellow-500/20' },
+              { icon: <Cog className="w-8 h-8 text-ink/40 group-hover:text-purple-500 transition-colors" />, hoverColor: 'hover:border-purple-500/20' }
+            ].map((item, idx) => (
+              <div key={idx} className={`bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl ${item.hoverColor} transition-all duration-500 group mobile-hover-card`}>
+                <div className="w-16 h-16 rounded-full bg-white border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                  {item.icon}
+                </div>
+                <h3 className="font-display text-2xl font-bold text-ink mb-4">
+                  {dict.bentoPoints[idx]?.title}
+                </h3>
+                <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
+                  {dict.bentoPoints[idx]?.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. КИЛЛЕР-ФИЧА / ТЕХНОЛОГИИ */}
       <section className="py-16 lg:py-20 bg-ink text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-transparent" />
         
-        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-          <div className="max-w-4xl">
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24">
+          <div className="lg:w-1/2">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 font-bold font-sans text-xs uppercase tracking-widest mb-6 text-white/70">
-              <span className="text-cyan-400">✦</span> Главная фишка
+              {dict.techBadge}
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-8">
-              Сила Cloudflare <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Workers.</span>
-            </h2>
-            <p className="font-sans text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-2xl border-l-2 border-cyan-400 pl-6 mb-6">
-              Ваш бот не «упадет» от наплыва пользователей и реагирует мгновенно благодаря запуску кода на границах сети по всему миру.
-            </p>
-            <p className="font-sans text-lg md:text-xl text-white/80 font-bold leading-relaxed max-w-2xl">
-              Самое главное: <span className="text-cyan-400">Вам не нужно платить абонентскую плату за выделенный сервер</span> на старте или тестировании проекта. Бот просто работает. Бесплатно.
-            </p>
+            <h2 
+              className="font-display text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-8"
+              dangerouslySetInnerHTML={{ __html: dict.techTitle }}
+            />
+          </div>
+          <div className="lg:w-1/2 flex flex-col gap-10">
+            {dict.techPoints.map((point, idx) => (
+              <div key={idx} className="flex gap-6 items-start">
+                <div className="w-16 h-16 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                  {idx === 0 ? <Smartphone className="w-8 h-8 text-blue-400" /> : <Bot className="w-8 h-8 text-cyan-400" />}
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl font-bold mb-3">{point.title}</h3>
+                  <p className="font-sans text-white/60 leading-relaxed font-light">
+                    {point.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 4. CTA БЛОК ИЗ ГЛАВНОЙ СТРАНИЦЫ */}
+      {/* 5. CTA БЛОК */}
       <section className="py-16 lg:py-24 bg-surface">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="bg-gradient-to-br from-surface to-white border border-ink/5 rounded-[3rem] p-10 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -143,40 +147,39 @@ export default function TelegramBotsPage() {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-blue-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 max-w-2xl">
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 leading-tight">
-                Готовы делегировать <br/>
-                задачи боту?
-              </h2>
+              <h2 
+                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 leading-tight"
+                dangerouslySetInnerHTML={{ __html: dict.ctaTitle }}
+              />
               <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">
-                Расскажите, какую часть рутины вы хотите автоматизировать. Я предложу оптимальную логику бота и реализую ее в кратчайшие сроки.
+                {dict.ctaDesc}
               </p>
               
-              <QuizTrigger className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-10 py-5 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-neon-cyan hover:-translate-y-1 inline-flex items-center gap-4 group">
-                Обсудить логику
+              <QuizTrigger className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-10 py-5 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-neon-blue hover:-translate-y-1 inline-flex items-center gap-4 group">
+                {dict.ctaBtn}
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
               </QuizTrigger>
             </div>
             
-            {/* Дополнительный визуальный элемент или статистика */}
             <div className="relative z-10 w-full lg:w-1/3">
                <div className="bg-white rounded-[2rem] p-8 border border-ink/5 shadow-glass flex flex-col gap-6">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">
-                      <CheckCircle className="w-6 h-6" />
+                      <CheckCircle2 className="w-6 h-6" />
                     </div>
                     <div>
-                      <div className="font-bold font-display text-xl text-ink">99.9%</div>
-                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">Uptime бота</div>
+                      <div className="font-bold font-display text-xl text-ink">{dict.ctaStat1Title}</div>
+                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">{dict.ctaStat1Desc}</div>
                     </div>
                   </div>
                   <div className="w-full h-px bg-ink/5" />
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
-                      <Zap className="w-6 h-6" />
+                    <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500">
+                      <ShieldCheck className="w-6 h-6" />
                     </div>
                     <div>
-                      <div className="font-bold font-display text-xl text-ink">0 $/мес</div>
-                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">Оплата за сервер</div>
+                      <div className="font-bold font-display text-xl text-ink">{dict.ctaStat2Title}</div>
+                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">{dict.ctaStat2Desc}</div>
                     </div>
                   </div>
                </div>

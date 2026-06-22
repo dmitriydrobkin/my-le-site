@@ -15,15 +15,17 @@ import { getLocalizedProjects } from '@/server/functions/getProjects';
 
 export const runtime = 'edge';
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: { slug: string, lang: string } }) {
   const niche = niches.find(n => n.slug === params.slug);
   if (!niche) {
     return { title: 'Страница не найдена' };
   }
 
+  const lang = (params.lang === 'ru' || params.lang === 'uk') ? params.lang : 'uk';
+
   return {
-    title: niche.seoTitle,
-    description: niche.seoDescription,
+    title: niche.seoTitle[lang],
+    description: niche.seoDescription[lang],
   };
 }
 
@@ -34,6 +36,8 @@ export default async function NichePage({ params }: { params: { slug: string, la
     notFound();
   }
 
+  const lang = (params.lang === 'ru' || params.lang === 'uk') ? params.lang : 'uk';
+
   let projectsData: any[] = [];
   try {
     projectsData = await getLocalizedProjects(params.lang);
@@ -41,10 +45,10 @@ export default async function NichePage({ params }: { params: { slug: string, la
     console.error('Failed to fetch projects on niche page:', error);
   }
 
-  const nameLower = niche.name.toLowerCase();
-  const seoPrefix = nameLower.startsWith('заказать') 
-    ? `Вам нужно ${nameLower}?`
-    : `Вам нужно заказать ${nameLower}?`;
+  const nameLower = niche.name[lang].toLowerCase();
+  const seoPrefix = nameLower.startsWith('заказать') || nameLower.startsWith('замовити') 
+    ? (lang === 'ru' ? `Вам нужно ${nameLower}?` : `Вам потрібно ${nameLower}?`)
+    : (lang === 'ru' ? `Вам нужно заказать ${nameLower}?` : `Вам потрібно замовити ${nameLower}?`);
 
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
@@ -61,12 +65,12 @@ export default async function NichePage({ params }: { params: { slug: string, la
           </div>
           
           <h1 className="font-display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-8 uppercase break-words">
-            {niche.name} <br className="hidden md:block" />
+            {niche.name[lang]} <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">для вашего бизнеса</span>
           </h1>
           
           <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-3xl font-medium leading-relaxed mb-12">
-            <strong className="text-ink/80">{seoPrefix}</strong> {niche.heroSubtitle}
+            <strong className="text-ink/80">{seoPrefix}</strong> {niche.heroSubtitle[lang]}
           </p>
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 w-full max-w-full">
@@ -100,7 +104,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {niche.features.map((feature, idx) => {
+            {niche.features[lang].map((feature, idx) => {
               // Динамический выбор иконок и цветов для разнообразия карточек
               const cardStyles = [
                 { icon: LayoutTemplate, color: 'text-indigo-500', bg: 'bg-indigo-50', hoverBorder: 'hover:border-indigo-500/20' },

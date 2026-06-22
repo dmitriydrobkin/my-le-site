@@ -21,7 +21,7 @@ export default async function LangLayout({
       <Header lang={params.lang} />
       <main className="flex-grow">{children}</main>
       <ConditionalFooter settings={settings} lang={params.lang} />
-      <QuizModal lang={params.lang} />
+      <QuizModal lang={params.lang || 'uk'} />
     </>
   );
 }
