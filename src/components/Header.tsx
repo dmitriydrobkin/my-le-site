@@ -67,12 +67,7 @@ export function Header({ lang }: { lang: string }) {
 
           {/* Кнопка Меню */}
           <div className="pointer-events-auto flex items-center gap-2">
-            <Link 
-              href={switchLangHref}
-              className="bg-white/80 backdrop-blur-md shadow-glass rounded-full px-4 py-4 font-display font-bold text-ink text-sm transition-transform hover:scale-105 uppercase"
-            >
-              {dict.header.lang}
-            </Link>
+
 
             <button 
               onClick={() => setIsMenuOpen(true)}
@@ -146,6 +141,23 @@ export function Header({ lang }: { lang: string }) {
                     )}
                   </motion.div>
                 ))}
+                
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: menuItems.length * 0.05 }}
+                  className="mt-8 flex justify-center"
+                >
+                  <Link 
+                    href={switchLangHref}
+                    className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full px-6 py-3 font-display font-bold text-white text-sm transition-all uppercase tracking-widest"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {lang === 'uk' ? 'UA' : 'RU'}
+                    <span className="opacity-50 mx-2">|</span>
+                    <span className="opacity-50 hover:opacity-100 transition-opacity">{lang === 'uk' ? 'RU' : 'UA'}</span>
+                  </Link>
+                </motion.div>
               </nav>
             </div>
           </motion.div>

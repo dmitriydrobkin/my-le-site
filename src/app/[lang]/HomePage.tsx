@@ -11,8 +11,11 @@ import { BentoAdvantages } from '@/components/BentoAdvantages';
 import { TopPortfolio } from '@/components/TopPortfolio';
 import { FinalCTA } from '@/components/FinalCTA';
 
+import { getDictionary } from '@/i18n/dictionaries';
+
 export default function B2BHomePage({ projectsData, lang }: { projectsData: any[], lang: string }) {
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
+  const dict = getDictionary(lang);
 
   return (
     <div className="bg-white min-h-screen">
@@ -21,30 +24,34 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
       <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-24 pb-24">
         <div className="max-w-4xl">
           <h1 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight text-ink leading-[1.05] mb-10">
-            DIGITAL РЕШЕНИЯ
+            {dict.hero.title.split('БИЗНЕСА')[0].split('БІЗНЕСУ')[0]}
             <br />
-            ДЛЯ <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">БИЗНЕСА</span>
+            {lang === 'ru' ? (
+              <>ДЛЯ <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">БИЗНЕСА</span></>
+            ) : (
+              <>ДЛЯ <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">БІЗНЕСУ</span></>
+            )}
           </h1>
           <p className="font-sans text-xl text-ink/60 max-w-2xl font-medium leading-relaxed mb-12">
-            Проектирую, разрабатываю и запускаю высококонверсионные веб-системы и Telegram-боты, которые работают на рост вашей прибыли 24/7.
+            {dict.hero.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-neon-coral hover:-translate-y-1 flex items-center gap-3 group">
-              Обсудить проект
+              {dict.hero.primaryBtn}
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </QuizTrigger>
-            <Link href="/services/sites-and-bots" className="flex items-center gap-3 text-ink font-bold hover:text-cyan transition-colors group">
+            <Link href={`${lang === 'ru' ? '/ru' : ''}/services/sites-and-bots`} className="flex items-center gap-3 text-ink font-bold hover:text-cyan transition-colors group">
               <span className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center bg-surface group-hover:border-cyan/30 transition-colors">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
-              Готовые решения
+              {dict.hero.secondaryBtn}
             </Link>
           </div>
         </div>
       </section>
 
       {/* 2. РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА (SPLIT + HORIZONTAL SCROLL) */}
-      <ServicesSlider />
+      <ServicesSlider lang={lang} />
 
       {/* 2.5 ОБО МНЕ */}
       <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-white border-t border-ink/5">
@@ -57,11 +64,11 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
             {/* Левая часть: Акцентный заголовок */}
             <div className="relative z-10 lg:w-1/3 flex flex-col justify-between">
               <div>
-                <span className="font-sans text-xs font-bold text-white/50 uppercase tracking-widest mb-4 block">Обо мне</span>
-                <h2 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight">
-                  Привет, <br/>
-                  я Дмитрий <span className="text-coral">👋</span>
-                </h2>
+                <span className="font-sans text-xs font-bold text-white/50 uppercase tracking-widest mb-4 block">{dict.about.badge}</span>
+                <h2 
+                  className="font-display text-4xl md:text-5xl font-bold text-white leading-tight"
+                  dangerouslySetInnerHTML={{ __html: dict.about.title }}
+                />
               </div>
               
               <div className="hidden lg:flex items-center gap-4 mt-12">
@@ -69,7 +76,7 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
                     <span className="font-mono text-sm">&lt;/&gt;</span>
                  </div>
                  <span className="font-sans text-xs font-bold text-white/30 uppercase tracking-widest">
-                   Разработчик / Дизайнер
+                   {dict.about.role}
                  </span>
               </div>
             </div>
@@ -77,15 +84,9 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
             {/* Правая часть: текст */}
             <div className="relative z-10 lg:w-2/3 flex flex-col justify-center">
               <div className="space-y-6 font-sans text-white/70 text-base md:text-lg leading-relaxed font-light">
-                <p>
-                  Я частный веб-дизайнер и разработчик. Моя главная <strong className="font-medium text-white"> специализация — создание современных, легких сайтов и умных Telegram-ботов</strong>.
-                </p>
-                <p>
-                  Я не сторонник переусложнения. Малому и среднему бизнесу не нужны тяжелые корпоративные порталы, которые делаются полгода. Бизнесу нужен рабочий инструмент, который загружается за секунду, понятно рассказывает об услуге и стабильно приносит заявки.
-                </p>
-                <p>
-                  Именно такие продукты я и собираю, используя передовой стек технологий.
-                </p>
+                <p dangerouslySetInnerHTML={{ __html: dict.about.p1.replace('специализация — создание современных, легких сайтов и умных Telegram-ботов', '<strong class="font-medium text-white">специализация — создание современных, легких сайтов и умных Telegram-ботов</strong>').replace('спеціалізація — створення сучасних, швидких сайтів та розумних Telegram-ботів', '<strong class="font-medium text-white">спеціалізація — створення сучасних, швидких сайтів та розумних Telegram-ботів</strong>') }} />
+                <p>{dict.about.p2}</p>
+                <p>{dict.about.p3}</p>
               </div>
             </div>
           </div>
@@ -93,13 +94,13 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
       </section>
 
       {/* 3. BENTO GRID */}
-      <BentoAdvantages onOpenProductMenu={() => setIsProductMenuOpen(true)} />
+      <BentoAdvantages lang={lang} onOpenProductMenu={() => setIsProductMenuOpen(true)} />
 
       {/* 4. ПРИМЕРЫ РАБОТ */}
       <TopPortfolio projectsData={projectsData} lang={lang} />
 
       {/* 5. ФИНАЛЬНЫЙ CTA БЛОК */}
-      <FinalCTA />
+      <FinalCTA lang={lang} />
       
       {/* Hide global scrollbar for horizontal lists */}
       <style dangerouslySetInnerHTML={{__html: `
