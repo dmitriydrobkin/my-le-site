@@ -61,7 +61,7 @@ export default async function RootLayout({
         {/* Главный контент */}
         <main className="flex-grow">{children}</main>
 
-        <ConditionalFooter />
+        <ConditionalFooter settings={settings} />
 
         {/* Global Modal */}
         <QuizModal />

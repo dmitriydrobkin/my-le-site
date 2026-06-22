@@ -1,10 +1,13 @@
-'use client';
-
 import { QuizTrigger } from '@/components/QuizTrigger';
 import { ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import { TelegramIcon } from '@/components/TelegramIcon';
+import { getSiteSettings } from '@/server/functions/settings';
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const settings = await getSiteSettings();
+  const phone = settings.global_phone || '+38 098 856 77 77';
+  const email = settings.global_email || 'contact@nashe.agency';
+  const tg = settings.global_tg || 'https://t.me/malyshev_dev';
   return (
     <div className="bg-surface min-h-screen flex flex-col justify-center">
       
@@ -40,7 +43,7 @@ export default function ContactPage() {
           <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
             
             {/* Telegram */}
-            <a href="https://t.me/malyshev_dev" target="_blank" rel="noreferrer" className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-blue-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
+            <a href={tg} target="_blank" rel="noreferrer" className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-blue-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
               <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <TelegramIcon className="w-8 h-8 text-blue-500" />
               </div>
@@ -52,26 +55,26 @@ export default function ContactPage() {
             </a>
 
             {/* Email */}
-            <a href="mailto:contact@nashe.agency" className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-coral/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
+            <a href={`mailto:${email}`} className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-coral/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
               <div className="w-14 h-14 rounded-full bg-coral/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <Mail className="w-6 h-6 text-coral" />
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-2">Email</h3>
               <p className="font-sans text-ink/60 font-medium mb-4">Для подробных ТЗ и брифов</p>
               <div className="mt-auto font-sans font-bold text-coral flex items-center gap-2">
-                contact@nashe.agency
+                {email}
               </div>
             </a>
 
             {/* Phone */}
-            <a href="tel:+380988567777" className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-emerald-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
+            <a href={`tel:${phone.replace(/[^\d+]/g, '')}`} className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-emerald-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
               <div className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <Phone className="w-6 h-6 text-emerald-500" />
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-2">Телефон</h3>
               <p className="font-sans text-ink/60 font-medium mb-4">Для срочных вопросов</p>
               <div className="mt-auto font-sans font-bold text-emerald-500 flex items-center gap-2">
-                +38 098 856 77 77
+                {phone}
               </div>
             </a>
 

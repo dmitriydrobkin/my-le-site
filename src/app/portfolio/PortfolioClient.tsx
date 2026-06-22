@@ -72,9 +72,9 @@ export default function PortfolioClient({ initialProjects }: { initialProjects: 
               <Link 
                 href={`/portfolio/${project.slug}`} 
                 key={project.id} 
-                className={`flex flex-col group cursor-pointer ${project.isTop ? 'md:col-span-2' : ''}`}
+                className={`flex flex-col group cursor-pointer ${project.isTop === 1 ? 'md:col-span-2' : ''}`}
               >
-                <div className={`relative w-full aspect-[4/3] ${project.isTop ? 'md:aspect-[2/1]' : ''} rounded-[2rem] overflow-hidden mb-6 shadow-glass border border-ink/5 bg-surface`}>
+                <div className={`relative w-full aspect-[4/3] ${project.isTop === 1 ? 'md:aspect-[2/1]' : ''} rounded-[2rem] overflow-hidden mb-6 shadow-glass border border-ink/5 bg-surface`}>
                   {project.imageUrl ? (
                     <img 
                       src={project.imageUrl} 
@@ -88,7 +88,7 @@ export default function PortfolioClient({ initialProjects }: { initialProjects: 
                   )}
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
                   
-                  {project.isTop && (
+                  {project.isTop === 1 && (
                     <div className="absolute top-6 left-6 z-10 px-4 py-2 rounded-full bg-coral text-white font-bold font-sans text-xs uppercase tracking-widest shadow-lg">
                       Top Project
                     </div>

@@ -27,7 +27,10 @@ const YoutubeIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export function Footer() {
+export function Footer({ settings }: { settings?: any }) {
+  const phone = settings?.global_phone || '+38 098 856 77 77';
+  const email = settings?.global_email || 'contact@nashe.agency';
+  const tg = settings?.global_tg || 'https://t.me/malyshev_dev';
   const quickLinks = [
     { label: 'Лендинг', href: '/services/landings' },
     { label: 'Сайт-визитка', href: '/services/business-cards' },
@@ -89,11 +92,11 @@ export function Footer() {
               Контакты
             </h4>
             <div className="flex flex-col gap-4">
-              <a href="tel:+380988567777" className="font-mono text-xl font-medium hover:text-coral transition-colors">
-                +38 098 856 77 77
+              <a href={`tel:${phone.replace(/[^\d+]/g, '')}`} className="font-mono text-xl font-medium hover:text-coral transition-colors">
+                {phone}
               </a>
-              <a href="mailto:contact@nashe.agency" className="font-sans text-white/70 hover:text-white transition-colors">
-                contact@nashe.agency
+              <a href={`mailto:${email}`} className="font-sans text-white/70 hover:text-white transition-colors">
+                {email}
               </a>
               <div className="flex gap-3 mt-2">
                 <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
@@ -102,7 +105,7 @@ export function Footer() {
                 <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
                   <FacebookIcon className="w-4 h-4" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
+                <a href={tg} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
                   <TelegramIcon className="w-4 h-4" />
                 </a>
               </div>

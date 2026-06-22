@@ -22,6 +22,8 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
   const stack = project.stackJson ? (typeof project.stackJson === 'string' ? JSON.parse(project.stackJson) : project.stackJson) : [];
   const results = project.resultsJson ? (typeof project.resultsJson === 'string' ? JSON.parse(project.resultsJson) : project.resultsJson) : [];
 
+  const absoluteLink = project.projectLink ? (project.projectLink.startsWith('http') ? project.projectLink : `https://${project.projectLink}`) : '';
+
   return (
     <div className="bg-surface min-h-screen pb-24">
       {/* 1. HERO & COVER */}
@@ -53,9 +55,9 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
               </p>
             </div>
             
-            {project.projectLink && (
+            {absoluteLink && (
               <a 
-                href={project.projectLink}
+                href={absoluteLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="shrink-0 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white border border-ink/10 hover:border-ink/30 text-ink font-bold font-sans text-sm uppercase tracking-widest transition-all hover:shadow-lg group"

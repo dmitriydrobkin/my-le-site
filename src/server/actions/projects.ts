@@ -34,6 +34,7 @@ export async function saveProjectAction(formData: FormData) {
   const timeline = formData.get('timeline') as string;
   const challenge = formData.get('challenge') as string;
   const solution = formData.get('solution') as string;
+  const isTop = formData.get('isTop') === 'on' ? 1 : 0;
 
   const stackStr = formData.get('stack') as string;
   const stackArray = stackStr ? stackStr.split(',').map(s => s.trim()).filter(Boolean) : [];
@@ -64,6 +65,7 @@ export async function saveProjectAction(formData: FormData) {
     timeline,
     challenge,
     solution,
+    isTop,
     resultsJson: resultsArray,
     stackJson: stackArray,
     imageUrl: imageUrl || '', // Will be updated conditionally below
@@ -83,6 +85,7 @@ export async function saveProjectAction(formData: FormData) {
       timeline,
       challenge,
       solution,
+      isTop,
       resultsJson: resultsArray,
       stackJson: stackArray,
       ...(imageUrl ? { imageUrl } : {}),

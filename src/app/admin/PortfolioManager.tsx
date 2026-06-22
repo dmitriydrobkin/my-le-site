@@ -92,6 +92,11 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
                <input name="stack" defaultValue={editingProject?.stackJson ? (typeof editingProject.stackJson === 'string' ? JSON.parse(editingProject.stackJson).join(', ') : editingProject.stackJson.join(', ')) : ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors" placeholder="Next.js, Tailwind, 1C..." />
             </div>
           </div>
+          
+          <div className="flex items-center gap-3">
+            <input type="checkbox" id="isTop" name="isTop" defaultChecked={editingProject?.isTop === 1} className="w-5 h-5 accent-coral" />
+            <label htmlFor="isTop" className="text-sm font-bold text-ink/80 cursor-pointer">Топ проект (Выделять на странице портфолио)</label>
+          </div>
 
           <div>
             <label className="block text-sm font-bold text-ink/80 mb-2">Краткое описание (в карточке)</label>

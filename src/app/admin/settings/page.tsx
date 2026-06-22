@@ -43,6 +43,7 @@ export default async function SettingsPage({
             settingsData.append('global_phone', formData.get('phone') as string || '');
             settingsData.append('global_email', formData.get('email') as string || '');
             settingsData.append('global_tg', formData.get('tg') as string || '');
+            settingsData.append('seo_indexing_enabled', formData.get('seo_indexing') === 'on' ? 'true' : 'false');
             
             // Отправляем ровно ОДИН аргумент, как и требует TypeScript
             await updateSiteSettings(settingsData);
@@ -63,7 +64,17 @@ export default async function SettingsPage({
               <input name="tg" defaultValue={settings.global_tg || ''} placeholder="https://t.me/nashe_agency" className="w-full p-4 bg-white border border-ink/10 rounded-2xl text-ink focus:outline-none focus:border-coral transition-colors" />
             </div>
           </div>
-          <div className="pt-2">
+
+          <div className="pt-8 border-t border-ink/5 mt-8">
+             <h3 className="font-display text-xl font-bold mb-4 text-ink">SEO: Индексация</h3>
+             <div className="flex items-center gap-3 mb-2">
+                <input type="checkbox" id="seo_indexing" name="seo_indexing" defaultChecked={settings.seo_indexing_enabled === 'true'} className="w-5 h-5 accent-coral" />
+                <label htmlFor="seo_indexing" className="text-sm font-bold text-ink/80 cursor-pointer">Разрешить поисковым роботам (Google, Yandex) индексировать сайт</label>
+             </div>
+             <p className="text-sm text-ink/60">Если выключено, на все страницы сайта будет добавлен метатег "noindex, nofollow", который скроет сайт из результатов поиска.</p>
+          </div>
+
+          <div className="pt-8">
             <SubmitButton defaultText="Сохранить настройки" />
           </div>
         </form>

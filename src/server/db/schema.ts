@@ -67,6 +67,7 @@ export const projects = sqliteTable('projects', {
   imageUrl: text('image_url'),
   tags: text('tags'), 
   isHidden: integer('is_hidden').default(0).notNull(), 
+  isTop: integer('is_top').default(0).notNull(), // 0 = false, 1 = true
   sortOrder: integer('sort_order').default(0).notNull(),
   createdAt: integer('created_at').notNull(),
 });
