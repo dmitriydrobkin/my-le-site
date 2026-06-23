@@ -55,8 +55,6 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
       <section className="pt-12 pb-12 lg:pt-16 lg:pb-16 bg-white border-t border-ink/5">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="relative bg-ink rounded-[2rem] p-8 lg:p-16 flex flex-col lg:flex-row gap-12 overflow-hidden shadow-2xl">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-cyan-500/20 to-transparent rounded-full blur-3xl pointer-events-none animate-blob" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-coral/20 to-transparent rounded-full blur-3xl pointer-events-none animate-blob" />
 
             <div className="relative z-10 lg:w-1/3 flex flex-col justify-between">
               <div>

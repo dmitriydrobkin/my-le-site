@@ -14,8 +14,6 @@ export default function CorporatePage({ params }: { params: { lang: string } }) 
       
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-32 pb-16 lg:pb-24">
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-indigo-500/40 via-purple-500/30 to-transparent rounded-full blur-3xl pointer-events-none opacity-100 mix-blend-multiply animate-blob" />
-        <div className="absolute bottom-0 left-0 w-[200px] h-[200px] md:w-[400px] md:h-[400px] bg-gradient-to-tr from-pink-500/40 via-rose-400/30 to-transparent rounded-full blur-3xl pointer-events-none opacity-100 mix-blend-multiply animate-blob" style={{ animationDelay: '2s' }} />
         
         <div className="max-w-5xl relative z-10 pt-16 lg:pt-0">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/5 text-indigo-600 font-bold font-sans text-xs uppercase tracking-widest mb-6">
@@ -159,7 +157,6 @@ export default function CorporatePage({ params }: { params: { lang: string } }) 
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[2rem] p-8 lg:p-12 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-10">
             
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-indigo-500/40 to-transparent rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 max-w-xl">
               <h2 
