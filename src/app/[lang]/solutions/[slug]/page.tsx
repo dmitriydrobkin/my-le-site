@@ -145,14 +145,16 @@ export default async function NichePage({ params }: { params: { slug: string, la
         <div className="max-w-[1400px] mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24">
           <div className="lg:w-1/2">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 font-bold font-sans text-xs uppercase tracking-widest mb-6 text-white/70">
-              <span className="text-purple-400">✦</span> Технический козырь
+              <span className="text-purple-400">✦</span> {lang === 'uk' ? 'Технічний козир' : 'Технический козырь'}
             </span>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] mb-8">
-              Преимущества <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">платформы</span>
+              {lang === 'uk' ? 'Переваги' : 'Преимущества'} <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">{lang === 'uk' ? 'платформи' : 'платформы'}</span>
             </h2>
             <p className="font-sans text-white/60 leading-relaxed font-light text-lg">
-              Современные технологии стирают все границы. Вы получите премиальное качество, высокую скорость загрузки и максимальную надежность инфраструктуры.
+              {lang === 'uk' 
+                ? 'Сучасні технології стирають усі кордони. Ви отримаєте преміальну якість, високу швидкість завантаження та максимальну надійність інфраструктури.'
+                : 'Современные технологии стирают все границы. Вы получите премиальное качество, высокую скорость загрузки и максимальную надежность инфраструктуры.'}
             </p>
           </div>
 
@@ -163,9 +165,11 @@ export default async function NichePage({ params }: { params: { slug: string, la
                  <Zap className="w-8 h-8 text-yellow-400" />
                </div>
                <div>
-                  <h3 className="font-display text-2xl font-bold mb-3">Скорость Cloudflare Edge</h3>
+                  <h3 className="font-display text-2xl font-bold mb-3">{lang === 'uk' ? 'Швидкість Cloudflare Edge' : 'Скорость Cloudflare Edge'}</h3>
                   <p className="font-sans text-white/60 leading-relaxed font-light">
-                    Сайт загружается за миллисекунды по всему миру. Ваши клиенты больше не уходят к конкурентам из-за долгой загрузки страниц на мобильном интернете.
+                    {lang === 'uk'
+                      ? 'Сайт завантажується за мілісекунди по всьому світу. Ваші клієнти більше не йдуть до конкурентів через довге завантаження сторінок на мобільному інтернеті.'
+                      : 'Сайт загружается за миллисекунды по всему миру. Ваши клиенты больше не уходят к конкурентам из-за долгой загрузки страниц на мобильном интернете.'}
                   </p>
                </div>
             </div>
@@ -176,9 +180,11 @@ export default async function NichePage({ params }: { params: { slug: string, la
                  <TelegramIcon className="w-8 h-8 text-blue-400" />
                </div>
                <div>
-                  <h3 className="font-display text-2xl font-bold mb-3">Интеграция с Telegram</h3>
+                  <h3 className="font-display text-2xl font-bold mb-3">{lang === 'uk' ? 'Інтеграція з Telegram' : 'Интеграция с Telegram'}</h3>
                   <p className="font-sans text-white/60 leading-relaxed font-light">
-                    Любая заполненная форма (заказ звонка, бронирование, бриф) моментально приходит вам прямо в личные сообщения Telegram. Никаких потерянных писем в спаме.
+                    {lang === 'uk'
+                      ? 'Будь-яка заповнена форма (замовлення дзвінка, бронювання, бриф) миттєво приходить вам прямо в особисті повідомлення Telegram. Жодних загублених листів у спамі.'
+                      : 'Любая заполненная форма (заказ звонка, бронирование, бриф) моментально приходит вам прямо в личные сообщения Telegram. Никаких потерянных писем в спаме.'}
                   </p>
                </div>
             </div>
@@ -198,14 +204,16 @@ export default async function NichePage({ params }: { params: { slug: string, la
 
             <div className="relative z-10 max-w-xl">
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-6 leading-tight uppercase">
-                Обсудим ваш <br/>проект?
+                {lang === 'uk' ? <>Обговоримо ваш <br/>проєкт?</> : <>Обсудим ваш <br/>проект?</>}
               </h2>
               <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">
-                Напишите мне, я проанализирую вашу задачу и предложу оптимальную структуру сайта именно для вашей сферы.
+                {lang === 'uk'
+                  ? 'Напишіть мені, я проаналізую вашу задачу і запропоную оптимальну структуру сайту саме для вашої сфери.'
+                  : 'Напишите мне, я проанализирую вашу задачу и предложу оптимальную структуру сайта именно для вашей сферы.'}
               </p>
               
               <QuizTrigger className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-10 py-5 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-xl hover:-translate-y-1 inline-flex items-center gap-4 group">
-                Получить консультацию
+                {lang === 'uk' ? 'Отримати консультацію' : 'Получить консультацию'}
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
               </QuizTrigger>
             </div>
@@ -218,8 +226,8 @@ export default async function NichePage({ params }: { params: { slug: string, la
                       <CheckCircle className="w-6 h-6" />
                     </div>
                     <div>
-                      <div className="font-bold font-display text-xl text-ink">Доверие</div>
-                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">Высокая конверсия</div>
+                      <div className="font-bold font-display text-xl text-ink">{lang === 'uk' ? 'Довіра' : 'Доверие'}</div>
+                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">{lang === 'uk' ? 'Висока конверсія' : 'Высокая конверсия'}</div>
                     </div>
                   </div>
                   <div className="w-full h-px bg-ink/5" />
@@ -228,8 +236,8 @@ export default async function NichePage({ params }: { params: { slug: string, la
                       <Globe className="w-6 h-6" />
                     </div>
                     <div>
-                      <div className="font-bold font-display text-xl text-ink">Индексация</div>
-                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">SEO оптимизация</div>
+                      <div className="font-bold font-display text-xl text-ink">{lang === 'uk' ? 'Індексація' : 'Индексация'}</div>
+                      <div className="text-xs font-sans text-ink/50 uppercase tracking-widest font-bold">{lang === 'uk' ? 'SEO оптимізація' : 'SEO оптимизация'}</div>
                     </div>
                   </div>
                </div>

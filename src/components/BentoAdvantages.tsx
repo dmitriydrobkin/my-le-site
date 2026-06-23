@@ -49,18 +49,18 @@ export function BentoAdvantages({ onOpenProductMenu, lang }: { onOpenProductMenu
           </div>
 
           {/* Карточка 4 - CTA Акцентная */}
-          <div 
+          <button 
             onClick={onOpenProductMenu}
-            className="md:col-span-2 bg-gradient-to-br from-coral to-cyan-500 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between text-white relative overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-shadow min-h-[200px] md:min-h-[250px]"
+            className="md:col-span-2 bg-gradient-to-br from-coral to-cyan-500 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between text-white relative overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-shadow min-h-[200px] md:min-h-[250px] text-left w-full h-full"
           >
-            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500" />
+            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500 pointer-events-none" />
             <h3 className="relative z-10 font-display text-2xl md:text-3xl font-bold max-w-[200px] md:max-w-full">
               {dict?.bento?.c4_title}
             </h3>
-            <div className="relative z-10 self-end md:self-start mt-4 md:mt-0">
+            <div className="relative z-10 self-end md:self-start mt-4 md:mt-0 pointer-events-none">
               <ArrowUpRight className="w-10 h-10 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500" />
             </div>
-          </div>
+          </button>
 
         </div>
       </div>
