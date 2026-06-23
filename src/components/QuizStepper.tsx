@@ -76,7 +76,7 @@ export default function QuizStepper({ lang }: { lang: string }) {
     setIsSubmitting(true);
     
     const formData = new FormData();
-    formData.append('name', answers['name'] || 'Аноним');
+    formData.append('name', answers['name'] || (lang === 'uk' ? 'Анонім' : 'Аноним'));
     formData.append('contactInfo', answers['contactInfo'] || '');
     const budget = answers['budget'] === dict.customOption ? answers['budget_custom'] : answers['budget'];
     formData.append('estimatedBudget', budget || '');
