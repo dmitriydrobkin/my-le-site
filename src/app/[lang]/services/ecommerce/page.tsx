@@ -14,7 +14,8 @@ export default function EcommercePage({ params }: { params: { lang: string } }) 
       
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-32 pb-24 lg:py-0 w-full">
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-bl from-emerald-500/10 via-teal-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-rose-400/10 via-red-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70 animate-float" />
+        <div className="absolute bottom-0 left-0 w-[200px] h-[200px] md:w-[400px] md:h-[400px] bg-gradient-to-tr from-orange-400/10 via-amber-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-60 animate-float" style={{ animationDelay: '2s' }} />
         
         <div className="max-w-5xl relative z-10">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-rose-500/20 bg-rose-500/5 text-rose-600 font-bold font-sans text-xs uppercase tracking-widest mb-6">

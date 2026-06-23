@@ -11,6 +11,14 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
   const linkPrefix = isUk ? '' : '/ru';
   const ALL_TAB = isUk ? 'ВСІ' : 'ВСЕ';
   const CATEGORIES: (string | ProjectCategory)[] = [ALL_TAB, 'САЙТЫ', 'E-COMMERCE', 'TELEGRAM-БОТЫ', 'WEB-ПРИЛОЖЕНИЯ'];
+
+  const displayCategory = (cat: string | ProjectCategory) => {
+    if (cat === ALL_TAB) return ALL_TAB;
+    if (cat === 'САЙТЫ') return isUk ? 'САЙТИ' : 'САЙТЫ';
+    if (cat === 'TELEGRAM-БОТЫ') return isUk ? 'TELEGRAM-БОТИ' : 'TELEGRAM-БОТЫ';
+    if (cat === 'WEB-ПРИЛОЖЕНИЯ') return isUk ? 'WEB-ДОДАТКИ' : 'WEB-ПРИЛОЖЕНИЯ';
+    return cat;
+  };
   
   const [activeFilter, setActiveFilter] = useState<string | ProjectCategory>(ALL_TAB);
 
@@ -41,7 +49,7 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
         </div>
       </section>
 
-      <section className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-y border-ink/5 py-4 mb-12">
+      <section className="border-y border-ink/5 py-4 mb-12">
         <div className="max-w-[1400px] mx-auto px-6 flex items-center gap-4 overflow-x-auto hide-scrollbar">
           <div className="flex items-center gap-2 text-ink/40 mr-2 shrink-0">
             <Filter className="w-5 h-5" />
@@ -55,7 +63,7 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
                 activeFilter === cat ? 'bg-ink text-white shadow-lg' : 'bg-surface text-ink/60 hover:bg-ink/5 border border-ink/5'
               }`}
             >
-              {cat}
+              {displayCategory(cat)}
             </button>
           ))}
         </div>
@@ -94,7 +102,7 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
                 <div className="flex justify-between items-start gap-4">
                   <div className="flex flex-col">
                     <span className="font-sans text-xs font-bold tracking-widest text-ink/40 uppercase block mb-3">
-                      {project.tags || project.category || 'ПРОЕКТ'}
+                      {project.tags || displayCategory(project.category) || (isUk ? 'ПРОЄКТ' : 'ПРОЕКТ')}
                     </span>
                     <h3 className="font-display text-2xl md:text-3xl font-bold text-ink mb-4 group-hover:text-coral transition-colors line-clamp-2">
                       {displayTitle}
