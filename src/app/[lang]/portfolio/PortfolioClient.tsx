@@ -4,21 +4,15 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Filter, Image as ImageIcon } from 'lucide-react';
 
+export type ProjectCategory = 'САЙТЫ' | 'E-COMMERCE' | 'TELEGRAM-БОТЫ' | 'WEB-ПРИЛОЖЕНИЯ';
+
 export default function PortfolioClient({ initialProjects, lang }: { initialProjects: any[], lang: string }) {
   const isUk = lang === 'uk';
   const linkPrefix = isUk ? '' : '/ru';
   const ALL_TAB = isUk ? 'ВСІ' : 'ВСЕ';
+  const CATEGORIES: (string | ProjectCategory)[] = [ALL_TAB, 'САЙТЫ', 'E-COMMERCE', 'TELEGRAM-БОТЫ', 'WEB-ПРИЛОЖЕНИЯ'];
   
-  // Связываем отображаемое имя с тем, что хранится в базе (dbValue)
-  const CATEGORIES = [
-    { dbValue: ALL_TAB, label: ALL_TAB },
-    { dbValue: 'САЙТЫ', label: isUk ? 'САЙТИ' : 'САЙТЫ' },
-    { dbValue: 'E-COMMERCE', label: 'E-COMMERCE' },
-    { dbValue: 'TELEGRAM-БОТЫ', label: isUk ? 'TELEGRAM-БОТИ' : 'TELEGRAM-БОТЫ' },
-    { dbValue: 'WEB-ПРИЛОЖЕНИЯ', label: isUk ? 'WEB-ДОДАТКИ' : 'WEB-ПРИЛОЖЕНИЯ' }
-  ];
-  
-  const [activeFilter, setActiveFilter] = useState<string>(ALL_TAB);
+  const [activeFilter, setActiveFilter] = useState<string | ProjectCategory>(ALL_TAB);
 
   const filteredProjects = initialProjects.filter(
     (project) => activeFilter === ALL_TAB || project.category === activeFilter
@@ -55,13 +49,13 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
           </div>
           {CATEGORIES.map((cat) => (
             <button
-              key={cat.dbValue}
-              onClick={() => setActiveFilter(cat.dbValue)}
+              key={cat}
+              onClick={() => setActiveFilter(cat)}
               className={`shrink-0 px-6 py-2.5 rounded-full font-bold font-sans text-xs uppercase tracking-widest transition-all duration-300 ${
-                activeFilter === cat.dbValue ? 'bg-ink text-white shadow-lg' : 'bg-surface text-ink/60 hover:bg-ink/5 border border-ink/5'
+                activeFilter === cat ? 'bg-ink text-white shadow-lg' : 'bg-surface text-ink/60 hover:bg-ink/5 border border-ink/5'
               }`}
             >
-              {cat.label}
+              {cat}
             </button>
           ))}
         </div>
@@ -74,7 +68,7 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
-            {filteredProjects.map((project) => {
+            {filteredProjects.map((project, index) => {
               const displayTitle = isUk ? (project.titleUk || project.title) : project.title;
               const displayDescription = isUk ? (project.descriptionUk || project.description) : project.description;
               

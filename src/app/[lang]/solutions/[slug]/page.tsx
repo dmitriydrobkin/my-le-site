@@ -61,12 +61,12 @@ export default async function NichePage({ params }: { params: { slug: string, la
         <div className="max-w-5xl relative z-10 pt-16 lg:pt-0">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/5 text-indigo-600 font-bold font-sans text-xs uppercase tracking-widest mb-6 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
-            {lang === 'uk' ? 'Галузеве рішення' : 'Отраслевое решение'}
+            Отраслевое решение
           </div>
           
           <h1 className="font-display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-8 uppercase break-words">
             {niche.name[lang]} <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">{lang === 'uk' ? 'для вашого бізнесу' : 'для вашего бизнеса'}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">для вашего бизнеса</span>
           </h1>
           
           <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-3xl font-medium leading-relaxed mb-12">
@@ -76,7 +76,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 w-full max-w-full">
             <QuizTrigger className="bg-ink hover:bg-ink/90 text-white rounded-full px-6 sm:px-10 py-5 font-bold font-sans tracking-wide transition-all shadow-xl hover:-translate-y-1 flex items-center gap-3 group w-full sm:w-auto justify-center relative overflow-hidden">
               <span className="relative z-10 flex items-center gap-3">
-                {lang === 'uk' ? 'Розрахувати вартість' : 'Рассчитать стоимость'}
+                Рассчитать стоимость
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -85,7 +85,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
               <span className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center bg-surface group-hover:border-indigo-500/30 transition-colors shadow-sm">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
-              {lang === 'uk' ? 'Подивитися приклади' : 'Посмотреть примеры'}
+              Посмотреть примеры
             </Link>
           </div>
         </div>
@@ -95,9 +95,11 @@ export default async function NichePage({ params }: { params: { slug: string, la
       <section className="py-12 lg:py-24 bg-surface border-y border-ink/5 relative overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="mb-16">
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-3xl leading-tight" dangerouslySetInnerHTML={{ __html: lang === 'uk' ? 'Навіщо вашій ніші <br/><span class="text-indigo-600">продуманий сайт?</span>' : 'Зачем вашей нише <br/><span class="text-indigo-600">продуманный сайт?</span>' }} />
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-3xl leading-tight">
+              Зачем вашей нише <br/><span className="text-indigo-600">продуманный сайт?</span>
+            </h2>
             <p className="font-sans text-lg text-ink/50 mt-6 max-w-2xl font-medium">
-              {lang === 'uk' ? 'Кожен бізнес унікальний. Я розробляю функціонал, який закриває саме ваші потреби, автоматизує рутину та приводить цільових клієнтів.' : 'Каждый бизнес уникален. Я разрабатываю функционал, который закрывает именно ваши потребности, автоматизирует рутину и приводит целевых клиентов.'}
+              Каждый бизнес уникален. Я разрабатываю функционал, который закрывает именно ваши потребности, автоматизирует рутину и приводит целевых клиентов.
             </p>
           </div>
 
@@ -122,7 +124,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
                     {feature}
                   </h3>
                   <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed mt-auto">
-                    {lang === 'uk' ? 'Розробка даного модуля дозволить значно підвищити конверсію та зручність використання вашого сайту для кінцевого споживача.' : 'Разработка данного модуля позволит значительно повысить конверсию и удобство использования вашего сайта для конечного потребителя.'}
+                    Разработка данного модуля позволит значительно повысить конверсию и удобство использования вашего сайта для конечного потребителя.
                   </p>
                 </div>
               );
@@ -132,7 +134,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
       </section>
 
       {/* 3. РАЗРАБОТКА САЙТА ДЛЯ БИЗНЕСА (SPLIT + HORIZONTAL SCROLL) */}
-      <ServicesSlider lang={params.lang} title={lang === 'uk' ? `РІШЕННЯ ДЛЯ ВАШОГО БІЗНЕСУ` : `РЕШЕНИЯ ДЛЯ ВАШЕГО БИЗНЕСА`} />
+      <ServicesSlider lang={params.lang} title={`РЕШЕНИЯ ДЛЯ ВАШЕГО БИЗНЕСА`} />
 
       {/* 4. ЧТО ВЫ ПОЛУЧАЕТЕ (BENTO GRID ИЗ ГЛАВНОЙ/ГОРОДОВ) */}
       <ProductMenuWrapper lang={params.lang} />
