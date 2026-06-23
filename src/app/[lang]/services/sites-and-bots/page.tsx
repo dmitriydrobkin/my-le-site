@@ -38,8 +38,8 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
       
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-32 pb-24 lg:pt-40 lg:pb-24 w-full">
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-purple-500/10 via-pink-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70 animate-float" />
-        <div className="absolute bottom-0 left-0 w-[200px] h-[200px] md:w-[400px] md:h-[400px] bg-gradient-to-tr from-cyan-400/10 via-blue-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-60 animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-bl from-purple-500/10 via-pink-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-70 animate-blob" />
+        <div className="absolute bottom-0 left-0 w-[200px] h-[200px] md:w-[400px] md:h-[400px] bg-gradient-to-tr from-cyan-400/10 via-blue-500/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-60 animate-blob" style={{ animationDelay: '2s' }} />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-coral/10 via-orange-400/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
         
         <div className="max-w-5xl relative z-10">
