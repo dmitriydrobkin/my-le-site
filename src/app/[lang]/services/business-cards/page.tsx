@@ -105,7 +105,7 @@ export default function BusinessCardsPage({ params }: { params: { lang: string }
         </div>
       </section>
 
-      {/* 4. ПРЕИМУЩЕСТВА (АКЦЕНТНЫЙ БЛОК) */}
+      {/* 4. ПРЕИМУЩЕСТВА (АКЦЕНТНЫЙ БЛОК КОТОРЫЙ) */}
       <section className="py-16 lg:py-24 bg-ink text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-transparent" />
