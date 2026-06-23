@@ -81,7 +81,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </QuizTrigger>
-            <Link href={`${lang === 'uk' ? '' : '/ru'}/portfolio`} className="flex items-center gap-3 text-ink font-bold hover:text-indigo-600 transition-colors group">
+            <Link href="/portfolio" className="flex items-center gap-3 text-ink font-bold hover:text-indigo-600 transition-colors group">
               <span className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center bg-surface group-hover:border-indigo-500/30 transition-colors shadow-sm">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
