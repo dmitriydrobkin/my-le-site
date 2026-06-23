@@ -2,7 +2,7 @@ export const staticPagesDictUk = {
   aboutPage: {
     hero: {
       badge: '✦ Обо мне',
-      title: 'Розробляю сайти <br className="hidden md:block" />та <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">Telegram-боти</span>, <br className="hidden md:block" />які приносять прибуток',
+      title: 'Розробляю сайти <br class="hidden md:block" />та <span class="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">Telegram-боти</span>, <br class="hidden md:block" />які приносять прибуток',
       desc: 'Привіт! Я приватний веб-дизайнер та розробник з понад 5-річним досвідом. Моя мета — не просто намалювати гарну картинку, а створити потужний інструмент, який працюватиме на ваш бізнес 24/7.',
       btn: 'Обговорити проєкт',
     },
@@ -20,7 +20,7 @@ export const staticPagesDictUk = {
     },
     experience: {
       badge: '✦ 5 років досвіду',
-      title: 'Розробляю те, <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">що працює.</span>',
+      title: 'Розробляю те, <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">що працює.</span>',
       desc: 'За роки роботи я виробив ідеальну формулу створення цифрових продуктів. Мої сайти не висять у повітрі — вони стають фундаментом вашого маркетингу. Мої боти не просто відповідають на команди — вони будують повноцінні автоворонки.',
       stats: [
         { val: '5+', label: 'Років досвіду' },
@@ -37,7 +37,7 @@ export const staticPagesDictUk = {
   },
   contactPage: {
     badge: 'Зв\'язок зі мною',
-    title: 'Давайте обговоримо <br className="hidden lg:block" /> ваш проєкт',
+    title: 'Давайте обговоримо <br class="hidden lg:block" /> ваш проєкт',
     desc: 'Я завжди відкритий до нових цікавих завдань. Напишіть мені в будь-який зручний месенджер, і я оперативно допоможу вирішити ваше запитання.',
     btn: 'Залишити заявку на сайті',
     tgTitle: 'Telegram',
@@ -54,11 +54,11 @@ export const staticPagesDictUk = {
   servicesPages: {
     corporate: {
       heroBadge: 'Фундамент для SEO',
-      heroTitle: 'Сучасний <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">корпоративний<br className="md:hidden" /> сайт</span> <br className="hidden md:block" /> для вашого бізнесу',
+      heroTitle: 'Сучасний <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">корпоративний<br class="md:hidden" /> сайт</span> <br class="hidden md:block" /> для вашого бізнесу',
       heroDesc: 'Повноцінне представництво компанії в мережі без зайвого візуального шуму та важкого коду. Створюємо сайти, які викликають довіру у клієнтів, чудово індексуються в Google та перетворюють відвідувачів на реальні заявки.',
       btnCalc: 'Розрахувати вартість проєкту',
       btnPortfolio: 'Подивитися приклади',
-      whyTitle: 'Навіщо вам сайт, <br className="hidden lg:block" />якщо є соцмережі?',
+      whyTitle: 'Навіщо вам сайт, <br class="hidden lg:block" />якщо є соцмережі?',
       whyDesc: 'Тут я створюю не просто сторінки, а статус, абсолютну довіру ваших партнерів та міцний фундамент для органічного росту.',
       whyPoints: [
         { title: 'Довіра B2B та B2C', desc: 'Серйозні клієнти та партнери шукають офіційну інформацію, реквізити, документацію та реальні кейси не в Instagram, а в пошуку Google.' },
@@ -73,7 +73,7 @@ export const staticPagesDictUk = {
         { title: 'Базова захист', desc: 'Захист від DDoS-атак та спаму у формах завдяки налаштуванню Cloudflare, безкоштовний SSL-сертифікат з коробки.' }
       ],
       techBadge: '✦ Технічний козир',
-      techTitle: 'Як це <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">працює</span>',
+      techTitle: 'Як це <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">працює</span>',
       techPoints: [
         { title: 'Швидкість Cloudflare', desc: 'Сайт завантажується за мілісекунди. Ваші клієнти більше не йдуть до конкурентів через довге завантаження сторінок на мобільному інтернеті.' },
         { title: 'Інтеграція з Telegram', desc: 'Будь-яка заповнена форма (замовлення дзвінка, консультація, бриф) моментально приходить вам або вашому менеджеру прямо в особисті повідомлення Telegram. Ніяких загублених листів у спамі.' }
@@ -88,7 +88,7 @@ export const staticPagesDictUk = {
     },
     ecommerce: {
       heroBadge: 'Швидкий e-commerce',
-      heroTitle: 'Швидкий <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500">інтернет-магазин</span> <br className="hidden md:block" /> з прийомом замовлень',
+      heroTitle: 'Швидкий <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500">інтернет-магазин</span> <br class="hidden md:block" /> з прийомом замовлень',
       heroDesc: 'Продавайте товари без складних реєстрацій, покинутих кошиків та громіздких адмін-панелей. Клієнт оформлює замовлення в 1 клік, а ви отримуєте готову заявку з деталями прямо у свій Telegram. Ідеально для крафтових брендів та локального бізнесу.',
       btnCalc: 'Хочу такий магазин',
       btnPortfolio: 'Подивитися приклади',
@@ -108,7 +108,7 @@ export const staticPagesDictUk = {
         { title: 'Немає абонплати', desc: 'Повна відсутність абонентської плати за утримання важкого сервера або оренду "коробкових" платформ.' }
       ],
       techBadge: '✦ Наше рішення',
-      techTitle: 'Швидкі <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-400">продажі.</span>',
+      techTitle: 'Швидкі <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-400">продажі.</span>',
       techDesc: 'Забудьте слово «каталог» та покинуті кошики. Я створюю інструмент, який усуває тертя між бажанням клієнта та вашою касою.',
       techPoints: [
         { title: 'Покупка в 1 клік', desc: 'Клієнт вибирає товар, вводить номер телефону або ім\'я — все. Ніяких виснажливих реєстрацій. Конверсія у притомні заявки злітає в рази.' },
@@ -125,11 +125,11 @@ export const staticPagesDictUk = {
     },
     landings: {
       heroBadge: 'Висока конверсія',
-      heroTitle: 'Продаючі <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">Landing Page</span> <br className="hidden md:block" /> для вашого продукту',
+      heroTitle: 'Продаючі <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">Landing Page</span> <br class="hidden md:block" /> для вашого продукту',
       heroDesc: 'Односторінкові сайти з високою конверсією для швидкого запуску продукту, збору лідів та тестування гіпотез. Дизайн, який чіпляє з першої секунди, та структура, яка веде клієнта прямо до покупки.',
       btnCalc: 'Розрахувати лендінг',
       btnPortfolio: 'Приклади лендінгів',
-      whyTitle: 'Лендінг — ваш найкращий <br className="hidden lg:block" />продавець',
+      whyTitle: 'Лендінг — ваш найкращий <br class="hidden lg:block" />продавець',
       whyDesc: 'Він не втомлюється, не просить зарплату і працює 24/7, конвертуючи рекламний трафік у реальні гроші.',
       whyPoints: [
         { title: 'Точковий фокус', desc: 'Користувач не відволікається на зайві сторінки. Уся увага зосереджена на одному продукті або послузі.' },
@@ -144,7 +144,7 @@ export const staticPagesDictUk = {
         { title: 'Інтеграція', desc: 'Підключення CRM-систем, Telegram-ботів, пікселів Facebook/Google для відстеження конверсій.' }
       ],
       techBadge: '✦ Технології',
-      techTitle: 'Чому наші лендінги <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">ефективні</span>',
+      techTitle: 'Чому наші лендінги <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">ефективні</span>',
       techPoints: [
         { title: 'Ідеальна структура', desc: 'Ми використовуємо перевірені маркетингові формули. Кожен блок відповідає на запитання клієнта та закриває його заперечення.' },
         { title: 'Wow-ефект', desc: 'Мікроанімації, плавний скрол, паралакс-ефекти — все це робить взаємодію з сайтом приємною та запам\'ятовується.' }
@@ -159,11 +159,11 @@ export const staticPagesDictUk = {
     },
     sitesAndBots: {
       heroBadge: 'Повна автоматизація',
-      heroTitle: 'Потужні <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Сайт + Telegram-бот</span> <br className="hidden md:block" /> екосистеми',
+      heroTitle: 'Потужні <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Сайт + Telegram-бот</span> <br class="hidden md:block" /> екосистеми',
       heroDesc: 'Об\'єднайте переваги швидкого сайту для залучення трафіку з пошуку та Telegram-бота для утримання клієнтів, миттєвих повідомлень і автоматизації процесів. Це ультимативне рішення для сучасного бізнесу.',
       btnCalc: 'Дізнатися більше',
       btnPortfolio: 'Дивитись кейси',
-      whyTitle: 'Чому зв\'язка Сайт + Бот — <br className="hidden lg:block" />це майбутнє?',
+      whyTitle: 'Чому зв\'язка Сайт + Бот — <br class="hidden lg:block" />це майбутнє?',
       whyDesc: 'Ви отримуєте два канали залучення та утримання клієнтів, які працюють як єдиний механізм.',
       whyPoints: [
         { title: 'Захоплення трафіку', desc: 'Сайт збирає трафік з Google та соцмереж, презентує продукт і направляє клієнта у зручний для нього канал.' },
@@ -178,7 +178,7 @@ export const staticPagesDictUk = {
         { title: 'Зручне адміністрування', desc: 'Ви можете керувати контентом сайту та відповідати клієнтам прямо зі свого смартфона через адмін-бота.' }
       ],
       techBadge: '✦ Екосистема',
-      techTitle: 'Єдиний <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">механізм.</span>',
+      techTitle: 'Єдиний <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">механізм.</span>',
       techPoints: [
         { title: 'API інтеграція', desc: 'Сайт і бот обмінюються даними через швидке API. Всі процеси синхронізовані в реальному часі.' },
         { title: 'Хмарні технології', desc: 'Висока надійність і здатність витримувати великі навантаження без падінь і зависань.' }
@@ -193,11 +193,11 @@ export const staticPagesDictUk = {
     },
     telegramBots: {
       heroBadge: 'Автоматизація в месенджері',
-      heroTitle: 'Розумні <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">Telegram-боти</span> <br className="hidden md:block" /> для бізнесу',
+      heroTitle: 'Розумні <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">Telegram-боти</span> <br class="hidden md:block" /> для бізнесу',
       heroDesc: 'Розумні агенти для автоматизації бізнесу 24/7. Кваліфікація лідів, прийом оплат, підтримка клієнтів та автоворонки прямо в месенджері. Замініть штат співробітників одним ботом.',
       btnCalc: 'Замовити бота',
       btnPortfolio: 'Приклади ботів',
-      whyTitle: 'Бот — ваш найкращий <br className="hidden lg:block" />співробітник',
+      whyTitle: 'Бот — ваш найкращий <br class="hidden lg:block" />співробітник',
       whyDesc: 'Він працює цілодобово, миттєво відповідає сотням клієнтів одночасно та ніколи не помиляється.',
       whyPoints: [
         { title: 'Висока залученість', desc: 'Месенджери — це особистий простір клієнта. Конверсія і відкриваність повідомлень тут значно вищі, ніж в email-маркетингу.' },
@@ -212,7 +212,7 @@ export const staticPagesDictUk = {
         { title: 'Внутрішні інструменти', desc: 'Боти для співробітників: облік робочого часу, звіти, швидкий доступ до бази знань компанії.' }
       ],
       techBadge: '✦ Технології',
-      techTitle: 'Можливості <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Telegram API.</span>',
+      techTitle: 'Можливості <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Telegram API.</span>',
       techPoints: [
         { title: 'Telegram Mini Apps', desc: 'Створення повноцінних веб-додатків всередині Telegram. Це виглядає як мобільний додаток, але не потребує встановлення.' },
         { title: 'Штучний інтелект', desc: 'Інтеграція з ChatGPT або іншими нейромережами для створення розумних ботів, які можуть спілкуватися як живі люди.' }
@@ -227,11 +227,11 @@ export const staticPagesDictUk = {
     },
     businessCards: {
       heroBadge: 'Ваше обличчя в інтернеті',
-      heroTitle: 'Стильні <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">Сайти-візитки</span> <br className="hidden md:block" /> для іміджу',
+      heroTitle: 'Стильні <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">Сайти-візитки</span> <br class="hidden md:block" /> для іміджу',
       heroDesc: 'Компактне, стильне та інформативне представництво вашого бізнесу в інтернеті для формування сильного іміджу. Ідеально підходить для приватних фахівців, консультантів та невеликих компаній.',
       btnCalc: 'Розрахувати візитку',
       btnPortfolio: 'Дивитись портфоліо',
-      whyTitle: 'Навіщо вам <br className="hidden lg:block" />сайт-візитка?',
+      whyTitle: 'Навіщо вам <br class="hidden lg:block" />сайт-візитка?',
       whyDesc: 'Це ваш цифровий паспорт, який підтверджує вашу експертність та допомагає клієнтам швидко знайти контакти.',
       whyPoints: [
         { title: 'Формування довіри', desc: 'Наявність власного сайту з гарним доменом одразу виділяє вас серед конкурентів, які працюють тільки через соцмережі.' },
@@ -246,7 +246,7 @@ export const staticPagesDictUk = {
         { title: 'Контакти та форма', desc: 'Зручні способи зв\'язку (месенджери, телефон, email) та проста форма для залишення заявки.' }
       ],
       techBadge: '✦ Переваги',
-      techTitle: 'Швидко та <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">якісно.</span>',
+      techTitle: 'Швидко та <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">якісно.</span>',
       techPoints: [
         { title: 'Швидкий старт', desc: 'Сайт-візитку можна розробити і запустити всього за кілька днів, що дозволяє швидко вийти в онлайн.' },
         { title: 'Легкість управління', desc: 'Вам не потрібні технічні знання, щоб оновлювати інформацію на сайті.' }
@@ -266,7 +266,7 @@ export const staticPagesDictRu = {
   aboutPage: {
     hero: {
       badge: '✦ Обо мне',
-      title: 'Разрабатываю сайты <br className="hidden md:block" />и <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">Telegram-боты</span>, <br className="hidden md:block" />которые приносят прибыль',
+      title: 'Разрабатываю сайты <br class="hidden md:block" />и <span class="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">Telegram-боты</span>, <br class="hidden md:block" />которые приносят прибыль',
       desc: 'Привет! Я частный веб-дизайнер и разработчик с более чем 5-летним опытом. Моя цель — не просто нарисовать красивую картинку, а создать мощный инструмент, который будет работать на ваш бизнес 24/7.',
       btn: 'Обсудить проект',
     },
@@ -284,7 +284,7 @@ export const staticPagesDictRu = {
     },
     experience: {
       badge: '✦ 5 лет опыта',
-      title: 'Разрабатываю то, <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">что работает.</span>',
+      title: 'Разрабатываю то, <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">что работает.</span>',
       desc: 'За годы работы я выработал идеальную формулу создания цифровых продуктов. Мои сайты не висят в воздухе — они становятся фундаментом вашего маркетинга. Мои боты не просто отвечают на команды — они строят полноценные автоворонки.',
       stats: [
         { val: '5+', label: 'Лет опыта' },
@@ -301,7 +301,7 @@ export const staticPagesDictRu = {
   },
   contactPage: {
     badge: 'Связь со мной',
-    title: 'Давайте обсудим <br className="hidden lg:block" /> ваш проект',
+    title: 'Давайте обсудим <br class="hidden lg:block" /> ваш проект',
     desc: 'Я всегда открыт к новым интересным задачам. Напишите мне в любой удобный мессенджер, и я оперативно помогу решить ваш вопрос.',
     btn: 'Оставить заявку на сайте',
     tgTitle: 'Telegram',
@@ -318,11 +318,11 @@ export const staticPagesDictRu = {
   servicesPages: {
     corporate: {
       heroBadge: 'Фундамент для SEO',
-      heroTitle: 'Современный <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">корпоративный<br className="md:hidden" /> сайт</span> <br className="hidden md:block" /> для вашего бизнеса',
+      heroTitle: 'Современный <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">корпоративный<br class="md:hidden" /> сайт</span> <br class="hidden md:block" /> для вашего бизнеса',
       heroDesc: 'Полноценное представительство компании в сети без лишнего визуального шума и тяжелого кода. Создаем сайты, которые вызывают доверие у клиентов, отлично индексируются в Google и превращают посетителей в реальные заявки.',
       btnCalc: 'Рассчитать стоимость проекта',
       btnPortfolio: 'Посмотреть примеры',
-      whyTitle: 'Зачем вам сайт, <br className="hidden lg:block" />если есть соцсети?',
+      whyTitle: 'Зачем вам сайт, <br class="hidden lg:block" />если есть соцсети?',
       whyDesc: 'Здесь я создаю не просто страницы, а статус, абсолютное доверие ваших партнеров и прочный фундамент для органического роста.',
       whyPoints: [
         { title: 'Доверие B2B и B2C', desc: 'Серьезные клиенты и партнеры ищут официальную информацию, реквизиты, документацию и реальные кейсы не в Instagram, а в поиске Google.' },
@@ -337,7 +337,7 @@ export const staticPagesDictRu = {
         { title: 'Базовая защита', desc: 'Защита от DDoS-атак и спама в формах благодаря настройке Cloudflare, бесплатный SSL-сертификат из коробки.' }
       ],
       techBadge: '✦ Технический козырь',
-      techTitle: 'Как это <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">работает</span>',
+      techTitle: 'Как это <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">работает</span>',
       techPoints: [
         { title: 'Скорость Cloudflare', desc: 'Сайт загружается за миллисекунды. Ваши клиенты больше не уходят к конкурентам из-за долгой загрузки страниц на мобильном интернете.' },
         { title: 'Интеграция с Telegram', desc: 'Любая заполненная форма (заказ звонка, консультация, бриф) моментально приходит вам или вашему менеджеру прямо в личные сообщения Telegram. Никаких потерянных писем в спаме.' }
@@ -352,7 +352,7 @@ export const staticPagesDictRu = {
     },
     ecommerce: {
       heroBadge: 'Быстрый e-commerce',
-      heroTitle: 'Быстрый <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500">интернет-магазин</span> <br className="hidden md:block" /> с приемом заказов',
+      heroTitle: 'Быстрый <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500">интернет-магазин</span> <br class="hidden md:block" /> с приемом заказов',
       heroDesc: 'Продавайте товары без сложных регистраций, брошенных корзин и громоздких админ-панелей. Клиент оформляет заказ в 1 клик, а вы получаете готовую заявку с деталями прямо в свой Telegram. Идеально для крафтовых брендов и локального бизнеса.',
       btnCalc: 'Хочу такой магазин',
       btnPortfolio: 'Посмотреть примеры',
@@ -372,7 +372,7 @@ export const staticPagesDictRu = {
         { title: 'Нет абонентской платы', desc: 'Полное отсутствие абонентской платы за содержание тяжелого сервера или аренду "коробочных" платформ.' }
       ],
       techBadge: '✦ Наше решение',
-      techTitle: 'Быстрые <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-400">продажи.</span>',
+      techTitle: 'Быстрые <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-400">продажи.</span>',
       techDesc: 'Забудьте слово «каталог» и брошенные корзины. Я создаю инструмент, который устраняет трение между желанием клиента и вашей кассой.',
       techPoints: [
         { title: 'Покупка в 1 клик', desc: 'Клиент выбирает товар, вводит номер телефона или имя — всё. Никаких утомительных регистраций. Конверсия во вменяемые заявки взлетает в разы.' },
@@ -389,11 +389,11 @@ export const staticPagesDictRu = {
     },
     landings: {
       heroBadge: 'Высокая конверсия',
-      heroTitle: 'Продающие <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">Landing Page</span> <br className="hidden md:block" /> для вашего продукта',
+      heroTitle: 'Продающие <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">Landing Page</span> <br class="hidden md:block" /> для вашего продукта',
       heroDesc: 'Одностраничные сайты с высокой конверсией для быстрого запуска продукта, сбора лидов и тестирования гипотез. Дизайн, который цепляет с первой секунды, и структура, ведущая клиента прямо к покупке.',
       btnCalc: 'Рассчитать лендинг',
       btnPortfolio: 'Примеры лендингов',
-      whyTitle: 'Лендинг — ваш лучший <br className="hidden lg:block" />продавец',
+      whyTitle: 'Лендинг — ваш лучший <br class="hidden lg:block" />продавец',
       whyDesc: 'Он не устает, не просит зарплату и работает 24/7, конвертируя рекламный трафик в реальные деньги.',
       whyPoints: [
         { title: 'Точечный фокус', desc: 'Пользователь не отвлекается на лишние страницы. Все внимание сосредоточено на одном продукте или услуге.' },
@@ -408,7 +408,7 @@ export const staticPagesDictRu = {
         { title: 'Интеграция', desc: 'Подключение CRM-систем, Telegram-ботов, пикселей Facebook/Google для отслеживания конверсий.' }
       ],
       techBadge: '✦ Технологии',
-      techTitle: 'Почему наши лендинги <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">эффективны</span>',
+      techTitle: 'Почему наши лендинги <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">эффективны</span>',
       techPoints: [
         { title: 'Идеальная структура', desc: 'Мы используем проверенные маркетинговые формулы. Каждый блок отвечает на вопрос клиента и закрывает его возражения.' },
         { title: 'Wow-эффект', desc: 'Микроанимации, плавный скролл, параллакс-эффекты — все это делает взаимодействие с сайтом приятным и запоминающимся.' }
@@ -423,11 +423,11 @@ export const staticPagesDictRu = {
     },
     sitesAndBots: {
       heroBadge: 'Полная автоматизация',
-      heroTitle: 'Мощные <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Сайт + Telegram-бот</span> <br className="hidden md:block" /> экосистемы',
+      heroTitle: 'Мощные <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Сайт + Telegram-бот</span> <br class="hidden md:block" /> экосистемы',
       heroDesc: 'Объедините преимущества быстрого сайта для привлечения трафика из поиска и Telegram-бота для удержания клиентов, мгновенных уведомлений и автоматизации процессов. Это ультимативное решение для современного бизнеса.',
       btnCalc: 'Узнать больше',
       btnPortfolio: 'Смотреть кейсы',
-      whyTitle: 'Почему связка Сайт + Бот — <br className="hidden lg:block" />это будущее?',
+      whyTitle: 'Почему связка Сайт + Бот — <br class="hidden lg:block" />это будущее?',
       whyDesc: 'Вы получаете два канала привлечения и удержания клиентов, которые работают как единый механизм.',
       whyPoints: [
         { title: 'Захват трафика', desc: 'Сайт собирает трафик из Google и соцсетей, презентует продукт и направляет клиента в удобный для него канал.' },
@@ -442,7 +442,7 @@ export const staticPagesDictRu = {
         { title: 'Удобное администрирование', desc: 'Вы можете управлять контентом сайта и отвечать клиентам прямо со своего смартфона через админ-бота.' }
       ],
       techBadge: '✦ Экосистема',
-      techTitle: 'Единый <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">механизм.</span>',
+      techTitle: 'Единый <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">механизм.</span>',
       techPoints: [
         { title: 'API интеграция', desc: 'Сайт и бот обмениваются данными через быстрое API. Все процессы синхронизированы в реальном времени.' },
         { title: 'Облачные технологии', desc: 'Высокая надежность и способность выдерживать большие нагрузки без падений и зависаний.' }
@@ -457,11 +457,11 @@ export const staticPagesDictRu = {
     },
     telegramBots: {
       heroBadge: 'Автоматизация в мессенджере',
-      heroTitle: 'Умные <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">Telegram-боты</span> <br className="hidden md:block" /> для бизнеса',
+      heroTitle: 'Умные <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">Telegram-боты</span> <br class="hidden md:block" /> для бизнеса',
       heroDesc: 'Умные агенты для автоматизации бизнеса 24/7. Квалификация лидов, прием оплат, поддержка клиентов и автоворонки прямо в мессенджере. Замените штат сотрудников одним ботом.',
       btnCalc: 'Заказать бота',
       btnPortfolio: 'Примеры ботов',
-      whyTitle: 'Бот — ваш лучший <br className="hidden lg:block" />сотрудник',
+      whyTitle: 'Бот — ваш лучший <br class="hidden lg:block" />сотрудник',
       whyDesc: 'Он работает круглосуточно, мгновенно отвечает сотням клиентов одновременно и никогда не ошибается.',
       whyPoints: [
         { title: 'Высокая вовлеченность', desc: 'Мессенджеры — это личное пространство клиента. Конверсия и открываемость сообщений здесь значительно выше, чем в email-маркетинге.' },
@@ -476,7 +476,7 @@ export const staticPagesDictRu = {
         { title: 'Внутренние инструменты', desc: 'Боты для сотрудников: учет рабочего времени, отчеты, быстрый доступ к базе знаний компании.' }
       ],
       techBadge: '✦ Технологии',
-      techTitle: 'Возможности <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Telegram API.</span>',
+      techTitle: 'Возможности <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Telegram API.</span>',
       techPoints: [
         { title: 'Telegram Mini Apps', desc: 'Создание полноценных веб-приложений внутри Telegram. Это выглядит как мобильное приложение, но не требует установки.' },
         { title: 'Искусственный интеллект', desc: 'Интеграция с ChatGPT или другими нейросетями для создания умных ботов, которые могут общаться как живые люди.' }
@@ -491,11 +491,11 @@ export const staticPagesDictRu = {
     },
     businessCards: {
       heroBadge: 'Ваше лицо в интернете',
-      heroTitle: 'Стильные <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">Сайты-визитки</span> <br className="hidden md:block" /> для имиджа',
+      heroTitle: 'Стильные <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">Сайты-визитки</span> <br class="hidden md:block" /> для имиджа',
       heroDesc: 'Компактное, стильное и информативное представительство вашего бизнеса в интернете для формирования сильного имиджа. Идеально подходит для частных специалистов, консультантов и небольших компаний.',
       btnCalc: 'Рассчитать визитку',
       btnPortfolio: 'Смотреть портфолио',
-      whyTitle: 'Зачем вам <br className="hidden lg:block" />сайт-визитка?',
+      whyTitle: 'Зачем вам <br class="hidden lg:block" />сайт-визитка?',
       whyDesc: 'Это ваш цифровой паспорт, который подтверждает вашу экспертность и помогает клиентам быстро найти контакты.',
       whyPoints: [
         { title: 'Формирование доверия', desc: 'Наличие собственного сайта с красивым доменом сразу выделяет вас среди конкурентов, работающих только через соцсети.' },
@@ -510,7 +510,7 @@ export const staticPagesDictRu = {
         { title: 'Контакты и форма', desc: 'Удобные способы связи (мессенджеры, телефон, email) и простая форма для оставления заявки.' }
       ],
       techBadge: '✦ Преимущества',
-      techTitle: 'Быстро и <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">качественно.</span>',
+      techTitle: 'Быстро и <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">качественно.</span>',
       techPoints: [
         { title: 'Быстрый старт', desc: 'Сайт-визитку можно разработать и запустить всего за несколько дней, что позволяет быстро выйти в онлайн.' },
         { title: 'Легкость управления', desc: 'Вам не нужны технические знания, чтобы обновлять информацию на сайте.' }
