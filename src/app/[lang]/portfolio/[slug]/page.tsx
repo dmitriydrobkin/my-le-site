@@ -113,7 +113,7 @@ export default async function ProjectSlugPage({ params }: { params: { slug: stri
               <div>
                 <span className="font-sans text-xs font-bold text-ink/40 uppercase tracking-widest block mb-4">{t.tech}</span>
                 <div className="flex flex-wrap gap-2">
-                  {stack.map(tech => (
+                  {stack.map((tech: string) => (
                     <span key={tech} className="px-4 py-2 bg-surface border border-ink/5 rounded-full font-sans text-sm font-medium text-ink/70">
                       {tech}
                     </span>
@@ -163,7 +163,7 @@ export default async function ProjectSlugPage({ params }: { params: { slug: stri
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-cyan-500/20 to-transparent rounded-full blur-3xl pointer-events-none" />
             <h3 className="font-display text-3xl md:text-4xl font-bold text-white mb-12 relative z-10">{t.resultsTitle}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative z-10">
-              {results.map((res, i) => (
+              {results.map((res: any, i: number) => (
                 <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
                   <div className="font-display text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan mb-4">
                     {res.value}
