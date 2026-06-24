@@ -25,6 +25,7 @@ export default function QuizStepper({ lang }: { lang: string }) {
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const dict = getDictionary(lang)?.quiz || getDictionary('uk').quiz;
+  const linkPrefix = lang === 'uk' ? '' : `/${lang}`;
 
   const STEPS: Step[] = [
     {
@@ -291,7 +292,7 @@ export default function QuizStepper({ lang }: { lang: string }) {
                     className="w-5 h-5 rounded border-ink/20 text-coral focus:ring-coral transition-all cursor-pointer accent-coral"
                   />
                   <label htmlFor="privacy" className="text-sm font-medium text-ink/60 cursor-pointer select-none">
-                    <Link href={`/${lang}/privacy`} target="_blank" className="underline hover:text-coral transition-colors">
+                    <Link href={`${linkPrefix}/privacy`} target="_blank" className="underline hover:text-coral transition-colors">
                       {dict.privacyLabel}
                     </Link>
                   </label>
