@@ -97,6 +97,7 @@ export default function QuizStepper({ lang }: { lang: string }) {
     formData.append('name', answers['name'] || (lang === 'uk' ? 'Анонім' : 'Аноним'));
     formData.append('contactMethod', contactMethod);
     formData.append('contactInfo', answers['contactInfo'] || '');
+    formData.append('website', answers['website'] || '');
     const budget = answers['budget'] === dict.customOption ? answers['budget_custom'] : answers['budget'];
     formData.append('estimatedBudget', budget || '');
     
@@ -280,6 +281,17 @@ export default function QuizStepper({ lang }: { lang: string }) {
                       placeholder="example@mail.com"
                     />
                   )}
+                  
+                  {/* Honeypot for bots */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={answers['website'] || ''}
+                    onChange={e => handleChange('website', e.target.value)}
+                    className="hidden"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
                 </div>
 
                 <div className="flex items-center gap-3 mt-4 pt-2">

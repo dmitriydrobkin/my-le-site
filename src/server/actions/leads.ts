@@ -13,6 +13,7 @@ const captureLeadSchema = z.object({
   contactInfo: z.string().min(3, "Укажите контактные данные"),
   estimatedBudget: z.string().optional(),
   answers: z.record(z.any()).optional(), // JSON-объект с ответами квиза
+  website: z.string().optional(), // Honeypot
 }).superRefine((data, ctx) => {
   if (data.contactMethod === 'email') {
     if (!z.string().email().safeParse(data.contactInfo).success) {
@@ -55,6 +56,11 @@ export async function captureLeadAction(formData: FormData | Record<string, any>
       }
     } else {
       data = formData;
+    }
+
+    // Basic Honeypot Check
+    if (data.website) {
+      return { success: false, error: 'Bot detected' };
     }
 
     const parsed = captureLeadSchema.safeParse(data);

@@ -10,6 +10,14 @@ export const dynamic = 'force-dynamic'; // Отключаем кэширован
 export async function POST(req: Request) {
   try {
     const { env } = getRequestContext();
+    
+    // Защита Webhook от поддельных запросов
+    const secretToken = req.headers.get('x-telegram-bot-api-secret-token');
+    const expectedToken = (env as any).TELEGRAM_SECRET_TOKEN || process.env.TELEGRAM_SECRET_TOKEN;
+    if (secretToken !== expectedToken) {
+      return new Response('Unauthorized', { status: 401 });
+    }
+
     const db = drizzle((env as any).DB);
     const body: any = await req.json();
 
