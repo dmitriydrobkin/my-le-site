@@ -14,6 +14,7 @@ import { TelegramIcon } from '@/components/TelegramIcon';
 import { getLocalizedProjects } from '@/server/functions/getProjects';
 
 export const runtime = 'edge';
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: { slug: string, lang: string } }) {
   const niche = niches.find(n => n.slug === params.slug);

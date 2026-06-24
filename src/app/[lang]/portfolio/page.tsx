@@ -2,7 +2,7 @@ import { getLocalizedProjects } from '@/server/functions/getProjects';
 import PortfolioClient from './PortfolioClient';
 
 export const runtime = 'edge';
-export const dynamic = 'force-dynamic'; 
+export const revalidate = 3600; 
 
 export default async function PortfolioPage({ params }: { params: { lang: string } }) {
   const allProjects = await getLocalizedProjects(params.lang);

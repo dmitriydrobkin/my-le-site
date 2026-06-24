@@ -15,6 +15,7 @@ import { ProductMenuWrapper } from './ProductMenuWrapper';
 import { getLocalizedProjects } from '@/server/functions/getProjects';
 
 export const runtime = 'edge';
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: { slug: string, lang: string } }) {
   const city = CITIES.find(c => c.slug === params.slug);

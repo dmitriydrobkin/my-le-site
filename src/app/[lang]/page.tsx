@@ -2,7 +2,7 @@ import { getLocalizedProjects } from '@/server/functions/getProjects';
 import B2BHomePage from './HomePage';
 
 export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 export default async function Page({ params }: { params: { lang: string } }) {
   const localizedProjects = await getLocalizedProjects(params.lang);

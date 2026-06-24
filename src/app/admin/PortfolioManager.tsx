@@ -166,7 +166,7 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
             <div className="flex flex-col gap-3">
               {editingProject?.imageUrl && (
                 <div className="relative w-32 h-24 rounded-xl overflow-hidden border border-ink/10">
-                  <img src={editingProject.imageUrl} alt="cover" className="w-full h-full object-cover" />
+                  <img loading="lazy" decoding="async" src={editingProject.imageUrl} alt="cover" className="w-full h-full object-cover" />
                 </div>
               )}
               <input type="file" name="imageFile" accept="image/*" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-coral/10 file:text-coral hover:file:bg-coral/20 cursor-pointer" />
@@ -231,7 +231,7 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
                     <td className="p-6">
                       <div className="w-12 h-12 rounded-lg overflow-hidden bg-surface flex items-center justify-center border border-ink/10 relative">
                         {project.imageUrl ? (
-                          <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover" />
+                          <img loading="lazy" decoding="async" src={project.imageUrl} alt={project.title} className="w-full h-full object-cover" />
                         ) : (
                           <ImageIcon className="w-5 h-5 text-ink/30" />
                         )}

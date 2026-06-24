@@ -69,7 +69,7 @@ export function ImageUploadInput() {
         <div className="flex flex-wrap gap-4 mt-2">
           {previews.map((src, idx) => (
             <div key={idx} className="relative w-24 h-24 border border-chocolate/20 group shadow-sm">
-              <img src={src} alt={`Preview ${idx}`} className="w-full h-full object-cover bg-white" />
+              <img loading="lazy" decoding="async" src={src} alt={`Preview ${idx}`} className="w-full h-full object-cover bg-white" />
               
               {idx === 0 && (
                 <span className="absolute bottom-0 left-0 w-full text-center bg-gold/90 backdrop-blur-sm text-cream text-[10px] py-1 z-10 font-medium tracking-widest uppercase">

@@ -5,6 +5,7 @@ import { QuizTrigger } from '@/components/QuizTrigger';
 import { getLocalizedProjects } from '@/server/functions/getProjects';
 
 export const runtime = 'edge';
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: { slug: string, lang: string } }) {
   const projects = await getLocalizedProjects(params.lang);
@@ -92,7 +93,7 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
           {/* Main Image Cover */}
           <div className="w-full aspect-[16/9] md:aspect-[21/9] relative rounded-[2rem] overflow-hidden border border-ink/5 shadow-glass bg-surface/50">
             {project.imageUrl ? (
-              <img 
+              <img loading="lazy" decoding="async" 
                 src={project.imageUrl} 
                 alt={displayTitle}
                 className="w-full h-full object-cover"
