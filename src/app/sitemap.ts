@@ -3,10 +3,9 @@ import { CITIES } from '@/data/cities';
 import { niches } from '@/data/niches';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://malyshev.dev'; // Укажите реальный домен сайта
+  const baseUrl = 'https://malyshev.dev';
   
-  // Базовые страницы
-  const routes = [
+  const staticPaths = [
     '',
     '/portfolio',
     '/services/telegram-bots',
@@ -17,27 +16,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/services/sites-and-bots',
     '/about',
     '/contact',
-    '/locations'
-  ].map((route) => ({
+    '/locations',
+    '/solutions',
+    '/privacy'
+  ];
+
+  const routes = staticPaths.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],
     changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1 : 0.8,
+    priority: route === '' ? 1.0 : 0.9,
   }));
 
-  // Страницы городов для SEO
   const cityRoutes = CITIES.map((city) => ({
     url: `${baseUrl}/locations/${city.slug}`,
     lastModified: new Date().toISOString().split('T')[0],
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
   }));
-  // Страницы ниш и категорий
+
   const nicheRoutes = niches.map((niche) => ({
     url: `${baseUrl}/solutions/${niche.slug}`,
     lastModified: new Date().toISOString().split('T')[0],
     changeFrequency: 'weekly' as const,
-    priority: 0.7,
+    priority: 0.8,
   }));
 
   const allRoutes = [...routes, ...cityRoutes, ...nicheRoutes];

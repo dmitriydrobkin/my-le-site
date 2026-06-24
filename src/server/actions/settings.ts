@@ -2,6 +2,7 @@
 
 import { drizzle } from 'drizzle-orm/d1';
 import { siteSettings } from '@/server/db/schema';
+import { verifyAdminSession } from './auth';
 import { getRequestContext } from '@cloudflare/next-on-pages';
 
 /**

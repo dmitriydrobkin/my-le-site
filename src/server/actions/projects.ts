@@ -1,5 +1,6 @@
 'use server';
 
+import { verifyAdminSession } from './auth';
 import { getRequestContext } from '@cloudflare/next-on-pages';
 import { drizzle } from 'drizzle-orm/d1';
 import { projects } from '../db/schema';
@@ -20,6 +21,7 @@ function slugify(text: string) {
 }
 
 export async function saveProjectAction(formData: FormData) {
+  await verifyAdminSession();
   const { env } = getRequestContext();
   const db = drizzle(env.DB);
 

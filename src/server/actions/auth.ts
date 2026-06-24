@@ -67,3 +67,23 @@ export async function logoutAdmin() {
   cookies().delete('admin_session');
   redirect('/');
 }
+
+export async function verifyAdminSession() {
+  const sessionToken = cookies().get('admin_session')?.value;
+  if (!sessionToken) {
+    throw new Error('Unauthorized');
+  }
+  
+  let correctPassword;
+  try {
+    const { env } = getRequestContext();
+    correctPassword = (env as any).ADMIN_PASSWORD;
+  } catch (e) {}
+  
+  const targetPwd = String(correctPassword || process.env.ADMIN_PASSWORD || '').trim();
+  const expectedToken = await generateHash(`${targetPwd}-secret-salt-2026`);
+  
+  if (sessionToken !== expectedToken) {
+    throw new Error('Unauthorized');
+  }
+}

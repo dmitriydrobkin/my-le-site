@@ -1,5 +1,6 @@
 'use server';
 
+import { verifyAdminSession } from './auth';
 import { getRequestContext } from '@cloudflare/next-on-pages';
 import { drizzle } from 'drizzle-orm/d1';
 import { telegramChats } from '../db/schema';

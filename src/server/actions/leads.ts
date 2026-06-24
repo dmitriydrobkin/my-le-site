@@ -1,5 +1,6 @@
 'use server';
 
+import { verifyAdminSession } from './auth';
 import { getRequestContext } from '@cloudflare/next-on-pages';
 import { drizzle } from 'drizzle-orm/d1';
 import { z } from 'zod';
@@ -149,6 +150,7 @@ export async function captureLeadAction(formData: FormData | Record<string, any>
 }
 
 export async function updateLeadStatus(id: number, newStatus: 'new' | 'contacted' | 'converted' | 'rejected') {
+  await verifyAdminSession();
   try {
     const { env } = getRequestContext();
     const db = drizzle((env as any).DB);
