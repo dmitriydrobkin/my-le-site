@@ -8,9 +8,36 @@ import { eq } from 'drizzle-orm';
 
 const captureLeadSchema = z.object({
   name: z.string().min(2, "Имя слишком короткое"),
+  contactMethod: z.enum(['phone', 'telegram', 'email']).optional().default('telegram'),
   contactInfo: z.string().min(3, "Укажите контактные данные"),
   estimatedBudget: z.string().optional(),
   answers: z.record(z.any()).optional(), // JSON-объект с ответами квиза
+}).superRefine((data, ctx) => {
+  if (data.contactMethod === 'email') {
+    if (!z.string().email().safeParse(data.contactInfo).success) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Некорректный email адрес",
+        path: ['contactInfo']
+      });
+    }
+  } else if (data.contactMethod === 'phone') {
+    if (data.contactInfo.length < 9) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Слишком короткий номер телефона",
+        path: ['contactInfo']
+      });
+    }
+  } else if (data.contactMethod === 'telegram') {
+    if (data.contactInfo.length < 3) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Укажите корректный @username или номер",
+        path: ['contactInfo']
+      });
+    }
+  }
 });
 
 export async function captureLeadAction(formData: FormData | Record<string, any>) {
@@ -39,7 +66,7 @@ export async function captureLeadAction(formData: FormData | Record<string, any>
     const { env } = getRequestContext();
     const db = drizzle(env.DB);
 
-    const { name, contactInfo, estimatedBudget, answers } = parsed.data;
+    const { name, contactMethod, contactInfo, estimatedBudget, answers } = parsed.data;
 
     // Вставляем лида
     const newLead = await db.insert(leads).values({
@@ -67,7 +94,8 @@ export async function captureLeadAction(formData: FormData | Record<string, any>
           // Формируем красивое сообщение
           let message = `🔔 <b>Новая заявка с сайта!</b>\n\n`;
           message += `👤 <b>Имя:</b> ${name}\n`;
-          message += `📞 <b>Контакты:</b> ${contactInfo}\n`;
+          const methodEmoji = contactMethod === 'phone' ? '📱' : contactMethod === 'email' ? '✉️' : '✈️';
+          message += `📞 <b>Контакты (${methodEmoji}):</b> ${contactInfo}\n`;
           if (estimatedBudget) {
             message += `💰 <b>Бюджет:</b> ${estimatedBudget}\n`;
           }

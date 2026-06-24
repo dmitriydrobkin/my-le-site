@@ -6,6 +6,8 @@ import { ArrowRight, ArrowLeft, Loader2, CheckCircle2 } from 'lucide-react';
 import { captureLeadAction } from '@/server/actions/leads';
 import { cn } from '@/lib/utils';
 import { getDictionary } from '@/i18n/dictionaries';
+import PhoneInput from 'react-phone-number-input/input';
+import Link from 'next/link';
 
 type Step = {
   id: string;
@@ -19,6 +21,8 @@ export default function QuizStepper({ lang }: { lang: string }) {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [contactMethod, setContactMethod] = useState<'phone' | 'telegram' | 'email'>('telegram');
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const dict = getDictionary(lang)?.quiz || getDictionary('uk').quiz;
 
@@ -71,12 +75,26 @@ export default function QuizStepper({ lang }: { lang: string }) {
     setAnswers(prev => ({ ...prev, [id]: value }));
   };
 
+  const handleTelegramChange = (val: string) => {
+    let value = val;
+    if (value.length > 0 && !value.startsWith('@') && /^[a-zA-Z0-9_]+$/.test(value)) {
+      value = '@' + value;
+    }
+    handleChange('contactInfo', value);
+  };
+
+  const handleMethodChange = (method: 'phone' | 'telegram' | 'email') => {
+    setContactMethod(method);
+    handleChange('contactInfo', '');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     const formData = new FormData();
     formData.append('name', answers['name'] || (lang === 'uk' ? 'Анонім' : 'Аноним'));
+    formData.append('contactMethod', contactMethod);
     formData.append('contactInfo', answers['contactInfo'] || '');
     const budget = answers['budget'] === dict.customOption ? answers['budget_custom'] : answers['budget'];
     formData.append('estimatedBudget', budget || '');
@@ -208,15 +226,75 @@ export default function QuizStepper({ lang }: { lang: string }) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-ink/80 mb-2">{dict.contactLabel}</label>
+                  <label className="block text-sm font-bold text-ink/80 mb-3">{dict.contactMethod}</label>
+                  <div className="flex gap-2 mb-4 p-1 bg-surface rounded-2xl border border-ink/5">
+                    {[
+                      { id: 'phone', label: '📱 ' + dict.phone },
+                      { id: 'telegram', label: '✈️ ' + dict.telegram },
+                      { id: 'email', label: '✉️ ' + dict.email },
+                    ].map(method => (
+                      <button
+                        key={method.id}
+                        type="button"
+                        onClick={() => handleMethodChange(method.id as any)}
+                        className={cn(
+                          "flex-1 py-2.5 rounded-xl font-bold text-sm transition-all duration-300",
+                          contactMethod === method.id 
+                            ? "bg-ink text-white shadow-md" 
+                            : "bg-transparent text-ink/60 hover:text-ink hover:bg-white border border-transparent hover:border-ink/10"
+                        )}
+                      >
+                        {method.label}
+                      </button>
+                    ))}
+                  </div>
+
+                  {contactMethod === 'phone' && (
+                    <PhoneInput
+                      country="UA"
+                      value={answers['contactInfo'] || ''}
+                      onChange={val => handleChange('contactInfo', val || '')}
+                      placeholder={dict.placeholderPhone}
+                      className="w-full bg-surface border border-ink/10 rounded-2xl p-5 text-ink placeholder:text-ink/40 focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral transition-all shadow-inner"
+                      required
+                    />
+                  )}
+                  {contactMethod === 'telegram' && (
+                    <input
+                      required
+                      type="text"
+                      value={answers['contactInfo'] || ''}
+                      onChange={e => handleTelegramChange(e.target.value)}
+                      className="w-full bg-surface border border-ink/10 rounded-2xl p-5 text-ink placeholder:text-ink/40 focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral transition-all shadow-inner"
+                      placeholder={dict.placeholderTelegram}
+                    />
+                  )}
+                  {contactMethod === 'email' && (
+                    <input
+                      required
+                      type="email"
+                      value={answers['contactInfo'] || ''}
+                      onChange={e => handleChange('contactInfo', e.target.value)}
+                      className="w-full bg-surface border border-ink/10 rounded-2xl p-5 text-ink placeholder:text-ink/40 focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral transition-all shadow-inner"
+                      placeholder="example@mail.com"
+                    />
+                  )}
+                </div>
+
+                <div className="flex items-center gap-3 mt-4 pt-2">
                   <input
+                    type="checkbox"
+                    id="privacy"
                     required
-                    type="text"
-                    value={answers['contactInfo'] || ''}
-                    onChange={e => handleChange('contactInfo', e.target.value)}
-                    className="w-full bg-surface border border-ink/10 rounded-2xl p-5 text-ink placeholder:text-ink/40 focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral transition-all shadow-inner"
-                    placeholder={dict.contactPlaceholder}
+                    checked={privacyAccepted}
+                    onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                    className="w-5 h-5 rounded border-ink/20 text-coral focus:ring-coral transition-all cursor-pointer accent-coral"
                   />
+                  <label htmlFor="privacy" className="text-sm font-medium text-ink/60 cursor-pointer select-none">
+                    <Link href={`/${lang}/privacy`} target="_blank" className="underline hover:text-coral transition-colors">
+                      {dict.privacyLabel}
+                    </Link>
+                  </label>
                 </div>
               </form>
             )}
@@ -237,7 +315,7 @@ export default function QuizStepper({ lang }: { lang: string }) {
           <button
             form="quiz-form"
             type="submit"
-            disabled={isSubmitting || !answers['name'] || !answers['contactInfo']}
+            disabled={isSubmitting || !answers['name'] || !answers['contactInfo'] || !privacyAccepted}
             className="btn-primary flex items-center gap-2 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:bg-coral disabled:hover:shadow-none"
           >
             {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : dict.btnSubmit}

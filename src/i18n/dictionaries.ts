@@ -112,6 +112,14 @@ export type Dictionary = {
     namePlaceholder: string;
     contactLabel: string;
     contactPlaceholder: string;
+    contactMethod: string;
+    phone: string;
+    telegram: string;
+    email: string;
+    privacyLabel: string;
+    placeholderPhone: string;
+    placeholderTelegram: string;
+
     btnNext: string;
     btnSubmit: string;
     successTitle: string;
@@ -287,6 +295,14 @@ const uk: Dictionary = {
     namePlaceholder: 'Олександр',
     contactLabel: 'Email або Telegram *',
     contactPlaceholder: '@username або пошта',
+    contactMethod: "Як з вами зв'язатися?",
+    phone: "Телефон",
+    telegram: "Telegram",
+    email: "Email",
+    privacyLabel: "Я погоджуюсь з політикою конфіденційності",
+    placeholderPhone: "+380 (99) 000-00-00",
+    placeholderTelegram: "@username або номер",
+
     btnNext: 'Далі',
     btnSubmit: 'Отримати розрахунок',
     successTitle: 'Оцінка готова!',
@@ -474,6 +490,13 @@ const ru: Dictionary = {
     namePlaceholder: 'Александр',
     contactLabel: 'Email или Telegram *',
     contactPlaceholder: '@username или почта',
+    contactMethod: "Как с вами связаться?",
+    phone: "Телефон",
+    telegram: "Telegram",
+    email: "Email",
+    privacyLabel: "Я согласен с политикой конфиденциальности",
+    placeholderPhone: "+380 (99) 000-00-00",
+    placeholderTelegram: "@username или номер",
     btnNext: 'Далее',
     btnSubmit: 'Получить расчет',
     successTitle: 'Оценка готова!',
