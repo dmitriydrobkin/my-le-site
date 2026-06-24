@@ -5,6 +5,7 @@ import { Preloader } from '@/components/Preloader';
 import { QuizModal } from '@/components/QuizModal';
 import { ConditionalFooter } from '@/components/ConditionalFooter';
 import { getSiteSettings } from '@/server/functions/settings';
+import { StructuredData } from '@/components/StructuredData';
 
 export const runtime = 'edge';
 
@@ -68,6 +69,7 @@ export default async function LangLayout({
       <main className="flex-grow">{children}</main>
       <ConditionalFooter settings={settings} lang={params.lang} />
       <QuizModal lang={params.lang || 'uk'} />
+      <StructuredData lang={params.lang || 'uk'} />
     </>
   );
 }
