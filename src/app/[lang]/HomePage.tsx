@@ -23,7 +23,7 @@ export default function B2BHomePage({ projectsData, lang }: { projectsData: any[
       {/* 1. HERO SECTION (Centered full height) */}
       <section className="relative min-h-[100vh] h-full flex flex-col justify-center px-6 max-w-[1400px] mx-auto pt-24 pb-24">
         <div className="max-w-4xl">
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight text-ink leading-[1.05] mb-10">
+          <h1 className="font-display text-[clamp(2.5rem,6vw,6rem)] font-bold tracking-tight text-ink leading-[1.05] mb-10 break-words">
             {(dict?.hero?.title || '').split('ДЛЯ')[0]}
             <br />
             ДЛЯ <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">

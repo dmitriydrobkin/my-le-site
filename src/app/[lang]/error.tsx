@@ -14,7 +14,7 @@ export default function Error({
 
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center bg-surface text-center px-6">
-      <h2 className="font-display text-3xl md:text-5xl font-bold text-ink mb-4">
+      <h2 className="font-display text-[clamp(1.875rem,5vw,3rem)] font-bold text-ink mb-4 break-words">
         {isUk ? 'Щось пішло не так' : 'Что-то пошло не так'}
       </h2>
       <p className="font-sans text-ink/60 text-base md:text-lg mb-8 max-w-md">

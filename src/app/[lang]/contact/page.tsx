@@ -19,17 +19,17 @@ export default async function ContactPage({ params }: { params: { lang: string }
       <section className="relative min-h-[100vh] h-full flex items-center px-6 max-w-[1400px] mx-auto pt-24 lg:pt-32 pb-16 w-full">
         <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-bl from-ink/5 via-ink/5 to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
         
-        <div className="max-w-7xl relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
+        <div className="max-w-7xl relative z-10 flex flex-col xl:flex-row gap-12 xl:gap-24 items-center">
           
           {/* TEXT CONTENT */}
-          <div className="w-full lg:w-1/2">
+          <div className="w-full xl:w-1/2">
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-ink/10 bg-surface font-bold font-sans text-xs uppercase tracking-widest mb-6 text-ink/70">
               <span className="w-2 h-2 rounded-full bg-ink animate-pulse" />
               {dict.badge}
             </div>
             
             <h1 
-              className="font-display text-4xl md:text-5xl lg:text-[5rem] font-bold tracking-tight text-ink leading-[1.05] mb-8 uppercase"
+              className="font-display text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-8 uppercase break-words"
               dangerouslySetInnerHTML={{ __html: dict.title }}
             />
             
@@ -44,7 +44,7 @@ export default async function ContactPage({ params }: { params: { lang: string }
           </div>
 
           {/* CONTACT DETAILS CARDS */}
-          <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="w-full xl:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
             
             {/* Telegram */}
             <a href={tg} target="_blank" rel="noreferrer" className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-blue-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">

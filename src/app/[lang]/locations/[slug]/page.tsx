@@ -60,7 +60,7 @@ export default async function CityPage({ params }: { params: { slug: string, lan
               РАБОТАЮ ПО ВСЕЙ УКРАИНЕ
             </span>
           </div>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-10">
+          <h1 className="font-display text-[clamp(3rem,7vw,5.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-10 break-words">
             DIGITAL РЕШЕНИЯ
             <br />
             ДЛЯ БИЗНЕСА <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan uppercase">{city.nameGenitive[lang]}</span>
@@ -98,7 +98,7 @@ export default async function CityPage({ params }: { params: { slug: string, lan
             <div className="relative z-10 lg:w-1/3 flex flex-col justify-between">
               <div>
                 <span className="font-sans text-xs font-bold text-white/50 uppercase tracking-widest mb-4 block">Обо мне</span>
-                <h2 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight">
+                <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold text-white leading-tight break-words">
                   Ваш партнер <br/>
                   в Digital <span className="text-coral">🤝</span>
                 </h2>

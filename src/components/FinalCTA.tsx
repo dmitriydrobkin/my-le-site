@@ -8,17 +8,17 @@ export function FinalCTA({ lang }: { lang: string }) {
   return (
     <section className="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-surface">
       <div className="max-w-[1400px] mx-auto px-6">
-        <div className="bg-ink rounded-[2rem] p-8 lg:p-12 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="bg-ink rounded-[2rem] p-8 lg:p-12 relative overflow-hidden flex flex-col xl:flex-row items-center justify-between gap-6 shadow-xl">
           
           {/* Фоновое 3D Изображение */}
-          <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full opacity-40 lg:opacity-100 pointer-events-none">
+          <div className="absolute top-0 right-0 w-full xl:w-1/2 h-full opacity-40 xl:opacity-100 pointer-events-none">
             <Image 
               src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200" 
               fill 
               className="object-cover object-right" 
               alt="Abstract 3D Shape" 
             />
-            <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-ink via-ink/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t xl:bg-gradient-to-r from-ink via-ink/80 to-transparent" />
           </div>
 
           {/* Контент */}

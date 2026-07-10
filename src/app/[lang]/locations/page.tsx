@@ -21,7 +21,7 @@ export default function LocationsHubPage({ params }: { params: { lang: string } 
       <div className="max-w-[1400px] mx-auto px-6">
         
         <div className="mb-16">
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-ink mb-6 uppercase tracking-tight">
+          <h1 className="font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold text-ink mb-6 uppercase tracking-tight break-words">
             {isUk ? 'Географія' : 'География'} <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-cyan">{isUk ? 'роботи' : 'работы'}</span>
           </h1>
           <p className="font-sans text-lg md:text-xl text-ink/60 max-w-2xl font-medium leading-relaxed">

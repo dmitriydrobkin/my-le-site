@@ -46,7 +46,7 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
           </div>
           
           <h1 
-            className="font-display text-4xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase"
+            className="font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase break-words"
             dangerouslySetInnerHTML={{ __html: dict.heroTitle }}
           />
           
@@ -74,7 +74,7 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
             <h2 
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight"
+              className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold text-ink uppercase max-w-2xl leading-tight break-words"
               dangerouslySetInnerHTML={{ __html: dict.whyTitle }}
             />
             <p className="font-sans text-ink/50 leading-relaxed font-medium max-w-sm">
@@ -82,13 +82,13 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {[
               { icon: <Clock className="w-8 h-8 text-ink/40 group-hover:text-cyan-500 transition-colors" />, hoverColor: 'hover:border-cyan-500/20' },
               { icon: <Bot className="w-8 h-8 text-ink/40 group-hover:text-coral transition-colors" />, hoverColor: 'hover:border-coral/20' },
               { icon: <TrendingUp className="w-8 h-8 text-ink/40 group-hover:text-emerald-500 transition-colors" />, hoverColor: 'hover:border-emerald-500/20' },
             ].map((item, idx) => (
-              <div key={idx} className={`bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl ${item.hoverColor} transition-all duration-500 group mobile-hover-card`}>
+              <div key={idx} className={`bg-white rounded-[2rem] p-6 lg:p-8 flex flex-col border border-ink/5 hover:shadow-xl ${item.hoverColor} transition-all duration-500 group mobile-hover-card`}>
                 <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                   {item.icon}
                 </div>
@@ -109,19 +109,19 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="mb-16">
             <h2 
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight"
+              className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold text-ink uppercase max-w-2xl leading-tight break-words"
               dangerouslySetInnerHTML={{ __html: dict.bentoTitle }}
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {[
               { icon: <Blocks className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors" />, hoverColor: 'hover:border-blue-500/20' },
               { icon: <Zap className="w-8 h-8 text-ink/40 group-hover:text-cyan-500 transition-colors" />, hoverColor: 'hover:border-cyan-500/20' },
               { icon: <Bot className="w-8 h-8 text-ink/40 group-hover:text-purple-500 transition-colors" />, hoverColor: 'hover:border-purple-500/20' },
               { icon: <CheckCircle className="w-8 h-8 text-ink/40 group-hover:text-emerald-500 transition-colors" />, hoverColor: 'hover:border-emerald-500/20' }
             ].map((item, idx) => (
-              <div key={idx} className={`bg-surface rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl ${item.hoverColor} transition-all duration-500 group mobile-hover-card`}>
+              <div key={idx} className={`bg-surface rounded-[2rem] p-6 lg:p-8 flex flex-col border border-ink/5 hover:shadow-xl ${item.hoverColor} transition-all duration-500 group mobile-hover-card`}>
                 <div className="w-16 h-16 rounded-full bg-white border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                   {item.icon}
                 </div>
@@ -142,17 +142,17 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-transparent" />
         
-        <div className="max-w-[1400px] mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24">
-          <div className="lg:w-1/2">
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10 flex flex-col xl:flex-row gap-12 lg:gap-16 xl:gap-24">
+          <div className="xl:w-1/2">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 font-bold font-sans text-xs uppercase tracking-widest mb-6 text-white/70">
               {dict.techBadge}
             </span>
             <h2 
-              className="font-display text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-8"
+              className="font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight leading-[1.05] mb-8 break-words"
               dangerouslySetInnerHTML={{ __html: dict.techTitle }}
             />
           </div>
-          <div className="lg:w-1/2 flex flex-col gap-10">
+          <div className="xl:w-1/2 flex flex-col gap-10">
             {dict.techPoints.map((point, idx) => (
               <div key={idx} className="flex gap-6 items-start">
                 <div className="w-16 h-16 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
@@ -174,7 +174,7 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
       <section id="portfolio" className="py-16 lg:py-24 bg-white border-b border-ink/5">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-2xl leading-tight">
+            <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold text-ink uppercase max-w-2xl leading-tight break-words">
               {params.lang === 'ru' ? 'Избранные проекты' : 'Вибрані проєкти'}
             </h2>
             <p className="font-sans text-ink/50 leading-relaxed font-medium max-w-sm">
@@ -182,7 +182,7 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {PORTFOLIO_ITEMS.map((item) => (
               <Link href="#" key={item.id} className="flex flex-col group cursor-pointer">
                 <div className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden mb-6 shadow-glass border border-ink/5">
@@ -214,12 +214,12 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
       {/* 6. CTA БЛОК */}
       <section className="py-16 lg:py-24 bg-surface">
         <div className="max-w-[1400px] mx-auto px-6">
-          <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[3rem] p-10 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[3rem] p-8 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col xl:flex-row items-center justify-between gap-12">
             
 
-            <div className="relative z-10 max-w-2xl">
+            <div className="relative z-10 max-w-2xl w-full">
               <h2 
-                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 leading-tight"
+                className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold text-ink mb-6 leading-tight break-words"
                 dangerouslySetInnerHTML={{ __html: dict.ctaTitle }}
               />
               <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">
@@ -232,7 +232,7 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
               </QuizTrigger>
             </div>
             
-            <div className="relative z-10 w-full lg:w-1/3">
+            <div className="relative z-10 w-full xl:w-1/3 min-w-[300px]">
                <div className="bg-white rounded-[2rem] p-8 border border-ink/5 shadow-glass flex flex-col gap-6">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">

@@ -65,7 +65,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
             Отраслевое решение
           </div>
           
-          <h1 className="font-display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[4.5rem] font-bold tracking-tight text-ink leading-[1.05] mb-8 uppercase break-words">
+          <h1 className="font-display text-[clamp(1.75rem,5vw,4.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-8 uppercase break-words">
             {niche.name[lang]} <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">для вашего бизнеса</span>
           </h1>
@@ -96,7 +96,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
       <section className="py-12 lg:py-24 bg-surface border-y border-ink/5 relative overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="mb-16">
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-ink uppercase max-w-3xl leading-tight">
+            <h2 className="font-display text-[clamp(2rem,5vw,4rem)] font-bold text-ink uppercase max-w-3xl leading-tight break-words">
               Зачем вашей нише <br/><span className="text-indigo-600">продуманный сайт?</span>
             </h2>
             <p className="font-sans text-lg text-ink/50 mt-6 max-w-2xl font-medium">
@@ -104,7 +104,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {niche.features[lang].map((feature, idx) => {
               // Динамический выбор иконок и цветов для разнообразия карточек
               const cardStyles = [
@@ -117,7 +117,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
               const Icon = style.icon;
 
               return (
-                <div key={idx} className={`bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl transition-all duration-500 group mobile-hover-card ${style.hoverBorder}`}>
+                <div key={idx} className={`bg-white rounded-[2rem] p-6 lg:p-8 flex flex-col border border-ink/5 hover:shadow-xl transition-all duration-500 group mobile-hover-card ${style.hoverBorder}`}>
                   <div className={`w-16 h-16 rounded-full border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 ${style.bg}`}>
                     <Icon className={`w-8 h-8 ${style.color}`} />
                   </div>
@@ -145,12 +145,12 @@ export default async function NichePage({ params }: { params: { slug: string, la
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-transparent" />
         
-        <div className="max-w-[1400px] mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24">
-          <div className="lg:w-1/2">
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10 flex flex-col xl:flex-row gap-12 lg:gap-16 xl:gap-24">
+          <div className="xl:w-1/2">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 font-bold font-sans text-xs uppercase tracking-widest mb-6 text-white/70">
               <span className="text-purple-400">✦</span> Технический козырь
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] mb-8">
+            <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight leading-[1.05] mb-8 break-words">
               Преимущества <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">платформы</span>
             </h2>
@@ -159,7 +159,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
             </p>
           </div>
 
-          <div className="lg:w-1/2 flex flex-col gap-10">
+          <div className="xl:w-1/2 flex flex-col gap-10">
             {/* Tech Point 1 */}
             <div className="flex gap-6 items-start">
                <div className="w-16 h-16 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
@@ -195,12 +195,12 @@ export default async function NichePage({ params }: { params: { slug: string, la
       {/* 7. CTA БЛОК (Rich Corporate Style) */}
       <section className="py-16 lg:py-24 bg-surface">
         <div className="max-w-[1400px] mx-auto px-6">
-          <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[2rem] p-8 lg:p-12 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-10">
+          <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[2rem] p-8 lg:p-12 relative overflow-hidden shadow-2xl flex flex-col xl:flex-row items-center justify-between gap-10">
             
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-indigo-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 max-w-xl">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-6 leading-tight uppercase">
+            <div className="relative z-10 max-w-xl w-full">
+              <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold text-ink mb-6 leading-tight uppercase break-words">
                 Обсудим ваш <br/>проект?
               </h2>
               <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">
@@ -214,7 +214,7 @@ export default async function NichePage({ params }: { params: { slug: string, la
             </div>
             
             {/* Дополнительный визуальный элемент или статистика */}
-            <div className="relative z-10 w-full lg:w-1/3">
+            <div className="relative z-10 w-full xl:w-1/3 min-w-[300px]">
                <div className="bg-white rounded-[2rem] p-8 border border-ink/5 shadow-glass flex flex-col gap-6 hover:shadow-xl transition-all">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">

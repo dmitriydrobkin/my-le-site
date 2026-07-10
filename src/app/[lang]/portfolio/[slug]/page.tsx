@@ -61,14 +61,14 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
             {isUk ? 'Всі проєкти' : 'Вернуться в портфолио'}
           </Link>
           
-          <div className="flex flex-col lg:flex-row gap-12 lg:items-end justify-between mb-16">
+          <div className="flex flex-col xl:flex-row gap-12 xl:items-end justify-between mb-16">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-ink/10 bg-surface font-bold font-sans text-xs uppercase tracking-widest mb-6 text-ink/70">
                 <span className="w-2 h-2 rounded-full bg-coral animate-pulse" />
                 {displayCat || project.tags || (isUk ? 'ПРОЄКТ' : 'ПРОЕКТ')}
               </div>
               
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-ink leading-[1.05] mb-6">
+              <h1 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight text-ink leading-[1.05] mb-6 break-words">
                 {displayTitle}
               </h1>
               
@@ -144,9 +144,9 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
         {(displayChallenge || displaySolution) && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-16">
             {displayChallenge && (
-              <div className="bg-white rounded-[2rem] p-8 lg:p-12 border border-ink/5 shadow-sm">
-                <h3 className="font-display text-3xl font-bold text-ink mb-6 flex items-center gap-4">
-                  <span className="w-10 h-10 rounded-full bg-rose-500/10 text-rose-500 flex items-center justify-center text-lg">!</span>
+              <div className="bg-white rounded-[2rem] p-6 lg:p-8 border border-ink/5 shadow-sm">
+                <h3 className="font-display text-[clamp(1.875rem,4vw,2.25rem)] font-bold text-ink mb-6 flex items-center gap-4 break-words">
+                  <span className="w-10 h-10 shrink-0 rounded-full bg-rose-500/10 text-rose-500 flex items-center justify-center text-lg">!</span>
                   {isUk ? 'Завдання' : 'Задача'}
                 </h3>
                 <p className="font-sans text-ink/60 font-medium leading-relaxed text-lg whitespace-pre-wrap">
@@ -156,9 +156,9 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
             )}
             
             {displaySolution && (
-              <div className="bg-white rounded-[2rem] p-8 lg:p-12 border border-ink/5 shadow-sm">
-                <h3 className="font-display text-3xl font-bold text-ink mb-6 flex items-center gap-4">
-                  <span className="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg">✓</span>
+              <div className="bg-white rounded-[2rem] p-6 lg:p-8 border border-ink/5 shadow-sm">
+                <h3 className="font-display text-[clamp(1.875rem,4vw,2.25rem)] font-bold text-ink mb-6 flex items-center gap-4 break-words">
+                  <span className="w-10 h-10 shrink-0 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg">✓</span>
                   {isUk ? 'Рішення' : 'Решение'}
                 </h3>
                 <p className="font-sans text-ink/60 font-medium leading-relaxed text-lg whitespace-pre-wrap">
@@ -171,9 +171,9 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
 
         {/* Results */}
         {results.length > 0 && (
-          <div className="bg-ink text-white rounded-[2rem] p-8 lg:p-12 relative overflow-hidden shadow-2xl mb-24">
+          <div className="bg-ink text-white rounded-[2rem] p-8 lg:p-10 relative overflow-hidden shadow-2xl mb-24">
             <div className="absolute inset-0 bg-gradient-to-r from-coral/20 to-transparent mix-blend-overlay" />
-            <h3 className="relative z-10 font-display text-3xl font-bold mb-10">{isUk ? 'Результати роботи' : 'Результаты работы'}</h3>
+            <h3 className="relative z-10 font-display text-[clamp(1.875rem,4vw,2.25rem)] font-bold mb-10 break-words">{isUk ? 'Результати роботи' : 'Результаты работы'}</h3>
             
             <div className="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-8">
               {results.map((res: {label: string, value: string}, i: number) => (
@@ -191,8 +191,8 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
         )}
 
         {/* CTA - Хотите такой же результат? */}
-        <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[3rem] p-10 lg:p-16 text-center max-w-4xl mx-auto shadow-xl">
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-ink mb-6">
+        <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[3rem] p-8 lg:p-16 text-center max-w-4xl mx-auto shadow-xl">
+          <h2 className="font-display text-[clamp(2rem,5vw,3rem)] font-bold text-ink mb-6 break-words">
             {isUk ? 'Бажаєте такий самий результат?' : 'Хотите такой же результат?'}
           </h2>
           <p className="font-sans text-lg text-ink/60 font-medium mb-10 max-w-2xl mx-auto">
