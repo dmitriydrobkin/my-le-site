@@ -55,7 +55,7 @@ export function AIChat({ lang = 'uk', onFallback }: AIChatProps) {
 
   if (isSuccess) {
     return (
-      <div className="flex flex-col items-center justify-center p-8 text-center h-full min-h-[300px]">
+      <div className="flex flex-col items-center justify-center p-8 text-center h-[500px] max-h-[80vh] w-full bg-white rounded-2xl">
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -75,7 +75,7 @@ export function AIChat({ lang = 'uk', onFallback }: AIChatProps) {
 
   if (hasError || error) {
     return (
-      <div className="flex flex-col items-center justify-center p-8 text-center h-full min-h-[300px]">
+      <div className="flex flex-col items-center justify-center p-8 text-center h-[500px] max-h-[80vh] w-full bg-white rounded-2xl">
         <div className="w-16 h-16 bg-rose-500/10 rounded-full flex items-center justify-center mb-6 text-rose-500">
           <Bot className="w-8 h-8" />
         </div>
