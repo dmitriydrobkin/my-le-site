@@ -95,10 +95,10 @@ export async function POST(req: Request) {
 
     // Explicitly grab API key from Cloudflare env bindings if process.env fails
     const env = process.env.NODE_ENV === 'development' ? process.env : (getRequestContext()?.env || process.env);
-    const apiKey = env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+    const apiKey = env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.GOOGLE_GENERATIVE_AI_API_KEY || env.GEMINI_API_KEY || process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
-      throw new Error('GOOGLE_GENERATIVE_AI_API_KEY is missing');
+      throw new Error('API KEY is missing. Please set GEMINI_API_KEY or GOOGLE_GENERATIVE_AI_API_KEY in Cloudflare.');
     }
 
     const googleProvider = createGoogleGenerativeAI({
