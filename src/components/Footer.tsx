@@ -109,16 +109,16 @@ export function Footer({ settings, lang }: { settings?: any, lang: string }) {
               </a>
               <div className="flex gap-3 mt-2">
                 {inst && (
-                  <a href={inst} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
+                  <a href={inst} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
                     <InstagramIcon className="w-4 h-4" />
                   </a>
                 )}
                 {fb && (
-                  <a href={fb} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
+                  <a href={fb} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
                     <FacebookIcon className="w-4 h-4" />
                   </a>
                 )}
-                <a href={tg} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
+                <a href={tg} target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral transition-colors">
                   <TelegramIcon className="w-4 h-4" />
                 </a>
               </div>

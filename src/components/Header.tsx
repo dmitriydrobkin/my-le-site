@@ -64,6 +64,7 @@ export function Header({ lang }: { lang: string }) {
           <div className="pointer-events-auto flex items-center gap-2">
             <button 
               onClick={() => setIsMenuOpen(true)}
+              aria-label={isUk ? 'Відкрити меню' : 'Открыть меню'}
               className="bg-white/80 backdrop-blur-md shadow-glass rounded-full w-12 h-12 sm:w-auto sm:h-auto sm:px-8 sm:py-4 flex items-center justify-center sm:gap-4 text-ink font-bold transition-transform hover:scale-105 group"
             >
               <span className="hidden sm:block">{isUk ? 'Меню' : 'Меню'}</span>

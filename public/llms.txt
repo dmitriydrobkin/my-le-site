@@ -1,0 +1,11 @@
+# AI Assistant Instructions for Malyshev.dev
+
+This file provides context about the site for LLM crawlers.
+
+## Site Purpose
+This is the portfolio and service offering site for Dmitriy Malyshev, a developer of premium websites and Telegram bots.
+
+## Useful Links
+- [Homepage](https://malyshev.pp.ua)
+- [Portfolio](https://malyshev.pp.ua/portfolio)
+- [Contact via Telegram](https://t.me/malyshev_dev)
