@@ -27,10 +27,10 @@ export function CookieConsent({ lang }: { lang: string }) {
   };
 
   return (
-    <div className="fixed bottom-24 md:bottom-4 left-4 right-4 md:right-auto z-[100] animate-in slide-in-from-bottom-5 fade-in duration-500">
-      <div className="bg-white px-4 py-3 rounded-full md:rounded-full rounded-2xl shadow-lg border border-ink/5 flex items-center justify-between md:justify-start gap-3">
-        <div className="text-xl leading-none hidden sm:block">🍪</div>
-        <p className="font-sans text-xs text-ink/70 font-medium">
+    <div className="fixed bottom-6 md:bottom-4 left-4 z-[100] animate-in slide-in-from-bottom-5 fade-in duration-500 max-w-[calc(100vw-5.5rem)] md:max-w-max">
+      <div className="bg-white p-3 md:px-4 md:py-3 rounded-3xl shadow-lg border border-ink/5 flex flex-wrap md:flex-nowrap items-center gap-2 md:gap-3">
+        <div className="text-xl leading-none">🍪</div>
+        <p className="font-sans text-xs text-ink/70 font-medium flex-1 min-w-[120px]">
           {isUk 
             ? 'Ми використовуємо кукі. ' 
             : 'Мы используем куки. '}
@@ -40,7 +40,7 @@ export function CookieConsent({ lang }: { lang: string }) {
         </p>
         <button 
           onClick={acceptCookies}
-          className="bg-ink text-white font-bold font-sans text-xs uppercase tracking-widest px-3 py-1.5 rounded-full hover:bg-coral transition-colors shadow-sm whitespace-nowrap ml-2"
+          className="bg-ink text-white font-bold font-sans text-[10px] md:text-xs uppercase tracking-widest px-3 py-1.5 rounded-full hover:bg-coral transition-colors shadow-sm whitespace-nowrap ml-auto"
         >
           {isUk ? 'Окі докі' : 'Оки доки'}
         </button>
