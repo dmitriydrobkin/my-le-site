@@ -1,5 +1,6 @@
-import { google } from '@ai-sdk/google';
 import { streamText } from 'ai';
+import { createGoogleGenerativeAI } from '@ai-sdk/google';
+import { getRequestContext } from '@cloudflare/next-on-pages';
 import { captureLeadAction, sendEmergencyAlert } from '@/server/actions/leads';
 
 export const runtime = 'edge';
@@ -81,10 +82,33 @@ export async function POST(req: Request) {
 
     const systemPrompt = lang === 'uk' ? SYSTEM_PROMPT_UK : SYSTEM_PROMPT_RU;
 
+    // Gemini API STRICTLY requires the first message to be from the user
+    let safeMessages = [...messages];
+    while (safeMessages.length > 0 && safeMessages[0].role !== 'user') {
+      safeMessages.shift();
+    }
+    
+    // If there are no messages left (e.g. only assistant), return empty or error
+    if (safeMessages.length === 0) {
+       return new Response(JSON.stringify({ error: 'No user messages' }), { status: 400 });
+    }
+
+    // Explicitly grab API key from Cloudflare env bindings if process.env fails
+    const env = process.env.NODE_ENV === 'development' ? process.env : (getRequestContext()?.env || process.env);
+    const apiKey = env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+
+    if (!apiKey) {
+      throw new Error('GOOGLE_GENERATIVE_AI_API_KEY is missing');
+    }
+
+    const googleProvider = createGoogleGenerativeAI({
+      apiKey: apiKey as string,
+    });
+
     const result = await streamText({
-      model: google('gemini-1.5-flash'),
+      model: googleProvider('gemini-1.5-flash'),
       system: systemPrompt,
-      messages,
+      messages: safeMessages,
       onFinish: async ({ text }: { text: string }) => {
         if (text.includes('[LEAD_READY]')) {
           // Extract contact and description
