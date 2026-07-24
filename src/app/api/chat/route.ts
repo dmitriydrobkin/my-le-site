@@ -106,7 +106,7 @@ export async function POST(req: Request) {
     });
 
     const result = await streamText({
-      model: googleProvider('gemini-1.5-flash'),
+      model: googleProvider('gemini-3.5-flash-lite'),
       system: systemPrompt,
       messages: safeMessages,
       onFinish: async ({ text }: { text: string }) => {
