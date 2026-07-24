@@ -112,14 +112,17 @@ export function AIChat({ lang = 'uk', onFallback }: AIChatProps) {
               <div className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center text-white ${m.role === 'user' ? 'bg-ink' : 'bg-coral'}`}>
                 {m.role === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
               </div>
-              <div className={`px-4 py-3 rounded-2xl max-w-[80%] font-sans text-sm leading-relaxed ${
+              <div className={`px-4 py-3 rounded-2xl max-w-[80%] font-sans text-sm leading-relaxed whitespace-pre-wrap ${
                 m.role === 'user' ? 'bg-surface text-ink rounded-tr-sm border border-ink/5' : 'bg-coral/10 text-ink rounded-tl-sm'
               }`}>
                 {m.content}
+                {isLoading && m.role === 'assistant' && m.id === messages[messages.length - 1].id && (
+                  <span className="inline-block w-1.5 h-4 ml-1 bg-coral/60 animate-pulse align-middle" />
+                )}
               </div>
             </motion.div>
           ))}
-          {isLoading && (
+          {isLoading && messages[messages.length - 1]?.role === 'user' && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -128,8 +131,10 @@ export function AIChat({ lang = 'uk', onFallback }: AIChatProps) {
               <div className="w-8 h-8 shrink-0 rounded-full flex items-center justify-center text-white bg-coral">
                 <Bot className="w-4 h-4" />
               </div>
-              <div className="px-4 py-3 rounded-2xl bg-coral/10 text-ink rounded-tl-sm flex items-center">
-                <Loader2 className="w-4 h-4 animate-spin text-coral" />
+              <div className="px-4 py-3 rounded-2xl bg-coral/10 text-ink rounded-tl-sm flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-coral animate-bounce" style={{ animationDelay: '0ms' }} />
+                <span className="w-1.5 h-1.5 rounded-full bg-coral animate-bounce" style={{ animationDelay: '150ms' }} />
+                <span className="w-1.5 h-1.5 rounded-full bg-coral animate-bounce" style={{ animationDelay: '300ms' }} />
               </div>
             </motion.div>
           )}
