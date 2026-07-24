@@ -3,12 +3,20 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
+let isFirstVisit = true;
+
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [showLoader, setShowLoader] = useState(true);
-  const [isFading, setIsFading] = useState(false);
+  // Don't show loader and don't fade if it's the first visit (Preloader handles it)
+  const [showLoader, setShowLoader] = useState(!isFirstVisit);
+  const [isFading, setIsFading] = useState(isFirstVisit);
 
   useEffect(() => {
+    if (isFirstVisit) {
+      isFirstVisit = false;
+      return;
+    }
+
     // Reset loader state when pathname changes
     setShowLoader(true);
     setIsFading(false);

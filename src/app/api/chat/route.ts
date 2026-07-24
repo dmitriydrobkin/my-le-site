@@ -129,7 +129,7 @@ export async function POST(req: Request) {
     return result.toDataStreamResponse();
   } catch (error: any) {
     console.error('AI Chat Error:', error);
-    await sendEmergencyAlert(`🚨 <b>Помилка AI Асистента!</b>\n\n<b>Деталі помилки:</b>\n<code>${error?.message || error}</code>\n\nМожливо, вичерпані ліміти або ключ не підходить для цієї моделі.\nКлієнтів тимчасово переведено на звичайну форму.`);
+    await sendEmergencyAlert(`🚨 <b>Помилка AI Асистента!</b>\n\n<b>Деталі помилки:</b>\n<code>${error?.message || error}</code>\n\nМожливо, вичерпані ліміти або ключ не підходить для цієї моделі.\nКлієнтів тимчасово переведено на звичайну форму.`, env);
     return new Response(JSON.stringify({ error: 'AI is overloaded', details: error?.message }), { status: 500 });
   }
 }

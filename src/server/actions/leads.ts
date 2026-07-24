@@ -173,10 +173,15 @@ export async function updateLeadStatus(id: number, newStatus: 'new' | 'contacted
   }
 }
 
-export async function sendEmergencyAlert(text: string) {
+export async function sendEmergencyAlert(text: string, providedEnv?: any) {
   try {
-    const { env } = getRequestContext();
-    const db = drizzle((env as any).DB);
+    const context = getRequestContext();
+    const env = providedEnv || context?.env || process.env;
+    if (!env || !env.DB) {
+      console.error('sendEmergencyAlert: No env or DB available');
+      return;
+    }
+    const db = drizzle(env.DB);
     const activeChats = await db.select().from(telegramChats).where(eq(telegramChats.isActive, true)).all();
     
     if (activeChats.length > 0) {

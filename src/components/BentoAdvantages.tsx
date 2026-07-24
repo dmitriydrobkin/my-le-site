@@ -29,7 +29,7 @@ export function BentoAdvantages({ onOpenProductMenu, lang }: { onOpenProductMenu
           <div className="bg-ink rounded-[2rem] p-8 md:p-10 flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[250px]">
             <div className="absolute inset-0 bg-gradient-to-br from-coral/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             <div className="relative z-10">
-              <span className="font-display text-5xl md:text-6xl font-bold text-white mb-2 block">{dict?.bento?.c2_title}</span>
+              <span className="font-display text-3xl md:text-4xl font-bold text-white mb-2 block">{dict?.bento?.c2_title}</span>
               <span className="font-sans text-xs text-white/60 mb-3 block uppercase tracking-wider">{dict?.bento?.c2_badge}</span>
               <p className="font-sans text-[11px] md:text-xs text-white/40 leading-relaxed max-w-[200px] mx-auto">
                 {dict?.bento?.c2_text}
@@ -40,7 +40,7 @@ export function BentoAdvantages({ onOpenProductMenu, lang }: { onOpenProductMenu
           {/* Карточка 3 - 0$ хостинг */}
           <div className="bg-surface rounded-[2rem] p-8 md:p-10 flex flex-col justify-center text-center relative overflow-hidden border border-ink/5 hover:border-ink/10 transition-colors group min-h-[250px]">
             <div className="relative z-10 flex flex-col items-center">
-              <span className="font-display text-4xl md:text-5xl font-bold text-ink mb-2 block">{dict?.bento?.c3_title}</span>
+              <span className="font-display text-3xl md:text-4xl font-bold text-ink mb-2 block">{dict?.bento?.c3_title}</span>
               <span className="font-sans text-xs font-bold text-coral uppercase tracking-wider mb-3 block">{dict?.bento?.c3_badge}</span>
               <p className="font-sans text-[11px] md:text-xs text-ink/60 leading-relaxed max-w-[220px] mx-auto">
                 {dict?.bento?.c3_text}
