@@ -22,7 +22,7 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
           </div>
           
           <h1 
-            className="font-display text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase break-words"
+            className="font-display text-[clamp(1.75rem,4vw,3.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase break-words"
             dangerouslySetInnerHTML={{ __html: dict.hero.title }}
           />
           
@@ -44,7 +44,7 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
             <h2 
-              className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold text-ink uppercase max-w-2xl leading-tight break-words"
+              className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold text-ink uppercase max-w-2xl leading-tight break-words"
               dangerouslySetInnerHTML={{ __html: dict.bento.title }}
             />
             <p className="font-sans text-ink/50 leading-relaxed font-medium max-w-sm">
@@ -52,9 +52,9 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Card 1 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-coral/20 transition-all duration-500 group xl:col-span-2">
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-coral/20 transition-all duration-500 group">
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <Code2 className="w-8 h-8 text-ink/40 group-hover:text-coral transition-colors" />
               </div>
@@ -93,7 +93,7 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
             </div>
 
             {/* Card 4 */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-blue-500/20 transition-all duration-500 group xl:col-span-2">
+            <div className="bg-white rounded-[2rem] p-8 lg:p-10 flex flex-col border border-ink/5 hover:shadow-xl hover:border-blue-500/20 transition-all duration-500 group">
               <div className="w-16 h-16 rounded-full bg-surface border border-ink/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                 <Rocket className="w-8 h-8 text-ink/40 group-hover:text-blue-500 transition-colors" />
               </div>
@@ -119,7 +119,7 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
               {dict.experience.badge}
             </span>
             <h2 
-              className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight leading-[1.05] mb-8 break-words"
+              className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold tracking-tight leading-[1.05] mb-8 break-words"
               dangerouslySetInnerHTML={{ __html: dict.experience.title }}
             />
             <p className="font-sans text-lg text-white/60 font-light leading-relaxed">
@@ -147,7 +147,7 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
 
             <div className="relative z-10 max-w-2xl w-full">
               <h2 
-                className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold text-ink mb-6 leading-tight break-words"
+                className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold text-ink mb-6 leading-tight break-words"
                 dangerouslySetInnerHTML={{ __html: dict.cta.title }}
               />
               <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">
