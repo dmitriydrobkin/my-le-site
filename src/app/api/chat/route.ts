@@ -126,7 +126,15 @@ export async function POST(req: Request) {
       }
     });
 
-    return result.toDataStreamResponse();
+    return result.toDataStreamResponse({
+      getErrorMessage: (err: any) => {
+        const errorMsg = err?.message || String(err);
+        console.error('Stream error:', errorMsg);
+        // Fire and forget telegram alert
+        sendEmergencyAlert(`🚨 <b>Помилка потоку AI!</b>\n\n<b>Деталі:</b>\n<code>${errorMsg}</code>\n\nШвидше за все вичерпано ліміти Google Gemini API.`, env).catch(console.error);
+        return errorMsg;
+      }
+    });
   } catch (error: any) {
     console.error('AI Chat Error:', error);
     await sendEmergencyAlert(`🚨 <b>Помилка AI Асистента!</b>\n\n<b>Деталі помилки:</b>\n<code>${error?.message || error}</code>\n\nМожливо, вичерпані ліміти або ключ не підходить для цієї моделі.\nКлієнтів тимчасово переведено на звичайну форму.`, env);
