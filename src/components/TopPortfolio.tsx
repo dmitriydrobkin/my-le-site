@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 import { getDictionary } from '@/i18n/dictionaries';
 
 export function TopPortfolio({ projectsData, lang }: { projectsData: any[], lang: string }) {
@@ -28,7 +29,7 @@ export function TopPortfolio({ projectsData, lang }: { projectsData: any[], lang
             <Link href={`${linkPrefix}/portfolio/${item.slug}`} key={item.id} className={`flex flex-col group cursor-pointer ${spans[index] || 'lg:col-span-3'}`}>
               <div className={`relative w-full aspect-[4/3] lg:aspect-auto ${index === 1 ? 'lg:h-[500px]' : 'lg:h-[400px]'} rounded-[2rem] overflow-hidden mb-4 lg:mb-8 shadow-glass border border-ink/5`}>
                 {item.imageUrl ? (
-                  <img loading="lazy" decoding="async" src={item.imageUrl} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <Image fill unoptimized src={item.imageUrl} alt={item.title} className="object-cover group-hover:scale-105 transition-transform duration-700" />
                 ) : (
                   <div className="w-full h-full bg-surface/50 group-hover:scale-105 transition-transform duration-700 flex items-center justify-center text-ink/20 font-bold text-2xl">
                     Нет фото

@@ -8,6 +8,8 @@ import { cn } from '@/lib/utils';
 import { getDictionary } from '@/i18n/dictionaries';
 import PhoneInput from 'react-phone-number-input/input';
 import Link from 'next/link';
+import { AIChat } from './AIChat';
+import { MessageSquare, ListTodo } from 'lucide-react';
 
 type Step = {
   id: string;
@@ -21,6 +23,7 @@ export default function QuizStepper({ lang }: { lang: string }) {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [mode, setMode] = useState<'choose' | 'quiz' | 'ai'>('choose');
   const [contactMethod, setContactMethod] = useState<'phone' | 'telegram' | 'email'>('telegram');
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
@@ -146,6 +149,60 @@ export default function QuizStepper({ lang }: { lang: string }) {
   }
 
   const step = STEPS[currentStep];
+
+  if (mode === 'choose') {
+    return (
+      <div className="glass-panel rounded-3xl p-8 max-w-2xl mx-auto overflow-hidden relative shadow-[0_20px_60px_rgba(17,17,17,0.1)] text-center">
+        <h3 className="font-display text-3xl font-bold text-ink mb-2">
+          {lang === 'uk' ? 'Як вам зручніше?' : 'Как вам удобнее?'}
+        </h3>
+        <p className="font-sans text-ink/60 mb-8 font-medium">
+          {lang === 'uk' ? 'Виберіть спосіб обговорення проєкту' : 'Выберите способ обсуждения проекта'}
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <button 
+            onClick={() => setMode('quiz')}
+            className="flex flex-col items-center justify-center p-6 bg-surface border border-ink/10 rounded-2xl hover:border-coral hover:shadow-glass group transition-all"
+          >
+            <div className="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <ListTodo className="w-8 h-8 text-ink" />
+            </div>
+            <h4 className="font-display font-bold text-lg text-ink mb-1">
+              {lang === 'uk' ? 'Швидка форма' : 'Быстрая форма'}
+            </h4>
+            <p className="font-sans text-sm text-ink/60">
+              {lang === 'uk' ? 'Дати відповідь на 4 запитання' : 'Ответить на 4 вопроса'}
+            </p>
+          </button>
+
+          <button 
+            onClick={() => setMode('ai')}
+            className="flex flex-col items-center justify-center p-6 bg-surface border border-ink/10 rounded-2xl hover:border-coral hover:shadow-glass group transition-all"
+          >
+            <div className="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform relative">
+              <MessageSquare className="w-8 h-8 text-coral" />
+              <div className="absolute top-0 right-0 w-4 h-4 bg-emerald-400 border-2 border-white rounded-full"></div>
+            </div>
+            <h4 className="font-display font-bold text-lg text-ink mb-1">
+              {lang === 'uk' ? 'AI Асистент' : 'AI Ассистент'}
+            </h4>
+            <p className="font-sans text-sm text-ink/60">
+              {lang === 'uk' ? 'Поспілкуватися в чаті' : 'Пообщаться в чате'}
+            </p>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (mode === 'ai') {
+    return (
+      <div className="glass-panel rounded-3xl p-4 max-w-2xl mx-auto overflow-hidden relative shadow-[0_20px_60px_rgba(17,17,17,0.1)]">
+        <AIChat lang={lang} onFallback={() => setMode('quiz')} />
+      </div>
+    );
+  }
 
   return (
     <div className="glass-panel rounded-3xl p-8 max-w-2xl mx-auto overflow-hidden relative shadow-[0_20px_60px_rgba(17,17,17,0.1)]">

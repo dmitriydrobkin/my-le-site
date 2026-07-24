@@ -26,10 +26,29 @@ export async function generateMetadata({ params }: { params: { slug: string, lan
   }
 
   const lang = (params.lang === 'ru' || params.lang === 'uk') ? params.lang : 'uk';
+  const isUk = lang === 'uk';
+
+  const titleTemplate = isUk 
+    ? `Розробка сайтів та Telegram-ботів ${city.namePrepositional[lang]} | Dmitriy`
+    : `Разработка сайтов и Telegram ботов ${city.namePrepositional[lang]} | Dmitriy`;
+    
+  const descTemplate = isUk
+    ? `Професійна розробка сайтів, лендінгів, візиток та розумних Telegram ботів для бізнесу ${city.namePrepositional[lang]}. 100% фокус на вашому проєкті та сучасні рішення.`
+    : `Профессиональная разработка сайтов, лендингов, визиток и умных Telegram ботов для бизнеса ${city.namePrepositional[lang]}. 100% фокус на вашем проекте и современные решения.`;
 
   return {
-    title: `Разработка сайтов и Telegram ботов ${city.namePrepositional[lang]} | Malyshev.Dev`,
-    description: `Профессиональная разработка сайтов, лендингов, визиток и умных Telegram ботов для бизнеса ${city.namePrepositional[lang]}. 100% фокус на вашем проекте и современные решения.`,
+    title: titleTemplate,
+    description: descTemplate,
+    openGraph: {
+      title: titleTemplate,
+      description: descTemplate,
+      images: [`/api/og?title=${encodeURIComponent(titleTemplate)}&desc=${encodeURIComponent(descTemplate)}`],
+    },
+    twitter: {
+      title: titleTemplate,
+      description: descTemplate,
+      images: [`/api/og?title=${encodeURIComponent(titleTemplate)}&desc=${encodeURIComponent(descTemplate)}`],
+    }
   };
 }
 

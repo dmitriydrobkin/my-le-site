@@ -4,6 +4,8 @@ import { Header } from '@/components/Header';
 import { Preloader } from '@/components/Preloader';
 import { QuizModal } from '@/components/QuizModal';
 import { ConditionalFooter } from '@/components/ConditionalFooter';
+import { CookieConsent } from '@/components/CookieConsent';
+import { FloatingAIAssistant } from '@/components/FloatingAIAssistant';
 import { getSiteSettings } from '@/server/functions/settings';
 import { StructuredData } from '@/components/StructuredData';
 
@@ -28,6 +30,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   const description = settings.site_description || defaultDesc;
   
   return {
+    metadataBase: new URL('https://malyshev.dev'),
     title,
     description,
     openGraph: {
@@ -35,15 +38,16 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       description,
       type: 'website',
       url: `https://malyshev.dev${isUk ? '' : '/ru'}${basePath}`,
-      images: ['/hero-bg.png'],
+      images: [`/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description)}`],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: ['/hero-bg.png'],
+      images: [`/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description)}`],
     },
     alternates: {
+      canonical: `https://malyshev.dev${isUk ? '' : '/ru'}${basePath}`,
       languages: {
         uk: `https://malyshev.dev${basePath}`,
         ru: `https://malyshev.dev/ru${basePath}`,
@@ -70,6 +74,8 @@ export default async function LangLayout({
       <ConditionalFooter settings={settings} lang={params.lang} />
       <QuizModal lang={params.lang || 'uk'} />
       <StructuredData lang={params.lang || 'uk'} />
+      <CookieConsent lang={params.lang || 'uk'} />
+      <FloatingAIAssistant lang={params.lang || 'uk'} />
     </>
   );
 }

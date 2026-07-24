@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
 import { CITIES } from '@/data/cities';
 import { niches } from '@/data/niches';
+import { getLocalizedProjects } from '@/server/functions/getProjects';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://malyshev.dev';
   
   const staticPaths = [
@@ -42,7 +43,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const allRoutes = [...routes, ...cityRoutes, ...nicheRoutes];
+  // Fetch all projects (we only need the slugs)
+  const projects = await getLocalizedProjects('uk'); // language doesn't matter for slugs
+  const portfolioRoutes = projects.map((project: any) => ({
+    url: `${baseUrl}/portfolio/${project.slug}`,
+    lastModified: new Date().toISOString().split('T')[0],
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  const allRoutes = [...routes, ...cityRoutes, ...nicheRoutes, ...portfolioRoutes];
   const ruRoutes = allRoutes.map(route => ({
     ...route,
     url: route.url.replace(baseUrl, `${baseUrl}/ru`),

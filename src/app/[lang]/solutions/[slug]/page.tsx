@@ -24,9 +24,22 @@ export async function generateMetadata({ params }: { params: { slug: string, lan
 
   const lang = (params.lang === 'ru' || params.lang === 'uk') ? params.lang : 'uk';
 
+  const title = niche.seoTitle[lang];
+  const description = niche.seoDescription[lang];
+
   return {
-    title: niche.seoTitle[lang],
-    description: niche.seoDescription[lang],
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [`/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description)}`],
+    },
+    twitter: {
+      title,
+      description,
+      images: [`/api/og?title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description)}`],
+    }
   };
 }
 

@@ -25,7 +25,8 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
 
   async function handleSubmit(formData: FormData) {
     if (editingId) formData.append('id', editingId);
-    formData.append('resultsJson', JSON.stringify(results));
+    const cleanedResults = results.filter(r => r.label.trim() !== '' || r.value.trim() !== '');
+    formData.append('resultsJson', JSON.stringify(cleanedResults));
     await saveProjectAction(formData);
     setEditingId(null);
     setResults([]);

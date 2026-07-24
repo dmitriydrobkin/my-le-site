@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 import { QuizTrigger } from '@/components/QuizTrigger';
 import { getLocalizedProjects } from '@/server/functions/getProjects';
 
@@ -13,10 +14,26 @@ export async function generateMetadata({ params }: { params: { slug: string, lan
   if (!project) return { title: 'Not found' };
   
   const isUk = params.lang === 'uk';
-  const title = isUk ? (project.titleUk || project.title) : project.title;
-  const desc = isUk ? (project.descriptionUk || project.description) : project.description;
+  const rawTitle = isUk ? (project.titleUk || project.title) : project.title;
+  const rawDesc = isUk ? (project.descriptionUk || project.description) : project.description;
 
-  return { title: `${title} | Malyshev.Dev`, description: desc };
+  const title = `${(rawTitle || '').replace(/<[^>]*>?/gm, '').trim()} | Dmitriy`;
+  const description = (rawDesc || '').replace(/<[^>]*>?/gm, '').trim();
+
+  return { 
+    title, 
+    description,
+    openGraph: {
+      title,
+      description,
+      images: project.imageUrl ? [project.imageUrl] : ['/hero-bg.png'],
+    },
+    twitter: {
+      title,
+      description,
+      images: project.imageUrl ? [project.imageUrl] : ['/hero-bg.png'],
+    }
+  };
 }
 
 export default async function ProjectDetailPage({ params }: { params: { slug: string, lang: string } }) {
@@ -36,7 +53,12 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
   try { stack = typeof project.stackJson === 'string' ? JSON.parse(project.stackJson) : project.stackJson; } catch (e) {}
 
   let results: {label: string, value: string}[] = [];
-  try { results = typeof project.resultsJson === 'string' ? JSON.parse(project.resultsJson) : project.resultsJson; } catch (e) {}
+  try { 
+    const parsed = typeof project.resultsJson === 'string' ? JSON.parse(project.resultsJson) : project.resultsJson;
+    if (Array.isArray(parsed)) {
+      results = parsed.filter((r: any) => r && (r.label?.trim() || r.value?.trim()));
+    }
+  } catch (e) {}
 
   const absoluteLink = project.projectLink ? (
     project.projectLink.startsWith('http') || project.projectLink.startsWith('/') 
@@ -93,11 +115,7 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
           {/* Main Image Cover */}
           <div className="w-full aspect-[16/9] md:aspect-[21/9] relative rounded-[2rem] overflow-hidden border border-ink/5 shadow-glass bg-surface/50">
             {project.imageUrl ? (
-              <img loading="lazy" decoding="async" 
-                src={project.imageUrl} 
-                alt={displayTitle}
-                className="w-full h-full object-cover"
-              />
+              <Image fill priority unoptimized src={project.imageUrl} alt={displayTitle} className="object-cover" />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-ink/20 font-bold text-3xl">
                 {isUk ? 'Немає обкладинки' : 'Нет обложки'}

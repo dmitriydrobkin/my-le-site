@@ -172,3 +172,31 @@ export async function updateLeadStatus(id: number, newStatus: 'new' | 'contacted
     return { success: false };
   }
 }
+
+export async function sendEmergencyAlert(text: string) {
+  try {
+    const { env } = getRequestContext();
+    const db = drizzle((env as any).DB);
+    const activeChats = await db.select().from(telegramChats).where(eq(telegramChats.isActive, true)).all();
+    
+    if (activeChats.length > 0) {
+      const token = (env as any).TELEGRAM_BOT_TOKEN;
+      if (token) {
+        const sendPromises = activeChats.map(chat => 
+          fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: chat.id,
+              text,
+              parse_mode: 'HTML',
+            })
+          })
+        );
+        await Promise.allSettled(sendPromises);
+      }
+    }
+  } catch(e) {
+    console.error('Failed to send emergency alert:', e);
+  }
+}

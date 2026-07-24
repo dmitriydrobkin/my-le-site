@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Filter, Image as ImageIcon } from 'lucide-react';
+import Image from 'next/image';
 
 export type ProjectCategory = 'САЙТЫ' | 'E-COMMERCE' | 'TELEGRAM-БОТЫ' | 'WEB-ПРИЛОЖЕНИЯ';
 
@@ -84,7 +85,7 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
               <Link href={`${linkPrefix}/portfolio/${project.slug}`} key={project.id} className={`flex flex-col group cursor-pointer ${project.isTop === 1 ? 'md:col-span-2' : ''}`}>
                 <div className={`relative w-full aspect-[4/3] ${project.isTop === 1 ? 'md:aspect-[2/1]' : ''} rounded-[2rem] overflow-hidden mb-6 shadow-glass border border-ink/5 bg-surface`}>
                   {project.imageUrl ? (
-                    <img loading="lazy" decoding="async" src={project.imageUrl} alt={displayTitle} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <Image fill unoptimized src={project.imageUrl} alt={displayTitle} className="object-cover group-hover:scale-105 transition-transform duration-700" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-ink/20 font-bold text-2xl group-hover:scale-105 transition-transform duration-700">
                       {isUk ? 'Немає обкладинки' : 'Нет обложки'}
