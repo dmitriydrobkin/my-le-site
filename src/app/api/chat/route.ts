@@ -137,6 +137,7 @@ export async function POST(req: Request) {
     });
   } catch (error: any) {
     console.error('AI Chat Error:', error);
+    const env = process.env.NODE_ENV === 'development' ? process.env : (getRequestContext()?.env || process.env);
     await sendEmergencyAlert(`🚨 <b>Помилка AI Асистента!</b>\n\n<b>Деталі помилки:</b>\n<code>${error?.message || error}</code>\n\nМожливо, вичерпані ліміти або ключ не підходить для цієї моделі.\nКлієнтів тимчасово переведено на звичайну форму.`, env);
     return new Response(JSON.stringify({ error: 'AI is overloaded', details: error?.message }), { status: 500 });
   }
