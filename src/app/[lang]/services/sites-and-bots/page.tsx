@@ -44,9 +44,8 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
             <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
             {dict.heroBadge}
           </div>
-          
           <h1 
-            className="font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase break-words"
+            className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase break-words"
             dangerouslySetInnerHTML={{ __html: dict.heroTitle }}
           />
           
@@ -74,7 +73,7 @@ export default function SitesAndBotsPage({ params }: { params: { lang: string } 
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
             <h2 
-              className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold text-ink uppercase max-w-2xl leading-tight break-words"
+              className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-ink uppercase max-w-2xl leading-tight break-words"
               dangerouslySetInnerHTML={{ __html: dict.whyTitle }}
             />
             <p className="font-sans text-ink/50 leading-relaxed font-medium max-w-sm">

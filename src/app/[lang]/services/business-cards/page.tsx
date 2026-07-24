@@ -50,7 +50,7 @@ export default function BusinessCardsPage({ params }: { params: { lang: string }
           <div className="flex flex-col xl:flex-row gap-12 lg:gap-24">
             <div className="xl:w-1/3">
               <h2 
-                className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold text-ink uppercase leading-tight mb-6 break-words"
+                className="font-display text-[clamp(1.75rem,2.5vw,2.5rem)] font-bold text-ink uppercase leading-tight mb-6 break-words"
                 dangerouslySetInnerHTML={{ __html: dict.whyTitle }}
               />
               <p className="font-sans text-ink/50 leading-relaxed font-medium">
@@ -145,7 +145,7 @@ export default function BusinessCardsPage({ params }: { params: { lang: string }
 
             <div className="relative z-10 max-w-2xl w-full">
               <h2 
-                className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold text-ink mb-6 leading-tight break-words"
+                className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-ink mb-6 leading-tight break-words"
                 dangerouslySetInnerHTML={{ __html: dict.ctaTitle }}
               />
               <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">

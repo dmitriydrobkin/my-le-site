@@ -51,7 +51,7 @@ export default function LandingsPage({ params }: { params: { lang: string } }) {
           <div className="flex flex-col md:flex-row gap-12 lg:gap-24">
             <div className="lg:w-1/3">
               <h2 
-                className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold text-ink uppercase leading-tight mb-6 break-words"
+                className="font-display text-[clamp(1.75rem,2.5vw,2.5rem)] font-bold text-ink uppercase leading-tight mb-6 break-words"
                 dangerouslySetInnerHTML={{ __html: dict.whyTitle }}
               />
               <p className="font-sans text-ink/50 leading-relaxed font-medium">

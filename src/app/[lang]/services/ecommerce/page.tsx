@@ -22,7 +22,7 @@ export default function EcommercePage({ params }: { params: { lang: string } }) 
           </div>
           
           <h1 
-            className="font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase break-words"
+            className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase break-words"
             dangerouslySetInnerHTML={{ __html: dict.heroTitle }}
           />
           
@@ -55,7 +55,7 @@ export default function EcommercePage({ params }: { params: { lang: string } }) 
                 <span className="text-red-500">✕</span> {dict.whyBadge}
               </span>
               <h2 
-                className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold text-ink uppercase leading-tight mb-4 break-words"
+                className="font-display text-[clamp(1.75rem,2.5vw,2.5rem)] font-bold text-ink uppercase leading-tight mb-4 break-words"
                 dangerouslySetInnerHTML={{ __html: dict.whyTitle }}
               />
               <p className="font-sans text-ink/50 leading-relaxed font-medium">
@@ -166,7 +166,7 @@ export default function EcommercePage({ params }: { params: { lang: string } }) 
 
             <div className="relative z-10 max-w-xl w-full">
               <h2 
-                className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold text-ink mb-6 leading-tight break-words"
+                className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-ink mb-6 leading-tight break-words"
                 dangerouslySetInnerHTML={{ __html: dict.ctaTitle }}
               />
               <p className="font-sans text-lg text-ink/60 font-medium leading-relaxed mb-10">
