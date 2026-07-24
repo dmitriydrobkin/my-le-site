@@ -1,6 +1,7 @@
 import { QuizTrigger } from '@/components/QuizTrigger';
 import { ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import { TelegramIcon } from '@/components/TelegramIcon';
+import { CopyButton } from '@/components/CopyButton';
 import { getSiteSettings } from '@/server/functions/settings';
 import { getDictionary } from '@/i18n/dictionaries';
 
@@ -29,7 +30,7 @@ export default async function ContactPage({ params }: { params: { lang: string }
             </div>
             
             <h1 
-              className="font-display text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-8 uppercase break-words"
+              className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-6 uppercase break-words"
               dangerouslySetInnerHTML={{ __html: dict.title }}
             />
             
@@ -53,8 +54,9 @@ export default async function ContactPage({ params }: { params: { lang: string }
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-2">{dict.tgTitle}</h3>
               <p className="font-sans text-ink/60 font-medium mb-4">{dict.tgDesc}</p>
-              <div className="mt-auto font-sans font-bold text-blue-500 flex items-center gap-2">
-                {dict.tgLink} <ArrowUpRight className="w-4 h-4" />
+              <div className="mt-auto w-full font-sans font-bold text-blue-500 flex items-center justify-between gap-2">
+                <span className="truncate flex items-center gap-2">{dict.tgLink} <ArrowUpRight className="w-4 h-4 shrink-0" /></span>
+                <CopyButton text={tg} />
               </div>
             </a>
 
@@ -65,8 +67,9 @@ export default async function ContactPage({ params }: { params: { lang: string }
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-2">{dict.emailTitle}</h3>
               <p className="font-sans text-ink/60 font-medium mb-4">{dict.emailDesc}</p>
-              <div className="mt-auto font-sans font-bold text-coral flex items-center gap-2">
-                {email}
+              <div className="mt-auto w-full font-sans font-bold text-coral flex items-center justify-between gap-2">
+                <span className="truncate" title={email}>{email}</span>
+                <CopyButton text={email} />
               </div>
             </a>
 
@@ -77,8 +80,9 @@ export default async function ContactPage({ params }: { params: { lang: string }
               </div>
               <h3 className="font-display text-2xl font-bold text-ink mb-2">{dict.phoneTitle}</h3>
               <p className="font-sans text-ink/60 font-medium mb-4">{dict.phoneDesc}</p>
-              <div className="mt-auto font-sans font-bold text-emerald-500 flex items-center gap-2">
-                {phone}
+              <div className="mt-auto w-full font-sans font-bold text-emerald-500 flex items-center justify-between gap-2">
+                <span className="truncate" title={phone}>{phone}</span>
+                <CopyButton text={phone} />
               </div>
             </a>
 
