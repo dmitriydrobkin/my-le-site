@@ -59,10 +59,20 @@ const SYSTEM_PROMPT_RU = `
 `;
 
 export async function POST(req: Request) {
+  let json;
   try {
-    const json = await req.json() as { messages: any[], lang: string };
-    const { messages, lang } = json;
-    
+    json = await req.json() as { messages: any[], lang: string };
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 });
+  }
+
+  const { messages, lang } = json;
+  
+  if (!messages || !Array.isArray(messages)) {
+    return new Response(JSON.stringify({ error: 'No messages provided' }), { status: 400 });
+  }
+
+  try {
     // Check message count to avoid spam (limit conversation to 20 user messages)
     const userMessageCount = messages.filter((m: any) => m.role === 'user').length;
     if (userMessageCount > 20) {

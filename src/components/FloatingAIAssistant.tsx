@@ -3,13 +3,19 @@
 import { useState } from 'react';
 import { Bot, X, MessageSquare } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { AIChat } from './AIChat';
 
 export function FloatingAIAssistant({ lang }: { lang: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // We simply close the chat as fallback here, they can use the normal form on the site if needed
-  const handleFallback = () => setIsOpen(false);
+  const router = useRouter();
+
+  // Redirect to the contact page as fallback so they see a form
+  const handleFallback = () => {
+    setIsOpen(false);
+    router.push(lang === 'uk' ? '/contact' : '/ru/contact');
+  };
 
   return (
     <>
