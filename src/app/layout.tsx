@@ -22,8 +22,8 @@ const manrope = Manrope({
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
-  const title = settings.site_title ?? 'Dmitriy | Высококонверсионные сайты и боты';
-  const description = settings.site_description ?? 'Автоматизированные воронки, сайты и Telegram-боты, которые работают 24/7 и приносят прибыль.';
+  const title = settings.site_title ?? 'Создание сайтов и Telegram-ботов под ключ | Разработка высококонверсионных воронок';
+  const description = settings.site_description ?? 'Профессиональная разработка лендингов, корпоративных сайтов, интернет-магазинов и Telegram-ботов. Современный дизайн, SEO оптимизация и интеграция с CRM.';
   const isIndexingEnabled = settings.seo_indexing_enabled === 'true';
 
   return {

@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   
   const settings = await getSiteSettings();
   const isUk = params.lang === 'uk';
-  const defaultTitle = isUk ? 'Dmitriy | Висококонверсійні сайти та боти' : 'Dmitriy | Высококонверсионные сайты и боты';
-  const defaultDesc = isUk ? 'Автоматизовані воронки, сайти та Telegram-боти, які працюють 24/7.' : 'Автоматизированные воронки, сайты и Telegram-боты, которые работают 24/7.';
+  const defaultTitle = isUk ? 'Створення сайтів та Telegram-ботів під ключ | Розробка висококонверсійних воронок' : 'Создание сайтов и Telegram-ботов под ключ | Разработка высококонверсионных воронок';
+  const defaultDesc = isUk ? 'Професійна розробка лендінгів, корпоративних сайтів, інтернет-магазинів та Telegram-ботів. Сучасний дизайн, SEO оптимізація та інтеграція з CRM.' : 'Профессиональная разработка лендингов, корпоративных сайтов, интернет-магазинов и Telegram-ботов. Современный дизайн, SEO оптимизация и интеграция с CRM.';
   
   const title = settings.site_title || defaultTitle;
   const description = settings.site_description || defaultDesc;
