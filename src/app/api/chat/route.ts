@@ -135,7 +135,7 @@ export async function POST(req: Request) {
     return result.toDataStreamResponse();
   } catch (error: any) {
     console.error('AI Chat Error:', error);
-    await sendEmergencyAlert('🚨 <b>Помилка AI Асистента!</b>\nМожливо, вичерпані ліміти Gemini API (500/day, 15/min).\nКлієнтів тимчасово переведено на звичайну форму.');
-    return new Response(JSON.stringify({ error: 'AI is overloaded' }), { status: 500 });
+    await sendEmergencyAlert(`🚨 <b>Помилка AI Асистента!</b>\n\n<b>Деталі помилки:</b>\n<code>${error?.message || error}</code>\n\nМожливо, вичерпані ліміти або ключ не підходить для цієї моделі.\nКлієнтів тимчасово переведено на звичайну форму.`);
+    return new Response(JSON.stringify({ error: 'AI is overloaded', details: error?.message }), { status: 500 });
   }
 }
