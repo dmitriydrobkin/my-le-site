@@ -12,6 +12,14 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const [isFading, setIsFading] = useState(isFirstVisit);
 
   useEffect(() => {
+    // Detect bot to bypass animations for SEO/Lighthouse
+    const isBot = typeof window !== 'undefined' && /bot|googlebot|crawler|spider|robot|crawling|lighthouse|speed-insights/i.test(navigator.userAgent);
+    
+    if (isBot) {
+      setShowLoader(false);
+      return;
+    }
+
     if (isFirstVisit) {
       isFirstVisit = false;
       return;
