@@ -54,10 +54,10 @@ export function ServicesSlider({ title, lang }: { title?: string, lang: string }
             </p>
             {/* Sliders Navigation */}
             <div className="flex gap-4">
-              <button onClick={scrollLeft} className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center text-ink hover:bg-ink hover:text-white transition-colors">
+              <button onClick={scrollLeft} aria-label="Прокрутити вліво" className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center text-ink hover:bg-ink hover:text-white transition-colors">
                 <ChevronLeft className="w-6 h-6" />
               </button>
-              <button onClick={scrollRight} className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center text-ink hover:bg-ink hover:text-white transition-colors">
+              <button onClick={scrollRight} aria-label="Прокрутити вправо" className="w-14 h-14 rounded-full border border-ink/10 flex items-center justify-center text-ink hover:bg-ink hover:text-white transition-colors">
                 <ChevronRight className="w-6 h-6" />
               </button>
             </div>

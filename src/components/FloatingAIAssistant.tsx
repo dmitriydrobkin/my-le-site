@@ -58,6 +58,7 @@ export function FloatingAIAssistant({ lang }: { lang: string }) {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={lang === 'uk' ? 'Відкрити AI Асистент' : 'Открыть AI Ассистент'}
         className={`fixed ${isOpen ? 'bottom-4' : 'bottom-6'} right-4 sm:right-6 z-[100] w-14 h-14 bg-ink text-white rounded-full shadow-xl shadow-ink/20 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300`}
       >
         <AnimatePresence mode="wait">

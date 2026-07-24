@@ -10,7 +10,10 @@ export default function PrivacyPolicyPage({ params }: { params: { lang: string }
   return (
     <section className="min-h-screen bg-surface px-6">
       <div className="max-w-4xl mx-auto pt-32 pb-24 font-sans text-ink/80">
-        <h1 className="font-display text-[1.75rem] leading-tight sm:text-4xl md:text-5xl font-bold mb-10 text-ink break-words sm:break-normal">
+        <h1 
+          className="font-display text-2xl leading-tight sm:text-4xl md:text-5xl font-bold mb-8 text-ink break-words sm:break-normal hyphens-auto"
+          lang={params.lang === 'uk' ? 'uk' : 'ru'}
+        >
           {title}
         </h1>
         
