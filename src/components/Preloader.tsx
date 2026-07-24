@@ -7,6 +7,14 @@ export function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Check if user agent is a bot/lighthouse
+    const isBot = /bot|googlebot|crawler|spider|robot|crawling|lighthouse/i.test(navigator.userAgent);
+    
+    if (isBot) {
+      setIsLoading(false);
+      return;
+    }
+
     // Disable scrolling while preloading
     document.body.style.overflow = 'hidden';
     

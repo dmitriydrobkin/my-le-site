@@ -116,7 +116,7 @@ export function AIChat({ lang = 'uk', onFallback }: AIChatProps) {
                 m.role === 'user' ? 'bg-surface text-ink rounded-tr-sm border border-ink/5' : 'bg-coral/10 text-ink rounded-tl-sm'
               }`}>
                 {m.content}
-                {isLoading && m.role === 'assistant' && m.id === messages[messages.length - 1].id && (
+                {isLoading && m.role === 'assistant' && m.id === messages[messages.length - 1]?.id && (
                   <span className="inline-block w-1.5 h-4 ml-1 bg-coral/60 animate-pulse align-middle" />
                 )}
               </div>
