@@ -3,18 +3,17 @@
 import { useState } from 'react';
 import { Bot, X, MessageSquare } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useQuizStore } from '@/lib/store/useQuizStore';
 import { AIChat } from './AIChat';
 
 export function FloatingAIAssistant({ lang }: { lang: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const openQuiz = useQuizStore((state) => state.openQuiz);
 
-  const router = useRouter();
-
-  // Redirect to the contact page as fallback so they see a form
+  // Open the global quiz modal as fallback
   const handleFallback = () => {
     setIsOpen(false);
-    router.push(lang === 'uk' ? '/contact' : '/ru/contact');
+    openQuiz();
   };
 
   return (
