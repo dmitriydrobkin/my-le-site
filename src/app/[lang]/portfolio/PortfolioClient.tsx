@@ -101,7 +101,7 @@ export default function PortfolioClient({ initialProjects, categories, lang }: {
             <p className="font-sans text-xl text-ink/50 font-medium">{isUk ? 'Проєкти у цій категорії скоро з\'являться.' : 'Проекты в этой категории скоро появятся.'}</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-10">
+          <div className="grid grid-flow-dense grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-10">
             {filteredProjects.map((project, index) => {
               const displayTitle = isUk ? (project.titleUk || project.title) : project.title;
               const displayDescription = isUk ? (project.descriptionUk || project.description) : project.description;
