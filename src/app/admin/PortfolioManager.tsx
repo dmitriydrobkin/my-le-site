@@ -163,14 +163,35 @@ export default function PortfolioManager({ initialProjects, categories }: { init
           </div>
 
           <div>
-            <label className="block text-sm font-bold text-ink/80 mb-2">Обложка проекта (Картинка)</label>
+            <label className="block text-sm font-bold text-ink/80 mb-2">Галерея проекта (Главная обложка — первое фото)</label>
             <div className="flex flex-col gap-3">
-              {editingProject?.imageUrl && (
-                <div className="relative w-32 h-24 rounded-xl overflow-hidden border border-ink/10">
-                  <img loading="lazy" decoding="async" src={editingProject.imageUrl} alt="cover" className="w-full h-full object-cover" />
+              {(editingProject?.galleryJson || editingProject?.imageUrl) && (
+                <div className="flex gap-2 overflow-x-auto pb-2">
+                  {(() => {
+                    let images: string[] = [];
+                    if (editingProject?.galleryJson) {
+                      images = typeof editingProject.galleryJson === 'string' 
+                        ? JSON.parse(editingProject.galleryJson) 
+                        : editingProject.galleryJson;
+                    } else if (editingProject?.imageUrl) {
+                      images = [editingProject.imageUrl];
+                    }
+                    
+                    return images.map((url: string, idx: number) => (
+                      <div key={idx} className="relative w-32 h-24 shrink-0 rounded-xl overflow-hidden border border-ink/10">
+                        <img loading="lazy" decoding="async" src={url} alt={`gallery-${idx}`} className="w-full h-full object-cover" />
+                        <input type="hidden" name="existingGallery" value={url} />
+                        <button type="button" onClick={(e) => { e.currentTarget.parentElement?.remove(); }} className="absolute top-1 right-1 w-6 h-6 bg-red-500 text-white rounded-md flex items-center justify-center opacity-80 hover:opacity-100 z-10 cursor-pointer">
+                          <X className="w-3 h-3" />
+                        </button>
+                        {idx === 0 && <span className="absolute bottom-1 left-1 bg-ink text-white text-[10px] px-2 py-0.5 rounded-md font-bold z-10">Обложка</span>}
+                      </div>
+                    ));
+                  })()}
                 </div>
               )}
-              <input type="file" name="imageFile" accept="image/*" className="w-full p-4 bg-surface border border-ink/10 rounded-2xl file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-coral/10 file:text-coral hover:file:bg-coral/20 cursor-pointer" />
+              <input type="file" name="galleryFiles" accept="image/*" multiple className="w-full p-4 bg-surface border border-ink/10 rounded-2xl file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-coral/10 file:text-coral hover:file:bg-coral/20 cursor-pointer" />
+              <p className="text-xs text-ink/40 font-medium">Можно выбрать несколько файлов. Первое фото в списке будет обложкой. Чтобы удалить старое фото, нажмите крестик. Новые фото добавятся в конец.</p>
             </div>
           </div>
 

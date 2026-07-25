@@ -79,6 +79,7 @@ export const projects = sqliteTable('projects', {
   stackJson: text('stack_json', { mode: 'json' }),
   projectLink: text('project_link'),
   imageUrl: text('image_url'),
+  galleryJson: text('gallery_json', { mode: 'json' }),
   tags: text('tags'), 
   isHidden: integer('is_hidden').default(0).notNull(), 
   isTop: integer('is_top').default(0).notNull(), // 0 = false, 1 = true

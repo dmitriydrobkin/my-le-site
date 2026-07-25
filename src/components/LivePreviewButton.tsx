@@ -60,18 +60,43 @@ export function LivePreviewButton({ projectLink, label, isUk }: LivePreviewButto
   const modalContent = isOpen ? (
     <div className="fixed inset-0 z-[99999] bg-surface flex flex-col overflow-hidden animate-in fade-in duration-300 cursor-default" style={{ cursor: 'default' }}>
       {/* Top Bar */}
-      <div className="shrink-0 bg-white border-b border-ink/10 flex items-center justify-between px-4 md:px-6 py-3 shadow-sm z-10">
-        <button 
-          onClick={() => setIsOpen(false)}
-          className="flex items-center gap-2 text-ink/60 hover:text-ink font-bold font-sans text-xs uppercase tracking-widest transition-colors cursor-pointer"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span className="hidden sm:inline">{isUk ? 'Назад до кейсу' : 'Назад к кейсу'}</span>
-        </button>
+      <div className="shrink-0 bg-white border-b border-ink/10 flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:px-6 sm:py-3 shadow-sm z-10 gap-3 sm:gap-0">
+        
+        {/* Mobile Title & Warning (Visible only on mobile) */}
+        <div className="flex sm:hidden items-center justify-center w-full px-2">
+          <div className="flex flex-col items-center text-center">
+            <span className="text-xs font-bold font-display uppercase tracking-widest text-ink">
+              {isUk ? 'Емулятор сайту' : 'Эмулятор сайта'}
+            </span>
+            <span className="text-[10px] text-ink/50 font-medium mt-0.5">
+              {isUk ? 'Для кращого досвіду відкрийте в новій вкладці' : 'Для лучшего опыта откройте в новой вкладке'}
+            </span>
+          </div>
+        </div>
 
-        {/* Center Control */}
-        <div className="flex flex-col items-center justify-center">
-          <div className="hidden md:flex items-center gap-1 bg-surface p-1 rounded-full border border-ink/5">
+        <div className="flex items-center justify-between w-full sm:w-auto">
+          <button 
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-2 text-ink/70 hover:text-ink font-bold font-sans text-xs uppercase tracking-widest transition-colors cursor-pointer bg-surface sm:bg-transparent px-3 py-2 sm:p-0 rounded-lg sm:rounded-none"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>{isUk ? 'Закрити' : 'Закрыть'}</span>
+          </button>
+
+          <a 
+            href={projectLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex sm:hidden items-center gap-2 text-white bg-coral hover:bg-coral/90 font-bold font-sans text-[10px] uppercase tracking-widest transition-colors cursor-pointer px-3 py-2 rounded-lg"
+          >
+            <span>{isUk ? 'Нова вкладка' : 'Новая вкладка'}</span>
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        </div>
+
+        {/* Center Control (Desktop) */}
+        <div className="hidden sm:flex flex-col items-center justify-center">
+          <div className="flex items-center gap-1 bg-surface p-1 rounded-full border border-ink/5">
             <button
               onClick={() => setDeviceMode('desktop')}
               className={`p-1.5 rounded-full transition-colors cursor-pointer ${deviceMode === 'desktop' ? 'bg-white shadow-sm text-ink' : 'text-ink/40 hover:text-ink/80'}`}
@@ -87,7 +112,7 @@ export function LivePreviewButton({ projectLink, label, isUk }: LivePreviewButto
               <Smartphone className="w-4 h-4" />
             </button>
           </div>
-          <span className="hidden md:block text-[10px] text-ink/40 font-medium mt-1">
+          <span className="text-[10px] text-ink/40 font-medium mt-1">
             {isUk ? 'В емуляторі можуть бути неточності. Краще відкрити в новій вкладці' : 'В эмуляторе могут быть неточности. Лучше открыть в новой вкладке'}
           </span>
         </div>
@@ -96,9 +121,9 @@ export function LivePreviewButton({ projectLink, label, isUk }: LivePreviewButto
           href={projectLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-ink/60 hover:text-ink font-bold font-sans text-xs uppercase tracking-widest transition-colors cursor-pointer"
+          className="hidden sm:flex items-center gap-2 text-ink/60 hover:text-ink font-bold font-sans text-xs uppercase tracking-widest transition-colors cursor-pointer"
         >
-          <span className="hidden sm:inline">{isUk ? 'Відкрити в новій вкладці' : 'Открыть в новой вкладке'}</span>
+          <span>{isUk ? 'Відкрити в новій вкладці' : 'Открыть в новой вкладке'}</span>
           <ExternalLink className="w-4 h-4" />
         </a>
       </div>

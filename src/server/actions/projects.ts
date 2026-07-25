@@ -53,12 +53,19 @@ export async function saveProjectAction(formData: FormData) {
     resultsArray = resultsJsonString ? JSON.parse(resultsJsonString) : [];
   } catch (e) {}
 
-  const imageFile = formData.get('imageFile') as File | null;
-  let imageUrl: string | undefined = undefined;
-
-  if (imageFile && imageFile.size > 0) {
-    imageUrl = await uploadToR2(imageFile);
+  const existingGallery = formData.getAll('existingGallery') as string[];
+  const galleryFiles = formData.getAll('galleryFiles') as File[];
+  
+  const uploadedUrls: string[] = [];
+  for (const file of galleryFiles) {
+    if (file && file.size > 0) {
+      const url = await uploadToR2(file);
+      if (url) uploadedUrls.push(url);
+    }
   }
+
+  const finalGallery = [...existingGallery, ...uploadedUrls];
+  const finalImageUrl = finalGallery.length > 0 ? finalGallery[0] : '';
 
   // UPSERT logc
   await db.insert(projects).values({
@@ -81,7 +88,8 @@ export async function saveProjectAction(formData: FormData) {
     isTop,
     resultsJson: resultsArray,
     stackJson: stackArray,
-    imageUrl: imageUrl || '', // Will be updated conditionally below
+    imageUrl: finalImageUrl,
+    galleryJson: finalGallery,
     isHidden: 0,
     sortOrder: 0,
     createdAt: Date.now(),
@@ -106,7 +114,8 @@ export async function saveProjectAction(formData: FormData) {
       isTop,
       resultsJson: resultsArray,
       stackJson: stackArray,
-      ...(imageUrl ? { imageUrl } : {}),
+      imageUrl: finalImageUrl,
+      galleryJson: finalGallery,
     }
   });
 

@@ -33,8 +33,10 @@
     "react-phone-number-input": "^3.4.17",
     "server-only": "^0.0.1",
     "superjson": "^2.2.2",
+    "swiper": "^14.0.6",
     "tailwind-merge": "^3.6.0",
     "three": "^0.184.0",
+    "yet-another-react-lightbox": "^3.32.1",
     "zod": "^3.24.1",
     "zustand": "^5.0.2"
   },

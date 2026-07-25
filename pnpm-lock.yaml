@@ -53,12 +53,18 @@ importers:
       superjson:
         specifier: ^2.2.2
         version: 2.2.6
+      swiper:
+        specifier: ^14.0.6
+        version: 14.0.6
       tailwind-merge:
         specifier: ^3.6.0
         version: 3.6.0
       three:
         specifier: ^0.184.0
         version: 0.184.0
+      yet-another-react-lightbox:
+        specifier: ^3.32.1
+        version: 3.32.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       zod:
         specifier: ^3.24.1
         version: 3.25.76
@@ -3244,6 +3250,10 @@ packages:
     peerDependencies:
       react: '>=17.0'
 
+  swiper@14.0.6:
+    resolution: {integrity: sha512-ArptjmcZMBvpLCbvzSKuqvQpjjITCbZdymiGOrbZQffQ3ZSjgpvMByXX0WZBUt+FV4PPIumdYfZ9ZdBbFsdH6g==}
+    engines: {node: '>= 4.7.0'}
+
   swr@2.2.5:
     resolution: {integrity: sha512-QtxqyclFeAsxEUeZIYmsaQ0UjimSq1RZ9Un7I68/0ClKK/U3LoyQunwkQfJZr2fc22DfIXLNDc2wFyTEikCUpg==}
     peerDependencies:
@@ -3464,6 +3474,20 @@ packages:
       bufferutil:
         optional: true
       utf-8-validate:
+        optional: true
+
+  yet-another-react-lightbox@3.32.1:
+    resolution: {integrity: sha512-/OK5U79uTD2kGv3m+w22IDCuVtgC0l9J2SwJRYE+88XqfkWwVkAVNbE8AdWozAlPFTjGiIyPHxukoIINH9mpiw==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      '@types/react': ^16 || ^17 || ^18 || ^19
+      '@types/react-dom': ^16 || ^17 || ^18 || ^19
+      react: ^16.8.0 || ^17 || ^18 || ^19
+      react-dom: ^16.8.0 || ^17 || ^18 || ^19
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
         optional: true
 
   yocto-queue@0.1.0:
@@ -6461,6 +6485,8 @@ snapshots:
     dependencies:
       react: 18.3.1
 
+  swiper@14.0.6: {}
+
   swr@2.2.5(react@18.3.1):
     dependencies:
       client-only: 0.0.1
@@ -6787,6 +6813,14 @@ snapshots:
   wrappy@1.0.2: {}
 
   ws@8.18.0: {}
+
+  yet-another-react-lightbox@3.32.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.31
+      '@types/react-dom': 18.3.7(@types/react@18.3.31)
 
   yocto-queue@0.1.0: {}
 

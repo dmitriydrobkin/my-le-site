@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { QuizTrigger } from '@/components/QuizTrigger';
 import { getLocalizedProjects } from '@/server/functions/getProjects';
 import { LivePreviewButton } from '@/components/LivePreviewButton';
+import { ProjectGallery } from '@/components/ProjectGallery';
 
 export const runtime = 'edge';
 export const revalidate = 3600;
@@ -109,16 +110,13 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
             )}
           </div>
           
-          {/* Main Image Cover */}
-          <div className="w-full aspect-[16/9] md:aspect-[21/9] relative rounded-[2rem] overflow-hidden border border-ink/5 shadow-glass bg-surface/50">
-            {project.imageUrl ? (
-              <Image fill priority unoptimized src={project.imageUrl} alt={displayTitle} className="object-cover" />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-ink/20 font-bold text-3xl">
-                {isUk ? 'Немає обкладинки' : 'Нет обложки'}
-              </div>
-            )}
-          </div>
+          {/* Main Image Cover / Gallery */}
+          <ProjectGallery 
+            images={project.galleryJson as string[]}
+            cover={project.imageUrl} 
+            title={displayTitle} 
+            isUk={isUk} 
+          />
         </div>
       </section>
 
