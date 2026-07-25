@@ -42,11 +42,24 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
             {isUk ? 'моїх' : 'моих'} <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-orange-400">{isUk ? 'робіт' : 'работ'}</span>
           </h1>
           
-          <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-2xl font-medium leading-relaxed">
+          <p className="font-sans text-lg lg:text-xl text-ink/60 max-w-2xl font-medium leading-relaxed mb-8">
             {isUk 
               ? 'Кожен проєкт — це інструмент для бізнесу. Дізнайтеся, як я допомагаю компаніям збільшувати продажі, автоматизувати процеси та виділятися на тлі конкурентів.' 
               : 'Каждый проект — это инструмент для бизнеса. Изучите, как я помогаю компаниям увеличивать продажи, автоматизировать процессы и выделяться на фоне конкурентов.'}
           </p>
+
+          <a 
+            href="https://www.behance.net/dima_malyshev" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-flex items-center gap-3 px-6 py-4 bg-[#1769ff]/10 text-[#1769ff] hover:bg-[#1769ff] hover:text-white rounded-full font-bold transition-all hover:scale-105 active:scale-95"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.226-2.477-2.226-1.465 0-2.274.891-2.488 2.226zm-9.392-6v10h-6.648v-10h6.648zm1.611-2.333h-8.259v14.666h8.775c3.275 0 5.485-1.393 5.485-4.103 0-1.898-1.077-3.21-2.529-3.712 1.137-.478 2.106-1.536 2.106-3.176 0-2.738-2.311-3.675-5.578-3.675zm-5.61 2.66h2.955c1.472 0 2.226.549 2.226 1.573 0 1.059-.791 1.549-2.226 1.549h-2.955v-3.122zm0 8.01v-3.411h3.197c1.688 0 2.453.642 2.453 1.705 0 1.096-.867 1.706-2.453 1.706h-3.197z"/>
+            </svg>
+            {isUk ? 'Мої концепти та дизайн на Behance' : 'Мои концепты и дизайн на Behance'}
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
         </div>
       </section>
 
