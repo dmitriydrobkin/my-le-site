@@ -13,9 +13,9 @@ export const siteSettings = sqliteTable('settings', {
 export const pageContent = sqliteTable('page_content', {
   route: text('route').primaryKey(),
   h1: text('h1'),
-  seoTitle: text('seo_title'),
+  seoTitle: text('seoTitle'),
   description: text('description'),
-  updatedAt: integer('updated_at', { mode: 'timestamp' })
+  updatedAt: integer('updatedAt', { mode: 'timestamp' })
     .notNull()
     .$defaultFn(() => new Date()),
 });
@@ -24,10 +24,10 @@ export const pageContent = sqliteTable('page_content', {
 export const leads = sqliteTable('leads', {
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   name: text('name').notNull(),
-  contactInfo: text('contact_info').notNull(),
+  contactInfo: text('contactInfo').notNull(),
   status: text('status', { enum: ['new', 'contacted', 'converted', 'rejected'] }).notNull().default('new'),
-  estimatedBudget: text('estimated_budget'),
-  createdAt: integer('created_at', { mode: 'timestamp' })
+  estimatedBudget: text('estimatedBudget'),
+  createdAt: integer('createdAt', { mode: 'timestamp' })
     .notNull()
     .$defaultFn(() => new Date()),
 });
@@ -35,8 +35,8 @@ export const leads = sqliteTable('leads', {
 // Ответы из квиза
 export const quizAnswers = sqliteTable('quiz_answers', {
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
-  leadId: integer('lead_id', { mode: 'number' }).notNull().references(() => leads.id, { onDelete: 'cascade' }),
-  answersJson: text('answers_json', { mode: 'json' }).notNull(), // Храним ответы в JSON
+  leadId: integer('leadId', { mode: 'number' }).notNull().references(() => leads.id, { onDelete: 'cascade' }),
+  answersJson: text('answersJson', { mode: 'json' }).notNull(), // Храним ответы в JSON
 });
 
 // Авторизованные Telegram чаты для получения заявок
