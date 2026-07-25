@@ -29,6 +29,7 @@ export async function saveProjectAction(formData: FormData) {
   const title = formData.get('title') as string;
   const slug = (formData.get('slug') as string) || slugify(title) || id.slice(0, 8);
   const category = (formData.get('category') as string) || 'САЙТЫ';
+  const categoryId = formData.get('categoryId') as string || null;
   const description = formData.get('description') as string;
   const projectLink = formData.get('projectLink') as string;
   const tags = formData.get('tags') as string;
@@ -66,6 +67,7 @@ export async function saveProjectAction(formData: FormData) {
     title,
     titleUk,
     category,
+    categoryId,
     description,
     descriptionUk,
     projectLink,
@@ -90,6 +92,7 @@ export async function saveProjectAction(formData: FormData) {
       title,
       titleUk,
       category,
+      categoryId,
       description,
       descriptionUk,
       projectLink,

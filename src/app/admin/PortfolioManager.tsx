@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Eye, EyeOff, Copy, Trash2, Edit2, Plus, Image as ImageIcon, X } from 'lucide-react';
 import { saveProjectAction, toggleProjectVisibilityAction, duplicateProjectAction, deleteProjectAction } from '@/server/actions/projects';
 
-export default function PortfolioManager({ initialProjects }: { initialProjects: any[] }) {
+export default function PortfolioManager({ initialProjects, categories }: { initialProjects: any[], categories: any[] }) {
   const [editingId, setEditingId] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const [results, setResults] = useState<{label: string, value: string}[]>([]);
@@ -43,7 +43,7 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
   const filteredProjects = initialProjects.filter(p => {
     const matchesSearch = (p.title?.toLowerCase() || '').includes(searchQuery.toLowerCase()) || 
                           (p.clientName?.toLowerCase() || '').includes(searchQuery.toLowerCase());
-    const matchesCategory = filterCategory === 'ВСЕ' || p.category === filterCategory;
+    const matchesCategory = filterCategory === 'ВСЕ' || p.categoryId === filterCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -71,11 +71,11 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
             </div>
             <div>
               <label className="block text-sm font-bold text-ink/80 mb-2">Категория</label>
-              <select name="category" defaultValue={editingProject?.category || 'САЙТЫ'} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors">
-                <option value="САЙТЫ">САЙТЫ</option>
-                <option value="E-COMMERCE">E-COMMERCE</option>
-                <option value="TELEGRAM-БОТЫ">TELEGRAM-БОТЫ</option>
-                <option value="WEB-ПРИЛОЖЕНИЯ">WEB-ПРИЛОЖЕНИЯ</option>
+              <select name="categoryId" defaultValue={editingProject?.categoryId || ''} className="w-full p-4 bg-surface border border-ink/10 rounded-2xl focus:border-coral outline-none transition-colors">
+                <option value="">Без категории</option>
+                {categories.map(c => (
+                  <option key={c.id} value={c.id}>{c.nameRu}</option>
+                ))}
               </select>
             </div>
             
@@ -203,10 +203,9 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
             className="w-full md:w-auto p-3 bg-white border border-ink/10 rounded-xl focus:outline-none focus:border-coral text-sm"
           >
             <option value="ВСЕ">Все категории</option>
-            <option value="САЙТЫ">САЙТЫ</option>
-            <option value="E-COMMERCE">E-COMMERCE</option>
-            <option value="TELEGRAM-БОТЫ">TELEGRAM-БОТЫ</option>
-            <option value="WEB-ПРИЛОЖЕНИЯ">WEB-ПРИЛОЖЕНИЯ</option>
+            {categories.map(c => (
+              <option key={c.id} value={c.id}>{c.nameRu}</option>
+            ))}
           </select>
         </div>
 
@@ -247,7 +246,7 @@ export default function PortfolioManager({ initialProjects }: { initialProjects:
                       <div className="text-sm text-ink/40 font-mono">/{project.slug}</div>
                     </td>
                     <td className="p-6">
-                      <div className="text-sm font-bold text-ink/80">{project.category || '—'}</div>
+                      <div className="text-sm font-bold text-ink/80">{categories.find(c => c.id === project.categoryId)?.nameRu || project.category || '—'}</div>
                       <div className="text-xs text-ink/50 mt-1">{project.clientName || 'Без клиента'}</div>
                     </td>
                     <td className="p-6 text-sm text-ink/60 whitespace-nowrap">

@@ -1,0 +1,7 @@
+name = "portfolio"
+compatibility_date = "2024-03-20"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio-db"
+database_id = "b7d889c3-71dd-47cc-962c-3ca0033d27c7"

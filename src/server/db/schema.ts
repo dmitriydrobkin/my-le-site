@@ -13,9 +13,9 @@ export const siteSettings = sqliteTable('settings', {
 export const pageContent = sqliteTable('page_content', {
   route: text('route').primaryKey(),
   h1: text('h1'),
-  seoTitle: text('seoTitle'),
+  seoTitle: text('seo_title'),
   description: text('description'),
-  updatedAt: integer('updatedAt', { mode: 'timestamp' })
+  updatedAt: integer('updated_at', { mode: 'timestamp' })
     .notNull()
     .$defaultFn(() => new Date()),
 });
@@ -24,10 +24,10 @@ export const pageContent = sqliteTable('page_content', {
 export const leads = sqliteTable('leads', {
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   name: text('name').notNull(),
-  contactInfo: text('contactInfo').notNull(),
+  contactInfo: text('contact_info').notNull(),
   status: text('status', { enum: ['new', 'contacted', 'converted', 'rejected'] }).notNull().default('new'),
-  estimatedBudget: text('estimatedBudget'),
-  createdAt: integer('createdAt', { mode: 'timestamp' })
+  estimatedBudget: text('estimated_budget'),
+  createdAt: integer('created_at', { mode: 'timestamp' })
     .notNull()
     .$defaultFn(() => new Date()),
 });
@@ -35,8 +35,8 @@ export const leads = sqliteTable('leads', {
 // Ответы из квиза
 export const quizAnswers = sqliteTable('quiz_answers', {
   id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
-  leadId: integer('leadId', { mode: 'number' }).notNull().references(() => leads.id, { onDelete: 'cascade' }),
-  answersJson: text('answersJson', { mode: 'json' }).notNull(), // Храним ответы в JSON
+  leadId: integer('lead_id', { mode: 'number' }).notNull().references(() => leads.id, { onDelete: 'cascade' }),
+  answersJson: text('answers_json', { mode: 'json' }).notNull(), // Храним ответы в JSON
 });
 
 // Авторизованные Telegram чаты для получения заявок
@@ -50,6 +50,15 @@ export const telegramChats = sqliteTable('telegram_chats', {
     .$defaultFn(() => new Date()),
 });
 
+export const categories = sqliteTable('categories', {
+  id: text('id').primaryKey().notNull(),
+  slug: text('slug').unique().notNull(),
+  nameRu: text('name_ru').notNull(),
+  nameUk: text('name_uk').notNull(),
+  sortOrder: integer('sort_order').default(0).notNull(),
+  createdAt: integer('created_at').notNull(),
+});
+
 // Проекты портфолио
 export const projects = sqliteTable('projects', {
   id: text('id').primaryKey().notNull(),
@@ -57,6 +66,7 @@ export const projects = sqliteTable('projects', {
   title: text('title').notNull(),
   titleUk: text('title_uk'),
   category: text('category').default('САЙТЫ').notNull(),
+  categoryId: text('category_id'), // Will be linked to categories.id
   description: text('description'),
   descriptionUk: text('description_uk'),
   clientName: text('client_name'),

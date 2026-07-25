@@ -90,7 +90,7 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
                 {displayCat || project.tags || (isUk ? 'ПРОЄКТ' : 'ПРОЕКТ')}
               </div>
               
-              <h1 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight text-ink leading-[1.05] mb-6 break-words">
+              <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-6 break-words">
                 {displayTitle}
               </h1>
               
@@ -191,15 +191,15 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
         {results.length > 0 && (
           <div className="bg-ink text-white rounded-[2rem] p-8 lg:p-10 relative overflow-hidden shadow-2xl mb-24">
             <div className="absolute inset-0 bg-gradient-to-r from-coral/20 to-transparent mix-blend-overlay" />
-            <h3 className="relative z-10 font-display text-[clamp(1.875rem,4vw,2.25rem)] font-bold mb-10 break-words">{isUk ? 'Результати роботи' : 'Результаты работы'}</h3>
+            <h3 className="relative z-10 text-center font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-10 break-words">{isUk ? 'Результати роботи' : 'Результаты работы'}</h3>
             
-            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div className={`relative z-10 grid grid-cols-1 gap-8 ${results.length === 4 ? 'sm:grid-cols-2 md:grid-cols-4' : 'sm:grid-cols-3'}`}>
               {results.map((res: {label: string, value: string}, i: number) => (
-                <div key={i} className="flex flex-col">
-                  <span className="font-display text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 mb-3">
+                <div key={i} className="flex flex-col text-center">
+                  <span className="font-display text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 mb-3">
                     {res.value}
                   </span>
-                  <span className="font-sans text-sm uppercase tracking-widest font-bold text-white/50">
+                  <span className="font-sans text-xs lg:text-sm uppercase tracking-widest font-bold text-white/50">
                     {res.label}
                   </span>
                 </div>
@@ -209,14 +209,14 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
         )}
 
         {/* CTA - Хотите такой же результат? */}
-        <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[3rem] p-8 lg:p-16 text-center max-w-4xl mx-auto shadow-xl">
-          <h2 className="font-display text-[clamp(2rem,5vw,3rem)] font-bold text-ink mb-6 break-words">
+        <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[3rem] p-6 lg:p-10 text-center max-w-3xl mx-auto shadow-xl">
+          <h2 className="font-display text-[clamp(1.5rem,3.5vw,2rem)] font-bold text-ink mb-4 break-words">
             {isUk ? 'Бажаєте такий самий результат?' : 'Хотите такой же результат?'}
           </h2>
-          <p className="font-sans text-lg text-ink/60 font-medium mb-10 max-w-2xl mx-auto">
+          <p className="font-sans text-base text-ink/60 font-medium mb-8 max-w-2xl mx-auto">
             {isUk ? 'Залиште заявку, і ми обговоримо ваш проєкт. Я підберу ідеальне рішення для вашого бізнесу та розрахую вартість реалізації.' : 'Оставьте заявку, и мы обсудим ваш проект. Я подберу идеальное решение для вашего бизнеса и рассчитаю стоимость реализации.'}
           </p>
-          <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-10 py-5 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-xl hover:-translate-y-1 inline-flex items-center gap-4 group">
+          <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-8 py-4 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-xl hover:-translate-y-1 inline-flex items-center gap-3 group">
             {isUk ? 'Залишити заявку' : 'Оставить заявку'}
             <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
           </QuizTrigger>

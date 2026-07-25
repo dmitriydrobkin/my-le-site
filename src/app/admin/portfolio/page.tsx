@@ -1,6 +1,6 @@
 import { getRequestContext } from '@cloudflare/next-on-pages';
 import { drizzle } from 'drizzle-orm/d1';
-import { projects } from '@/server/db/schema';
+import { projects, categories } from '@/server/db/schema';
 import { desc } from 'drizzle-orm';
 import { verifyAdmin } from '@/server/functions/auth-guard';
 import PortfolioManager from '../PortfolioManager';
@@ -15,6 +15,7 @@ export default async function AdminPortfolio() {
   const db = drizzle((env as any).DB);
   
   const allProjects = await db.select().from(projects).orderBy(desc(projects.createdAt)).all();
+  const allCategories = await db.select().from(categories).orderBy(categories.sortOrder).all();
 
   return (
     <div>
@@ -27,7 +28,7 @@ export default async function AdminPortfolio() {
         </div>
       </div>
 
-      <PortfolioManager initialProjects={allProjects} />
+      <PortfolioManager initialProjects={allProjects} categories={allCategories} />
     </div>
   );
 }

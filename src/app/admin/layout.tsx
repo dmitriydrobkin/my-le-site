@@ -27,6 +27,12 @@ export default function AdminLayout({
                 Портфолио
               </Link>
               <Link
+                href="/admin/categories"
+                className="text-sm font-bold tracking-wide text-ink/70 transition-colors hover:text-coral"
+              >
+                Категории
+              </Link>
+              <Link
                 href="/admin/catalog"
                 className="text-sm font-bold tracking-wide text-ink/70 transition-colors hover:text-coral hidden"
               >

@@ -7,25 +7,29 @@ import Image from 'next/image';
 
 export type ProjectCategory = 'САЙТЫ' | 'E-COMMERCE' | 'TELEGRAM-БОТЫ' | 'WEB-ПРИЛОЖЕНИЯ';
 
-export default function PortfolioClient({ initialProjects, lang }: { initialProjects: any[], lang: string }) {
+export default function PortfolioClient({ initialProjects, categories, lang }: { initialProjects: any[], categories: any[], lang: string }) {
   const isUk = lang === 'uk';
   const linkPrefix = isUk ? '' : '/ru';
   const ALL_TAB = isUk ? 'ВСІ' : 'ВСЕ';
-  const CATEGORIES: (string | ProjectCategory)[] = [ALL_TAB, 'САЙТЫ', 'E-COMMERCE', 'TELEGRAM-БОТЫ', 'WEB-ПРИЛОЖЕНИЯ'];
-
-  const displayCategory = (cat: string | ProjectCategory) => {
-    if (cat === ALL_TAB) return ALL_TAB;
-    if (cat === 'САЙТЫ') return isUk ? 'САЙТИ' : 'САЙТЫ';
-    if (cat === 'TELEGRAM-БОТЫ') return isUk ? 'TELEGRAM-БОТИ' : 'TELEGRAM-БОТЫ';
-    if (cat === 'WEB-ПРИЛОЖЕНИЯ') return isUk ? 'WEB-ДОДАТКИ' : 'WEB-ПРИЛОЖЕНИЯ';
-    return cat;
-  };
   
-  const [activeFilter, setActiveFilter] = useState<string | ProjectCategory>(ALL_TAB);
+  const [activeFilter, setActiveFilter] = useState<string>(ALL_TAB);
 
   const filteredProjects = initialProjects.filter(
-    (project) => activeFilter === ALL_TAB || project.category === activeFilter
+    (project) => activeFilter === ALL_TAB || project.categoryId === activeFilter || project.category === activeFilter
   );
+
+  const displayCategory = (idOrCategory: string) => {
+    if (idOrCategory === ALL_TAB) return ALL_TAB;
+    const cat = categories.find(c => c.id === idOrCategory || c.slug === idOrCategory);
+    if (cat) {
+      return isUk ? cat.nameUk : cat.nameRu;
+    }
+    // Fallback for old projects
+    if (idOrCategory === 'САЙТЫ') return isUk ? 'САЙТИ' : 'САЙТЫ';
+    if (idOrCategory === 'TELEGRAM-БОТЫ') return isUk ? 'TELEGRAM-БОТИ' : 'TELEGRAM-БОТЫ';
+    if (idOrCategory === 'WEB-ПРИЛОЖЕНИЯ') return isUk ? 'WEB-ДОДАТКИ' : 'WEB-ПРИЛОЖЕНИЯ';
+    return idOrCategory;
+  };
 
   return (
     <div className="bg-white min-h-screen">
@@ -69,15 +73,23 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
             <Filter className="w-5 h-5" />
             <span className="font-sans text-xs font-bold uppercase tracking-widest">{isUk ? 'Фільтр:' : 'Фильтр:'}</span>
           </div>
-          {CATEGORIES.map((cat) => (
+          <button
+            onClick={() => setActiveFilter(ALL_TAB)}
+            className={`shrink-0 px-6 py-2.5 rounded-full font-bold font-sans text-xs uppercase tracking-widest transition-all duration-300 ${
+              activeFilter === ALL_TAB ? 'bg-ink text-white shadow-lg' : 'bg-surface text-ink/60 hover:bg-ink/5 border border-ink/5'
+            }`}
+          >
+            {ALL_TAB}
+          </button>
+          {categories.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
+              key={cat.id}
+              onClick={() => setActiveFilter(cat.id)}
               className={`shrink-0 px-6 py-2.5 rounded-full font-bold font-sans text-xs uppercase tracking-widest transition-all duration-300 ${
-                activeFilter === cat ? 'bg-ink text-white shadow-lg' : 'bg-surface text-ink/60 hover:bg-ink/5 border border-ink/5'
+                activeFilter === cat.id ? 'bg-ink text-white shadow-lg' : 'bg-surface text-ink/60 hover:bg-ink/5 border border-ink/5'
               }`}
             >
-              {displayCategory(cat)}
+              {isUk ? cat.nameUk : cat.nameRu}
             </button>
           ))}
         </div>
@@ -116,9 +128,9 @@ export default function PortfolioClient({ initialProjects, lang }: { initialProj
                 <div className="flex justify-between items-start gap-4">
                   <div className="flex flex-col">
                     <span className="font-sans text-xs font-bold tracking-widest text-ink/40 uppercase block mb-3">
-                      {project.tags || displayCategory(project.category) || (isUk ? 'ПРОЄКТ' : 'ПРОЕКТ')}
+                      {project.tags || displayCategory(project.categoryId) || displayCategory(project.category) || (isUk ? 'ПРОЄКТ' : 'ПРОЕКТ')}
                     </span>
-                    <h3 className="font-display text-2xl md:text-3xl font-bold text-ink mb-4 group-hover:text-coral transition-colors line-clamp-2">
+                    <h3 className="font-display text-xl md:text-2xl font-bold text-ink mb-4 group-hover:text-coral transition-colors line-clamp-2">
                       {displayTitle}
                     </h3>
                     <p className="font-sans text-sm text-ink/60 font-medium leading-relaxed max-w-sm mt-auto line-clamp-3">
