@@ -41,6 +41,22 @@ export function LivePreviewButton({ projectLink, label, isUk }: LivePreviewButto
 
   if (!projectLink) return null;
 
+  const isDirectLink = projectLink.includes('t.me/') || projectLink.includes('telegram.me/');
+
+  if (isDirectLink) {
+    return (
+      <a 
+        href={projectLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="shrink-0 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white border border-ink/10 hover:border-ink/30 text-ink font-bold font-sans text-sm uppercase tracking-widest transition-all hover:shadow-lg group cursor-pointer"
+      >
+        {label}
+        <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+      </a>
+    );
+  }
+
   const modalContent = isOpen ? (
     <div className="fixed inset-0 z-[99999] bg-surface flex flex-col overflow-hidden animate-in fade-in duration-300 cursor-default" style={{ cursor: 'default' }}>
       {/* Top Bar */}
