@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import { QuizTrigger } from '@/components/QuizTrigger';
 import { getLocalizedProjects } from '@/server/functions/getProjects';
+import { LivePreviewButton } from '@/components/LivePreviewButton';
 
 export const runtime = 'edge';
 export const revalidate = 3600;
@@ -100,15 +101,11 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
             </div>
             
             {absoluteLink && (
-              <a 
-                href={absoluteLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white border border-ink/10 hover:border-ink/30 text-ink font-bold font-sans text-sm uppercase tracking-widest transition-all hover:shadow-lg group"
-              >
-                {isUk ? 'Подивитися проєкт' : 'Посмотреть проект'}
-                <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </a>
+              <LivePreviewButton 
+                projectLink={absoluteLink}
+                label={isUk ? 'Подивитися проєкт' : 'Посмотреть проект'}
+                isUk={isUk}
+              />
             )}
           </div>
           
