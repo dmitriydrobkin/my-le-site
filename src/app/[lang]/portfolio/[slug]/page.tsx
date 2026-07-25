@@ -207,10 +207,10 @@ export default async function ProjectDetailPage({ params }: { params: { slug: st
 
         {/* CTA - Хотите такой же результат? */}
         <div className="bg-gradient-to-br from-white to-surface border border-ink/5 rounded-[3rem] p-6 lg:p-10 text-center max-w-3xl mx-auto shadow-xl">
-          <h2 className="font-display text-[clamp(1.5rem,3.5vw,2rem)] font-bold text-ink mb-4 break-words">
+          <h2 className="font-display text-[clamp(1.5rem,3.5vw,2rem)] font-bold text-ink mb-4 break-words text-balance mx-auto">
             {isUk ? 'Бажаєте такий самий результат?' : 'Хотите такой же результат?'}
           </h2>
-          <p className="font-sans text-base text-ink/60 font-medium mb-8 max-w-2xl mx-auto">
+          <p className="font-sans text-base text-ink/60 font-medium mb-8 max-w-2xl mx-auto text-balance">
             {isUk ? 'Залиште заявку, і ми обговоримо ваш проєкт. Я підберу ідеальне рішення для вашого бізнесу та розрахую вартість реалізації.' : 'Оставьте заявку, и мы обсудим ваш проект. Я подберу идеальное решение для вашего бизнеса и рассчитаю стоимость реализации.'}
           </p>
           <QuizTrigger className="bg-coral hover:bg-coral/90 text-white rounded-full px-8 py-4 font-bold font-sans tracking-widest text-sm uppercase transition-all shadow-xl hover:-translate-y-1 inline-flex items-center gap-3 group">
