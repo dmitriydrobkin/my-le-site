@@ -80,7 +80,7 @@ export function LivePreviewButton({ projectLink, label, isUk }: LivePreviewButto
             className="flex items-center gap-2 text-ink/70 hover:text-ink font-bold font-sans text-xs uppercase tracking-widest transition-colors cursor-pointer bg-surface sm:bg-transparent px-3 py-2 sm:p-0 rounded-lg sm:rounded-none"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>{isUk ? 'Закрити' : 'Закрыть'}</span>
+            <span>{isUk ? 'Назад' : 'Назад'}</span>
           </button>
 
           <a 
