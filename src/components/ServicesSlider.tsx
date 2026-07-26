@@ -122,23 +122,27 @@ export function ServicesSlider({ title, lang }: { title?: string, lang: string }
               </div>
             </div>
 
-            {/* Action Button Bottom (Expanding Pill on In-View) */}
+            {/* Action Button Bottom (Expanding Pill) */}
             <div className="relative z-10 mt-auto flex justify-start">
               {(() => {
-                const isExpanded = expandedCards.has(index);
+                const isExpandedMobile = expandedCards.has(index);
                 const pillClass = `relative overflow-hidden rounded-full border transition-all duration-500 ease-out flex items-center p-1.5 h-16 ${
-                  isExpanded ? 'w-full border-transparent justify-between' : 'w-16 border-ink/10 bg-white justify-center'
-                }`;
+                  isExpandedMobile ? 'max-md:w-full max-md:border-transparent max-md:justify-between' : 'max-md:w-16 max-md:border-ink/10 max-md:justify-center max-md:bg-white'
+                } md:w-16 md:bg-white md:border-ink/10 md:justify-center md:group-hover:w-full md:group-hover:border-transparent md:group-hover:justify-between`;
+                
                 const bgClass = `absolute inset-0 z-0 bg-gradient-to-r ${service.gradient} transition-opacity duration-500 ease-in-out pointer-events-none ${
-                  isExpanded ? 'opacity-100' : 'opacity-0'
-                }`;
+                  isExpandedMobile ? 'max-md:opacity-100' : 'max-md:opacity-0'
+                } md:opacity-0 md:group-hover:opacity-100`;
+                
                 const textClass = `relative z-10 text-white font-bold font-sans tracking-wide whitespace-nowrap overflow-hidden transition-all duration-500 ${
-                  isExpanded ? 'opacity-100 max-w-[120px] ml-5' : 'opacity-0 max-w-0 ml-0'
-                }`;
+                  isExpandedMobile ? 'max-md:opacity-100 max-md:max-w-[120px] max-md:ml-5' : 'max-md:opacity-0 max-md:max-w-0 max-md:ml-0'
+                } md:opacity-0 md:max-w-0 md:ml-0 md:group-hover:opacity-100 md:group-hover:max-w-[120px] md:group-hover:ml-5`;
+                
                 const iconContainerClass = `relative z-10 w-12 h-12 shrink-0 rounded-full flex items-center justify-center transition-colors duration-500 shadow-sm ${
-                  isExpanded ? 'bg-white text-ink' : 'text-ink bg-white'
-                }`;
-                const iconClass = `w-5 h-5 transition-transform ${isExpanded ? 'rotate-45' : ''}`;
+                  isExpandedMobile ? 'max-md:bg-white max-md:text-ink' : 'max-md:text-ink max-md:bg-white'
+                } md:bg-white md:text-ink md:group-hover:bg-white md:group-hover:text-ink`;
+                
+                const iconClass = `w-5 h-5 transition-transform ${isExpandedMobile ? 'max-md:rotate-45' : ''} md:group-hover:rotate-45`;
 
                 const content = (
                   <>

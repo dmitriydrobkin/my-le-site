@@ -1,15 +1,37 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { getDictionary } from '@/i18n/dictionaries';
 
 export function Header({ lang }: { lang: string }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const [clickCount, setClickCount] = useState(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
+    
+    if (newCount >= 7) {
+      router.push('/admin');
+      setClickCount(0);
+    } else if (newCount === 1) {
+      router.push(`${linkPrefix}/` || '/');
+    }
+    
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setClickCount(0);
+    }, 2000);
+  };
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -53,13 +75,14 @@ export function Header({ lang }: { lang: string }) {
     <>
       <header className="fixed top-4 md:top-6 left-0 right-0 z-50 pointer-events-none">
         <div className="max-w-[1400px] mx-auto px-4 md:px-6 flex items-center justify-between">
-          <Link 
-            href={`${linkPrefix}/`}
+          <a 
+            href={`${linkPrefix}/` || '/'}
+            onClick={handleLogoClick}
             className="pointer-events-auto bg-white/80 backdrop-blur-md shadow-glass rounded-full px-6 py-3 md:px-8 md:py-4 font-display font-bold text-ink tracking-tight flex items-center gap-2 transition-transform hover:scale-105"
           >
             <div className="w-2 h-2 rounded-full bg-cyan-500 shadow-neon-cyan"></div>
             malyshev.dev.
-          </Link>
+          </a>
 
           <div className="pointer-events-auto flex items-center gap-2">
             <button 
