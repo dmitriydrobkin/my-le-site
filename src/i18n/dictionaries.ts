@@ -93,6 +93,7 @@ export type Dictionary = {
     orderSite: string;
     moreInfo: string;
     portfolio: string;
+    seeAll: string;
   };
   productMenu: {
     popularTypes: string;
@@ -203,7 +204,7 @@ const uk: Dictionary = {
     title: 'DIGITAL РІШЕННЯ ДЛЯ БІЗНЕСУ',
     subtitle: 'Проєктую, розробляю та запускаю високонверсійні веб-системи та Telegram-боти, які працюють на ріст вашого прибутку 24/7.',
     primaryBtn: 'Обговорити проєкт',
-    secondaryBtn: 'Готові рішення',
+    secondaryBtn: 'Галузеві рішення',
   },
   about: {
     badge: 'Про мене',
@@ -276,6 +277,7 @@ const uk: Dictionary = {
     orderSite: 'Замовити сайт',
     moreInfo: 'Детальніше',
     portfolio: 'Портфоліо',
+    seeAll: 'Дивитися всі',
   },
   productMenu: {
     popularTypes: 'Популярні типи сайтів',
@@ -398,7 +400,7 @@ const ru: Dictionary = {
     title: 'DIGITAL РЕШЕНИЯ ДЛЯ БИЗНЕСА',
     subtitle: 'Проектирую, разрабатываю и запускаю высококонверсионные веб-системы и Telegram-боты, которые работают на рост вашей прибыли 24/7.',
     primaryBtn: 'Обсудить проект',
-    secondaryBtn: 'Готовые решения',
+    secondaryBtn: 'Отраслевые решения',
   },
   about: {
     badge: 'Обо мне',
@@ -471,6 +473,7 @@ const ru: Dictionary = {
     orderSite: 'Заказать сайт',
     moreInfo: 'Подробнее',
     portfolio: 'Портфолио',
+    seeAll: 'Смотреть все',
   },
   productMenu: {
     popularTypes: 'Популярные типы сайтов',

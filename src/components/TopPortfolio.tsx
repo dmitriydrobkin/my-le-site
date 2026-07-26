@@ -17,7 +17,7 @@ export function TopPortfolio({ projectsData, lang }: { projectsData: any[], lang
             {dict.common.portfolio}
           </h2>
           <Link href={`${linkPrefix}/portfolio`} className="flex items-center gap-3 font-bold font-sans text-sm tracking-widest uppercase hover:text-coral transition-colors group">
-            {dict.common.moreInfo}
+            {dict.common.seeAll}
             <span className="w-10 h-10 rounded-full border border-ink/10 bg-white flex items-center justify-center group-hover:border-coral transition-colors shadow-sm">
               <ArrowUpRight className="w-4 h-4" />
             </span>

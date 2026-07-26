@@ -11,6 +11,7 @@ export function ServicesSlider({ title, lang }: { title?: string, lang: string }
   const SERVICES = dict?.servicesSlider?.items || [];
   const scrollRef = useRef<HTMLDivElement>(null);
   const [paddingLeft, setPaddingLeft] = useState(24);
+  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const calculatePadding = () => {
@@ -25,7 +26,29 @@ export function ServicesSlider({ title, lang }: { title?: string, lang: string }
     
     calculatePadding();
     window.addEventListener('resize', calculatePadding);
-    return () => window.removeEventListener('resize', calculatePadding);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = Number((entry.target as HTMLElement).dataset.index);
+          setTimeout(() => {
+            setExpandedCards(prev => {
+              const next = new Set(prev);
+              next.add(idx);
+              return next;
+            });
+          }, 1000);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.service-card-observer').forEach(el => observer.observe(el));
+
+    return () => {
+      window.removeEventListener('resize', calculatePadding);
+      observer.disconnect();
+    };
   }, []);
 
   const scrollLeft = () => {
@@ -79,8 +102,9 @@ export function ServicesSlider({ title, lang }: { title?: string, lang: string }
 
         {SERVICES.map((service, index) => (
           <div 
-            key={index} 
-            className="snap-start flex-shrink-0 w-[85vw] sm:w-[420px] bg-surface rounded-[2.5rem] p-8 lg:p-10 flex flex-col min-h-[380px] h-auto justify-between group relative mobile-hover-card"
+            key={index}
+            data-index={index}
+            className="service-card-observer snap-start flex-shrink-0 w-[85vw] sm:w-[420px] bg-surface rounded-[2.5rem] p-8 lg:p-10 flex flex-col min-h-[380px] h-auto justify-between group relative mobile-hover-card"
           >
             {/* Content Top */}
             <div className="relative z-10 flex flex-col">
@@ -98,34 +122,44 @@ export function ServicesSlider({ title, lang }: { title?: string, lang: string }
               </div>
             </div>
 
-            {/* Action Button Bottom (Expanding Pill on Hover) */}
+            {/* Action Button Bottom (Expanding Pill on In-View) */}
             <div className="relative z-10 mt-auto flex justify-start">
-              {service.href ? (
-                <Link href={service.href} className="relative overflow-hidden rounded-full border border-ink/10 bg-white transition-all duration-500 ease-out flex items-center justify-center group-hover:justify-between p-1.5 w-16 h-16 group-hover:w-full group-hover:border-transparent">
-                  {/* Background Gradient inside the expanded pill */}
-                  <div className={`absolute inset-0 z-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r ${service.gradient} transition-opacity duration-500 ease-in-out pointer-events-none`} />
-                  
-                  {/* Hover text */}
-                  <span className="relative z-10 opacity-0 group-hover:opacity-100 max-w-0 group-hover:max-w-[120px] text-white font-bold font-sans tracking-wide group-hover:ml-5 whitespace-nowrap overflow-hidden transition-all duration-500">
-                    {dict?.common?.moreInfo}
-                  </span>
-                  
-                  {/* The round arrow button */}
-                  <div className="relative z-10 w-12 h-12 shrink-0 rounded-full flex items-center justify-center text-ink bg-white group-hover:bg-white group-hover:text-ink transition-colors duration-500 shadow-sm">
-                    <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+              {(() => {
+                const isExpanded = expandedCards.has(index);
+                const pillClass = `relative overflow-hidden rounded-full border transition-all duration-500 ease-out flex items-center p-1.5 h-16 ${
+                  isExpanded ? 'w-full border-transparent justify-between' : 'w-16 border-ink/10 bg-white justify-center'
+                }`;
+                const bgClass = `absolute inset-0 z-0 bg-gradient-to-r ${service.gradient} transition-opacity duration-500 ease-in-out pointer-events-none ${
+                  isExpanded ? 'opacity-100' : 'opacity-0'
+                }`;
+                const textClass = `relative z-10 text-white font-bold font-sans tracking-wide whitespace-nowrap overflow-hidden transition-all duration-500 ${
+                  isExpanded ? 'opacity-100 max-w-[120px] ml-5' : 'opacity-0 max-w-0 ml-0'
+                }`;
+                const iconContainerClass = `relative z-10 w-12 h-12 shrink-0 rounded-full flex items-center justify-center transition-colors duration-500 shadow-sm ${
+                  isExpanded ? 'bg-white text-ink' : 'text-ink bg-white'
+                }`;
+                const iconClass = `w-5 h-5 transition-transform ${isExpanded ? 'rotate-45' : ''}`;
+
+                const content = (
+                  <>
+                    <div className={bgClass} />
+                    <span className={textClass}>{dict?.common?.moreInfo}</span>
+                    <div className={iconContainerClass}>
+                      <ArrowUpRight className={iconClass} />
+                    </div>
+                  </>
+                );
+
+                return service.href ? (
+                  <Link href={service.href} className={pillClass}>
+                    {content}
+                  </Link>
+                ) : (
+                  <div className={pillClass}>
+                    {content}
                   </div>
-                </Link>
-              ) : (
-                <div className="relative overflow-hidden rounded-full border border-ink/10 bg-white transition-all duration-500 ease-out flex items-center justify-center group-hover:justify-between p-1.5 w-16 h-16 group-hover:w-full group-hover:border-transparent">
-                  <div className={`absolute inset-0 z-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r ${service.gradient} transition-opacity duration-500 ease-in-out pointer-events-none`} />
-                  <span className="relative z-10 opacity-0 group-hover:opacity-100 max-w-0 group-hover:max-w-[120px] text-white font-bold font-sans tracking-wide group-hover:ml-5 whitespace-nowrap overflow-hidden transition-all duration-500">
-                    {dict?.common?.moreInfo}
-                  </span>
-                  <div className="relative z-10 w-12 h-12 shrink-0 rounded-full flex items-center justify-center text-ink bg-white group-hover:bg-white group-hover:text-ink transition-colors duration-500 shadow-sm">
-                    <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
-                  </div>
-                </div>
-              )}
+                );
+              })()}
             </div>
           </div>
         ))}

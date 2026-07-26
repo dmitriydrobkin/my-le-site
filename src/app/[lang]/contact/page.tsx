@@ -86,8 +86,23 @@ export default async function ContactPage({ params }: { params: { lang: string }
               </div>
             </a>
 
+            {/* WhatsApp */}
+            <a href="https://wa.me/380958002580" target="_blank" rel="noreferrer" className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-green-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
+              <div className="w-14 h-14 rounded-full bg-green-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                <Phone className="w-6 h-6 text-green-500" />
+              </div>
+              <h3 className="font-display text-2xl font-bold text-ink mb-2">WhatsApp</h3>
+              <p className="font-sans text-ink/60 font-medium mb-4">
+                {params.lang === 'ru' ? 'Написать напрямую в WhatsApp' : 'Написати напряму у WhatsApp'}
+              </p>
+              <div className="mt-auto w-full font-sans font-bold text-green-500 flex items-center justify-between gap-2">
+                <span className="truncate flex items-center gap-2">+380 95 800 2580 <ArrowUpRight className="w-4 h-4 shrink-0" /></span>
+                <CopyButton text="+380958002580" />
+              </div>
+            </a>
+
             {/* Location */}
-            <div className="bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-purple-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
+            <div className="sm:col-span-2 bg-white rounded-[2rem] p-8 border border-ink/5 hover:border-purple-500/30 hover:shadow-xl transition-all duration-300 group flex flex-col items-start">
               <div className="w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                 <MapPin className="w-6 h-6 text-purple-500" />
               </div>
