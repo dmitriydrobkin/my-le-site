@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Eye, EyeOff, Copy, Trash2, Edit2, Plus, Image as ImageIcon, X } from 'lucide-react';
+import { Eye, EyeOff, Copy, Trash2, Edit2, Plus, Image as ImageIcon, X, CheckCircle2 } from 'lucide-react';
 import { saveProjectAction, toggleProjectVisibilityAction, duplicateProjectAction, deleteProjectAction } from '@/server/actions/projects';
 
 export default function PortfolioManager({ initialProjects, categories }: { initialProjects: any[], categories: any[] }) {
@@ -10,6 +10,7 @@ export default function PortfolioManager({ initialProjects, categories }: { init
   const [results, setResults] = useState<{label: string, value: string}[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterCategory, setFilterCategory] = useState<string>('ВСЕ');
+  const [toastMessage, setToastMessage] = useState('');
 
   const editingProject = editingId ? initialProjects.find(p => p.id === editingId) : null;
 
@@ -31,6 +32,10 @@ export default function PortfolioManager({ initialProjects, categories }: { init
     setEditingId(null);
     setResults([]);
     formRef.current?.reset();
+    
+    setToastMessage('Проект успешно сохранен!');
+    setTimeout(() => setToastMessage(''), 3000);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   const addResult = () => setResults([...results, { label: '', value: '' }]);
@@ -54,7 +59,7 @@ export default function PortfolioManager({ initialProjects, categories }: { init
           {editingProject ? 'Редактировать проект' : 'Добавить новый проект'}
         </h3>
         
-        <form ref={formRef} action={handleSubmit} encType="multipart/form-data" className="space-y-6">
+        <form key={editingProject?.id || 'new'} ref={formRef} action={handleSubmit} encType="multipart/form-data" className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-bold text-ink/80 mb-2">Название (RU) *</label>
@@ -275,7 +280,7 @@ export default function PortfolioManager({ initialProjects, categories }: { init
                     </td>
                     <td className="p-6">
                       <div className="flex items-center justify-end gap-2">
-                        <button onClick={() => setEditingId(project.id)} className="w-10 h-10 rounded-full flex items-center justify-center text-ink/40 hover:text-coral hover:bg-coral/10 transition-colors" title="Редактировать">
+                        <button onClick={() => { setEditingId(project.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="w-10 h-10 rounded-full flex items-center justify-center text-ink/40 hover:text-coral hover:bg-coral/10 transition-colors" title="Редактировать">
                           <Edit2 className="w-4 h-4" />
                         </button>
                         <button onClick={() => toggleProjectVisibilityAction(project.id, project.isHidden)} className="w-10 h-10 rounded-full flex items-center justify-center text-ink/40 hover:text-ink hover:bg-ink/10 transition-colors" title={project.isHidden ? "Показать" : "Скрыть"}>
@@ -296,6 +301,14 @@ export default function PortfolioManager({ initialProjects, categories }: { init
           </table>
         </div>
       </div>
+
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="fixed bottom-6 right-6 z-50 bg-ink text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 animate-fade-in-up border border-white/10">
+          <CheckCircle2 className="w-5 h-5 text-green-400" />
+          <span className="font-bold text-sm">{toastMessage}</span>
+        </div>
+      )}
     </div>
   );
 }

@@ -28,7 +28,12 @@ export function LivePreviewButton({ projectLink, label, isUk }: LivePreviewButto
         setCanIframe(null);
         fetch(`/api/check-iframe?url=${encodeURIComponent(projectLink)}`)
           .then(res => res.json())
-          .then((data: any) => setCanIframe(data.canIframe))
+          .then((data: any) => {
+            setCanIframe(data.canIframe);
+            if (data.canIframe === false) {
+              window.open(projectLink, '_blank', 'noopener,noreferrer');
+            }
+          })
           .catch(() => setCanIframe(true)); // fallback
       }
     } else {
