@@ -35,7 +35,6 @@ export default function PortfolioManager({ initialProjects, categories }: { init
     
     setToastMessage('Проект успешно сохранен!');
     setTimeout(() => setToastMessage(''), 3000);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   const addResult = () => setResults([...results, { label: '', value: '' }]);
