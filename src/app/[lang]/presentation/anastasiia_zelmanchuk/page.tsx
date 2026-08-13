@@ -48,7 +48,7 @@ export default function AnastasiaPresentation() {
             <Star className="w-4 h-4 text-coral" />
             B2B Strategy & Premium Packaging
           </motion.div>
-          <motion.h1 variants={FADE_UP} className="section-title mb-6 leading-tight">
+          <motion.h1 variants={FADE_UP} className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
             Персональна веб-концепція B2B-воронки для <br className="hidden md:block"/> 
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-ink to-ink/60">Анастасії</span>
           </motion.h1>
@@ -56,7 +56,7 @@ export default function AnastasiaPresentation() {
             Преміальне пакування вашої експертності для продажу послуг на міжнародних ринках (🇺🇸 🇪🇺 🇺🇦).
           </motion.p>
           <motion.p variants={FADE_UP} className="text-ink/60 leading-relaxed text-lg max-w-2xl mx-auto font-medium">
-            Ми розробили концепцію розширеного лендингу, який працює як повноцінний автоматизований менеджер з продажу. Оскільки реклама йде на холодний трафік, звичайна візитка не спрацює. Кожен з 10 блоків нової воронки має чітку психологічну ціль — зняти скепсис B2B-клієнтів, довести окупність та конвертувати трафік у гарячі заявки.
+            Я розробив концепцію розширеного лендингу, який працює як повноцінний автоматизований менеджер з продажу. Оскільки реклама йде на холодний трафік, звичайна візитка не спрацює. Кожен з 10 блоків нової воронки має чітку психологічну ціль — зняти скепсис B2B-клієнтів, довести окупність та конвертувати трафік у гарячі заявки.
           </motion.p>
         </motion.section>
 
@@ -85,7 +85,7 @@ export default function AnastasiaPresentation() {
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:pr-16 md:text-right pt-2 md:pt-0">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-coral transition-colors">1. Hero-блок (Головний офер)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Одразу чіпляємо підприємців вашим найсильнішим тригером: «Перші цільові заявки для бізнесу вже через 48 годин». Додаємо яскраві акценти на гео (США, Європа, Україна) та кнопку «Розрахувати окупність для моєї ніші».
+                    Одразу чіпляю підприємців вашим найсильнішим тригером: «Перші цільові заявки для бізнесу вже через 48 годин». Додаю яскраві акценти на гео (США, Європа, Україна) та кнопку «Розрахувати окупність для моєї ніші».
                   </p>
                 </div>
               </motion.div>
@@ -98,7 +98,7 @@ export default function AnastasiaPresentation() {
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:ml-auto md:pl-16 pt-2 md:pt-0">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-cyan transition-colors">2. Плашка підтвердження (Цифри)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Бізнес купує результати. Одразу під офером розміщуємо тверді факти: ваш ударний кейс із фітнесом ($1450 ➔ $8522), середній показник ROI та масштаб роботи. Це миттєво знімає недовіру.
+                    Бізнес купує результати. Одразу під офером розміщую тверді факти: ваш ударний кейс із фітнесом ($1450 ➔ $8522), середній показник ROI та масштаб роботи. Це миттєво знімає недовіру.
                   </p>
                 </div>
               </motion.div>
@@ -111,7 +111,7 @@ export default function AnastasiaPresentation() {
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:pr-16 md:text-right pt-2 md:pt-0">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-coral transition-colors">3. Інтерактивний Квіз (Гачок для залучення)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Замість сухої форми ми інтегруємо квіз-калькулятор на 3-4 запитання («Яка ніша?», «Який бюджет?»). На холодній рекламі це дає найдешевші заявки, оскільки знижує стрес від першого контакту.
+                    Замість сухої форми я інтегрую квіз-калькулятор на 3-4 запитання («Яка ніша?», «Який бюджет?»). На холодній рекламі це дає найдешевші заявки, оскільки знижує стрес від першого контакту.
                   </p>
                 </div>
               </motion.div>
@@ -124,7 +124,7 @@ export default function AnastasiaPresentation() {
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:ml-auto md:pl-16 pt-2 md:pt-0">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-ink transition-colors">4. Сітка Кейсів (Тверді результати)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Демонструємо мікс ніш у форматі: Точка А ➔ Точка Б ➔ CPL (вартість ліда) ➔ ROAS. Додаємо скріншоти з рекламних кабінетів Meta для 100% прозорості.
+                    Демонструю мікс ніш у форматі: Точка А ➔ Точка Б ➔ CPL (вартість ліда) ➔ ROAS. Додаю скріншоти з рекламних кабінетів Meta для 100% прозорості.
                   </p>
                 </div>
               </motion.div>
@@ -137,7 +137,7 @@ export default function AnastasiaPresentation() {
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:pr-16 md:text-right pt-2 md:pt-0">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight text-ink group-hover:text-coral transition-colors">5. Блок болів («Це про вас?»)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Зачіпаємо типові проблеми підприємців: злитий бюджет на минулих спеціалістів, відсутність системного потоку лідів, складнощі виходу на західні ринки. Показуємо, що ви розумієте їхній біль.
+                    Зачіпаю типові проблеми підприємців: злитий бюджет на минулих спеціалістів, відсутність системного потоку лідів, складнощі виходу на західні ринки. Показую, що ви розумієте їхній біль.
                   </p>
                 </div>
               </motion.div>
@@ -150,7 +150,7 @@ export default function AnastasiaPresentation() {
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:ml-auto md:pl-16 pt-2 md:pt-0">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-cyan transition-colors">6. Покрокова техніка (Система роботи)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Розкриваємо "кухню" через 4 прозорі кроки: Глибокий аналіз ➔ Створення конверсійних креативів ➔ Налаштування Meta Ads ➔ Аналітика та масштаб.
+                    Розкриваю "кухню" через 4 прозорі кроки: Глибокий аналіз ➔ Створення конверсійних креативів ➔ Налаштування Meta Ads ➔ Аналітика та масштаб.
                   </p>
                 </div>
               </motion.div>
@@ -163,7 +163,7 @@ export default function AnastasiaPresentation() {
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:pr-16 md:text-right pt-2 md:pt-0">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-coral transition-colors">7. Послуги та тарифи</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Чітко розділяємо потоки: Таргет під ключ для компаній, індивідуальні консультації та стратегічний аудит. Клієнт одразу розуміє формати співпраці.
+                    Чітко розділяю потоки: Таргет під ключ для компаній, індивідуальні консультації та стратегічний аудит. Клієнт одразу розуміє формати співпраці.
                   </p>
                 </div>
               </motion.div>
@@ -176,7 +176,7 @@ export default function AnastasiaPresentation() {
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:ml-auto md:pl-16 pt-2 md:pt-0">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-ink transition-colors">8. Відгуки та Social Proof</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Додаємо скріншоти фідбеку, аудіоповідомлення від клієнтів та підтверджену статистику, щоб закріпити статус надійного партнера.
+                    Додаю скріншоти фідбеку, аудіоповідомлення від клієнтів та підтверджену статистику, щоб закріпити статус надійного партнера.
                   </p>
                 </div>
               </motion.div>
@@ -189,7 +189,7 @@ export default function AnastasiaPresentation() {
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:pr-16 md:text-right pt-2 md:pt-0">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight text-ink group-hover:text-coral transition-colors">9. Блок FAQ (Зняття заперечень)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Закриваємо страхи ще до зідзвону. Відповідаємо на питання про мінімальні бюджети для США, роботу зі складними нішами та гарантії контролю результату.
+                    Закриваю страхи ще до зідзвону. Відповідаю на питання про мінімальні бюджети для США, роботу зі складними нішами та гарантії контролю результату.
                   </p>
                 </div>
               </motion.div>
@@ -203,7 +203,7 @@ export default function AnastasiaPresentation() {
                   <div className="glass-panel p-6 md:p-8 rounded-3xl border-coral/20">
                     <h3 className="text-xl font-bold mb-3 tracking-tight text-ink">10. Фінальний CTA (Lead-Magnet)</h3>
                     <p className="text-ink/60 leading-relaxed font-medium text-sm">
-                      Замість банального "Замовити", пропонуємо високу цінність: безкоштовний експрес-аудит рекламного кабінету або розрахунок медіаплану.
+                      Замість банального "Замовити", пропоную високу цінність: безкоштовний експрес-аудит рекламного кабінету або розрахунок медіаплану.
                     </p>
                   </div>
                 </div>
