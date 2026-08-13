@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { motion, Variants } from 'framer-motion';
-import { ArrowRight, CheckCircle2, TrendingUp, Target, Users, PlayCircle, Star, ZoomIn } from 'lucide-react';
-import Lightbox from "yet-another-react-lightbox";
+import { ArrowRight, CheckCircle2, TrendingUp, Target, Users, PlayCircle, Star, ZoomIn, HelpCircle, BarChart, AlertCircle, Layers, CreditCard, LayoutTemplate } from 'lucide-react';
 import "yet-another-react-lightbox/styles.css";
 
 const FADE_UP: Variants = {
@@ -16,7 +14,7 @@ const STAGGER: Variants = {
   visible: { transition: { staggerChildren: 0.1 } }
 };
 
-export default function KhrystynaPresentation() {
+export default function AnastasiaPresentation() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
   const styleImages = [
@@ -49,14 +47,14 @@ export default function KhrystynaPresentation() {
             B2B Strategy & Premium Packaging
           </motion.div>
           <motion.h1 variants={FADE_UP} className="section-title mb-6 leading-tight">
-            Персональна веб-концепція для <br className="hidden md:block"/> 
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-ink to-ink/60">Христини Залізної</span>
+            Персональна веб-концепція B2B-воронки для <br className="hidden md:block"/> 
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-ink to-ink/60">Анастасії</span>
           </motion.h1>
           <motion.p variants={FADE_UP} className="section-subtitle mx-auto text-2xl mb-8 text-ink/80">
-            Преміальне пакування вашої експертності для продажу послуг на високі чеки.
+            Преміальне пакування вашої експертності для продажу послуг на міжнародних ринках (🇺🇸 🇪🇺 🇺🇦).
           </motion.p>
           <motion.p variants={FADE_UP} className="text-ink/60 leading-relaxed text-lg max-w-2xl mx-auto font-medium">
-            Сайт, який працює як ваш найкращий менеджер з продажу. Ми розробили концепцію лендингу, що підкреслює ваш статус стратега, автоматизує обробку запитів та конвертує трафік у теплі заявки на VIP-супровід і менторство.
+            Ми розробили концепцію розширеного лендингу, який працює як повноцінний автоматизований менеджер з продажу. Оскільки реклама йде на холодний трафік, звичайна візитка не спрацює. Кожен з 10 блоків нової воронки має чітку психологічну ціль — зняти скепсис B2B-клієнтів, довести окупність та конвертувати трафік у гарячі заявки.
           </motion.p>
         </motion.section>
 
@@ -67,97 +65,148 @@ export default function KhrystynaPresentation() {
         >
           <motion.div variants={FADE_UP} className="text-center max-w-3xl mx-auto mb-16 md:mb-20 px-4">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 md:mb-6 tracking-tight">
-              Структура сайту: Логіка високих конверсій
+              Структура сайту: Логіка високих конверсій на холодному трафіку
             </h2>
-            <p className="text-ink/70 text-base md:text-lg font-medium leading-relaxed">
-              Ми будуємо не просто гарну сторінку, а повноцінного автоматизованого менеджера з продажу. Кожен блок має чітку психологічну ціль — провести клієнта від зацікавленості до бажання працювати саме з вами.
-            </p>
           </motion.div>
           
           <div className="max-w-4xl mx-auto relative px-4 md:px-8">
-            {/* Timeline Line (Left on mobile, Center on desktop) */}
+            {/* Timeline Line */}
             <div className="absolute left-[43px] md:left-1/2 top-4 bottom-4 w-px bg-gradient-to-b from-coral/0 via-coral/30 to-coral/0 md:-translate-x-1/2" />
             
             <div className="space-y-12 md:space-y-24">
-              {/* Step 1 (Odd: Right on mobile, Left on desktop) */}
+              
+              {/* Step 1 */}
               <motion.div variants={FADE_UP} className="relative flex w-full group">
                 <div className="absolute left-0 md:left-1/2 w-14 h-14 md:-translate-x-1/2 rounded-2xl bg-white shadow-glass border border-black/5 flex items-center justify-center text-coral z-10 group-hover:scale-110 group-hover:shadow-neon-coral transition-all duration-500">
                   <Target className="w-6 h-6" />
                 </div>
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:pr-16 md:text-right pt-2 md:pt-0">
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-coral transition-colors">1. Оффер та Позиціонування</h3>
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-coral transition-colors">1. Hero-блок (Головний офер)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Формуємо сильне перше враження. Використовуємо вашу коронну фразу про «збільшення доходу в 3 рази» як головний гачок. Одразу відсікаємо нецільових клієнтів: заявляємо, що ви працюєте з цифрами, окупністю (ROI) та масштабним трафіком, а не просто робите креативи.
+                    Одразу чіпляємо підприємців вашим найсильнішим тригером: «Перші цільові заявки для бізнесу вже через 48 годин». Додаємо яскраві акценти на гео (США, Європа, Україна) та кнопку «Розрахувати окупність для моєї ніші».
                   </p>
                 </div>
               </motion.div>
 
-              {/* Step 2 (Even: Right on mobile, Right on desktop) */}
+              {/* Step 2 */}
               <motion.div variants={FADE_UP} className="relative flex w-full group">
                 <div className="absolute left-0 md:left-1/2 w-14 h-14 md:-translate-x-1/2 rounded-2xl bg-white shadow-glass border border-black/5 flex items-center justify-center text-cyan z-10 group-hover:scale-110 group-hover:shadow-glass-hover transition-all duration-500">
                   <TrendingUp className="w-6 h-6" />
                 </div>
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:ml-auto md:pl-16 pt-2 md:pt-0">
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-cyan transition-colors">2. Блок Довіри (Кейси та ROI)</h3>
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-cyan transition-colors">2. Плашка підтвердження (Цифри)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Люди купують результат. До того, як назвати ціну, ми демонструємо ваші найкращі кейси у форматі «Точка А ➔ Точка Б». Замість довгих текстів — інфографіка з цифрами: вкладений бюджет, вартість ліда (CPL), окупність. Це знімає 80% заперечень.
+                    Бізнес купує результати. Одразу під офером розміщуємо тверді факти: ваш ударний кейс із фітнесом ($1450 ➔ $8522), середній показник ROI та масштаб роботи. Це миттєво знімає недовіру.
                   </p>
                 </div>
               </motion.div>
 
-              {/* Step 3 (Odd: Right on mobile, Left on desktop) */}
+              {/* Step 3 */}
               <motion.div variants={FADE_UP} className="relative flex w-full group">
                 <div className="absolute left-0 md:left-1/2 w-14 h-14 md:-translate-x-1/2 rounded-2xl bg-white shadow-glass border border-black/5 flex items-center justify-center text-coral z-10 group-hover:scale-110 group-hover:shadow-neon-coral transition-all duration-500">
-                  <CheckCircle2 className="w-6 h-6" />
+                  <LayoutTemplate className="w-6 h-6" />
                 </div>
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:pr-16 md:text-right pt-2 md:pt-0">
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-coral transition-colors">3. Комплексний Таргет (Сходинки)</h3>
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-coral transition-colors">3. Інтерактивний Квіз (Гачок для залучення)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Продаємо через «вибір без вибору». Оформлюємо послугу у вигляді 3-х тарифів. Використовуємо ефект цінового якоря: VIP-тариф з високою ціною робить середній "Оптимальний" пакет максимально привабливим. Описуємо тарифи через вигоди, а не процеси.
+                    Замість сухої форми ми інтегруємо квіз-калькулятор на 3-4 запитання («Яка ніша?», «Який бюджет?»). На холодній рекламі це дає найдешевші заявки, оскільки знижує стрес від першого контакту.
                   </p>
                 </div>
               </motion.div>
 
-              {/* Step 4 (Even: Right on mobile, Right on desktop) */}
+              {/* Step 4 */}
               <motion.div variants={FADE_UP} className="relative flex w-full group">
                 <div className="absolute left-0 md:left-1/2 w-14 h-14 md:-translate-x-1/2 rounded-2xl bg-white shadow-glass border border-black/5 flex items-center justify-center text-ink z-10 group-hover:scale-110 transition-all duration-500">
-                  <PlayCircle className="w-6 h-6" />
+                  <BarChart className="w-6 h-6" />
                 </div>
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:ml-auto md:pl-16 pt-2 md:pt-0">
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-ink transition-colors">4. Менторство та Консалтинг</h3>
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-ink transition-colors">4. Сітка Кейсів (Тверді результати)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Упаковуємо ваші знання як преміальний продукт. Натискаємо на біль "зливу бюджету" при самостійних налаштуваннях. Головний тригер конверсії тут — потужні бонуси (записи зустрічей, 14 днів підтримки), щоб зняти страх клієнта залишитися наодинці з проблемами.
+                    Демонструємо мікс ніш у форматі: Точка А ➔ Точка Б ➔ CPL (вартість ліда) ➔ ROAS. Додаємо скріншоти з рекламних кабінетів Meta для 100% прозорості.
                   </p>
                 </div>
               </motion.div>
 
-              {/* Step 5 (Odd: Right on mobile, Left on desktop) */}
+              {/* Step 5 */}
               <motion.div variants={FADE_UP} className="relative flex w-full group">
                 <div className="absolute left-0 md:left-1/2 w-14 h-14 md:-translate-x-1/2 rounded-2xl bg-ink shadow-glass border border-white/10 flex items-center justify-center text-white z-10 group-hover:scale-110 transition-all duration-500">
-                  <Users className="w-6 h-6" />
+                  <AlertCircle className="w-6 h-6" />
                 </div>
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:pr-16 md:text-right pt-2 md:pt-0">
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight text-ink group-hover:text-coral transition-colors">5. Екосистема Powerly (B2B Партнерство)</h3>
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight text-ink group-hover:text-coral transition-colors">5. Блок болів («Це про вас?»)</h3>
                   <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
-                    Стратегічний блок для колаборацій. Запрошуємо до співпраці суміжних спеціалістів (SMM, відділи продажів, продакшени) для обміну лідами. Це розширює вашу воронку на партнерів, які продаватимуть ваші послуги за відсоток.
+                    Зачіпаємо типові проблеми підприємців: злитий бюджет на минулих спеціалістів, відсутність системного потоку лідів, складнощі виходу на західні ринки. Показуємо, що ви розумієте їхній біль.
                   </p>
                 </div>
               </motion.div>
 
-              {/* Step 6 (Even: Right on mobile, Right on desktop) */}
+              {/* Step 6 */}
+              <motion.div variants={FADE_UP} className="relative flex w-full group">
+                <div className="absolute left-0 md:left-1/2 w-14 h-14 md:-translate-x-1/2 rounded-2xl bg-white shadow-glass border border-black/5 flex items-center justify-center text-cyan z-10 group-hover:scale-110 group-hover:shadow-glass-hover transition-all duration-500">
+                  <Layers className="w-6 h-6" />
+                </div>
+                <div className="w-full pl-20 md:pl-0 md:w-1/2 md:ml-auto md:pl-16 pt-2 md:pt-0">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-cyan transition-colors">6. Покрокова техніка (Система роботи)</h3>
+                  <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
+                    Розкриваємо "кухню" через 4 прозорі кроки: Глибокий аналіз ➔ Створення конверсійних креативів ➔ Налаштування Meta Ads ➔ Аналітика та масштаб.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Step 7 */}
+              <motion.div variants={FADE_UP} className="relative flex w-full group">
+                <div className="absolute left-0 md:left-1/2 w-14 h-14 md:-translate-x-1/2 rounded-2xl bg-white shadow-glass border border-black/5 flex items-center justify-center text-coral z-10 group-hover:scale-110 group-hover:shadow-neon-coral transition-all duration-500">
+                  <CreditCard className="w-6 h-6" />
+                </div>
+                <div className="w-full pl-20 md:pl-0 md:w-1/2 md:pr-16 md:text-right pt-2 md:pt-0">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-coral transition-colors">7. Послуги та тарифи</h3>
+                  <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
+                    Чітко розділяємо потоки: Таргет під ключ для компаній, індивідуальні консультації та стратегічний аудит. Клієнт одразу розуміє формати співпраці.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Step 8 */}
+              <motion.div variants={FADE_UP} className="relative flex w-full group">
+                <div className="absolute left-0 md:left-1/2 w-14 h-14 md:-translate-x-1/2 rounded-2xl bg-white shadow-glass border border-black/5 flex items-center justify-center text-ink z-10 group-hover:scale-110 transition-all duration-500">
+                  <Star className="w-6 h-6" />
+                </div>
+                <div className="w-full pl-20 md:pl-0 md:w-1/2 md:ml-auto md:pl-16 pt-2 md:pt-0">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight group-hover:text-ink transition-colors">8. Відгуки та Social Proof</h3>
+                  <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
+                    Додаємо скріншоти фідбеку, аудіоповідомлення від клієнтів та підтверджену статистику, щоб закріпити статус надійного партнера.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Step 9 */}
+              <motion.div variants={FADE_UP} className="relative flex w-full group">
+                <div className="absolute left-0 md:left-1/2 w-14 h-14 md:-translate-x-1/2 rounded-2xl bg-ink shadow-glass border border-white/10 flex items-center justify-center text-white z-10 group-hover:scale-110 transition-all duration-500">
+                  <HelpCircle className="w-6 h-6" />
+                </div>
+                <div className="w-full pl-20 md:pl-0 md:w-1/2 md:pr-16 md:text-right pt-2 md:pt-0">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight text-ink group-hover:text-coral transition-colors">9. Блок FAQ (Зняття заперечень)</h3>
+                  <p className="text-ink/60 leading-relaxed font-medium text-sm md:text-base">
+                    Закриваємо страхи ще до зідзвону. Відповідаємо на питання про мінімальні бюджети для США, роботу зі складними нішами та гарантії контролю результату.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Step 10 */}
               <motion.div variants={FADE_UP} className="relative flex w-full group">
                 <div className="absolute left-0 md:left-1/2 w-14 h-14 md:-translate-x-1/2 rounded-2xl bg-coral shadow-neon-coral flex items-center justify-center text-white z-10 group-hover:scale-110 transition-all duration-500">
                   <ArrowRight className="w-6 h-6" />
                 </div>
                 <div className="w-full pl-20 md:pl-0 md:w-1/2 md:ml-auto md:pl-16 pt-2 md:pt-0">
                   <div className="glass-panel p-6 md:p-8 rounded-3xl border-coral/20">
-                    <h3 className="text-xl font-bold mb-3 tracking-tight text-ink">6. Lead-Magnet та CTA</h3>
+                    <h3 className="text-xl font-bold mb-3 tracking-tight text-ink">10. Фінальний CTA (Lead-Magnet)</h3>
                     <p className="text-ink/60 leading-relaxed font-medium text-sm">
-                      Замість банального "Залиште заявку", ми пропонуємо цінність (напр., безкоштовний міні-аудит). Це знижує стрес від першого контакту.
+                      Замість банального "Замовити", пропонуємо високу цінність: безкоштовний експрес-аудит рекламного кабінету або розрахунок медіаплану.
                     </p>
                   </div>
                 </div>
               </motion.div>
+
             </div>
           </div>
         </motion.section>
