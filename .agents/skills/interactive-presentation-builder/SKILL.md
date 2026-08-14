@@ -54,4 +54,5 @@ This skill guides the creation of premium, interactive web-based presentations (
    - Guide the client from Point A (Problem) to Point B (Solution/ROI), ending with a clear Call to Action.
 
 4. **Component Dependencies:**
-   - Ensure `src/components/PresentationViewer.tsx` exists and supports `notes` and `BroadcastChannel`. (This component handles fullscreen, swipe gestures, keyboard navigation, and the dual-window presenter mode).
+   - Ensure `src/components/PresentationViewer.tsx` exists and supports `notes` and `BroadcastChannel`. 
+   - **Adaptive Presenter View:** The component must support a full-screen presenter mode (`?presenter=true`) where the notes section takes up 50% of the screen width (`w-1/2`). The text size in the notes must be dynamically scaled using viewport units (e.g., `text-[clamp(1.1rem,2.5vh,2.5rem)]`) and vertically centered (`flex flex-col justify-center`) so that the speaker NEVER has to scroll up or down while presenting on a full screen.
