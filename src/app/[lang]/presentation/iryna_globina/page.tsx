@@ -272,7 +272,7 @@ export default function IrynaGlobinaPresentationPage() {
         <div className="space-y-12 w-full max-w-5xl">
           <div className="text-center space-y-4">
             <div className="text-coral font-display font-bold tracking-widest uppercase">Крок 3. Розумна сегментація (Магія)</div>
-            <h2 className="font-display text-4xl md:text-6xl font-black">Автоматичний розподіл лідів</h2>
+            <h2 className="font-display text-4xl md:text-6xl font-black">Автоматичний <br/> розподіл лідів</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -319,7 +319,7 @@ export default function IrynaGlobinaPresentationPage() {
         <div className="space-y-12 w-full max-w-4xl">
           <div className="text-center space-y-4">
             <div className="text-coral font-display font-bold tracking-widest uppercase">Ваш результат (ROI)</div>
-            <h2 className="font-display text-4xl md:text-6xl font-black">Що отримує «Insta Bank»?</h2>
+            <h2 className="font-display text-4xl md:text-6xl font-black">Що отримує <br/> «Insta Bank»?</h2>
           </div>
           
           <div className="space-y-4">
