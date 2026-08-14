@@ -131,12 +131,18 @@ function ViewerInner({ slides, isAdmin = false }: PresentationViewerProps) {
                 <Presentation className="w-8 h-8" />
              </div>
              <h2 className="text-3xl font-bold font-display mb-4 text-ink">Доступ обмежено</h2>
-             <p className="text-lg text-ink/70 mb-8 font-medium">Ой, ви не авторизовані як адміністратор. Режим доповідача з нотатками доступний тільки вам.</p>
+             <p className="text-lg text-ink/70 mb-8 font-medium">Ой, ви не авторизовані як адміністратор. Вам доступна лише звичайна версія презентації.</p>
              <button 
                onClick={() => { window.location.href = window.location.pathname; }} 
-               className="w-full px-6 py-4 bg-coral text-white font-bold rounded-xl shadow-neon-coral hover:-translate-y-1 transition-all"
+               className="w-full px-6 py-4 bg-coral text-white font-bold rounded-xl shadow-neon-coral hover:-translate-y-1 transition-all mb-4"
              >
                Дивитись звичайну версію
+             </button>
+             <button 
+               onClick={() => { window.location.href = '/admin'; }} 
+               className="w-full px-6 py-4 bg-surface-100 text-ink/60 font-bold rounded-xl hover:bg-surface-200 transition-colors"
+             >
+               Авторизуватись
              </button>
            </div>
         </div>

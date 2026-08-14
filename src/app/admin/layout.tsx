@@ -27,6 +27,12 @@ export default function AdminLayout({
                 Портфолио
               </Link>
               <Link
+                href="/admin/presentations"
+                className="text-sm font-bold tracking-wide text-ink/70 transition-colors hover:text-coral"
+              >
+                Презентації
+              </Link>
+              <Link
                 href="/admin/categories"
                 className="text-sm font-bold tracking-wide text-ink/70 transition-colors hover:text-coral"
               >
