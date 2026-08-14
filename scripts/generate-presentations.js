@@ -16,6 +16,7 @@ function generatePresentationsList() {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
+  /** @type {string[]} */
   let presentations = [];
 
   try {
