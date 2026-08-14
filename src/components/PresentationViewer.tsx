@@ -123,32 +123,41 @@ function ViewerInner({ slides }: PresentationViewerProps) {
 
   if (isPresenter) {
     return (
-      <div className="w-full h-[100dvh] bg-surface flex flex-col md:flex-row text-ink overflow-hidden">
+      <div ref={containerRef} className="w-full h-[100dvh] bg-surface flex flex-col lg:flex-row text-ink overflow-hidden">
         {/* Presenter Sidebar */}
-        <div className="w-full md:w-1/3 xl:w-1/4 bg-white border-r border-black/5 p-6 md:p-8 flex flex-col h-full shadow-2xl z-10">
-          <div className="mb-6 flex items-center gap-3 text-coral">
-            <Presentation className="w-6 h-6" />
-            <span className="font-display font-bold uppercase tracking-widest text-sm">Presenter View</span>
+        <div className="w-full lg:w-1/2 bg-white border-r border-black/5 p-6 md:p-8 lg:p-12 flex flex-col h-full shadow-2xl z-10">
+          <div className="mb-6 flex items-center justify-between">
+            <div className="flex items-center gap-3 text-coral">
+              <Presentation className="w-6 h-6" />
+              <span className="font-display font-bold uppercase tracking-widest text-sm">Presenter View</span>
+            </div>
+            <button
+              onClick={toggleFullscreen}
+              className="p-3 rounded-full bg-surface-100 shadow-sm transition-all duration-300 hover:bg-coral hover:text-white active:scale-95 text-ink/70"
+              aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+            >
+              {isFullscreen ? <Minimize className="w-5 h-5" /> : <Maximize className="w-5 h-5" />}
+            </button>
           </div>
-          <h2 className="text-3xl font-display font-black mb-8">Слайд {currentIndex + 1}</h2>
+          <h2 className="text-3xl lg:text-4xl font-display font-black mb-8">Слайд {currentIndex + 1}</h2>
           
-          <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
+          <div className="flex-1 overflow-y-auto pr-2 lg:pr-4 custom-scrollbar flex flex-col">
             {slides[currentIndex]?.notes ? (
-              <div className="text-xl leading-relaxed text-ink/80 p-6 bg-surface-100 rounded-2xl border-l-4 border-coral shadow-inner">
+              <div className="text-[clamp(1.1rem,2.5vh,2.5rem)] font-medium leading-[1.5] text-ink/90 p-6 lg:p-10 bg-surface-100 rounded-3xl border-l-4 border-coral shadow-inner flex-1 flex flex-col justify-center">
                 {slides[currentIndex].notes}
               </div>
             ) : (
-              <div className="text-lg italic opacity-50 text-center mt-10">Немає нотаток до цього слайду.</div>
+              <div className="text-lg italic opacity-50 text-center mt-10 flex-1 flex items-center justify-center">Немає нотаток до цього слайду.</div>
             )}
           </div>
           
           <div className="mt-8 flex items-center justify-between gap-4 pt-6 border-t border-black/5">
-            <button onClick={goToPrev} disabled={currentIndex === 0} className="p-4 rounded-xl bg-surface-100 hover:bg-coral hover:text-white transition-colors disabled:opacity-50">
-              <ChevronLeft />
+            <button onClick={goToPrev} disabled={currentIndex === 0} className="p-5 lg:p-6 rounded-2xl bg-surface-100 hover:bg-coral hover:text-white transition-colors disabled:opacity-50">
+              <ChevronLeft className="w-6 h-6 lg:w-8 lg:h-8" />
             </button>
-            <div className="font-bold text-xl">{currentIndex + 1} / {slides.length}</div>
-            <button onClick={goToNext} disabled={currentIndex === slides.length - 1} className="p-4 rounded-xl bg-surface-100 hover:bg-coral hover:text-white transition-colors disabled:opacity-50">
-              <ChevronRight />
+            <div className="font-bold text-2xl lg:text-3xl">{currentIndex + 1} <span className="text-ink/40">/ {slides.length}</span></div>
+            <button onClick={goToNext} disabled={currentIndex === slides.length - 1} className="p-5 lg:p-6 rounded-2xl bg-surface-100 hover:bg-coral hover:text-white transition-colors disabled:opacity-50">
+              <ChevronRight className="w-6 h-6 lg:w-8 lg:h-8" />
             </button>
           </div>
         </div>
