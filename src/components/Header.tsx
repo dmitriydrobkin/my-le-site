@@ -46,6 +46,22 @@ export function Header({ lang }: { lang: string }) {
 
   if (pathname.startsWith('/admin')) return null;
 
+  const isPresentationRoute = pathname.includes('/presentation');
+  const [isVisible, setIsVisible] = useState(!isPresentationRoute);
+
+  useEffect(() => {
+    if (!isPresentationRoute) {
+      setIsVisible(true);
+      return;
+    }
+    const handleScroll = () => {
+      setIsVisible(window.scrollY > 700);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isPresentationRoute]);
+
   const dict = getDictionary(lang);
   const isUk = lang === 'uk';
   const linkPrefix = isUk ? '' : '/ru';
@@ -73,22 +89,22 @@ export function Header({ lang }: { lang: string }) {
 
   return (
     <>
-      <header className="fixed top-4 md:top-6 left-0 right-0 z-50 pointer-events-none">
+      <header className={`fixed top-4 md:top-6 left-0 right-0 z-50 pointer-events-none transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <div className="max-w-[1400px] mx-auto px-4 md:px-6 flex items-center justify-between">
           <a 
             href={`${linkPrefix}/` || '/'}
             onClick={handleLogoClick}
-            className="pointer-events-auto bg-white/80 backdrop-blur-md shadow-glass rounded-full px-6 py-3 md:px-8 md:py-4 font-display font-bold text-ink tracking-tight flex items-center gap-2 transition-transform hover:scale-105"
+            className={`${isVisible ? 'pointer-events-auto' : 'pointer-events-none'} bg-white/80 backdrop-blur-md shadow-glass rounded-full px-6 py-3 md:px-8 md:py-4 font-display font-bold text-ink tracking-tight flex items-center gap-2 transition-transform hover:scale-105`}
           >
             <div className="w-2 h-2 rounded-full bg-cyan-500 shadow-neon-cyan"></div>
             malyshev.dev.
           </a>
 
-          <div className="pointer-events-auto flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <button 
               onClick={() => setIsMenuOpen(true)}
               aria-label={isUk ? 'Відкрити меню' : 'Открыть меню'}
-              className="bg-white/80 backdrop-blur-md shadow-glass rounded-full w-12 h-12 sm:w-auto sm:h-auto sm:px-8 sm:py-4 flex items-center justify-center sm:gap-4 text-ink font-bold transition-transform hover:scale-105 group"
+              className={`${isVisible ? 'pointer-events-auto' : 'pointer-events-none'} bg-white/80 backdrop-blur-md shadow-glass rounded-full w-12 h-12 sm:w-auto sm:h-auto sm:px-8 sm:py-4 flex items-center justify-center sm:gap-4 text-ink font-bold transition-transform hover:scale-105 group`}
             >
               <span className="hidden sm:block">{isUk ? 'Меню' : 'Меню'}</span>
               <div className="hidden sm:flex w-8 h-8 rounded-full bg-ink items-center justify-center text-white group-hover:bg-coral transition-colors">

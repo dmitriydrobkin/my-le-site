@@ -20,12 +20,22 @@ This skill guides the creation of premium, interactive web-based presentations (
    - Create a new `page.tsx` file for the presentation (e.g., `src/app/[lang]/presentation/[name]/page.tsx`).
    - Define a `slides: SlideData[]` array.
 
-2. **Structure the `SlideData`:**
+2. **Structure the `SlideData` and Auth Guard:**
+   The presentation page MUST check if the user is an admin and pass the `isAdmin` prop to the `PresentationViewer` to protect the speaker notes.
    ```tsx
    import { PresentationViewer, SlideData } from '@/components/PresentationViewer';
-   import { CheckCircle2, Zap } from 'lucide-react';
    
-   export default function PresentationPage() {
+   export default async function PresentationPage() {
+     const isAdmin = await (async () => {
+       try {
+         const { verifyAdminSession } = await import('@/server/actions/auth');
+         await verifyAdminSession();
+         return true;
+       } catch {
+         return false;
+       }
+     })();
+
      const slides: SlideData[] = [
        {
          id: 'slide-1',
@@ -37,14 +47,13 @@ This skill guides the creation of premium, interactive web-based presentations (
          ),
          content: (
            <div className="text-center space-y-8">
-             {/* Premium UI blocks, Lucide icons, clear typography */}
              <h1 className="font-display text-5xl md:text-7xl font-black">Title</h1>
            </div>
          )
        }
      ];
      
-     return <PresentationViewer slides={slides} />;
+     return <PresentationViewer slides={slides} isAdmin={isAdmin} />;
    }
    ```
 
@@ -55,4 +64,5 @@ This skill guides the creation of premium, interactive web-based presentations (
 
 4. **Component Dependencies:**
    - Ensure `src/components/PresentationViewer.tsx` exists and supports `notes` and `BroadcastChannel`. 
+   - **Auth Guard:** The component must accept an `isAdmin` prop and block access to the presenter view (`?presenter=true`) if `isAdmin` is false.
    - **Adaptive Presenter View:** The component must support a full-screen presenter mode (`?presenter=true`) where the notes section takes up 50% of the screen width (`w-1/2`). The text size in the notes must be dynamically scaled using viewport units (e.g., `text-[clamp(1.1rem,2.5vh,2.5rem)]`) and vertically centered (`flex flex-col justify-center`) so that the speaker NEVER has to scroll up or down while presenting on a full screen.

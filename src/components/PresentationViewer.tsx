@@ -13,9 +13,10 @@ export interface SlideData {
 
 interface PresentationViewerProps {
   slides: SlideData[];
+  isAdmin?: boolean;
 }
 
-function ViewerInner({ slides }: PresentationViewerProps) {
+function ViewerInner({ slides, isAdmin = false }: PresentationViewerProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -122,6 +123,26 @@ function ViewerInner({ slides }: PresentationViewerProps) {
   };
 
   if (isPresenter) {
+    if (!isAdmin) {
+      return (
+        <div className="w-full h-[100dvh] flex items-center justify-center bg-surface text-ink text-center p-8">
+           <div className="max-w-md p-8 md:p-12 bg-white shadow-glass rounded-3xl border border-black/5 relative">
+             <div className="w-16 h-16 bg-red-100 text-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Presentation className="w-8 h-8" />
+             </div>
+             <h2 className="text-3xl font-bold font-display mb-4 text-ink">Доступ обмежено</h2>
+             <p className="text-lg text-ink/70 mb-8 font-medium">Ой, ви не авторизовані як адміністратор. Режим доповідача з нотатками доступний тільки вам.</p>
+             <button 
+               onClick={() => { window.location.href = window.location.pathname; }} 
+               className="w-full px-6 py-4 bg-coral text-white font-bold rounded-xl shadow-neon-coral hover:-translate-y-1 transition-all"
+             >
+               Дивитись звичайну версію
+             </button>
+           </div>
+        </div>
+      );
+    }
+
     return (
       <div ref={containerRef} className="w-full h-[100dvh] bg-surface flex flex-col lg:flex-row text-ink overflow-hidden">
         {/* Presenter Sidebar */}

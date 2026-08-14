@@ -7,7 +7,17 @@ export const metadata: Metadata = {
   description: 'Інтерактивна презентація для Insta Bank',
 };
 
-export default function IrynaGlobinaPresentationPage() {
+export default async function IrynaGlobinaPresentationPage() {
+  const isAdmin = await (async () => {
+    try {
+      const { verifyAdminSession } = await import('@/server/actions/auth');
+      await verifyAdminSession();
+      return true;
+    } catch {
+      return false;
+    }
+  })();
+
   const slides: SlideData[] = [
     // Slide 1
     {
@@ -385,5 +395,5 @@ export default function IrynaGlobinaPresentationPage() {
     }
   ];
 
-  return <PresentationViewer slides={slides} />;
+  return <PresentationViewer slides={slides} isAdmin={isAdmin} />;
 }
