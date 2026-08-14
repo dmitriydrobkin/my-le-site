@@ -54,10 +54,6 @@ export default function IrynaGlobinaPresentationPage() {
               </div>
             ))}
           </div>
-          <div className="p-8 rounded-3xl bg-black/5 text-center text-lg md:text-xl text-ink/80 italic font-medium max-w-3xl mx-auto border border-black/5 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-1 h-full bg-coral"></div>
-            «Ірино, у вас класний продукт, проблеми з експертністю немає взагалі.»
-          </div>
         </div>
       )
     },
@@ -84,9 +80,9 @@ export default function IrynaGlobinaPresentationPage() {
             <span className="text-ink">Відеоурок</span>
           </div>
 
-          <div className="inline-flex items-center gap-4 p-6 bg-red-50 text-red-600 rounded-2xl font-medium text-lg border border-red-100">
+          <div className="inline-flex items-center gap-4 p-6 bg-red-50 text-red-600 rounded-2xl font-medium text-lg border border-red-100 shadow-sm mx-auto">
             <AlertCircle className="w-8 h-8 shrink-0" />
-            <p className="text-left"><strong>Бар'єр:</strong> 21 питання в анкеті. Люди ліниві. Заповнити стільки полів заради одного відеоуроку — це занадто великий бар'єр для холодного ліда.</p>
+            <p className="text-left text-xl"><strong>Бар'єр:</strong> 21 питання в анкеті</p>
           </div>
         </div>
       )
@@ -118,10 +114,6 @@ export default function IrynaGlobinaPresentationPage() {
               </div>
             ))}
           </div>
-          
-          <p className="text-center text-lg md:text-xl font-medium text-ink/70 italic px-8">
-            "Ваш час коштує дорого. Ви не повинні проводити діагностики з тими, у кого апріорі немає грошей на ваше наставництво."
-          </p>
         </div>
       )
     },
@@ -141,9 +133,6 @@ export default function IrynaGlobinaPresentationPage() {
               <p className="text-2xl md:text-3xl text-ink/80 leading-relaxed font-medium">
                 Впроваджуємо розумного чат-бота, який працює як ваш <strong className="text-ink">особистий асистент-кваліфікатор 24/7</strong>.
               </p>
-              <p className="mt-8 text-lg text-ink/50 italic">
-                "Ми прибираємо гугл форму і робимо процес легким, як гра."
-              </p>
             </div>
           </div>
         </div>
@@ -159,29 +148,19 @@ export default function IrynaGlobinaPresentationPage() {
             <h2 className="font-display text-4xl md:text-6xl font-black">Видача лід-магніту за 1 секунду</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="p-8 md:p-10 bg-white rounded-[2rem] shadow-glass border border-black/5 space-y-6">
-              <p className="text-xl md:text-2xl font-medium leading-relaxed">
+          <div className="max-w-2xl mx-auto">
+            <div className="p-8 md:p-12 bg-white rounded-[2rem] shadow-glass border border-black/5 space-y-8">
+              <p className="text-2xl md:text-3xl font-medium leading-relaxed text-center">
                 Клієнт переходить за посиланням і <strong className="text-coral">миттєво отримує відеоурок</strong> <em>"Мій блог очима клієнта"</em>.
               </p>
-              <ul className="space-y-4 text-lg text-ink/70">
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-green-500 shrink-0" /> Без довгих допитів.
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-green-500 shrink-0" /> Формування лояльності.
-                </li>
-              </ul>
-            </div>
-            
-            <div className="p-8 rounded-3xl bg-coral text-white text-center shadow-neon-coral transform md:rotate-2">
-              <Clock className="w-16 h-16 mx-auto mb-6 opacity-80" />
-              <p className="text-2xl md:text-3xl font-display font-bold mb-4">
-                "Людина одразу отримує користь."
-              </p>
-              <p className="text-xl opacity-80">
-                Вона вам вже вдячна.
-              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-12 text-xl text-ink/70 font-medium">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-8 h-8 text-green-500 shrink-0" /> Без допитів
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-8 h-8 text-green-500 shrink-0" /> Миттєва лояльність
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -220,11 +199,6 @@ export default function IrynaGlobinaPresentationPage() {
               </div>
             ))}
           </div>
-          
-          <div className="inline-flex items-center gap-3 px-6 py-4 bg-coral/5 text-coral rounded-full font-medium mt-4">
-            <MousePointerClick className="w-6 h-6" />
-            "Натиснути 4 кнопки в Телеграмі займає 15 секунд. Конверсія у рази вища."
-          </div>
         </div>
       )
     },
@@ -261,10 +235,6 @@ export default function IrynaGlobinaPresentationPage() {
               </p>
             </div>
           </div>
-          
-          <p className="text-center text-lg md:text-xl font-bold text-ink bg-black/5 p-6 rounded-2xl max-w-2xl mx-auto">
-            "Це найголовніший слайд. Бот сам відсіює людей без грошей."
-          </p>
         </div>
       )
     },
@@ -292,10 +262,6 @@ export default function IrynaGlobinaPresentationPage() {
               </div>
             ))}
           </div>
-
-          <p className="text-center text-lg md:text-xl text-ink/70 italic px-8">
-            "Ваша задача — просто відкрити календар, побачити запис і продати людині, яка вже кваліфікована."
-          </p>
         </div>
       )
     },
@@ -324,13 +290,6 @@ export default function IrynaGlobinaPresentationPage() {
                 <p className="text-ink/60">{item.desc}</p>
               </div>
             ))}
-          </div>
-          
-          <div className="p-8 md:p-12 bg-ink text-white rounded-[3rem] shadow-2xl mt-12 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-coral/20 to-transparent"></div>
-            <p className="text-2xl md:text-4xl font-display font-bold relative z-10 leading-tight">
-              "Я беру на себе всю технічну рутину. <br className="hidden md:block"/>Від вас потрібно лише затвердити тексти.<br/><br/><span className="text-coral">Працюємо?</span>"
-            </p>
           </div>
         </div>
       )
