@@ -12,6 +12,7 @@ export default function IrynaGlobinaPresentationPage() {
     // Slide 1
     {
       id: 'slide-1',
+      notes: "Вступний слайд. Пояснити мету презентації: показати, як можна автоматизувати воронку і звільнити час від нецільових дзвінків.",
       content: (
         <div className="text-center space-y-8">
           <div className="inline-block px-5 py-2 rounded-full bg-coral/10 text-coral font-display text-sm font-bold tracking-widest uppercase mb-4 shadow-glass">
@@ -33,6 +34,7 @@ export default function IrynaGlobinaPresentationPage() {
     // Slide 2
     {
       id: 'slide-2',
+      notes: "«Ірино, у вас класний продукт, проблеми з експертністю немає взагалі.»",
       content: (
         <div className="space-y-12 md:space-y-16 w-full max-w-5xl">
           <div className="text-center space-y-4">
@@ -60,6 +62,7 @@ export default function IrynaGlobinaPresentationPage() {
     // Slide 3
     {
       id: 'slide-3',
+      notes: "«Люди ліниві. Заповнити 21 поле заради одного відеоуроку — це занадто великий бар'єр для холодного ліда.»",
       content: (
         <div className="space-y-12 w-full max-w-4xl text-center">
           <div className="space-y-4">
@@ -90,6 +93,7 @@ export default function IrynaGlobinaPresentationPage() {
     // Slide 4
     {
       id: 'slide-4',
+      notes: "«Ваш час коштує дорого. Ви не повинні проводити діагностики з тими, у кого апріорі немає грошей на ваше наставництво.»",
       content: (
         <div className="space-y-12 w-full max-w-4xl">
           <div className="text-center space-y-4">
@@ -120,6 +124,7 @@ export default function IrynaGlobinaPresentationPage() {
     // Slide 5
     {
       id: 'slide-5',
+      notes: "«Ми прибираємо гугл форму і робимо процес легким, як гра.»",
       content: (
         <div className="text-center space-y-10 w-full max-w-3xl">
           <div className="space-y-4">
@@ -141,6 +146,7 @@ export default function IrynaGlobinaPresentationPage() {
     // Slide 6
     {
       id: 'slide-6',
+      notes: "«Людина одразу отримує користь. Вона вам вже вдячна.»",
       content: (
         <div className="space-y-12 w-full max-w-4xl">
           <div className="text-center space-y-4">
@@ -169,6 +175,7 @@ export default function IrynaGlobinaPresentationPage() {
     // Slide 7
     {
       id: 'slide-7',
+      notes: "«Натиснути 4 кнопки в Телеграмі займає 15 секунд. Конверсія тут у рази вища, ніж у Google-формі.»",
       content: (
         <div className="space-y-12 w-full max-w-4xl text-center">
           <div className="space-y-4">
@@ -205,6 +212,7 @@ export default function IrynaGlobinaPresentationPage() {
     // Slide 8
     {
       id: 'slide-8',
+      notes: "«Це найголовніший слайд. Бот сам відсіює людей без грошей.»",
       content: (
         <div className="space-y-12 w-full max-w-5xl">
           <div className="text-center space-y-4">
@@ -241,6 +249,7 @@ export default function IrynaGlobinaPresentationPage() {
     // Slide 9
     {
       id: 'slide-9',
+      notes: "«Ваша задача — просто відкрити календар, побачити запис і продати людині, яка вже кваліфікована.»",
       content: (
         <div className="space-y-12 w-full max-w-4xl">
           <div className="text-center space-y-4">
@@ -268,6 +277,7 @@ export default function IrynaGlobinaPresentationPage() {
     // Slide 10
     {
       id: 'slide-10',
+      notes: "«Я беру на себе всю технічну рутину. Від вас потрібно лише затвердити тексти. Працюємо?»",
       content: (
         <div className="space-y-12 w-full max-w-4xl text-center">
           <div className="space-y-4">

@@ -1,23 +1,51 @@
 'use client';
 
-import { useState, useEffect, useCallback, ReactNode, useRef } from 'react';
+import { useState, useEffect, useCallback, ReactNode, useRef, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Maximize, Minimize } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize, Minimize, MonitorSmartphone, Presentation } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
 export interface SlideData {
   id: string;
   content: ReactNode;
+  notes?: ReactNode;
 }
 
 interface PresentationViewerProps {
   slides: SlideData[];
 }
 
-export function PresentationViewer({ slides }: PresentationViewerProps) {
+function ViewerInner({ slides }: PresentationViewerProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const searchParams = useSearchParams();
+  const isPresenter = searchParams.get('presenter') === 'true';
+
+  const channelRef = useRef<BroadcastChannel | null>(null);
+
+  useEffect(() => {
+    channelRef.current = new BroadcastChannel('presentation-sync');
+    channelRef.current.onmessage = (event) => {
+      if (event.data.type === 'SYNC_SLIDE') {
+        const newIndex = event.data.index;
+        if (newIndex !== currentIndex) {
+          setDirection(newIndex > currentIndex ? 1 : -1);
+          setCurrentIndex(newIndex);
+        }
+      }
+    };
+    return () => {
+      channelRef.current?.close();
+    };
+  }, [currentIndex]);
+
+  const changeSlide = useCallback((newIndex: number) => {
+    setDirection(newIndex > currentIndex ? 1 : -1);
+    setCurrentIndex(newIndex);
+    channelRef.current?.postMessage({ type: 'SYNC_SLIDE', index: newIndex });
+  }, [currentIndex]);
 
   const toggleFullscreen = async () => {
     try {
@@ -41,17 +69,15 @@ export function PresentationViewer({ slides }: PresentationViewerProps) {
 
   const goToNext = useCallback(() => {
     if (currentIndex < slides.length - 1) {
-      setDirection(1);
-      setCurrentIndex((prev) => prev + 1);
+      changeSlide(currentIndex + 1);
     }
-  }, [currentIndex, slides.length]);
+  }, [currentIndex, slides.length, changeSlide]);
 
   const goToPrev = useCallback(() => {
     if (currentIndex > 0) {
-      setDirection(-1);
-      setCurrentIndex((prev) => prev - 1);
+      changeSlide(currentIndex - 1);
     }
-  }, [currentIndex]);
+  }, [currentIndex, changeSlide]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -91,6 +117,59 @@ export function PresentationViewer({ slides }: PresentationViewerProps) {
     if (isRightSwipe) goToPrev();
   };
 
+  const openPresenter = () => {
+    window.open(window.location.pathname + '?presenter=true', 'PresenterWindow', 'width=1000,height=700,menubar=no,toolbar=no');
+  };
+
+  if (isPresenter) {
+    return (
+      <div className="w-full h-[100dvh] bg-surface flex flex-col md:flex-row text-ink overflow-hidden">
+        {/* Presenter Sidebar */}
+        <div className="w-full md:w-1/3 xl:w-1/4 bg-white border-r border-black/5 p-6 md:p-8 flex flex-col h-full shadow-2xl z-10">
+          <div className="mb-6 flex items-center gap-3 text-coral">
+            <Presentation className="w-6 h-6" />
+            <span className="font-display font-bold uppercase tracking-widest text-sm">Presenter View</span>
+          </div>
+          <h2 className="text-3xl font-display font-black mb-8">Слайд {currentIndex + 1}</h2>
+          
+          <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
+            {slides[currentIndex]?.notes ? (
+              <div className="text-xl leading-relaxed text-ink/80 p-6 bg-surface-100 rounded-2xl border-l-4 border-coral shadow-inner">
+                {slides[currentIndex].notes}
+              </div>
+            ) : (
+              <div className="text-lg italic opacity-50 text-center mt-10">Немає нотаток до цього слайду.</div>
+            )}
+          </div>
+          
+          <div className="mt-8 flex items-center justify-between gap-4 pt-6 border-t border-black/5">
+            <button onClick={goToPrev} disabled={currentIndex === 0} className="p-4 rounded-xl bg-surface-100 hover:bg-coral hover:text-white transition-colors disabled:opacity-50">
+              <ChevronLeft />
+            </button>
+            <div className="font-bold text-xl">{currentIndex + 1} / {slides.length}</div>
+            <button onClick={goToNext} disabled={currentIndex === slides.length - 1} className="p-4 rounded-xl bg-surface-100 hover:bg-coral hover:text-white transition-colors disabled:opacity-50">
+              <ChevronRight />
+            </button>
+          </div>
+        </div>
+
+        {/* Live Preview */}
+        <div className="flex-1 bg-surface-100 p-8 flex flex-col items-center justify-center relative overflow-hidden">
+          <div className="absolute top-8 left-8 text-sm font-bold text-ink/40 uppercase tracking-widest flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+            Live Preview
+          </div>
+          <div className="w-full max-w-4xl aspect-[16/9] bg-white shadow-glass rounded-3xl overflow-hidden flex items-center justify-center scale-90 xl:scale-100 border border-black/10 relative">
+             <div className="absolute inset-0 pointer-events-none z-50 shadow-inner"></div>
+             <div className="w-full h-full overflow-y-auto py-12 px-8 flex items-center justify-center pointer-events-none">
+               {slides[currentIndex]?.content}
+             </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const variants = {
     enter: (direction: number) => {
       return {
@@ -120,8 +199,15 @@ export function PresentationViewer({ slides }: PresentationViewerProps) {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      {/* Fullscreen Toggle Button */}
-      <div className="absolute top-4 right-4 md:top-6 md:right-6 z-[60]">
+      {/* Top Controls */}
+      <div className="absolute top-4 right-4 md:top-6 md:right-6 z-[60] flex items-center gap-3">
+        <button
+          onClick={openPresenter}
+          className="p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-glass transition-all duration-300 hover:bg-coral hover:text-white hover:shadow-neon-coral active:scale-95 text-ink/70"
+          title="Відкрити нотатки для спікера"
+        >
+          <MonitorSmartphone className="w-5 h-5" />
+        </button>
         <button
           onClick={toggleFullscreen}
           className="p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-glass transition-all duration-300 hover:bg-coral hover:text-white hover:shadow-neon-coral active:scale-95 text-ink/70"
@@ -195,5 +281,13 @@ export function PresentationViewer({ slides }: PresentationViewerProps) {
         </div>
       </div>
     </div>
+  );
+}
+
+export function PresentationViewer(props: PresentationViewerProps) {
+  return (
+    <Suspense fallback={<div className="w-full h-screen flex items-center justify-center bg-surface">Завантаження презентації...</div>}>
+      <ViewerInner {...props} />
+    </Suspense>
   );
 }
