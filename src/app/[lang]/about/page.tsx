@@ -261,9 +261,10 @@ export default async function AboutPage({ params, searchParams }: { params: { la
             {contact.badge}
           </div>
           
-          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-12 uppercase break-words">
-            {contact.title}
-          </h2>
+          <h2 
+            className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold tracking-tight text-ink leading-[1.05] mb-12 uppercase break-words"
+            dangerouslySetInnerHTML={{ __html: contact.title }}
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
             {/* Telegram */}
