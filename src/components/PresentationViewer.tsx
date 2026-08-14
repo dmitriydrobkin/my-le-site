@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, useCallback, ReactNode } from 'react';
+import { useState, useEffect, useCallback, ReactNode, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize, Minimize } from 'lucide-react';
 
 export interface SlideData {
   id: string;
@@ -16,6 +16,28 @@ interface PresentationViewerProps {
 export function PresentationViewer({ slides }: PresentationViewerProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const toggleFullscreen = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await containerRef.current?.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (err) {
+      console.error("Error attempting to enable fullscreen:", err);
+    }
+  };
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
 
   const goToNext = useCallback(() => {
     if (currentIndex < slides.length - 1) {
@@ -92,11 +114,23 @@ export function PresentationViewer({ slides }: PresentationViewerProps) {
 
   return (
     <div 
+      ref={containerRef}
       className="relative w-full h-[100dvh] overflow-hidden bg-surface text-ink flex flex-col selection:bg-coral/20"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
+      {/* Fullscreen Toggle Button */}
+      <div className="absolute top-4 right-4 md:top-6 md:right-6 z-[60]">
+        <button
+          onClick={toggleFullscreen}
+          className="p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-glass transition-all duration-300 hover:bg-coral hover:text-white hover:shadow-neon-coral active:scale-95 text-ink/70"
+          aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+        >
+          {isFullscreen ? <Minimize className="w-5 h-5" /> : <Maximize className="w-5 h-5" />}
+        </button>
+      </div>
+
       {/* Progress Bar */}
       <div className="absolute top-0 left-0 w-full h-1 bg-black/5 z-50">
         <motion.div 
