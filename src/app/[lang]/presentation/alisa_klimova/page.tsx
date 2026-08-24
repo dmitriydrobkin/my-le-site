@@ -58,7 +58,7 @@ export default function AlisaKlimovaProposalFull() {
               "/images/moodboard/moodboard-1.jpg",
               "/images/moodboard/moodboard-2.jpeg",
               "/images/moodboard/moodboard-3.jpeg",
-              "/images/moodboard/moodboard-4.jpeg"
+              "/images/moodboard/moodboard-4.jpg"
             ].map((img, i) => (
               <div 
                 key={i} 
