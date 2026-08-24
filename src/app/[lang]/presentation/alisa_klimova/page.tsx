@@ -13,6 +13,8 @@ const STAGGER: Variants = {
 };
 
 export default function AlisaKlimovaProposalFull() {
+  const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
+
   return (
     <div className="min-h-[100dvh] bg-surface selection:bg-coral/20 font-sans text-ink overflow-x-hidden">
       {/* Background Blobs */}
@@ -53,14 +55,23 @@ export default function AlisaKlimovaProposalFull() {
           
           <motion.div variants={FADE_UP} className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {[
-              "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=600&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=600&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1550525811-e5869dd03032?q=80&w=600&auto=format&fit=crop"
+              "/images/moodboard/moodboard-1.jpg",
+              "/images/moodboard/moodboard-2.jpeg",
+              "/images/moodboard/moodboard-3.jpeg",
+              "/images/moodboard/moodboard-4.jpeg"
             ].map((img, i) => (
-              <div key={i} className="aspect-[3/4] rounded-2xl overflow-hidden shadow-glass border border-white/50 relative group">
+              <div 
+                key={i} 
+                className="aspect-[3/4] rounded-2xl overflow-hidden shadow-glass border border-white/50 relative group cursor-zoom-in"
+                onClick={() => setSelectedImage(img)}
+              >
                 <img src={img} alt="Moodboard" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-ink/10 group-hover:bg-transparent transition-colors duration-500" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-white/90 backdrop-blur-sm text-ink px-4 py-2 rounded-full text-sm font-medium shadow-lg flex items-center gap-2">
+                    <Search className="w-4 h-4" /> Увеличить
+                  </div>
+                </div>
               </div>
             ))}
           </motion.div>
@@ -237,6 +248,27 @@ export default function AlisaKlimovaProposalFull() {
         </motion.section>
 
       </main>
+
+      {/* Lightbox / Fullscreen Image Viewer */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 md:p-8 cursor-zoom-out"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white/70 hover:text-white bg-black/20 hover:bg-black/50 w-10 h-10 flex items-center justify-center rounded-full transition-all"
+            onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
+          >
+            ✕
+          </button>
+          <img 
+            src={selectedImage} 
+            alt="Moodboard Fullscreen" 
+            className="max-w-full max-h-full object-contain rounded-xl shadow-2xl" 
+            onClick={(e) => e.stopPropagation()} 
+          />
+        </div>
+      )}
     </div>
   );
 }
