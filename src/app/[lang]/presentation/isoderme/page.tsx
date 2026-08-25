@@ -33,14 +33,8 @@ const ISO = {
   beige:     '#CBB8A6',
 } as const;
 
-export default async function IsodermePresentationPage() {
-  const isAdmin = await (async () => {
-    try {
-      const { verifyAdminSession } = await import('@/server/actions/auth');
-      await verifyAdminSession();
-      return true;
-    } catch { return false; }
-  })();
+export default function IsodermePresentationPage() {
+  const isAdmin = false;
 
   /* ── Theme injection (scoped to .iso namespace) ──────────── */
   const themeCSS = `
@@ -353,7 +347,7 @@ export default async function IsodermePresentationPage() {
             </div>
 
             <div className="flex-1 w-full bg-[#F6F1EB] p-8 rounded-xl">
-              <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-5">
                 <div>
                   <label className="block text-[11px] font-bold tracking-[0.1em] uppercase iso-choc mb-2">Обраний варіант</label>
                   <select className="iso-input bg-transparent cursor-pointer">
