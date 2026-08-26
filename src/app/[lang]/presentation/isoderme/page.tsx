@@ -58,38 +58,57 @@ export default function IsodermePresentationPage() {
       .iso-card {
         background: #FFFFFF;
         border: 1px solid ${ISO.beige}40;
-        transition: all 400ms cubic-bezier(.16,1,.3,1);
+        transition: all 500ms cubic-bezier(.16,1,.3,1);
+        border-radius: 12px;
       }
       .iso-card:hover {
-        box-shadow: 0 12px 40px ${ISO.chocolate}10;
-        transform: translateY(-4px);
+        box-shadow: 0 16px 48px ${ISO.chocolate}12;
+        transform: translateY(-6px);
+        border-color: ${ISO.beige};
       }
       
       .iso-card-active {
         background: ${ISO.milk};
         border: 2px solid ${ISO.burgundy};
         position: relative;
+        border-radius: 12px;
       }
       .iso-card-active::before {
         content: "Рекомендуємо";
         position: absolute;
-        top: -12px;
+        top: -14px;
         left: 50%;
         transform: translateX(-50%);
         background: ${ISO.burgundy};
         color: ${ISO.milk};
         font-size: 10px;
         font-weight: 700;
-        letter-spacing: 0.1em;
-        padding: 4px 12px;
-        border-radius: 4px;
+        letter-spacing: 0.12em;
+        padding: 5px 16px;
+        border-radius: 100px;
         text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .iso-card-active:hover {
+        box-shadow: 0 16px 48px ${ISO.burgundy}18;
+        transform: translateY(-6px);
       }
 
       .iso-accent-line {
         width: 48px; height: 2px;
         background: ${ISO.burgundy};
         display: block;
+      }
+
+      .iso-price-block {
+        background: linear-gradient(135deg, ${ISO.milk} 0%, #FFFFFF 100%);
+        border-top: 1px solid ${ISO.beige}30;
+        padding: 20px 0 4px;
+        margin-top: 24px;
+      }
+      .iso-card-active .iso-price-block {
+        background: linear-gradient(135deg, ${ISO.burgundy}08 0%, ${ISO.milk} 100%);
+        border-top-color: ${ISO.burgundy}20;
       }
 
       .iso-tag {
@@ -148,7 +167,7 @@ export default function IsodermePresentationPage() {
     {
       name: 'Візитка',
       tag: 'Швидкий старт',
-      price: '$250',
+      price: '$400',
       idealFor: 'Швидкий запуск реклами, базове представлення в мережі (MVP).',
       benefit: 'Клієнт знаходить вас, бачить статус і може зв\'язатись. Мінімум витрат часу.',
       features: [
@@ -163,7 +182,7 @@ export default function IsodermePresentationPage() {
     {
       name: 'Лендінг',
       tag: 'Повноцінний продаж',
-      price: '$600',
+      price: '$800',
       idealFor: 'Активна генерація лідів, детальна презентація послуг та команди.',
       benefit: 'Збір заявок безпосередньо на сайті, вища конверсія завдяки розкриттю експертності.',
       active: true, // Recommended
@@ -177,24 +196,9 @@ export default function IsodermePresentationPage() {
       ]
     },
     {
-      name: 'Corporate',
-      tag: 'Міні-багатосторінковик',
-      price: '$1200',
-      idealFor: 'Статусне позиціонування, SEO-просування в Google.',
-      benefit: 'Окрема сторінка для кожної послуги. Сайт сприймається як велика клініка.',
-      features: [
-        'Багатосторінкова структура',
-        'Окремий каталог послуг',
-        'SEO-база для кожної сторінки',
-        'Сторінка "Про клініку"',
-        'Зручна навігація (Header)',
-        'Повна адмін-панель'
-      ]
-    },
-    {
       name: 'Квіз',
       tag: 'Інтерактивна заявка',
-      price: '$900',
+      price: '$1000',
       idealFor: 'Складні послуги, сегментація пацієнтів ще до візиту.',
       benefit: 'Лікар отримує вже підготовлену заявку з анамнезом. Високе залучення пацієнта.',
       features: [
@@ -204,6 +208,21 @@ export default function IsodermePresentationPage() {
         'Збір анамнезу/проблеми',
         'Лід-форма наприкінці квізу',
         'Адмінка результатів'
+      ]
+    },
+    {
+      name: 'Corporate',
+      tag: 'Міні-багатосторінковик',
+      price: '$1400',
+      idealFor: 'Статусне позиціонування, SEO-просування в Google.',
+      benefit: 'Окрема сторінка для кожної послуги. Сайт сприймається як велика клініка.',
+      features: [
+        'Багатосторінкова структура',
+        'Окремий каталог послуг',
+        'SEO-база для кожної сторінки',
+        'Сторінка "Про клініку"',
+        'Зручна навігація (Header)',
+        'Повна адмін-панель'
       ]
     }
   ];
@@ -337,10 +356,11 @@ export default function IsodermePresentationPage() {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-6 border-t" style={{ borderColor: `${ISO.beige}40` }}>
-                  <span className="block text-[11px] font-bold tracking-[0.2em] uppercase iso-beig mb-1">Вартість</span>
-                  <div className="iso-choc text-3xl font-bold tracking-[-0.02em] opacity-90">
-                    {v.price}
+                <div className="iso-price-block">
+                  <span className="block text-[10px] font-bold tracking-[0.2em] uppercase iso-beig mb-2">Вартість</span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="iso-fg text-4xl font-black tracking-[-0.03em]">{v.price?.split('$')[1]}</span>
+                    <span className="iso-choc text-lg font-bold opacity-60">USD</span>
                   </div>
                 </div>
               </div>
@@ -377,16 +397,16 @@ export default function IsodermePresentationPage() {
               </thead>
               <tbody className="text-[14px]">
                 {[
-                  { label: 'Кількість сторінок', vals: ['1', '1', '5–8', '1 + квіз'] },
+                  { label: 'Кількість сторінок', vals: ['1', '1', '1 + квіз', '5–8'] },
                   { label: 'Лід-форма / запис', vals: ['—', '✓', '✓', '✓'] },
                   { label: 'Telegram-сповіщення', vals: ['—', '✓', '✓', '✓'] },
-                  { label: 'SEO-оптимізація', vals: ['базова', 'базова', 'розширена', 'базова'] },
-                  { label: 'Каталог послуг', vals: ['стислий', 'детальний', 'окремі сторінки', 'детальний'] },
+                  { label: 'SEO-оптимізація', vals: ['базова', 'базова', 'базова', 'розширена'] },
+                  { label: 'Каталог послуг', vals: ['стислий', 'детальний', 'детальний', 'окремі сторінки'] },
                   { label: 'Блок команди', vals: ['—', '✓', '✓', '✓'] },
-                  { label: 'Інтерактивний квіз', vals: ['—', '—', '—', '✓'] },
-                  { label: 'Збір анамнезу', vals: ['—', '—', '—', '✓'] },
+                  { label: 'Інтерактивний квіз', vals: ['—', '—', '✓', '—'] },
+                  { label: 'Збір анамнезу', vals: ['—', '—', '✓', '—'] },
                   { label: 'Адмін-панель', vals: ['—', '—', '✓', '✓'] },
-                  { label: 'Окремі сторінки послуг', vals: ['—', '—', '✓', '—'] },
+                  { label: 'Окремі сторінки послуг', vals: ['—', '—', '—', '✓'] },
                 ].map((row, ri) => (
                   <tr key={ri} style={{ borderBottom: `1px solid ${ISO.beige}40` }}>
                     <td className="py-4 px-5 iso-choc font-medium text-[13px]">{row.label}</td>
