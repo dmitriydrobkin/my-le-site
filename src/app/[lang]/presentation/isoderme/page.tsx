@@ -4,6 +4,12 @@ import {
   Minus
 } from 'lucide-react';
 import localFont from 'next/font/local';
+import Image from 'next/image';
+
+// @ts-expect-error
+import LogoIsoderme from './LOGO_ISODERME.svg';
+// @ts-expect-error
+import LogoShattics from './shattics_logo.svg';
 
 const mont = localFont({
   src: [
@@ -209,23 +215,35 @@ export default function IsodermePresentationPage() {
       <div dangerouslySetInnerHTML={{ __html: themeCSS }} />
 
       {/* ── 01. HERO SECTION ──────────────────────────── */}
-      <section className="relative w-full pt-24 pb-32 px-6 md:px-12 flex flex-col items-center justify-center text-center">
-        <div className="max-w-4xl mx-auto space-y-10">
+      <section className="relative w-full pt-24 pb-40 px-6 md:px-12 flex flex-col items-center justify-center text-center overflow-hidden">
+        
+        {/* Shattics Watermark */}
+        <div className="absolute inset-x-0 bottom-[-5%] flex justify-center pointer-events-none z-0">
+          <Image src={LogoShattics} alt="shattics" className="w-[120%] min-w-[1200px] max-w-none opacity-80" />
+        </div>
+
+        <div className="max-w-4xl mx-auto space-y-12 relative z-10">
           <span className="iso-accent-line mx-auto" />
           
-          <div className="space-y-4">
+          <div className="space-y-8">
             <div className="flex flex-wrap justify-center gap-3 mb-6">
               <span className="iso-tag">Презентація структури сайту</span>
             </div>
             
-            <h1 className="iso-fg leading-[0.95] tracking-[-0.04em] uppercase" style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontWeight: 900 }}>
-              Isod<span style={{ fontStyle: 'normal' }}>ē</span>rme
-            </h1>
+            <div className="flex justify-center px-4">
+              <Image src={LogoIsoderme} alt="Isoderme" className="w-full max-w-[700px] h-auto" />
+            </div>
           </div>
 
-          <p className="iso-choc max-w-2xl mx-auto leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', fontWeight: 300, letterSpacing: '0.04em' }}>
-            Ми вивчили ваш гайдлайн та філософію бренду. Нижче — варіанти структури майбутнього сайту з порівнянням можливостей кожного формату.
-          </p>
+          <div className="space-y-4">
+            <p className="iso-choc max-w-3xl mx-auto leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', fontWeight: 300, letterSpacing: '0.02em' }}>
+              <span className="font-bold">shattics</span> розробив для Isodērme фірмовий стиль, айдентику та філософію бренду.
+              <br className="hidden md:block" /> Наступний крок — цифрова присутність, яка відповідає тому ж рівню.
+            </p>
+            <p className="iso-choc max-w-2xl mx-auto leading-relaxed opacity-70" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.15rem)', fontWeight: 400, letterSpacing: '0.02em' }}>
+              Нижче — варіанти структури майбутнього сайту з порівнянням можливостей кожного формату.
+            </p>
+          </div>
 
           <div className="pt-8 flex justify-center">
             <a href="#variants" className="iso-btn">
