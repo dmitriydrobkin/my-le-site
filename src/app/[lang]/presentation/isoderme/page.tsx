@@ -6,9 +6,7 @@ import {
 import localFont from 'next/font/local';
 import Image from 'next/image';
 
-// @ts-expect-error
 import LogoIsoderme from './LOGO_ISODERME.svg';
-// @ts-expect-error
 import LogoShattics from './shattics_logo.svg';
 
 const mont = localFont({
