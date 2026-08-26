@@ -150,7 +150,7 @@ export default function IsodermePresentationPage() {
     {
       name: 'Візитка',
       tag: 'Швидкий старт',
-      priceLevel: '$',
+      price: '$250',
       idealFor: 'Швидкий запуск реклами, базове представлення в мережі (MVP).',
       benefit: 'Клієнт знаходить вас, бачить статус і може зв\'язатись. Мінімум витрат часу.',
       features: [
@@ -165,7 +165,7 @@ export default function IsodermePresentationPage() {
     {
       name: 'Лендінг',
       tag: 'Повноцінний продаж',
-      priceLevel: '$$',
+      price: '$600',
       idealFor: 'Активна генерація лідів, детальна презентація послуг та команди.',
       benefit: 'Збір заявок безпосередньо на сайті, вища конверсія завдяки розкриттю експертності.',
       active: true, // Recommended
@@ -181,7 +181,7 @@ export default function IsodermePresentationPage() {
     {
       name: 'Corporate',
       tag: 'Міні-багатосторінковик',
-      priceLevel: '$$$',
+      price: '$1200',
       idealFor: 'Статусне позиціонування, SEO-просування в Google.',
       benefit: 'Окрема сторінка для кожної послуги. Сайт сприймається як велика клініка.',
       features: [
@@ -196,7 +196,7 @@ export default function IsodermePresentationPage() {
     {
       name: 'Квіз',
       tag: 'Інтерактивна заявка',
-      priceLevel: '$$$',
+      price: '$900',
       idealFor: 'Складні послуги, сегментація пацієнтів ще до візиту.',
       benefit: 'Лікар отримує вже підготовлену заявку з анамнезом. Високе залучення пацієнта.',
       features: [
@@ -313,7 +313,6 @@ export default function IsodermePresentationPage() {
                     <span className="text-[10px] font-bold tracking-[0.15em] uppercase iso-burg border border-[#5C1F29]40 px-3 py-1 rounded-full">
                       {v.tag}
                     </span>
-                    {/* <span className="iso-choc font-bold text-sm">{v.priceLevel}</span> */}
                   </div>
                   <h3 className="iso-fg text-2xl font-black uppercase tracking-[-0.02em]">{v.name}</h3>
                 </div>
@@ -338,6 +337,13 @@ export default function IsodermePresentationPage() {
                   <p className="iso-choc text-[13px] font-light leading-relaxed opacity-80">
                     {v.idealFor}
                   </p>
+                </div>
+
+                <div className="mt-6 pt-6 border-t" style={{ borderColor: `${ISO.beige}40` }}>
+                  <span className="block text-[11px] font-bold tracking-[0.2em] uppercase iso-beig mb-1">Вартість</span>
+                  <div className="iso-fg text-3xl font-black tracking-[-0.03em]">
+                    {v.price}
+                  </div>
                 </div>
               </div>
             ))}
