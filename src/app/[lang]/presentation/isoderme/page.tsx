@@ -234,10 +234,12 @@ export default function IsodermePresentationPage() {
             </div>
           </div>
 
-          <div className="space-y-4">
-            <p className="iso-choc max-w-3xl mx-auto leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', fontWeight: 300, letterSpacing: '0.02em' }}>
+          <div className="space-y-4 px-4 relative z-10">
+            <p className="iso-choc mx-auto leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', fontWeight: 300, letterSpacing: '0.02em', maxWidth: '640px', textWrap: 'balance' }}>
               <span className="font-bold">shattics</span> розробив для Isodērme фірмовий стиль, айдентику та філософію бренду.
-              <br className="hidden md:block" /> Наступний крок — цифрова присутність, яка відповідає тому ж рівню.
+            </p>
+            <p className="iso-choc mx-auto leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', fontWeight: 300, letterSpacing: '0.02em', maxWidth: '640px', textWrap: 'balance' }}>
+              Наступний крок — цифрова присутність, яка відповідає тому ж рівню.
             </p>
           </div>
 
