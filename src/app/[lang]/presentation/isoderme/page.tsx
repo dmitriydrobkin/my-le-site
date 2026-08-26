@@ -215,11 +215,11 @@ export default function IsodermePresentationPage() {
       <div dangerouslySetInnerHTML={{ __html: themeCSS }} />
 
       {/* ── 01. HERO SECTION ──────────────────────────── */}
-      <section className="relative w-full pt-12 pb-32 px-6 md:px-12 flex flex-col items-center justify-center text-center overflow-hidden min-h-[85vh]">
+      <section className="relative w-full pt-12 pb-48 md:pb-64 px-6 md:px-12 flex flex-col items-center justify-center text-center overflow-hidden min-h-[95vh] md:min-h-screen">
         
         {/* Shattics Watermark */}
-        <div className="absolute inset-x-0 bottom-[-5%] flex justify-center pointer-events-none z-0">
-          <Image src={LogoShattics} alt="shattics" className="w-[120%] min-w-[1200px] max-w-none opacity-80" />
+        <div className="absolute inset-x-0 bottom-[-2%] md:bottom-[-5%] flex justify-center pointer-events-none z-0">
+          <Image src={LogoShattics} alt="shattics" className="w-[150%] md:w-[120%] h-auto min-w-[800px] md:min-w-[1200px] max-w-none opacity-80" />
         </div>
 
         <div className="max-w-4xl mx-auto space-y-10 relative z-10">
@@ -235,11 +235,11 @@ export default function IsodermePresentationPage() {
           </div>
 
           <div className="space-y-4 px-4 relative z-10">
-            <p className="iso-choc mx-auto leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', fontWeight: 300, letterSpacing: '0.02em', maxWidth: '640px', textWrap: 'balance' }}>
+            <p className="iso-choc mx-auto leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', fontWeight: 300, letterSpacing: '0.02em', maxWidth: '640px' }}>
               <span className="font-bold">shattics</span> розробив для Isodērme фірмовий стиль, айдентику та філософію бренду.
             </p>
-            <p className="iso-choc mx-auto leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', fontWeight: 300, letterSpacing: '0.02em', maxWidth: '640px', textWrap: 'balance' }}>
-              Наступний крок — цифрова присутність, яка відповідає тому ж рівню.
+            <p className="iso-choc mx-auto leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', fontWeight: 300, letterSpacing: '0.02em', maxWidth: '640px' }}>
+              Наступний крок —&nbsp;цифрова присутність, яка відповідає тому ж рівню.
             </p>
           </div>
 
