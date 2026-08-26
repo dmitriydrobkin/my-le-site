@@ -219,7 +219,7 @@ export default function IsodermePresentationPage() {
         
         {/* Shattics Watermark */}
         <div className="absolute inset-x-0 bottom-[-3%] md:bottom-[-5%] flex justify-center pointer-events-none z-0">
-          <Image src={LogoShattics} alt="shattics" className="w-[140%] md:w-[120%] h-auto md:min-w-[1200px] max-w-none opacity-80 object-contain" />
+          <Image src={LogoShattics} alt="shattics" className="w-[115%] md:w-[120%] h-auto md:min-w-[1200px] max-w-none opacity-80 object-contain" />
         </div>
 
         <div className="max-w-4xl mx-auto space-y-10 relative z-10">
