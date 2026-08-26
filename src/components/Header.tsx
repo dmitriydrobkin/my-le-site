@@ -44,7 +44,7 @@ export function Header({ lang }: { lang: string }) {
     };
   }, [isMenuOpen]);
 
-  if (pathname.startsWith('/admin')) return null;
+  if (pathname.startsWith('/admin') || pathname.includes('/presentation/')) return null;
 
   const isPresentationRoute = pathname.includes('/presentation');
   const [isVisible, setIsVisible] = useState(!isPresentationRoute);

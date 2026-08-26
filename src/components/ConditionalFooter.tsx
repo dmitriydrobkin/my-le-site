@@ -7,8 +7,8 @@ import { FAQSection } from './FAQSection';
 export function ConditionalFooter({ settings, lang }: { settings?: any, lang: string }) {
   const pathname = usePathname();
   
-  // Если мы в админке, не показываем футер и частые вопросы
-  if (pathname.startsWith('/admin')) {
+  // Если мы в админке или на странице презентации, не показываем футер и частые вопросы
+  if (pathname.startsWith('/admin') || pathname.includes('/presentation/')) {
     return null;
   }
 
