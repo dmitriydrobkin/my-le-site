@@ -341,7 +341,7 @@ export default function IsodermePresentationPage() {
 
                 <div className="mt-6 pt-6 border-t" style={{ borderColor: `${ISO.beige}40` }}>
                   <span className="block text-[11px] font-bold tracking-[0.2em] uppercase iso-beig mb-1">Вартість</span>
-                  <div className="iso-fg text-3xl font-black tracking-[-0.03em]">
+                  <div className="iso-choc text-3xl font-bold tracking-[-0.02em] opacity-90">
                     {v.price}
                   </div>
                 </div>
