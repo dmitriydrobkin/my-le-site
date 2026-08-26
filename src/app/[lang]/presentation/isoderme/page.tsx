@@ -215,15 +215,14 @@ export default function IsodermePresentationPage() {
       <div dangerouslySetInnerHTML={{ __html: themeCSS }} />
 
       {/* ── 01. HERO SECTION ──────────────────────────── */}
-      <section className="relative w-full pt-24 pb-40 px-6 md:px-12 flex flex-col items-center justify-center text-center overflow-hidden">
+      <section className="relative w-full pt-12 pb-32 px-6 md:px-12 flex flex-col items-center justify-center text-center overflow-hidden min-h-[85vh]">
         
         {/* Shattics Watermark */}
         <div className="absolute inset-x-0 bottom-[-5%] flex justify-center pointer-events-none z-0">
           <Image src={LogoShattics} alt="shattics" className="w-[120%] min-w-[1200px] max-w-none opacity-80" />
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-12 relative z-10">
-          <span className="iso-accent-line mx-auto" />
+        <div className="max-w-4xl mx-auto space-y-10 relative z-10">
           
           <div className="space-y-8">
             <div className="flex flex-wrap justify-center gap-3 mb-6">
