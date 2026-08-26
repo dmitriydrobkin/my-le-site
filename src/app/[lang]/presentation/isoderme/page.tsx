@@ -1,9 +1,7 @@
 import { Metadata } from 'next';
 import {
-  Stethoscope, LayoutTemplate, CheckCircle2, ShieldCheck,
-  FormInput, PhoneCall, List, ChevronRight, Check,
-  Sparkles, Globe, Users, MessageSquare, Calendar,
-  ArrowRight, Microscope, Heart, FileText
+  Check, Sparkles, ArrowRight, Microscope, Heart,
+  Minus
 } from 'lucide-react';
 import localFont from 'next/font/local';
 
@@ -20,8 +18,8 @@ const mont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Комерційна пропозиція | Isodērme × Le Site',
-  description: 'Структура та варіанти лендінгу для клініки Isodērme',
+  title: 'Презентація структури сайту | Isodērme',
+  description: 'Варіанти структури та архітектури сайту для клініки Isodērme',
 };
 
 /* ── Isoderme Brand Tokens ─────────────────────────────────── */
@@ -171,7 +169,7 @@ export default function IsodermePresentationPage() {
         'Інтеграція сповіщень у Telegram',
         'Детальні картки послуг',
         'Блок команди фахівців',
-        'Проста адмін-панель'
+        'Сторінка з відгуками'
       ]
     },
     {
@@ -217,8 +215,7 @@ export default function IsodermePresentationPage() {
           
           <div className="space-y-4">
             <div className="flex flex-wrap justify-center gap-3 mb-6">
-              <span className="iso-tag">Комерційна пропозиція</span>
-              {isAdmin && <span className="iso-tag" style={{ borderColor: ISO.black, color: ISO.black }}>Admin View</span>}
+              <span className="iso-tag">Презентація структури сайту</span>
             </div>
             
             <h1 className="iso-fg leading-[0.95] tracking-[-0.04em] uppercase" style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontWeight: 900 }}>
@@ -227,7 +224,7 @@ export default function IsodermePresentationPage() {
           </div>
 
           <p className="iso-choc max-w-2xl mx-auto leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', fontWeight: 300, letterSpacing: '0.04em' }}>
-            Ми вивчили ваш гайдлайн. «Не beauty clinic. Медична точність зустрічається з людським розумінням». Цей лендінг демонструє, як ваша філософія працюватиме в інтернеті.
+            Ми вивчили ваш гайдлайн та філософію бренду. Нижче — варіанти структури майбутнього сайту з порівнянням можливостей кожного формату.
           </p>
 
           <div className="pt-8 flex justify-center">
@@ -332,52 +329,71 @@ export default function IsodermePresentationPage() {
         </div>
       </section>
 
-      {/* ── 04. NEXT STEPS / CONTACT FORM ─────────────── */}
-      <section className="w-full py-24 bg-white px-6 md:px-12 border-t border-[#CBB8A6]40">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-[#100E0D] text-[#F6F1EB] rounded-2xl p-10 md:p-16 flex flex-col md:flex-row gap-12 items-center">
-            
-            <div className="flex-1 space-y-6">
-              <h2 className="uppercase tracking-[-0.03em] leading-[1.1]" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 900 }}>
-                Готові <span className="iso-burg">почати?</span>
-              </h2>
-              <p className="text-[15px] font-light opacity-80 leading-relaxed max-w-sm">
-                Якщо ви визначилися з варіантом, залиште контакти. Ми складемо точний кошторис та таймлайн розробки.
-              </p>
-            </div>
+      {/* ── 04. ПОРІВНЯЛЬНА ТАБЛИЦЯ ─────────────────── */}
+      <section className="w-full py-24 bg-white px-6 md:px-12 border-t" style={{ borderColor: `${ISO.beige}40` }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16 text-center flex flex-col items-center">
+            <span className="iso-accent-line mb-8" />
+            <h2 className="iso-fg uppercase tracking-[-0.03em] leading-tight mb-4" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 900 }}>
+              Порівняння варіантів
+            </h2>
+            <p className="iso-choc text-lg font-light max-w-2xl">
+              Ключові відмінності між структурами — оберіть формат, який найкраще відповідає цілям клініки
+            </p>
+          </div>
 
-            <div className="flex-1 w-full bg-[#F6F1EB] p-8 rounded-xl">
-              <form className="space-y-5">
-                <div>
-                  <label className="block text-[11px] font-bold tracking-[0.1em] uppercase iso-choc mb-2">Обраний варіант</label>
-                  <select className="iso-input bg-transparent cursor-pointer">
-                    <option>Варіант 1: Візитка</option>
-                    <option>Варіант 2: Розширений лендінг</option>
-                    <option>Варіант 3: Багатосторінковий</option>
-                    <option>Варіант 4: Квіз</option>
-                    <option>Ще не визначились, потрібна порада</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-[11px] font-bold tracking-[0.1em] uppercase iso-choc mb-2">Контактний телефон / Telegram</label>
-                  <input type="text" placeholder="+38 (000) 000-00-00" className="iso-input" />
-                </div>
-                <button type="button" className="iso-btn w-full justify-center mt-2">
-                  Обговорити проект
-                </button>
-              </form>
-            </div>
-            
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse" style={{ minWidth: '640px' }}>
+              <thead>
+                <tr style={{ borderBottom: `2px solid ${ISO.burgundy}` }}>
+                  <th className="py-5 px-5 iso-fg text-[12px] font-bold uppercase tracking-[0.15em]" style={{ width: '22%' }}>Функціонал</th>
+                  {variants.map((v, i) => (
+                    <th key={i} className={`py-5 px-5 text-center text-[12px] font-bold uppercase tracking-[0.15em] ${v.active ? 'iso-burg' : 'iso-fg'}`}>
+                      {v.name}
+                      {v.active && <span className="block text-[9px] mt-1 font-bold" style={{ color: ISO.burgundy, letterSpacing: '0.2em' }}>★ РЕКОМЕНДУЄМО</span>}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="text-[14px]">
+                {[
+                  { label: 'Кількість сторінок', vals: ['1', '1', '5–8', '1 + квіз'] },
+                  { label: 'Лід-форма / запис', vals: ['—', '✓', '✓', '✓'] },
+                  { label: 'Telegram-сповіщення', vals: ['—', '✓', '✓', '✓'] },
+                  { label: 'SEO-оптимізація', vals: ['базова', 'базова', 'розширена', 'базова'] },
+                  { label: 'Каталог послуг', vals: ['стислий', 'детальний', 'окремі сторінки', 'детальний'] },
+                  { label: 'Блок команди', vals: ['—', '✓', '✓', '✓'] },
+                  { label: 'Інтерактивний квіз', vals: ['—', '—', '—', '✓'] },
+                  { label: 'Збір анамнезу', vals: ['—', '—', '—', '✓'] },
+                  { label: 'Адмін-панель', vals: ['—', '—', '✓', '✓'] },
+                  { label: 'Окремі сторінки послуг', vals: ['—', '—', '✓', '—'] },
+                ].map((row, ri) => (
+                  <tr key={ri} style={{ borderBottom: `1px solid ${ISO.beige}40` }}>
+                    <td className="py-4 px-5 iso-choc font-medium text-[13px]">{row.label}</td>
+                    {row.vals.map((val, vi) => (
+                      <td key={vi} className="py-4 px-5 text-center">
+                        {val === '✓' ? (
+                          <Check className="w-5 h-5 mx-auto" style={{ color: ISO.burgundy }} />
+                        ) : val === '—' ? (
+                          <Minus className="w-4 h-4 mx-auto opacity-20" />
+                        ) : (
+                          <span className="iso-fg text-[13px] font-medium">{val}</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-16 text-center">
+            <p className="iso-choc text-[15px] font-light leading-relaxed max-w-xl mx-auto">
+              Кожен варіант можна адаптувати під ваші конкретні потреби. Ми обговоримо деталі та підберемо оптимальне рішення.
+            </p>
           </div>
         </div>
       </section>
-
-      {/* ── FOOTER ────────────────────────────────────── */}
-      <footer className="w-full py-8 text-center iso-bg border-t border-[#CBB8A6]30">
-        <p className="iso-beig" style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-          Le Site Studio © 2026 · Commercial Proposal
-        </p>
-      </footer>
 
     </div>
   );
