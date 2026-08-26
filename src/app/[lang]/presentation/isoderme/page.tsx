@@ -59,7 +59,6 @@ export default function IsodermePresentationPage() {
         background: #FFFFFF;
         border: 1px solid ${ISO.beige}40;
         transition: all 500ms cubic-bezier(.16,1,.3,1);
-        border-radius: 12px;
       }
       .iso-card:hover {
         box-shadow: 0 16px 48px ${ISO.chocolate}12;
@@ -71,7 +70,6 @@ export default function IsodermePresentationPage() {
         background: ${ISO.milk};
         border: 2px solid ${ISO.burgundy};
         position: relative;
-        border-radius: 12px;
       }
       .iso-card-active::before {
         content: "Рекомендуємо";
@@ -98,17 +96,6 @@ export default function IsodermePresentationPage() {
         width: 48px; height: 2px;
         background: ${ISO.burgundy};
         display: block;
-      }
-
-      .iso-price-block {
-        background: linear-gradient(135deg, ${ISO.milk} 0%, #FFFFFF 100%);
-        border-top: 1px solid ${ISO.beige}30;
-        padding: 20px 0 4px;
-        margin-top: 24px;
-      }
-      .iso-card-active .iso-price-block {
-        background: linear-gradient(135deg, ${ISO.burgundy}08 0%, ${ISO.milk} 100%);
-        border-top-color: ${ISO.burgundy}20;
       }
 
       .iso-tag {
@@ -296,7 +283,7 @@ export default function IsodermePresentationPage() {
                 desc: 'Чітка навігація. Мінімум кліків до запису. Пацієнт не губиться в термінах, а бачить рішення.',
               },
             ].map((item, i) => (
-              <div key={i} className="p-10 border border-[#CBB8A6]40 rounded-lg flex flex-col gap-6" style={{ background: ISO.milk }}>
+              <div key={i} className="p-10 border border-[#CBB8A6]40 rounded-xl flex flex-col gap-6" style={{ background: ISO.milk }}>
                 {item.icon}
                 <div>
                   <h3 className="iso-fg text-xl font-bold mb-3">{item.title}</h3>
@@ -321,10 +308,9 @@ export default function IsodermePresentationPage() {
             </p>
           </div>
 
-          {/* Comparative Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {variants.map((v, i) => (
-              <div key={i} className={`p-8 flex flex-col ${v.active ? 'iso-card-active' : 'iso-card rounded-lg'}`}>
+              <div key={i} className={`p-8 flex flex-col ${v.active ? 'iso-card-active rounded-xl' : 'iso-card rounded-xl'}`}>
                 <div className="mb-8">
                   <div className="flex justify-between items-start mb-4">
                     <span className="text-[10px] font-bold tracking-[0.15em] uppercase iso-burg border border-[#5C1F29]40 px-3 py-1 rounded-full">
@@ -356,11 +342,10 @@ export default function IsodermePresentationPage() {
                   </p>
                 </div>
 
-                <div className="iso-price-block">
-                  <span className="block text-[10px] font-bold tracking-[0.2em] uppercase iso-beig mb-2">Вартість</span>
-                  <div className="flex items-baseline gap-1">
-                    <span className="iso-fg text-4xl font-black tracking-[-0.03em]">{v.price?.split('$')[1]}</span>
-                    <span className="iso-choc text-lg font-bold opacity-60">USD</span>
+                <div className="mt-6 pt-6 border-t" style={{ borderColor: `${ISO.beige}40` }}>
+                  <span className="block text-[11px] font-bold tracking-[0.2em] uppercase iso-beig mb-1">Вартість</span>
+                  <div className="iso-choc text-3xl font-bold tracking-[-0.02em] opacity-90">
+                    {v.price}
                   </div>
                 </div>
               </div>
