@@ -239,9 +239,6 @@ export default function IsodermePresentationPage() {
               <span className="font-bold">shattics</span> розробив для Isodērme фірмовий стиль, айдентику та філософію бренду.
               <br className="hidden md:block" /> Наступний крок — цифрова присутність, яка відповідає тому ж рівню.
             </p>
-            <p className="iso-choc max-w-2xl mx-auto leading-relaxed opacity-70" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.15rem)', fontWeight: 400, letterSpacing: '0.02em' }}>
-              Нижче — варіанти структури майбутнього сайту з порівнянням можливостей кожного формату.
-            </p>
           </div>
 
           <div className="pt-8 flex justify-center">
