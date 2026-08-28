@@ -1,7 +1,9 @@
 "use client";
 import { motion, Variants } from 'framer-motion';
-import { Target, CheckCircle2, LayoutTemplate, Settings2, Sparkles, Clock, Smartphone, Search, Database, FileText, CreditCard, ShieldCheck } from 'lucide-react';
+import { Target, CheckCircle2, LayoutTemplate, Settings2, Sparkles, Clock, Smartphone, Search, Database, FileText, CreditCard, ShieldCheck, ArrowRight, Home, Users, ShoppingBag, Heart, Shield } from 'lucide-react';
 import React from 'react';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 const FADE_UP: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -12,8 +14,19 @@ const STAGGER: Variants = {
   visible: { transition: { staggerChildren: 0.1 } }
 };
 
+const siteModules = [
+  { id: "home", title: "Главная страница", icon: Home, desc: "Структура первого экрана, болей ЦА и решений." },
+  { id: "about", title: "Обо мне", icon: Heart, desc: "Продажа экспертности через эмпатию и твердые факты." },
+  { id: "products", title: "Продукты", icon: ShoppingBag, desc: "Витрина курсов и книг, снятие барьеров." },
+  { id: "consultations", title: "Консультации", icon: Users, desc: "Личная работа: от детей до беременности." },
+  { id: "articles", title: "Статьи", icon: FileText, desc: "Блог как генератор продаж и доверия." },
+  { id: "club", title: "Закрытый клуб", icon: Shield, desc: "Рекуррентная подписка и база рецептов (в проекте)." },
+];
+
 export default function AlisaKlimovaProposalFull() {
   const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
+  const params = useParams();
+  const lang = params.lang || "ru";
 
   return (
     <div className="min-h-[100dvh] bg-surface selection:bg-coral/20 font-sans text-ink overflow-x-hidden">
@@ -237,6 +250,46 @@ export default function AlisaKlimovaProposalFull() {
                Мы сможем интегрировать этот функционал отдельным этапом, когда вы будете к этому готовы, не переделывая весь сайт с нуля.
              </p>
            </motion.div>
+        </motion.section>
+
+         {/* 5. Детальная структура сайта (Модули) */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={STAGGER} className="space-y-6">
+           <motion.div variants={FADE_UP} className="mb-8">
+             <h2 className="text-2xl md:text-4xl font-black font-display flex flex-col sm:flex-row sm:items-center gap-3 md:gap-4 text-balance">
+               <span className="w-10 h-10 rounded-xl bg-coral text-white flex items-center justify-center text-xl shadow-neon-coral shrink-0">3</span>
+               <span>Архитектура и логика сайта</span>
+             </h2>
+             <p className="mt-4 text-ink/70 text-base md:text-lg text-pretty">
+               Я подготовил для вас интерактивную структуру страниц. Вы можете провалиться внутрь каждого модуля, чтобы посмотреть, какие блоки там будут и как мы будем вести клиента к покупке.
+             </p>
+           </motion.div>
+
+           <div className="space-y-4">
+             {siteModules.map((mod) => (
+               <motion.div
+                 key={mod.id}
+                 variants={FADE_UP}
+                 className="p-6 md:p-8 bg-white/70 backdrop-blur-xl shadow-glass rounded-[2rem] border border-black/5 relative group flex flex-col md:flex-row items-center md:justify-between gap-6 hover:shadow-glass-hover transition-all duration-500"
+               >
+                 <div className="flex items-center gap-6 w-full text-center md:text-left flex-col md:flex-row">
+                   <div className="w-16 h-16 shrink-0 rounded-2xl bg-coral/10 text-coral flex items-center justify-center">
+                     <mod.icon className="w-8 h-8" />
+                   </div>
+                   <div>
+                     <h3 className="text-xl md:text-2xl font-bold font-display mb-2">{mod.title}</h3>
+                     <p className="text-ink/60">{mod.desc}</p>
+                   </div>
+                 </div>
+                 
+                 <Link
+                   href={`/${lang}/presentation/alisa_klimova/${mod.id}`}
+                   className="w-full md:w-auto shrink-0 inline-flex items-center justify-center px-6 py-4 bg-ink text-white font-bold rounded-2xl shadow-lg hover:bg-ink/80 transition-all active:scale-95 group-hover:scale-105"
+                 >
+                   Смотреть логику <ArrowRight className="ml-2 w-5 h-5" />
+                 </Link>
+               </motion.div>
+             ))}
+           </div>
         </motion.section>
 
         {/* CTA */}
