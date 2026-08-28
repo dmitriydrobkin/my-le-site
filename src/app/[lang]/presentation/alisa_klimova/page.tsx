@@ -20,7 +20,6 @@ const siteModules = [
   { id: "products", title: "Продукты", icon: ShoppingBag, desc: "Витрина курсов и книг, снятие барьеров." },
   { id: "consultations", title: "Консультации", icon: Users, desc: "Личная работа: от детей до беременности." },
   { id: "articles", title: "Статьи", icon: FileText, desc: "Блог как генератор продаж и доверия." },
-  { id: "club", title: "Закрытый клуб", icon: Shield, desc: "Рекуррентная подписка и база рецептов (в проекте)." },
 ];
 
 export default function AlisaKlimovaProposalFull() {
