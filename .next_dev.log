@@ -1,0 +1,12 @@
+npm warn exec The following package was not found and will be installed: pnpm@11.24.0
+
+> nextjs-d1-drizzle-cloudflare-pages@0.1.0 dev /Applications/Project /my-le-site
+> pnpm setup:dev && node scripts/generate-presentations.js && next dev
+
+
+> nextjs-d1-drizzle-cloudflare-pages@0.1.0 setup:dev /Applications/Project /my-le-site
+> cp .env.development .env && cp .env.development .env.production.local && cp wrangler.toml.development wrangler.toml
+
+cp: .env.development: No such file or directory
+ ELIFECYCLE  Command failed with exit code 1.
+ ELIFECYCLE  Command failed with exit code 1.
