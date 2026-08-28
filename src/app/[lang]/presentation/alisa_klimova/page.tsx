@@ -252,7 +252,7 @@ export default function AlisaKlimovaProposalFull() {
         </motion.section>
 
          {/* 5. Детальная структура сайта (Модули) */}
-        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={STAGGER} className="space-y-6">
+        <motion.section id="modules-section" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={STAGGER} className="space-y-6">
            <motion.div variants={FADE_UP} className="mb-8">
              <h2 className="text-2xl md:text-4xl font-black font-display flex flex-col sm:flex-row sm:items-center gap-3 md:gap-4 text-balance">
                <span className="w-10 h-10 rounded-xl bg-coral text-white flex items-center justify-center text-xl shadow-neon-coral shrink-0">3</span>
