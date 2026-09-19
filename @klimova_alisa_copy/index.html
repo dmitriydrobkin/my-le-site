@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Алиса Климова · Специалист по питанию</title>
+  <meta name="description" content="Помогаю взрослым и детям выстроить здоровое питание и образ жизни без жестких ограничений и диет.">
+  <meta name="keywords" content="нутрициолог, питание детей, прикорм, женское здоровье, похудение без диет, Алиса Климова">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alisaklim.tilda.ws/">
+  <meta property="og:title" content="Алиса Климова · Специалист по питанию">
+  <meta property="og:description" content="Помогаю взрослым и детям выстроить здоровое питание и образ жизни без жестких ограничений.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1594824436998-05f90bc894fb?auto=format&fit=crop&q=80&w=1200">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF7F2',
+            creamDark: '#F2EDE5',
+            olive: '#4A5544',
+            oliveLight: '#5C6B55',
+            terracotta: '#C4724E',
+            terracottaLight: '#D68B6A',
+            textPrimary: '#2B2B2B',
+            textSecondary: '#6B6B6B',
+            textMuted: '#9A9A9A',
+            borderLight: '#E8E3DB',
+            footerBg: '#3A4536'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Manrope"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #FAF7F2;
+      color: #2B2B2B;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #4A5544;
+      font-weight: 500;
+    }
+    
+    /* Buttons */
+    .btn-primary {
+      background: #C4724E;
+      color: #FAF7F2;
+      border-radius: 100px;
+      padding: 14px 32px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary:hover {
+      background: #D68B6A;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(196, 114, 78, 0.3);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: #4A5544;
+      border: 1.5px solid #4A5544;
+      border-radius: 100px;
+      padding: 14px 32px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-secondary:hover {
+      background: #4A5544;
+      color: #FAF7F2;
+      transform: translateY(-1px);
+    }
+
+    .btn-link {
+      color: #C4724E;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+      transition: color 0.25s ease;
+    }
+    .btn-link:hover { color: #D68B6A; }
+    
+    /* Badges */
+    .badge-sm {
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: inline-block;
+    }
+    .badge-terracotta { background: rgba(196, 114, 78, 0.12); color: #C4724E; }
+    .badge-olive { background: rgba(74, 85, 68, 0.12); color: #4A5544; }
+
+    /* Navigation */
+    .nav-glass {
+      background: rgba(250, 247, 242, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(74, 85, 68, 0.08);
+    }
+    
+    .glass-badge {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 10px;
+    }
+
+    .overline-text {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #C4724E;
+      font-weight: 600;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    /* Scroll Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* Trust strip marquee */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Tab system */
+    .tab-btn {
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #6B6B6B;
+      background: transparent;
+      border: 1.5px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { color: #4A5544; }
+    .tab-btn.active {
+      background: #4A5544;
+      color: #FAF7F2;
+      border-color: #4A5544;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Testimonial */
+    .testimonial-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+      border: 1px solid #E8E3DB;
+    }
+
+    /* Card hover */
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+
+    /* Bento grid */
+    .bento-item {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(232, 227, 219, 0.5);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-item:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    /* Accordion */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .accordion-content.open {
+      max-height: 600px;
+    }
+    .accordion-icon {
+      transition: transform 0.3s ease;
+    }
+    .accordion-icon.open {
+      transform: rotate(45deg);
+    }
+
+    /* Number counter */
+    .number-accent {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 600;
+      color: #C4724E;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- STICKY NAVBAR -->
+  <header class="sticky top-0 z-50 w-full nav-glass transition-all duration-300">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-8 h-20 flex items-center justify-between">
+      <a href="#home" class="font-serif text-2xl tracking-[0.08em] font-medium text-olive hover:opacity-85 transition-opacity">
+        АЛИСА КЛИМОВА
+      </a>
+      <nav class="hidden md:flex items-center space-x-10 text-[15px] font-medium text-olive/80">
+        <a href="#about" class="hover:text-terracotta transition-colors">Обо мне</a>
+        <a href="#consultations" class="hover:text-terracotta transition-colors">Консультации</a>
+        <a href="#products" class="hover:text-terracotta transition-colors">Продукты</a>
+        <a href="#articles" class="hover:text-terracotta transition-colors">Блог</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="#booking" class="btn-primary py-2.5 px-6 text-sm hidden sm:flex">Записаться</a>
+        <button id="mobileMenuBtn" class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50">
+          <span class="line1 w-6 h-[2px] bg-olive transition-transform duration-300 origin-center"></span>
+          <span class="line2 w-6 h-[2px] bg-olive transition-opacity duration-300"></span>
+          <span class="line3 w-6 h-[2px] bg-olive transition-transform duration-300 origin-center"></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="fixed inset-0 bg-cream/98 backdrop-blur-xl z-40 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-all duration-300">
+      <nav class="flex flex-col items-center space-y-8 text-2xl font-serif text-olive">
+        <a href="#about" class="mobile-link hover:text-terracotta transition-colors">Обо мне</a>
+        <a href="#consultations" class="mobile-link hover:text-terracotta transition-colors">Консультации</a>
+        <a href="#products" class="mobile-link hover:text-terracotta transition-colors">Продукты</a>
+        <a href="#articles" class="mobile-link hover:text-terracotta transition-colors">Блог</a>
+        <a href="#booking" class="mobile-link btn-primary font-sans text-base mt-4">Записаться</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 1. HERO — Минималистичный, крупный, с акцентной цитатой -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section id="home" class="w-full max-w-[1200px] mx-auto px-5 md:px-8 pt-[60px] md:pt-[100px] pb-[40px] md:pb-[60px]">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div class="lg:col-span-7 flex flex-col justify-center reveal">
+          <span class="text-[12px] md:text-[13px] overline-text mb-6 block">
+            Специалист по питанию и комплексному подходу к здоровью
+          </span>
+          <h1 class="text-[36px] sm:text-[48px] lg:text-[56px] leading-[1.12] mb-6">
+            Помогаю взрослым и&nbsp;детям выстроить питание, которое работает <em class="not-italic text-terracotta">в&nbsp;реальной жизни</em>
+          </h1>
+          <p class="text-[17px] leading-[1.7] text-textSecondary mb-8 max-w-xl font-light">
+            Не диета на 21 день. Не универсальный протокол. А&nbsp;системный разбор вашей ситуации: питание, сон, стресс, активность — чтобы найти баланс, который можно поддерживать долго.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="#booking" class="btn-primary">Записаться на консультацию</a>
+            <a href="#products" class="btn-secondary">Программы и гайды</a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 flex justify-center lg:justify-end reveal reveal-delay-2">
+          <div class="relative w-full max-w-[400px]">
+            <div class="relative aspect-[3/4] w-full overflow-hidden rounded-[24px] shadow-[0_16px_48px_rgba(74,85,68,0.12)]">
+              <img src="images/551354495_18288018301261361_6287444496406407310_n.jpg" alt="Алиса Климова" class="w-full h-full object-cover" style="object-position: top center;">
+            </div>
+            <div class="absolute -bottom-5 left-4 sm:-left-4 right-4 sm:right-auto max-w-[280px] glass-badge p-4 shadow-[0_12px_32px_rgba(74,85,68,0.15)]">
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-terracotta mt-1.5 flex-shrink-0"></div>
+                <div>
+                  <p class="text-[13px] leading-snug font-medium text-olive font-sans">ТОП-10 Нутрициологов России</p>
+                  <p class="text-[11px] text-textSecondary mt-0.5 tracking-wide font-sans">Life Organics Awards 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- TRUST STRIP — Бегущая строка доверия                     -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="w-full border-y border-borderLight py-5 overflow-hidden bg-white/60">
+      <div class="flex whitespace-nowrap marquee-track">
+        <div class="flex items-center gap-12 px-6 text-[14px] font-medium text-olive/60 tracking-wide">
+          <span>С 2019 года · Индивидуальная работа</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>ТОП-10 Нутрициологов России 2023</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>Выпускница МИИН</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>Член АНКЗ</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>60 000+ подписчиков</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>Автор курса «Прикорм вместе»</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>Автор книги рецептов</span>
+          <span class="text-terracotta/30">✦</span>
+        </div>
+        <div class="flex items-center gap-12 px-6 text-[14px] font-medium text-olive/60 tracking-wide">
+          <span>С 2019 года · Индивидуальная работа</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>ТОП-10 Нутрициологов России 2023</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>Выпускница МИИН</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>Член АНКЗ</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>60 000+ подписчиков</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>Автор курса «Прикорм вместе»</span>
+          <span class="text-terracotta/30">✦</span>
+          <span>Автор книги рецептов</span>
+          <span class="text-terracotta/30">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 2. «УЗНАЁТЕ СЕБЯ?» — Бенто-грид, не 3 одинаковых карточки -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="w-full py-[80px] md:py-[100px]">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-[56px] reveal">
+          <h2 class="text-[32px] md:text-[44px] leading-[1.15] mb-4">Узнаёте себя?</h2>
+          <p class="text-[17px] text-textSecondary font-light">Вам ко мне, если хотите решить свой запрос системно — без давления и универсальных протоколов.</p>
+        </div>
+        
+        <!-- Bento Grid: 2 больших + 1 акцент -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          
+          <!-- Взрослые — крупная карточка -->
+          <div class="bento-item lg:row-span-2 reveal reveal-delay-1">
+            <div class="aspect-[4/3] lg:aspect-auto lg:h-[240px] overflow-hidden">
+              <img src="images/75244397_694545621046656_5298872380536389632_n.jpg" alt="Здоровое питание" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" style="object-position: top center;">
+            </div>
+            <div class="p-6 md:p-7">
+              <span class="badge-sm badge-terracotta mb-4">Взрослые</span>
+              <h3 class="text-[22px] mb-3">Питание, энергия и вес</h3>
+              <ul class="text-[14px] text-textSecondary font-light space-y-2.5 mb-6">
+                <li class="flex gap-2.5"><span class="text-terracotta mt-0.5">→</span> Перепробовали диеты — ничего не работает надолго</li>
+                <li class="flex gap-2.5"><span class="text-terracotta mt-0.5">→</span> По анализам «всё в норме», но сил нет</li>
+                <li class="flex gap-2.5"><span class="text-terracotta mt-0.5">→</span> Хотите разобраться с весом без жёстких ограничений</li>
+                <li class="flex gap-2.5"><span class="text-terracotta mt-0.5">→</span> Беспокоит кожа, пищеварение или сон</li>
+              </ul>
+              <a href="#consultations" class="btn-link">Подробнее →</a>
+            </div>
+          </div>
+
+          <!-- Дети -->
+          <div class="bento-item reveal reveal-delay-2">
+            <div class="p-6 md:p-7">
+              <span class="badge-sm badge-olive mb-4">Дети и прикорм</span>
+              <h3 class="text-[22px] mb-3">Здоровый рацион с первых лет</h3>
+              <ul class="text-[14px] text-textSecondary font-light space-y-2">
+                <li class="flex gap-2.5"><span class="text-olive mt-0.5">→</span> Ребёнок — малоежка или ест только 2–3 продукта</li>
+                <li class="flex gap-2.5"><span class="text-olive mt-0.5">→</span> Часто болеет, быстро устаёт</li>
+                <li class="flex gap-2.5"><span class="text-olive mt-0.5">→</span> Начинаете прикорм и хотите всё сделать правильно</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Беременность -->
+          <div class="bento-item reveal reveal-delay-3">
+            <div class="p-6 md:p-7">
+              <span class="badge-sm badge-terracotta mb-4">Беременность и семья</span>
+              <h3 class="text-[22px] mb-3">Ресурс мамы и малыша</h3>
+              <ul class="text-[14px] text-textSecondary font-light space-y-2">
+                <li class="flex gap-2.5"><span class="text-terracotta mt-0.5">→</span> Планируете или ждёте малыша</li>
+                <li class="flex gap-2.5"><span class="text-terracotta mt-0.5">→</span> Кормите грудью — ваш ресурс на нуле</li>
+                <li class="flex gap-2.5"><span class="text-terracotta mt-0.5">→</span> Устали готовить всем отдельно</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Акцентный CTA -->
+          <div class="lg:col-span-2 bg-olive rounded-[20px] p-7 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 reveal reveal-delay-4">
+            <div>
+              <p class="text-cream text-[18px] md:text-[20px] font-serif leading-snug">Не уверены, подойдёт ли вам формат?</p>
+              <p class="text-cream/70 text-[14px] font-light mt-1">Опишите свою ситуацию — я помогу определиться.</p>
+            </div>
+            <a href="#booking" class="btn-primary bg-terracotta shrink-0">Оставить заявку →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 3. ОБО МНЕ — Компактная история + аккордеон               -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section id="about" class="w-full bg-creamDark py-[80px] md:py-[100px]">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-[80px]">
+          <!-- Фото с декором -->
+          <div class="lg:col-span-5 reveal">
+            <div class="relative">
+              <img src="images/photo_2024-11-23_08-.jpg" alt="Алиса" class="w-full rounded-[24px] shadow-[0_16px_48px_rgba(0,0,0,0.08)] object-cover aspect-[4/5]" style="object-position: top center;">
+              <div class="absolute -bottom-6 -right-3 md:-right-6 bg-white p-5 rounded-[16px] shadow-lg max-w-[300px]">
+                <p class="font-serif italic text-[20px] text-olive leading-[1.3]">«Забота о здоровье не должна быть постоянной борьбой с собой»</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Текст -->
+          <div class="lg:col-span-7 reveal reveal-delay-1">
+            <h2 class="text-[32px] md:text-[44px] leading-[1.15] mb-6">Мой путь</h2>
+            <div class="text-[16px] leading-[1.75] text-textPrimary font-light space-y-4 mb-8">
+              <p>Много лет у меня практически не было сил и энергии — апатия, мало мотивации, постоянная борьба с весом через диеты и голодовки. Это привело к нарушению пищевого поведения и проблемам с циклом.</p>
+              <p>Около 6 лет я работала маркетологом, затем создала свой бизнес. Из личного интереса начала изучать составы косметики и косметическую химию, затем — физиологию и базовые показатели крови. Это обучение «для себя» полностью изменило мою профессиональную траекторию.</p>
+            </div>
+            
+            <!-- Блоки-карточки вместо аккордеонов (Tilda: TX17 или CO24) -->
+            <div class="space-y-4">
+              <div class="bg-white rounded-[16px] border border-borderLight/50 p-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-8 h-8 rounded-full bg-terracotta/10 flex items-center justify-center shrink-0">
+                    <span class="text-terracotta text-[14px] font-semibold">→</span>
+                  </div>
+                  <h4 class="text-[18px] font-serif text-olive">Мой опыт</h4>
+                </div>
+                <p class="text-[14px] text-textSecondary font-light leading-[1.7]">Были выраженные проблемы с пищеварением, разные схемы лечения без результата. С циклом предлагали гормональную коррекцию. Мне хотелось не просто убирать проявления, а разобраться, какие факторы вообще влияют на моё состояние. Я постоянно продолжаю учиться и не работаю по одному готовому протоколу для всех.</p>
+              </div>
+              <div class="bg-white rounded-[16px] border border-borderLight/50 p-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0">
+                    <span class="text-olive text-[14px] font-semibold">✿</span>
+                  </div>
+                  <h4 class="text-[18px] font-serif text-olive">Детское направление</h4>
+                </div>
+                <p class="text-[14px] text-textSecondary font-light leading-[1.7]">После рождения дочери для меня открылось отдельное огромное направление. Я увидела, насколько многое можно заложить в первые годы жизни ребёнка — и насколько сложно родителю понять, что делать. Отсюда вырос курс «Прикорм вместе» — от начала прикорма до трёх лет.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Миссия: два направления — визуально разный дизайн -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-[80px]">
+          <div class="bg-white rounded-[20px] p-8 md:p-10 reveal">
+            <div class="w-12 h-12 rounded-full bg-terracotta/10 flex items-center justify-center mb-5">
+              <span class="text-terracotta text-[20px]">♀</span>
+            </div>
+            <h3 class="text-[24px] mb-3">Для взрослых</h3>
+            <p class="text-[15px] text-textSecondary font-light leading-[1.7]">Помочь разобраться со своим самочувствием, питанием и образом жизни, увидеть взаимосвязи и выстроить систему заботы о себе, которую реально можно поддерживать в обычной жизни.</p>
+          </div>
+          <div class="bg-olive rounded-[20px] p-8 md:p-10 text-cream reveal reveal-delay-1">
+            <div class="w-12 h-12 rounded-full bg-cream/15 flex items-center justify-center mb-5">
+              <span class="text-cream text-[20px]">✿</span>
+            </div>
+            <h3 class="text-[24px] mb-3 text-cream">Для родителей</h3>
+            <p class="text-[15px] text-cream/80 font-light leading-[1.7]">Дать понятные знания и инструменты, чтобы с первых лет жизни ребёнка заложить базу разнообразного питания и здорового пищевого поведения.</p>
+          </div>
+        </div>
+
+        <!-- Принципы — горизонтальные карточки с иконками (Tilda: FT01/CO25) -->
+        <h2 class="text-[32px] md:text-[44px] leading-[1.15] mb-[48px] text-center reveal">Как я работаю</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+          <div class="bg-white rounded-[20px] p-7 border border-borderLight/50">
+            <div class="w-12 h-12 rounded-[12px] bg-terracotta/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            </div>
+            <h4 class="text-[20px] mb-2 font-serif text-olive">Комплексный взгляд</h4>
+            <p class="text-[14px] text-textSecondary font-light leading-[1.7]">Смотрю на здоровье целиком: питание, сон, стресс, активность. Невозможно разобраться, глядя только на рацион.</p>
+          </div>
+          <div class="bg-white rounded-[20px] p-7 border border-borderLight/50">
+            <div class="w-12 h-12 rounded-[12px] bg-olive/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            </div>
+            <h4 class="text-[20px] mb-2 font-serif text-olive">Для реальной жизни</h4>
+            <p class="text-[14px] text-textSecondary font-light leading-[1.7]">Рекомендации, которые можно соблюдать с вашим режимом, семьёй и ресурсом. Без идеализма и чувства вины.</p>
+          </div>
+          <div class="bg-white rounded-[20px] p-7 border border-borderLight/50">
+            <div class="w-12 h-12 rounded-[12px] bg-terracotta/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            </div>
+            <h4 class="text-[20px] mb-2 font-serif text-olive">Без запретов</h4>
+            <p class="text-[14px] text-textSecondary font-light leading-[1.7]">Не делю еду на «можно» и «нельзя». Выстраиваем баланс с местом для удовольствия от еды.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 4. КОНСУЛЬТАЦИИ — Табовый интерфейс                       -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section id="consultations" class="w-full py-[80px] md:py-[100px]">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-[48px] reveal">
+          <h2 class="text-[32px] md:text-[48px] leading-[1.12] mb-4">Персональная работа</h2>
+          <p class="text-[17px] text-textSecondary font-light">Каждая консультация — глубокое погружение в вашу ситуацию, а не стандартная схема.</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 mb-10 reveal">
+          <button class="tab-btn active" data-tab="adults">Взрослые</button>
+          <button class="tab-btn" data-tab="kids">Дети</button>
+          <button class="tab-btn" data-tab="mama">Мама + Малыш</button>
+          <button class="tab-btn" data-tab="pregnancy">Беременность</button>
+        </div>
+
+        <!-- Tab Panels -->
+        <div class="reveal">
+          <!-- Взрослые -->
+          <div id="tab-adults" class="tab-panel active">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+              <div class="lg:col-span-3 bento-item p-8 md:p-10">
+                <span class="badge-sm badge-terracotta mb-5">Для вас</span>
+                <p class="text-[17px] font-medium text-textPrimary mb-6">Если вы хотите разобраться со своим питанием, самочувствием или весом — системно, а не через очередную диету.</p>
+                <p class="text-[14px] font-semibold text-olive uppercase tracking-wider mb-3">С какими запросами работаю:</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-[14px] text-textSecondary font-light mb-8">
+                  <span>→ Питание и пищеварение</span>
+                  <span>→ Энергия и хроническая усталость</span>
+                  <span>→ Состояние кожи, волос, ногтей</span>
+                  <span>→ Вес и пищевые привычки</span>
+                  <span>→ Подбор витаминов и добавок</span>
+                  <span>→ Подготовка к беременности</span>
+                </div>
+                <a href="#booking" class="btn-primary">Записаться в предзапись →</a>
+              </div>
+              <div class="lg:col-span-2 bg-creamDark rounded-[20px] p-7">
+                <h4 class="text-[20px] mb-4">Что входит</h4>
+                <div class="space-y-4">
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">1</span></div><p class="text-[14px] text-textSecondary font-light">Подробная анкета до консультации</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">2</span></div><p class="text-[14px] text-textSecondary font-light">Анализ рациона и образа жизни</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">3</span></div><p class="text-[14px] text-textSecondary font-light">Видеоконсультация (60–90 мин)</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">4</span></div><p class="text-[14px] text-textSecondary font-light">Персональные рекомендации</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">5</span></div><p class="text-[14px] text-textSecondary font-light">Сопровождение после консультации</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Дети -->
+          <div id="tab-kids" class="tab-panel">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+              <div class="lg:col-span-3 bento-item p-8 md:p-10">
+                <span class="badge-sm badge-olive mb-5">Для родителей</span>
+                <p class="text-[17px] font-medium text-textPrimary mb-6">Выстроить здоровое питание ребёнка — от прикорма до школьного возраста.</p>
+                <p class="text-[14px] font-semibold text-olive uppercase tracking-wider mb-3">С какими запросами работаю:</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-[14px] text-textSecondary font-light mb-8">
+                  <span>→ Разнообразный рацион ребёнка</span>
+                  <span>→ Малоежки и избирательность</span>
+                  <span>→ Утомляемость и концентрация</span>
+                  <span>→ ОРВИ каждые 2 недели</span>
+                  <span>→ Питание при спортивных нагрузках</span>
+                  <span>→ Особенности роста и развития</span>
+                </div>
+                <a href="#booking" class="btn-primary">Записаться в предзапись →</a>
+              </div>
+              <div class="lg:col-span-2 bg-creamDark rounded-[20px] p-7">
+                <h4 class="text-[20px] mb-4">Что входит</h4>
+                <div class="space-y-4">
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">1</span></div><p class="text-[14px] text-textSecondary font-light">Подробная анкета (заполняет родитель)</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">2</span></div><p class="text-[14px] text-textSecondary font-light">Анализ рациона ребёнка и режима дня</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">3</span></div><p class="text-[14px] text-textSecondary font-light">Видеоконсультация (60–90 мин)</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">4</span></div><p class="text-[14px] text-textSecondary font-light">Персональные рекомендации по питанию и добавкам</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">5</span></div><p class="text-[14px] text-textSecondary font-light">Сопровождение после консультации</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Мама + Малыш -->
+          <div id="tab-mama" class="tab-panel">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+              <div class="lg:col-span-3 bento-item p-8 md:p-10">
+                <span class="badge-sm badge-terracotta mb-5">Два запроса — одна работа</span>
+                <p class="text-[17px] font-medium text-textPrimary mb-6">Для мам на грудном вскармливании, которые хотят позаботиться и о себе, и о малыше.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-[14px] text-textSecondary font-light mb-8">
+                  <span><strong class="text-textPrimary">Мама:</strong> Питание, энергия, витамины</span>
+                  <span><strong class="text-textPrimary">Малыш:</strong> Рацион, колики, сон</span>
+                  <span>Восстановление после родов</span>
+                  <span>Развитие и общее состояние</span>
+                </div>
+                <a href="#booking" class="btn-primary">Записаться в предзапись →</a>
+              </div>
+              <div class="lg:col-span-2 bg-creamDark rounded-[20px] p-7">
+                <h4 class="text-[20px] mb-4">Что входит</h4>
+                <div class="space-y-4">
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">1</span></div><p class="text-[14px] text-textSecondary font-light">Анкета на маму и на ребёнка</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">2</span></div><p class="text-[14px] text-textSecondary font-light">Анализ рациона и образа жизни обоих</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">3</span></div><p class="text-[14px] text-textSecondary font-light">Видеоконсультация (90 минут)</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">4</span></div><p class="text-[14px] text-textSecondary font-light">Персональные рекомендации для мамы и малыша</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">5</span></div><p class="text-[14px] text-textSecondary font-light">Сопровождение после консультации</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Беременность -->
+          <div id="tab-pregnancy" class="tab-panel">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+              <div class="lg:col-span-3 bento-item p-8 md:p-10">
+                <span class="badge-sm badge-olive mb-5">Комплексное сопровождение</span>
+                <p class="text-[17px] font-medium text-textPrimary mb-6">Для женщин, которые хотят поддержать себя и ребёнка на разных этапах беременности.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-[14px] text-textSecondary font-light mb-8">
+                  <span>→ Питание на разных триместрах</span>
+                  <span>→ Поддержка при токсикозе и отёках</span>
+                  <span>→ Подбор витаминов с учётом срока</span>
+                  <span>→ Подготовка к родам</span>
+                </div>
+                <a href="#booking" class="btn-primary">Записаться в предзапись →</a>
+              </div>
+              <div class="lg:col-span-2 bg-creamDark rounded-[20px] p-7">
+                <h4 class="text-[20px] mb-4">Что входит</h4>
+                <div class="space-y-4">
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">1</span></div><p class="text-[14px] text-textSecondary font-light">Подробная анкета и анализ рациона</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">2</span></div><p class="text-[14px] text-textSecondary font-light">Видеоконсультация (90 минут)</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">3</span></div><p class="text-[14px] text-textSecondary font-light">Персональные рекомендации на текущий этап</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">4</span></div><p class="text-[14px] text-textSecondary font-light">Расширенное сопровождение</p></div>
+                  <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center shrink-0 mt-0.5"><span class="text-olive text-sm font-semibold">5</span></div><p class="text-[14px] text-textSecondary font-light">Бонус: созвон по послеродовому восстановлению</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Как проходит работа — Иконки + стрелки (Tilda: CO14/ST02) -->
+        <div class="mt-[80px] reveal">
+          <h3 class="text-[28px] md:text-[36px] mb-10 text-center">Как проходит работа</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="bg-white rounded-[16px] p-6 border border-borderLight/50 text-center">
+              <div class="w-14 h-14 rounded-full bg-creamDark flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+              </div>
+              <h4 class="text-[17px] font-serif text-olive mb-1">Предзапись</h4>
+              <p class="text-[13px] text-textSecondary font-light">3–4 клиента в месяц. Оставьте заявку — я свяжусь.</p>
+            </div>
+            <div class="bg-white rounded-[16px] p-6 border border-borderLight/50 text-center">
+              <div class="w-14 h-14 rounded-full bg-creamDark flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+              </div>
+              <h4 class="text-[17px] font-serif text-olive mb-1">Анкета</h4>
+              <p class="text-[13px] text-textSecondary font-light">Заполняете подробную анкету в удобном темпе.</p>
+            </div>
+            <div class="bg-white rounded-[16px] p-6 border border-borderLight/50 text-center">
+              <div class="w-14 h-14 rounded-full bg-creamDark flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              </div>
+              <h4 class="text-[17px] font-serif text-olive mb-1">Консультация</h4>
+              <p class="text-[13px] text-textSecondary font-light">Видеосозвон 60–90 минут с глубоким разбором.</p>
+            </div>
+            <div class="bg-white rounded-[16px] p-6 border border-borderLight/50 text-center">
+              <div class="w-14 h-14 rounded-full bg-creamDark flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+              </div>
+              <h4 class="text-[17px] font-serif text-olive mb-1">Сопровождение</h4>
+              <p class="text-[13px] text-textSecondary font-light">Остаюсь на связи: поддержка, корректировка.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Акцентный блок -->
+        <div class="mt-[60px] bg-olive rounded-[24px] p-8 md:p-12 text-center reveal">
+          <h3 class="text-[24px] md:text-[36px] text-cream mb-4">Почему всего 3–4 клиента в месяц?</h3>
+          <p class="text-[16px] font-light leading-[1.7] max-w-2xl mx-auto text-cream/85">
+            Это не конвейер. Перед встречей я подробно изучаю вашу анкету. Во время консультации мы глубоко разбираем ситуацию. После — готовлю развёрнутые рекомендации и остаюсь на связи. Каждый клиент получает максимальную глубину и внимание.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 5. ПРОДУКТЫ — Визуальная иерархия                         -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section id="products" class="w-full bg-creamDark py-[80px] md:py-[100px]">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+        <div class="text-center mb-[56px] reveal">
+          <h2 class="text-[32px] md:text-[48px] leading-[1.12] mb-4">Программы и материалы</h2>
+          <p class="text-[17px] text-textSecondary font-light">Для тех, кто хочет начать прямо сейчас, в&nbsp;своём темпе.</p>
+        </div>
+
+        <!-- ХИТЫ — Два больших блока -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <!-- Прикорм -->
+          <div class="bento-item reveal reveal-delay-1">
+            <div class="h-[240px] overflow-hidden">
+              <img src="images/course_prikorm.png" alt="Прикорм вместе" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-7">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="badge-sm badge-olive">Флагманский курс</span>
+                <span class="badge-sm bg-cream text-textPrimary border border-borderLight/50">4 900 ₽</span>
+              </div>
+              <h3 class="text-[26px] mb-3">Прикорм вместе</h3>
+              <p class="text-[15px] text-textSecondary font-light leading-[1.6] mb-5">Пошаговая система от первого кусочка до общего стола (6 мес — 3 года). Бессрочный доступ, живые Q&A эфиры.</p>
+              <a href="https://alisaklim.tilda.ws/prikorm" target="_blank" rel="noopener noreferrer" class="btn-primary w-full text-center">Подробнее о курсе →</a>
+            </div>
+          </div>
+          <!-- Меню -->
+          <div class="bento-item reveal reveal-delay-2">
+            <div class="h-[240px] overflow-hidden">
+              <img src="images/course_menu.png" alt="Меню для семьи" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-7">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="badge-sm badge-terracotta">Готовые рационы</span>
+                <span class="badge-sm bg-cream text-textPrimary border border-borderLight/50">2 190 ₽/мес</span>
+              </div>
+              <h3 class="text-[26px] mb-3">Меню для ребёнка и семьи</h3>
+              <p class="text-[15px] text-textSecondary font-light leading-[1.6] mb-5">4 недели завтраков, обедов, перекусов и ужинов. Обновляется по сезону. Доступ через Telegram.</p>
+              <a href="https://alisaklim.tilda.ws/menu" target="_blank" rel="noopener noreferrer" class="btn-primary w-full text-center">Подробнее о проекте →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Мини-продукты — компактная горизонтальная полоска -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+          <a href="https://alisaklim.tilda.ws/sadik" target="_blank" rel="noopener noreferrer" class="bento-item p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-[18px] leading-tight font-serif text-olive">Эфир «Садик»</h4>
+                <span class="text-[13px] text-terracotta font-medium whitespace-nowrap">590 ₽</span>
+              </div>
+              <p class="text-[13px] text-textSecondary font-light mb-4">Адаптация к садику: питание, иммунитет, добавки по возрастам.</p>
+            </div>
+            <span class="text-[13px] text-olive font-medium group-hover:text-terracotta transition-colors">Купить →</span>
+          </a>
+          <a href="#" class="bento-item p-5 flex flex-col justify-between group">
+            <div>
+              <h4 class="text-[18px] leading-tight font-serif text-olive mb-2">Книга рецептов</h4>
+              <p class="text-[13px] text-textSecondary font-light mb-4">53 проверенных блюда из моей реальной кухни. Для детей и взрослых.</p>
+            </div>
+            <span class="text-[13px] text-olive font-medium group-hover:text-terracotta transition-colors">Подробнее →</span>
+          </a>
+          <a href="https://alisaklim.tilda.ws/omega3" target="_blank" rel="noopener noreferrer" class="bento-item p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-[18px] leading-tight font-serif text-olive">Гайд Омега-3</h4>
+                <span class="text-[13px] text-terracotta font-medium whitespace-nowrap">590 ₽</span>
+              </div>
+              <p class="text-[13px] text-textSecondary font-light mb-4">Формы, дозировки, бренды — для взрослых и детей.</p>
+            </div>
+            <span class="text-[13px] text-olive font-medium group-hover:text-terracotta transition-colors">Купить →</span>
+          </a>
+          <a href="https://alisaklim.tilda.ws/protein" target="_blank" rel="noopener noreferrer" class="bento-item p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-[18px] leading-tight font-serif text-olive">Гайд Протеин</h4>
+                <span class="text-[13px] text-terracotta font-medium whitespace-nowrap">590 ₽</span>
+              </div>
+              <p class="text-[13px] text-textSecondary font-light mb-4">Виды протеинов, коллаген, рецепты и проверенные бренды.</p>
+            </div>
+            <span class="text-[13px] text-olive font-medium group-hover:text-terracotta transition-colors">Купить →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 6. ОТЗЫВЫ — Социальное доказательство                     -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="w-full py-[80px] md:py-[100px]">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+        <h2 class="text-[32px] md:text-[44px] leading-[1.15] mb-[48px] text-center reveal">Что говорят клиенты</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+          <div class="testimonial-card">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-olive/10 flex items-center justify-center"><span class="text-olive font-semibold">А</span></div>
+              <div><p class="text-[14px] font-medium">Анна</p><p class="text-[12px] text-textMuted">Консультация для взрослых</p></div>
+            </div>
+            <p class="text-[14px] text-textSecondary font-light leading-[1.7] italic">«Впервые после консультации у меня не было ощущения, что мне дали невыполнимый список. Всё было про мою реальную жизнь, мой ритм, мои ограничения. Через 2 месяца — энергия вернулась.»</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-terracotta/10 flex items-center justify-center"><span class="text-terracotta font-semibold">М</span></div>
+              <div><p class="text-[14px] font-medium">Мария</p><p class="text-[12px] text-textMuted">Курс «Прикорм вместе»</p></div>
+            </div>
+            <p class="text-[14px] text-textSecondary font-light leading-[1.7] italic">«Мы начали прикорм с этим курсом и ни разу не пожалели. Дочка в 1.5 года ест практически всё. Самое ценное — я перестала тревожиться за каждый приём пищи.»</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-olive/10 flex items-center justify-center"><span class="text-olive font-semibold">Е</span></div>
+              <div><p class="text-[14px] font-medium">Екатерина</p><p class="text-[12px] text-textMuted">Проект «Меню»</p></div>
+            </div>
+            <p class="text-[14px] text-textSecondary font-light leading-[1.7] italic">«Готовое меню на каждый день — это то, что спасло мои вечера. Больше не ломаю голову "что приготовить". Ребёнок ест с удовольствием, а я готовлю одно на всех.»</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 7. БЛОГ                                                    -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section id="articles" class="w-full bg-creamDark py-[80px] md:py-[100px]">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-[48px] reveal">
+          <div>
+            <h2 class="text-[32px] md:text-[44px] leading-[1.15] mb-2">База знаний</h2>
+            <p class="text-[16px] text-textSecondary font-light max-w-lg">Разбираю сложные темы простым языком. Только то, что можно применить.</p>
+          </div>
+          <a href="https://instagram.com/alisa__klim" target="_blank" rel="noopener noreferrer" class="btn-secondary shrink-0">Все статьи в Instagram →</a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 reveal">
+          <div class="bento-item card-hover">
+            <div class="aspect-[16/10] overflow-hidden">
+              <img src="images/article_prikorm.png" alt="Прикорм" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-5">
+              <span class="text-[11px] text-terracotta uppercase tracking-wider font-semibold mb-2 block">Прикорм</span>
+              <h4 class="text-[19px] mb-2 font-serif text-olive">С чего начинать прикорм: пошаговый гид</h4>
+              <p class="text-[13px] text-textSecondary font-light">Основные принципы безопасного введения прикорма.</p>
+            </div>
+          </div>
+          <div class="bento-item card-hover">
+            <div class="aspect-[16/10] overflow-hidden">
+              <img src="images/article_energy.jpg" alt="Энергия" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-5">
+              <span class="text-[11px] text-olive uppercase tracking-wider font-semibold mb-2 block">Взрослые</span>
+              <h4 class="text-[19px] mb-2 font-serif text-olive">Почему по анализам всё в норме, а сил нет?</h4>
+              <p class="text-[13px] text-textSecondary font-light">Неочевидные причины хронической усталости.</p>
+            </div>
+          </div>
+          <div class="bento-item card-hover">
+            <div class="aspect-[16/10] overflow-hidden">
+              <img src="images/article_omega.png" alt="Омега-3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-5">
+              <span class="text-[11px] text-terracotta uppercase tracking-wider font-semibold mb-2 block">Добавки</span>
+              <h4 class="text-[19px] mb-2 font-serif text-olive">Омега-3 для детей: нужен ли?</h4>
+              <p class="text-[13px] text-textSecondary font-light">Разбираем мифы о постоянном приёме.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Соцсети — компактная полоска -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
+          <span class="text-[14px] text-textSecondary font-light">Больше в моих блогах:</span>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="https://instagram.com/alisa__klim" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-white border border-borderLight text-[13px] font-medium text-olive hover:border-terracotta hover:text-terracotta transition-colors">Instagram* (Основной)</a>
+            <a href="https://t.me/klim_alisa" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-white border border-borderLight text-[13px] font-medium text-olive hover:border-terracotta hover:text-terracotta transition-colors">Telegram</a>
+            <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-white border border-borderLight text-[13px] font-medium text-olive hover:border-terracotta hover:text-terracotta transition-colors">ВКонтакте</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 8. ФОРМА ПРЕДЗАПИСИ                                       -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section id="booking" class="w-full py-[80px] md:py-[100px]">
+      <div id="bookingFormContainer" class="max-w-[720px] mx-auto px-5 md:px-8 transition-all duration-500 reveal">
+        <div class="bg-white rounded-[24px] shadow-[0_8px_32px_rgba(0,0,0,0.06)] border border-borderLight/50 p-8 md:p-12">
+          <div class="text-center mb-8">
+            <h2 class="text-[28px] md:text-[40px] leading-[1.2] mb-3">Хотите разобраться системно?</h2>
+            <p class="text-[15px] text-textSecondary font-light">Оставьте заявку — я свяжусь, когда появится место.</p>
+          </div>
+
+          <form id="bookingForm" class="space-y-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-[13px] font-medium text-textPrimary mb-1.5">Ваше имя</label>
+                <input type="text" required class="w-full px-4 py-3 rounded-[10px] border border-borderLight focus:border-olive focus:outline-none transition-colors bg-cream/50" placeholder="Имя">
+              </div>
+              <div>
+                <label class="block text-[13px] font-medium text-textPrimary mb-1.5">Email</label>
+                <input type="email" required class="w-full px-4 py-3 rounded-[10px] border border-borderLight focus:border-olive focus:outline-none transition-colors bg-cream/50" placeholder="your@email.com">
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-[13px] font-medium text-textPrimary mb-1.5">Способ связи</label>
+                <select class="w-full px-4 py-3 rounded-[10px] border border-borderLight focus:border-olive focus:outline-none transition-colors bg-cream/50">
+                  <option>Telegram</option>
+                  <option>WhatsApp</option>
+                  <option>E-mail</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[13px] font-medium text-textPrimary mb-1.5">Контакт</label>
+                <input type="text" class="w-full px-4 py-3 rounded-[10px] border border-borderLight focus:border-olive focus:outline-none transition-colors bg-cream/50" placeholder="@username или номер">
+              </div>
+            </div>
+            <div>
+              <label class="block text-[13px] font-medium text-textPrimary mb-1.5">Формат</label>
+              <select class="w-full px-4 py-3 rounded-[10px] border border-borderLight focus:border-olive focus:outline-none transition-colors bg-cream/50">
+                <option>Консультация для взрослых</option>
+                <option>Консультация для детей</option>
+                <option>Мама + Малыш</option>
+                <option>Сопровождение беременности</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-primary w-full text-center cursor-pointer mt-2">Оставить заявку</button>
+            <p class="text-[11px] text-center text-textMuted">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-footerBg text-cream py-12 border-t border-oliveLight/30">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div class="col-span-1 md:col-span-2">
+          <a href="#" class="font-serif text-2xl tracking-[0.08em] font-medium text-cream mb-4 inline-block">АЛИСА КЛИМОВА</a>
+          <p class="text-[14px] font-light text-cream/70 max-w-sm mt-2">Специалист по питанию и комплексному подходу к здоровью.</p>
+        </div>
+        <div>
+          <h5 class="text-lg font-serif mb-4 text-cream">Навигация</h5>
+          <ul class="space-y-3 text-[14px] font-light text-cream/70">
+            <li><a href="#about" class="hover:text-terracotta transition-colors">Обо мне</a></li>
+            <li><a href="#consultations" class="hover:text-terracotta transition-colors">Консультации</a></li>
+            <li><a href="#products" class="hover:text-terracotta transition-colors">Продукты</a></li>
+            <li><a href="#articles" class="hover:text-terracotta transition-colors">Блог</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-lg font-serif mb-4 text-cream">Соцсети</h5>
+          <ul class="space-y-3 text-[14px] font-light text-cream/70">
+            <li><a href="https://instagram.com/alisa__klim" target="_blank" rel="noopener noreferrer" class="hover:text-terracotta transition-colors">Instagram*</a></li>
+            <li><a href="https://t.me/klim_alisa" target="_blank" rel="noopener noreferrer" class="hover:text-terracotta transition-colors">Telegram</a></li>
+            <li><a href="https://vk.com/" target="_blank" rel="noopener noreferrer" class="hover:text-terracotta transition-colors">ВКонтакте</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-cream/10 pt-8">
+        <div class="bg-cream/5 p-4 md:p-5 rounded-lg mb-6 border-l-4 border-terracotta">
+          <p class="text-[12px] text-cream/70 font-light leading-relaxed">
+            <strong>Дисклеймер:</strong> Консультации, рекомендации и материалы не являются медицинской помощью, диагностикой или лечением заболеваний и не заменяют консультацию врача.
+          </p>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center text-[12px] text-cream/50 gap-4">
+          <p>© 2026 Алиса Климова. Все права защищены.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="hover:text-cream transition-colors">Договор оферты</a>
+            <a href="#" class="hover:text-cream transition-colors">Политика конфиденциальности</a>
+          </div>
+        </div>
+        <p class="text-[11px] text-cream/30 mt-4 text-center md:text-left">*Instagram принадлежит компании Meta, признанной экстремистской организацией и запрещенной в РФ.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ═══ Scroll reveal animations ═══
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ═══ Mobile Menu ═══
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+      const lines = document.querySelectorAll('.line1, .line2, .line3');
+      if (isMenuOpen) {
+        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+        mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+        document.querySelector('.line1').classList.add('rotate-45', 'translate-y-[8px]');
+        document.querySelector('.line2').classList.add('opacity-0');
+        document.querySelector('.line3').classList.add('-rotate-45', '-translate-y-[8px]');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+        document.querySelector('.line1').classList.remove('rotate-45', 'translate-y-[8px]');
+        document.querySelector('.line2').classList.remove('opacity-0');
+        document.querySelector('.line3').classList.remove('-rotate-45', '-translate-y-[8px]');
+        document.body.style.overflow = '';
+      }
+    }
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => { if (isMenuOpen) toggleMenu(); }));
+
+    // ═══ Tabs ═══
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ═══ Accordion ═══
+    function toggleAccordion(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.accordion-icon');
+      content.classList.toggle('open');
+      icon.classList.toggle('open');
+    }
+
+    // ═══ Form ═══
+    const bookingForm = document.getElementById('bookingForm');
+    const bookingFormContainer = document.getElementById('bookingFormContainer');
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        bookingFormContainer.innerHTML = `
+          <div class="text-center py-12">
+            <div class="w-16 h-16 bg-olive/10 rounded-full flex items-center justify-center mx-auto mb-5">
+              <svg class="w-8 h-8 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h3 class="text-[28px] font-serif text-olive mb-3">Спасибо за заявку!</h3>
+            <p class="text-[16px] text-textSecondary font-light">Я свяжусь с вами в ближайшее время.</p>
+          </div>
+        `;
+      });
+    }
+
+    // ═══ Placeholder links ═══
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (!link.closest('footer') || link.textContent.includes('оферт') || link.textContent.includes('конфиденциальност')) {
+          e.preventDefault();
+          // Don't alert for footer nav links
+        }
+      });
+    });
+  </script>
+</body>
+</html>

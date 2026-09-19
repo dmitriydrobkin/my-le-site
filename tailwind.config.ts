@@ -8,6 +8,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        /** Alisa Klimova colors */
+        alisa: {
+          cream: '#FAF7F2',
+          creamDark: '#F2EDE5',
+          olive: '#4A5544',
+          oliveLight: '#5C6B55',
+          terracotta: '#C4724E',
+          terracottaLight: '#D68B6A',
+          textPrimary: '#2B2B2B',
+          textSecondary: '#6B6B6B',
+          textMuted: '#9A9A9A',
+          borderLight: '#E8E3DB',
+          footerBg: '#3A4536'
+        },
         /** Светлый фон */
         surface: {
           DEFAULT: "#f8f9fa",
@@ -34,6 +48,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         display: ["var(--font-display)", ...fontFamily.sans],
+        serif: ["var(--font-serif)", "serif"],
       },
       boxShadow: {
         'glass': '0 8px 32px 0 rgba(17, 17, 17, 0.05)',

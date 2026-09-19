@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Алиса Климова — Специалист по питанию</title>
+  <meta name="description" content="Помогаю взрослым и детям выстроить питание, которое работает в реальной жизни.">
+  <!-- Google Fonts: EB Garamond & Manrope (Cyrillic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF7F2',
+            'cream-dark': '#F2EDE5',
+            olive: '#4A5544',
+            terracotta: '#C4724E',
+            'terracotta-dk': '#B65D38',
+            warmgray: '#6B6864',
+            lightborder: '#E8E3DA',
+            'footer-bg': '#3A4536',
+          },
+          fontFamily: {
+            serif: ['"EB Garamond"', 'serif'],
+            sans: ['"Manrope"', 'sans-serif'],
+          },
+          boxShadow: {
+            'card-soft': '0 12px 36px -8px rgba(74,85,68,0.08), 0 4px 12px -2px rgba(74,85,68,0.04)',
+            'card-hover': '0 20px 44px -10px rgba(74,85,68,0.12), 0 8px 20px -4px rgba(74,85,68,0.06)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #FAF7F2;
+      color: #2F332C;
+      font-family: 'Manrope', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .badge-glass {
+      background: rgba(250, 247, 242, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+    }
+    .nav-glass {
+      background: rgba(250, 247, 242, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(74, 85, 68, 0.08);
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-cream antialiased selection:bg-terracotta/20 selection:text-terracotta">
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- БЛОК 1: STICKY NAVBAR                                  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <header class="sticky top-0 z-50 w-full nav-glass transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+      <a href="#" class="font-serif text-2xl tracking-[0.08em] font-medium text-olive hover:opacity-85 transition-opacity">
+        АЛИСА КЛИМОВА
+      </a>
+      <nav class="hidden md:flex items-center space-x-10 text-sm font-medium text-olive/80">
+        <a href="#home" class="text-olive hover:text-terracotta transition-colors">Главная</a>
+        <a href="#pain-points" class="hover:text-terracotta transition-colors">Обо мне</a>
+        <a href="#navigator" class="hover:text-terracotta transition-colors">Консультации</a>
+        <a href="#products" class="hover:text-terracotta transition-colors">Продукты</a>
+        <a href="#articles" class="hover:text-terracotta transition-colors">Статьи</a>
+      </nav>
+      <div class="flex items-center">
+        <a href="#cta" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-terracotta text-white text-sm font-medium hover:bg-terracotta-dk shadow-sm hover:shadow transition-all duration-200 active:scale-[0.98]">
+          Записаться
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- БЛОК 1: HERO SECTION                                    -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="home" class="w-full max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+      <!-- Left Column: Content -->
+      <div class="lg:col-span-7 flex flex-col justify-center pr-0 lg:pr-4">
+        <div class="inline-flex items-center mb-6">
+          <span class="text-xs md:text-sm font-semibold tracking-[0.1em] text-terracotta uppercase">
+            АЛИСА КЛИМОВА · СПЕЦИАЛИСТ ПО ПИТАНИЮ
+          </span>
+        </div>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-[56px] leading-[1.12] font-normal text-olive mb-7 tracking-[-0.01em]">
+          Помогаю взрослым и детям выстроить питание, которое работает в реальной жизни.
+        </h1>
+        <p class="font-light text-base sm:text-lg lg:text-[18px] leading-[1.65] text-warmgray mb-10 max-w-2xl">
+          Я не рассматриваю питание изолированно от человека. Мы системно разбираем ваш запрос: пищевые привычки, сон, стресс, активность и потребность в витаминах — чтобы найти баланс, который вы сможете поддерживать долго.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 sm:gap-5">
+          <a href="#cta" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-olive text-cream text-sm sm:text-base font-medium shadow-sm hover:bg-[#3d4738] transition-all duration-200 active:scale-[0.98]">
+            Записаться на консультацию
+          </a>
+          <a href="#navigator" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-olive text-olive text-sm sm:text-base font-medium hover:bg-olive/5 transition-all duration-200 active:scale-[0.98]">
+            Продукты и проекты
+          </a>
+        </div>
+      </div>
+      <!-- Right Column: Portrait -->
+      <div class="lg:col-span-5 flex justify-center lg:justify-end">
+        <div class="relative w-full max-w-[460px]">
+          <div class="relative aspect-[3/4] w-full overflow-hidden rounded-[20px] shadow-[0_20px_45px_-15px_rgba(74,85,68,0.18)] border border-lightborder/80 bg-cream-dark">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_s8V2U9TN0xkJDqnwOEfet2msDhrn6Nm3vIPS2g7WO1Hd6RuAu8N7BvQIEy6tQkTpczCKRTnh1EpFziwBVdwKwXjlXWtuL8a_lgezcQQM-CkgiYkyaBMrUOhUZIP1LfhOl-CGx9ynxX3PKeCr-hRyN67xUygb0ryFZVeNXzL8TKkySHjONrVpqoYVbntg2AtrhlbNMgK2DtaJJqe17GenqFsAI7OgDgt3sYQlLxpKML49RrOeF42naK33Gwo0bUOJ6ZAn_4OR4WM" 
+              alt="Алиса Климова — специалист по питанию" 
+              class="w-full h-full object-cover object-center hover:scale-[1.02] transition-transform duration-700 ease-out"
+            />
+          </div>
+          <div class="absolute -bottom-5 sm:-bottom-6 left-4 sm:-left-6 right-4 sm:right-auto max-w-[340px] badge-glass rounded-2xl p-4 shadow-[0_12px_32px_rgba(74,85,68,0.12)]">
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 rounded-full bg-terracotta mt-1.5 flex-shrink-0"></div>
+              <div>
+                <p class="text-[13px] sm:text-sm leading-snug font-medium text-olive">
+                  ТОП-10 Нутрициологов России
+                </p>
+                <p class="text-[11px] sm:text-xs text-warmgray mt-0.5 tracking-wide">
+                  Life Organics Awards 2023
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- БЛОК 2: КАРТОЧКИ БОЛЕЙ «УЗНАЁТЕ СЕБЯ?»                 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="pain-points" class="w-full py-24 px-6 md:px-12 lg:px-20 bg-cream-dark">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+        <h2 class="font-serif text-[40px] leading-[1.15] text-olive font-normal tracking-tight mb-4">
+          Узнаёте себя?
+        </h2>
+        <p class="font-sans font-light text-base leading-relaxed text-[#5A6255]">
+          Вам ко мне, если вы хотите решить свой запрос системно — без давления и универсальных протоколов.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Card 1: Взрослые -->
+        <article class="bg-white rounded-[14px] p-3 shadow-card-soft hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="overflow-hidden rounded-[10px] aspect-[4/3] bg-cream-dark">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9v5_BUL1LQ4_OMre0FhkeAs_r80yjcg8eTDp5vv3ikx6tyLuI41c2ryCm42vHSvTDuwbpnkXPclb7eDJN7i-6GbpmP0zf6vQ5gR8f_ugLnPHE6lXK3KaBjzfzDtCfp1wzDEPHY1VNHU1olUufccrBMH16_2ufRCKk7kDnup9UPFGDw119VASGCFw2sgIwdgAh0kTYOd2FvnvsL1Miue4t45SGHZFXRLQfOCidbNp-RlKe3v5SoMyY7hdEHm8898x66eCv9BhMnrs" alt="Здоровое питание" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"/>
+            </div>
+            <div class="pt-6 px-3 pb-2">
+              <div class="inline-flex items-center px-2.5 py-1 rounded-[6px] bg-terracotta/[0.12] text-terracotta-dk text-[11px] font-semibold tracking-wider uppercase mb-4">ВЗРОСЛЫЕ</div>
+              <h3 class="font-serif text-2xl font-normal text-olive leading-snug mb-5">Взрослые запросы</h3>
+              <ul class="space-y-3.5 mb-6">
+                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-terracotta-dk mt-2 shrink-0"></span><p class="font-sans font-light text-[14px] leading-relaxed text-[#5A6255]">Перепробовали диеты и ограничения, но ничего не работает надолго.</p></li>
+                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-terracotta-dk mt-2 shrink-0"></span><p class="font-sans font-light text-[14px] leading-relaxed text-[#5A6255]">Беспокоит уровень энергии, качество сна, состояние кожи или пищеварение.</p></li>
+              </ul>
+            </div>
+          </div>
+          <div class="px-3 pt-2 pb-3">
+            <a href="#cta" class="inline-flex items-center text-[14px] font-medium text-terracotta-dk underline underline-offset-4 hover:text-[#9A4C2C] transition-colors">Подробнее &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Card 2: Дети -->
+        <article class="bg-white rounded-[14px] p-3 shadow-card-soft hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="overflow-hidden rounded-[10px] aspect-[4/3] bg-cream-dark">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5hO4Q4my9nkVBSrdEjSCNqV8bzfySxO3EYirBijUj4h9KhWywHudpWvU1tTQjfRLKvAMCWeEIZCHbymAfmSTbSJd9YEg-HJvy3Syj03KxWeVCAp6TXEVzM5wr_TwL9r0MLq5wlDQL0sbcDIhjpn1KdIuLJXf4Emcm9w_SpkJ_5Nj_KQyqpK78YU_LHm_GeZtapKCLBXS4lKyXd96wXSqW2zuP72Wq7wIcidk5aYoTA9pt6s_zAjJCSrHHt18UYXWhhOdFjX7QYak" alt="Ребёнок и прикорм" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"/>
+            </div>
+            <div class="pt-6 px-3 pb-2">
+              <div class="inline-flex items-center px-2.5 py-1 rounded-[6px] bg-olive/[0.12] text-olive text-[11px] font-semibold tracking-wider uppercase mb-4">ДЕТИ</div>
+              <h3 class="font-serif text-2xl font-normal text-olive leading-snug mb-5">Дети и прикорм</h3>
+              <ul class="space-y-3.5 mb-6">
+                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-olive mt-2 shrink-0"></span><p class="font-sans font-light text-[14px] leading-relaxed text-[#5A6255]">Начинаете прикорм и хотите сразу заложить здоровую базу.</p></li>
+                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-olive mt-2 shrink-0"></span><p class="font-sans font-light text-[14px] leading-relaxed text-[#5A6255]">Ребёнок — малоежка: ест 2–3 продукта, требует сладкое.</p></li>
+              </ul>
+            </div>
+          </div>
+          <div class="px-3 pt-2 pb-3">
+            <a href="#cta" class="inline-flex items-center text-[14px] font-medium text-terracotta-dk underline underline-offset-4 hover:text-[#9A4C2C] transition-colors">Подробнее &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Card 3: Семья -->
+        <article class="bg-white rounded-[14px] p-3 shadow-card-soft hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="overflow-hidden rounded-[10px] aspect-[4/3] bg-cream-dark">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLp1Rzbse3cmwp-zrcFbkvfofiRaj5bdhkusKbefgRRy4zotnjC5tKSVzQl-pyfUHD2hFsp8kQtl3fPl-etDbH69s6yVDlNGE33EemCeZVbZNeoWUKnk8-zRsj-j0leZHinyCOUyxDms2JIvCFP0mLNAeIWMf0ViABo1L2wHVbpNSp3qhtHppO5NCdPCkzYjciPNfMmhM2rRQmnAo4_KcLTcVEIRTZrt-G7Ja5dC6YX5Fk51S-Z_DxF4BbdLrMgFzOKYyVm9Nx52g" alt="Беременность и семья" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"/>
+            </div>
+            <div class="pt-6 px-3 pb-2">
+              <div class="inline-flex items-center px-2.5 py-1 rounded-[6px] bg-terracotta/[0.12] text-terracotta-dk text-[11px] font-semibold tracking-wider uppercase mb-4">СЕМЬЯ</div>
+              <h3 class="font-serif text-2xl font-normal text-olive leading-snug mb-5">Беременность и семья</h3>
+              <ul class="space-y-3.5 mb-6">
+                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-terracotta-dk mt-2 shrink-0"></span><p class="font-sans font-light text-[14px] leading-relaxed text-[#5A6255]">Планируете беременность и хотите поддержать ресурс организма.</p></li>
+                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-terracotta-dk mt-2 shrink-0"></span><p class="font-sans font-light text-[14px] leading-relaxed text-[#5A6255]">Устали готовить всем отдельно — мечтаете о едином рационе.</p></li>
+              </ul>
+            </div>
+          </div>
+          <div class="px-3 pt-2 pb-3">
+            <a href="#cta" class="inline-flex items-center text-[14px] font-medium text-terracotta-dk underline underline-offset-4 hover:text-[#9A4C2C] transition-colors">Подробнее &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- БЛОК 3: ДВОЙНОЙ МАРШРУТИЗАТОР                           -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="navigator" class="w-full bg-cream py-20 sm:py-24 px-6 md:px-12 lg:px-20">
+    <div class="max-w-7xl mx-auto">
+      <header class="text-center mb-14 md:mb-16">
+        <span class="inline-block text-[11px] font-semibold uppercase tracking-[0.2em] text-terracotta mb-3">Навигация по услугам</span>
+        <h2 class="font-serif text-4xl sm:text-[40px] leading-tight font-normal text-olive mb-4">Как я могу помочь?</h2>
+        <p class="font-sans font-light text-base sm:text-lg text-[#70776C] max-w-xl mx-auto">Выберите удобный путь: начните с запроса или с формата работы.</p>
+      </header>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <!-- LEFT: По формату -->
+        <section>
+          <div class="pb-3 mb-6 border-b border-lightborder flex items-center justify-between">
+            <h3 class="text-xs sm:text-sm font-semibold uppercase tracking-[0.1em] text-terracotta">ПОИСК ПО ФОРМАТУ</h3>
+            <span class="text-[11px] text-[#A29E95] tracking-wider uppercase font-medium">4 направления</span>
+          </div>
+          <div class="space-y-3.5">
+            <a href="#cta" class="group relative block bg-white rounded-[14px] p-6 border border-lightborder shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5 overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-[4px] bg-terracotta opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="flex items-center justify-between gap-4">
+                <div class="space-y-1">
+                  <h4 class="font-serif text-[22px] sm:text-[24px] font-normal text-olive leading-snug group-hover:text-[#384233] transition-colors">Индивидуальные консультации</h4>
+                  <p class="text-[13px] font-normal text-[#70776C] leading-relaxed">Взрослые, Дети, Беременность, Мама+Малыш</p>
+                </div>
+                <span class="text-terracotta opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 font-serif text-lg shrink-0">&rarr;</span>
+              </div>
+            </a>
+            <a href="#" class="group relative block bg-white rounded-[14px] p-6 border border-lightborder shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5 overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-[4px] bg-terracotta opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="flex items-center justify-between gap-4">
+                <div class="space-y-1">
+                  <h4 class="font-serif text-[22px] sm:text-[24px] font-normal text-olive leading-snug group-hover:text-[#384233] transition-colors">Курс «Прикорм вместе»</h4>
+                  <p class="text-[13px] font-normal text-[#70776C] leading-relaxed">Система питания ребёнка от 5 мес до 3 лет</p>
+                </div>
+                <span class="text-terracotta opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 font-serif text-lg shrink-0">&rarr;</span>
+              </div>
+            </a>
+            <a href="#" class="group relative block bg-white rounded-[14px] p-6 border border-lightborder shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5 overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-[4px] bg-terracotta opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="flex items-center justify-between gap-4">
+                <div class="space-y-1">
+                  <h4 class="font-serif text-[22px] sm:text-[24px] font-normal text-olive leading-snug group-hover:text-[#384233] transition-colors">Меню для ребёнка и семьи</h4>
+                  <p class="text-[13px] font-normal text-[#70776C] leading-relaxed">Готовые рационы на 4 недели</p>
+                </div>
+                <span class="text-terracotta opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 font-serif text-lg shrink-0">&rarr;</span>
+              </div>
+            </a>
+            <a href="#" class="group relative block bg-white rounded-[14px] p-6 border border-lightborder shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5 overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-[4px] bg-terracotta opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="flex items-center justify-between gap-4">
+                <div class="space-y-1">
+                  <h4 class="font-serif text-[22px] sm:text-[24px] font-normal text-olive leading-snug group-hover:text-[#384233] transition-colors">Книга рецептов и Гайды</h4>
+                  <p class="text-[13px] font-normal text-[#70776C] leading-relaxed">53 рецепта, Омега-3, Протеины и коллаген</p>
+                </div>
+                <span class="text-terracotta opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 font-serif text-lg shrink-0">&rarr;</span>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- RIGHT: По запросу -->
+        <section>
+          <div class="pb-3 mb-6 border-b border-lightborder flex items-center justify-between">
+            <h3 class="text-xs sm:text-sm font-semibold uppercase tracking-[0.1em] text-olive">ПОИСК ПО ЗАПРОСУ</h3>
+            <span class="text-[11px] text-[#A29E95] tracking-wider uppercase font-medium">Темы и задачи</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <a href="#" class="group block bg-white rounded-[14px] p-6 border border-lightborder shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-olive/40 hover:shadow-card-hover hover:-translate-y-0.5 flex flex-col justify-between min-h-[162px]">
+              <div>
+                <h4 class="font-serif text-[21px] font-normal text-olive leading-snug mb-2.5 group-hover:text-[#384233] transition-colors">Питание ребёнка</h4>
+                <p class="text-[13px] font-light text-[#70776C] leading-relaxed">Прикорм, малоежки, адаптация к садику, иммунитет.</p>
+              </div>
+              <div class="pt-3 border-t border-[#F2EEE7] mt-3 flex items-center justify-between">
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-olive/80 group-hover:text-terracotta transition-colors">Выбрать тему</span>
+                <span class="text-xs text-[#70776C] group-hover:text-terracotta transition-all">&rarr;</span>
+              </div>
+            </a>
+            <a href="#" class="group block bg-white rounded-[14px] p-6 border border-lightborder shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-olive/40 hover:shadow-card-hover hover:-translate-y-0.5 flex flex-col justify-between min-h-[162px]">
+              <div>
+                <h4 class="font-serif text-[21px] font-normal text-olive leading-snug mb-2.5 group-hover:text-[#384233] transition-colors">Взрослые запросы</h4>
+                <p class="text-[13px] font-light text-[#70776C] leading-relaxed">Пищеварение, энергия, вес, пищевые привычки.</p>
+              </div>
+              <div class="pt-3 border-t border-[#F2EEE7] mt-3 flex items-center justify-between">
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-olive/80 group-hover:text-terracotta transition-colors">Выбрать тему</span>
+                <span class="text-xs text-[#70776C] group-hover:text-terracotta transition-all">&rarr;</span>
+              </div>
+            </a>
+            <a href="#" class="group block bg-white rounded-[14px] p-6 border border-lightborder shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-olive/40 hover:shadow-card-hover hover:-translate-y-0.5 flex flex-col justify-between min-h-[162px]">
+              <div>
+                <h4 class="font-serif text-[21px] font-normal text-olive leading-snug mb-2.5 group-hover:text-[#384233] transition-colors">Беременность</h4>
+                <p class="text-[13px] font-light text-[#70776C] leading-relaxed">Сопровождение, токсикоз, подготовка к родам.</p>
+              </div>
+              <div class="pt-3 border-t border-[#F2EEE7] mt-3 flex items-center justify-between">
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-olive/80 group-hover:text-terracotta transition-colors">Выбрать тему</span>
+                <span class="text-xs text-[#70776C] group-hover:text-terracotta transition-all">&rarr;</span>
+              </div>
+            </a>
+            <a href="#" class="group block bg-white rounded-[14px] p-6 border border-lightborder shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:border-olive/40 hover:shadow-card-hover hover:-translate-y-0.5 flex flex-col justify-between min-h-[162px]">
+              <div>
+                <h4 class="font-serif text-[21px] font-normal text-olive leading-snug mb-2.5 group-hover:text-[#384233] transition-colors">Мама + Малыш</h4>
+                <p class="text-[13px] font-light text-[#70776C] leading-relaxed">ГВ, восстановление после родов, питание малыша.</p>
+              </div>
+              <div class="pt-3 border-t border-[#F2EEE7] mt-3 flex items-center justify-between">
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-olive/80 group-hover:text-terracotta transition-colors">Выбрать тему</span>
+                <span class="text-xs text-[#70776C] group-hover:text-terracotta transition-all">&rarr;</span>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <div class="mt-14 text-center">
+        <p class="text-xs text-[#70776C]/80 font-light">
+          Не уверены, какой формат подойдёт именно вам? 
+          <a href="#cta" class="text-terracotta font-medium underline underline-offset-4 hover:text-terracotta-dk transition-colors ml-1">Задайте вопрос в Telegram</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- БЛОК 4: CTA SECTION                                     -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="cta" class="w-full bg-olive py-20 sm:py-24 px-6 sm:px-12 lg:px-20">
+    <div class="max-w-[720px] mx-auto text-center">
+      <h2 class="font-serif text-4xl sm:text-[40px] leading-tight text-cream font-normal mb-5">Готовы начать?</h2>
+      <p class="font-sans font-light text-base sm:text-lg text-cream/70 leading-relaxed mb-10 max-w-lg mx-auto">
+        Выберите удобный формат работы — индивидуальная консультация, курс или готовые материалы.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
+        <a href="#" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-cream text-olive text-sm sm:text-base font-medium hover:bg-white transition-all duration-200 active:scale-[0.98]">
+          Записаться на консультацию
+        </a>
+        <a href="#" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-cream text-cream text-sm sm:text-base font-medium hover:bg-cream/10 transition-all duration-200 active:scale-[0.98]">
+          Смотреть продукты
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- БЛОК 4: FOOTER                                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <footer class="w-full bg-footer-bg text-cream pt-16 pb-12 px-6 sm:px-12 lg:px-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 pb-14">
+        <div class="flex flex-col">
+          <span class="text-[13px] font-semibold tracking-wider text-cream/60 uppercase mb-5">НАВИГАЦИЯ</span>
+          <ul class="space-y-3">
+            <li><a href="#home" class="text-[14px] text-cream/80 hover:text-cream transition-colors">Главная</a></li>
+            <li><a href="#pain-points" class="text-[14px] text-cream/80 hover:text-cream transition-colors">Обо мне</a></li>
+            <li><a href="#navigator" class="text-[14px] text-cream/80 hover:text-cream transition-colors">Консультации</a></li>
+            <li><a href="#" class="text-[14px] text-cream/80 hover:text-cream transition-colors">Продукты</a></li>
+            <li><a href="#" class="text-[14px] text-cream/80 hover:text-cream transition-colors">Статьи</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[13px] font-semibold tracking-wider text-cream/60 uppercase mb-5">СОЦСЕТИ</span>
+          <ul class="space-y-3">
+            <li><a href="https://instagram.com/alisa__klim" target="_blank" class="text-[14px] text-cream/80 hover:text-cream transition-colors">Instagram @alisa__klim</a></li>
+            <li><a href="https://t.me/klim_alisa" target="_blank" class="text-[14px] text-cream/80 hover:text-cream transition-colors">Telegram @klim_alisa</a></li>
+            <li><a href="#" class="text-[14px] text-cream/80 hover:text-cream transition-colors">YouTube</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[13px] font-semibold tracking-wider text-cream/60 uppercase mb-5">ДОКУМЕНТЫ</span>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-[14px] text-cream/80 hover:text-cream transition-colors">Договор оферты</a></li>
+            <li><a href="#" class="text-[14px] text-cream/80 hover:text-cream transition-colors">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="w-full border-t border-white/10 mb-8"></div>
+      <div class="max-w-[720px] mx-auto text-center">
+        <p class="text-[13px] leading-relaxed text-cream/50 font-light">
+          Консультации, рекомендации и материалы не являются медицинской помощью, диагностикой или лечением заболеваний и не заменяют консультацию врача.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
