@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export const config = {
-  // Игнорируем API, статику, картинки, фавиконки, админку
-  matcher: ['/((?!api|_next/static|_next/image|admin|icon|apple-icon|favicon.ico|.*\\..*).*)'],
+  // Игнорируем API, статику, картинки, фавиконки, админку и страницу alisa
+  matcher: ['/((?!api|_next/static|_next/image|admin|alisa|icon|apple-icon|favicon.ico|.*\\..*).*)'],
 };
 
 export function middleware(request: NextRequest) {
