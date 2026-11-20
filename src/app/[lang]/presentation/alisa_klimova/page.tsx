@@ -288,17 +288,16 @@ export default function AlisaKlimovaProposalFull() {
 
                   <tr className="bg-orange-50/50">
                     <td className="py-4 px-2">
-                      <strong className="text-ink block">7 продающих лендингов продуктов</strong>
+                      <strong className="text-ink block">7 посадочных страниц под продукты</strong>
                       <span className="text-xs text-orange-600 block mt-0.5">
-                        /prikorm (12 бл.), /menu (9 бл.), /recipes (8 бл.), /sadik (8 бл.), /cosmetics (7 бл.), /protein (7 бл.), /omega3 (7 бл.)
+                        /prikorm, /menu, /recipes, /sadik, /cosmetics, /protein, /omega3 (58 блоков)
                       </span>
                     </td>
-                    <td className="py-4 px-2 text-xs md:text-sm text-ink/60 hidden sm:table-cell">0 страниц (планировались только поп-апы на витрине)</td>
+                    <td className="py-4 px-2 text-xs md:text-sm text-ink/60 hidden sm:table-cell">Общая витрина с поп-апами</td>
                     <td className="py-4 px-2 text-xs md:text-sm text-orange-700 font-medium">
-                      +7 полноценных лендингов
+                      7 отдельных страниц
                     </td>
                     <td className="py-4 px-2 text-right whitespace-nowrap">
-                      <span className="text-xs text-ink/40 line-through block sm:inline sm:mr-2">$210</span>
                       <strong className="text-orange-600 font-bold">+$105.00</strong>
                       <span className="text-[11px] text-orange-500 block font-normal">(7 × $15)</span>
                     </td>
@@ -308,7 +307,7 @@ export default function AlisaKlimovaProposalFull() {
                     <td className="py-4 px-2">
                       <strong className="text-ink block">Подготовка сайта к Черной пятнице</strong>
                       <span className="text-xs text-purple-600 block mt-0.5">
-                        Акционные плашки, баннеры на витрине, спец-тарифы для ноябрьской распродажи
+                        Баннеры на витрине, акционные плашки и спец-тарифы
                       </span>
                     </td>
                     <td className="py-4 px-2 text-xs md:text-sm text-ink/60 hidden sm:table-cell">Не входило в КП</td>
@@ -322,14 +321,14 @@ export default function AlisaKlimovaProposalFull() {
 
                   <tr>
                     <td className="py-4 px-2">
-                      <strong className="text-ink block">Юридический хаб, 404 и блог</strong>
+                      <strong className="text-ink block">Сопутствующие разделы сайта</strong>
                       <span className="text-xs text-ink/50">
-                        6 юр. страниц (/privacy, /offer-products, /offer-consultations, /consent, /disclaimer, /payments), интерактивная /404 + 10 статей вместо 3-5
+                        Юридический хаб (оферты, согласие, 404), добавление статей блога, базовое SEO
                       </span>
                     </td>
-                    <td className="py-4 px-2 text-xs md:text-sm text-ink/60 hidden sm:table-cell">1 страница политики + 3-5 статей</td>
+                    <td className="py-4 px-2 text-xs md:text-sm text-ink/60 hidden sm:table-cell">Базовая политика + статьи</td>
                     <td className="py-4 px-2 text-xs md:text-sm text-emerald-700 font-medium">
-                      +6 страниц + 5 доп. статей + Schema.org
+                      Готово под ключ
                     </td>
                     <td className="py-4 px-2 text-right font-bold text-emerald-600 whitespace-nowrap">
                       $0.00 <span className="text-xs font-normal block text-emerald-500">(Включено)</span>
@@ -347,31 +346,27 @@ export default function AlisaKlimovaProposalFull() {
                   <span className="font-semibold text-white font-mono">$350.00</span>
                 </div>
                 <div className="flex justify-between items-center text-white/70">
-                  <span>7 отдельных продуктовых лендингов (7 × $15):</span>
+                  <span>7 продуктовых страниц (7 × $15):</span>
                   <span className="font-semibold text-orange-400 font-mono">+$105.00</span>
                 </div>
                 <div className="flex justify-between items-center text-white/70">
-                  <span>Подготовка к Черной пятнице (Black Friday промо):</span>
+                  <span>Подготовка к Черной пятнице:</span>
                   <span className="font-semibold text-purple-400 font-mono">+$5.00</span>
                 </div>
                 <div className="flex justify-between items-center text-white/70">
-                  <span>6 юр. страниц, интерактивная 404 и 10 статей блога:</span>
+                  <span>Юридический хаб, статьи и базовое SEO:</span>
                   <span className="font-semibold text-emerald-400 font-mono">$0.00 (Включено)</span>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-base md:text-lg font-bold pt-2 gap-1 border-t border-white/10">
-                  <span>Итоговая фактическая стоимость сайта (21 страница):</span>
+                  <span>Итоговая стоимость проекта (21 страница):</span>
                   <div className="text-left sm:text-right">
                     <span className="text-xl md:text-2xl font-black font-mono text-white">$460.00</span>
-                    <span className="text-xs text-white/60 block font-normal">(40 876,48 руб. по курсу Альфа-Банка от 20.11.2026, 1 USD = 88,86 руб.)</span>
+                    <span className="text-xs text-white/60 block font-normal">(38 500 руб. согласно курсу Альфа-Банка на кредитную, 1 USD = 83,7 руб.)</span>
                   </div>
                 </div>
                 <div className="flex justify-between items-center text-emerald-400 pt-1">
                   <span>Внесенная вами предоплата на старте:</span>
                   <span className="font-bold font-mono text-lg">-13 000 руб.</span>
-                </div>
-                <div className="flex justify-between items-center text-white/60 text-xs">
-                  <span>Округление к 500 руб. в меньшую сторону:</span>
-                  <span className="font-semibold text-emerald-400 font-mono">-376 руб.</span>
                 </div>
               </div>
 
@@ -382,15 +377,15 @@ export default function AlisaKlimovaProposalFull() {
                     Финальный остаток к оплате при сдаче:
                   </div>
                   <div className="text-xs text-white/60">
-                    Согласно курсу Альфа-Банка (40 876 руб.) за вычетом аванса 13 000 руб. и округления к 500 руб.
+                    Согласно расчету по курсу Альфа-Банка (38 500 руб.) за вычетом предоплаты 13 000 руб.
                   </div>
                 </div>
                 <div className="flex sm:flex-col items-baseline sm:items-end justify-between sm:justify-center gap-1.5 border-t sm:border-t-0 border-white/10 pt-2 sm:pt-0">
                   <div className="text-2xl sm:text-3xl md:text-4xl font-black font-mono text-orange-400 whitespace-nowrap">
-                    27 500 руб.
+                    25 500 руб.
                   </div>
                   <div className="text-xs text-white/60 font-mono whitespace-nowrap">
-                    (или $310.00 по курсу)
+                    (или $305.00 по курсу)
                   </div>
                 </div>
               </div>
