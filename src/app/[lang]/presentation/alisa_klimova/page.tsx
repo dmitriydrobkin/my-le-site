@@ -1,6 +1,6 @@
 "use client";
 import { motion, Variants } from 'framer-motion';
-import { Target, CheckCircle2, LayoutTemplate, Settings2, Sparkles, Clock, Smartphone, Search, Database, FileText, CreditCard, ShieldCheck, ArrowRight, Home, Users, ShoppingBag, Heart, Shield } from 'lucide-react';
+import { Target, CheckCircle2, LayoutTemplate, Settings2, Sparkles, Clock, Smartphone, Search, Database, FileText, CreditCard, ShieldCheck, ArrowRight, Home, Users, ShoppingBag, Heart, Shield, Printer, Download, FileSpreadsheet, Gift } from 'lucide-react';
 import React from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -235,14 +235,196 @@ export default function AlisaKlimovaProposalFull() {
           </motion.div>
         </motion.section>
 
-        {/* 4. Перспективы масштабирования */}
+        {/* 4. Фактический кошторис и финализация (План vs Факт) */}
+        <motion.section id="estimate-section" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={STAGGER} className="space-y-6 md:space-y-8">
+          <motion.div variants={FADE_UP}>
+             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 text-orange-600 font-display text-xs font-bold uppercase tracking-wider mb-4 border border-orange-500/20">
+               <Sparkles className="w-4 h-4" /> Финальный расчет · Сдача проекта
+             </div>
+             <h2 className="text-2xl md:text-4xl font-black font-display flex flex-col sm:flex-row sm:items-center gap-3 md:gap-4 text-balance">
+               <span className="w-10 h-10 rounded-xl bg-coral text-white flex items-center justify-center text-xl shadow-neon-coral shrink-0">4</span>
+               <span>Фактический кошторис реализации (План vs Факт)</span>
+             </h2>
+             <p className="mt-4 text-ink/70 text-base md:text-lg text-pretty">
+               Сравнение базового объема по договору и фактически реализованной экосистемы сайта с расчетом остатка к оплате.
+             </p>
+          </motion.div>
+
+          <motion.div variants={FADE_UP} className="bg-white/80 backdrop-blur-xl shadow-glass rounded-[2.5rem] border border-black/5 p-6 md:p-10 space-y-8">
+            
+            {/* Обоснование масштабирования и скидки */}
+            <div className="p-5 md:p-6 rounded-2xl bg-orange-500/5 border border-orange-500/20 text-sm md:text-base text-ink/80 leading-relaxed">
+              <strong className="text-ink block mb-2 font-display text-base md:text-lg text-orange-600">
+                💡 Масштабирование проекта и партнерская скидка:
+              </strong>
+              На старте в базовую смету <strong>$350</strong> закладывалось 6 разделов и общая витрина продуктов, где курсы и гайды открывались в небольших всплывающих окнах (поп-апах). 
+              В процессе разработки для максимальной конверсии продаж под каждый из ваших продуктов с нуля были спроектированы и свёрстаны <strong>7 полноценных продающих лендингов</strong> (в сумме 58 кастомных блоков кода: программа, тарифы, боли, модальные окна и FAQ).
+              <div className="mt-3 text-xs md:text-sm text-ink/70">
+                По расценкам нашего КП одна такая страница стоит $50–$70 ($365 суммарно). В знак благодарности за доверие и для долгосрочного сотрудничества я сделал для вас <strong>скидку более 70%</strong>: каждый лендинг посчитан <strong>всего по $15 (+ $105)</strong>, добавлена подготовка к Черной пятнице (+ $5), а все 6 страниц юр. хаба, интерактивная 404 и 10 статей блога (вместо 3–5) переданы в подарок ($0).
+              </div>
+            </div>
+
+            {/* Таблица План vs Факт */}
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm md:text-base border-collapse">
+                <thead>
+                  <tr className="border-b border-black/10 text-xs md:text-sm uppercase tracking-wider text-ink/50">
+                    <th className="py-3 px-2">Категория работ</th>
+                    <th className="py-3 px-2 hidden sm:table-cell">По договору в КП ($350)</th>
+                    <th className="py-3 px-2">Сделано по факту</th>
+                    <th className="py-3 px-2 text-right">Стоимость</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-black/5 text-ink/80">
+                  <tr>
+                    <td className="py-4 px-2">
+                      <strong className="text-ink block">Базовый сайт по КП</strong>
+                      <span className="text-xs text-ink/50">Главная, Обо мне, Консультации, витрина Продуктов, Блог, Политика + Prodamus, домен, метрика</span>
+                    </td>
+                    <td className="py-4 px-2 text-xs md:text-sm text-ink/60 hidden sm:table-cell">6 разделов (~27 блоков)</td>
+                    <td className="py-4 px-2 text-xs md:text-sm text-emerald-700 font-medium">Выполнено 100%</td>
+                    <td className="py-4 px-2 text-right font-bold text-ink whitespace-nowrap">$350.00</td>
+                  </tr>
+
+                  <tr className="bg-orange-50/50">
+                    <td className="py-4 px-2">
+                      <strong className="text-ink block">7 продающих лендингов продуктов</strong>
+                      <span className="text-xs text-orange-600 block mt-0.5">
+                        /prikorm (12 бл.), /menu (9 бл.), /recipes (8 бл.), /sadik (8 бл.), /cosmetics (7 бл.), /protein (7 бл.), /omega3 (7 бл.)
+                      </span>
+                    </td>
+                    <td className="py-4 px-2 text-xs md:text-sm text-ink/60 hidden sm:table-cell">0 страниц (планировались только поп-апы на витрине)</td>
+                    <td className="py-4 px-2 text-xs md:text-sm text-orange-700 font-medium">
+                      +7 полноценных лендингов (Скидка &gt;70%)
+                    </td>
+                    <td className="py-4 px-2 text-right whitespace-nowrap">
+                      <span className="text-xs text-ink/40 line-through block sm:inline sm:mr-2">$365</span>
+                      <strong className="text-orange-600 font-bold">+$105.00</strong>
+                      <span className="text-[11px] text-orange-500 block font-normal">(7 × $15)</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="py-4 px-2">
+                      <strong className="text-ink block">Подготовка сайта к Черной пятнице</strong>
+                      <span className="text-xs text-purple-600 block mt-0.5">
+                        Акционные плашки, баннеры на витрине, спец-тарифы для ноябрьской распродажи
+                      </span>
+                    </td>
+                    <td className="py-4 px-2 text-xs md:text-sm text-ink/60 hidden sm:table-cell">Не входило в КП</td>
+                    <td className="py-4 px-2 text-xs md:text-sm text-purple-700 font-medium">
+                      Готово к запуску
+                    </td>
+                    <td className="py-4 px-2 text-right font-bold text-purple-600 whitespace-nowrap">
+                      +$5.00
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="py-4 px-2">
+                      <strong className="text-ink block">Юридический хаб, 404 и блог</strong>
+                      <span className="text-xs text-ink/50">
+                        6 юр. страниц (/privacy, /offer-products, /offer-consultations, /consent, /disclaimer, /payments), интерактивная /404 + 10 статей вместо 3-5
+                      </span>
+                    </td>
+                    <td className="py-4 px-2 text-xs md:text-sm text-ink/60 hidden sm:table-cell">1 страница политики + 3-5 статей</td>
+                    <td className="py-4 px-2 text-xs md:text-sm text-emerald-700 font-medium">
+                      +6 страниц + 5 доп. статей + Schema.org
+                    </td>
+                    <td className="py-4 px-2 text-right font-bold text-emerald-600 whitespace-nowrap">
+                      $0.00 <span className="text-xs font-normal block text-emerald-500">(Бонус)</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Итоговая сводка платежа с учетом предоплаты 13 000 руб */}
+            <div className="p-6 md:p-8 bg-ink text-white rounded-3xl space-y-4">
+              <div className="space-y-2 text-sm md:text-base border-b border-white/10 pb-4">
+                <div className="flex justify-between items-center text-white/70">
+                  <span>Базовый сайт по договору в КП:</span>
+                  <span className="font-semibold text-white font-mono">$350.00</span>
+                </div>
+                <div className="flex justify-between items-center text-white/70">
+                  <span>7 отдельных продуктовых лендингов со скидкой &gt;70% (7 × $15):</span>
+                  <span className="font-semibold text-orange-400 font-mono">+$105.00</span>
+                </div>
+                <div className="flex justify-between items-center text-white/70">
+                  <span>Подготовка к Черной пятнице (Black Friday промо):</span>
+                  <span className="font-semibold text-purple-400 font-mono">+$5.00</span>
+                </div>
+                <div className="flex justify-between items-center text-white/70">
+                  <span>6 юр. страниц, интерактивная 404 и 10 статей блога:</span>
+                  <span className="font-semibold text-emerald-400 font-mono">$0.00 (В подарок)</span>
+                </div>
+                <div className="flex justify-between items-center text-base md:text-lg font-bold pt-2">
+                  <span>Итоговая фактическая стоимость сайта (21 страница):</span>
+                  <div className="text-right">
+                    <span className="text-xl md:text-2xl font-black font-mono text-white">$460.00</span>
+                    <span className="text-xs text-white/60 block font-normal">(~44 000 руб. по курсу)</span>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center text-emerald-400 pt-1">
+                  <span>Внесенная вами предоплата на старте:</span>
+                  <span className="font-bold font-mono text-lg">-13 000 руб.</span>
+                </div>
+                <div className="flex justify-between items-center text-white/60 text-xs">
+                  <span>Округление в меньшую сторону (скидка в вашу пользу):</span>
+                  <span className="font-semibold text-emerald-400 font-mono">-1 000 руб.</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+                <div>
+                  <div className="text-xs md:text-sm uppercase tracking-wider font-bold text-orange-400">
+                    Финальный остаток к оплате при сдаче:
+                  </div>
+                  <div className="text-xs text-white/60 mt-0.5">
+                    С учетом скидки &gt;70% на лендинги, вычета предоплаты 13 000 руб. и округления в меньшую сторону
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-3xl md:text-5xl font-black font-mono text-orange-400">
+                    30 000 руб.
+                  </div>
+                  <div className="text-xs text-white/60 font-mono mt-0.5">
+                    (или $310.00 в эквиваленте)
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Кнопки скачивания PDF и перехода */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+              <Link
+                href={`/${lang}/presentation/alisa_klimova/estimate`}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-orange-600/30 transition-all active:scale-95 text-center"
+              >
+                <FileText className="w-5 h-5" /> Открыть и скачать официальный Кошторис (PDF)
+              </Link>
+
+              <a
+                href="https://t.me/gde_malish?text=Дмитрий, посмотрела финальный кошторис по сайту, всё прозрачно и супер! Давайте завершать и принимать работу."
+                target="_blank"
+                rel="noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 bg-white hover:bg-slate-50 text-ink font-semibold rounded-2xl border border-black/10 shadow-sm transition-all text-center"
+              >
+                Согласовать финал в Telegram
+              </a>
+            </div>
+
+          </motion.div>
+        </motion.section>
+
+        {/* 5. Перспективы масштабирования */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={STAGGER} className="space-y-6">
-           <motion.div variants={FADE_UP} className="p-6 md:p-10 bg-coral/5 rounded-[2.5rem] border border-coral/10">
-             <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
-               <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0">
-                 <Database className="w-6 h-6 text-coral" />
-               </div>
-               <h3 className="text-xl md:text-2xl font-bold font-display text-balance">Перспективы масштабирования</h3>
+          <motion.div variants={FADE_UP} className="p-6 md:p-10 bg-coral/5 rounded-[2.5rem] border border-coral/10">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0">
+                <Database className="w-6 h-6 text-coral" />
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold font-display text-balance">5. Перспективы масштабирования</h3>
              </div>
              <p className="text-ink/80 leading-relaxed text-base md:text-lg text-pretty">
                Выбранная архитектура на Tilda позволяет в будущем реализовать вашу идею с <strong>закрытым клубом по подписке</strong> (проект «Меню для ребёнка и семьи» с базой рецептов). 
@@ -251,11 +433,11 @@ export default function AlisaKlimovaProposalFull() {
            </motion.div>
         </motion.section>
 
-         {/* 5. Детальная структура сайта (Модули) */}
+        {/* 6. Детальная структура сайта (Модули) */}
         <motion.section id="modules-section" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={STAGGER} className="space-y-6">
            <motion.div variants={FADE_UP} className="mb-8">
              <h2 className="text-2xl md:text-4xl font-black font-display flex flex-col sm:flex-row sm:items-center gap-3 md:gap-4 text-balance">
-               <span className="w-10 h-10 rounded-xl bg-coral text-white flex items-center justify-center text-xl shadow-neon-coral shrink-0">3</span>
+               <span className="w-10 h-10 rounded-xl bg-coral text-white flex items-center justify-center text-xl shadow-neon-coral shrink-0">6</span>
                <span>Архитектура и логика сайта</span>
              </h2>
              <p className="mt-4 text-ink/70 text-base md:text-lg text-pretty">
@@ -292,11 +474,29 @@ export default function AlisaKlimovaProposalFull() {
         </motion.section>
 
         {/* CTA */}
-        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={FADE_UP} className="pb-24 text-center px-4">
-           <h3 className="text-xl md:text-2xl font-bold font-display mb-6 md:mb-8 text-ink text-balance">Если всё корректно — жму руку и можем начинать работу! 😉</h3>
-           <a href="https://t.me/gde_malish?text=Дмитрий, посмотрела КП, всё супер, давайте начинать!" target="_blank" rel="noreferrer" className="inline-block px-8 md:px-12 py-4 md:py-5 bg-coral text-white font-bold rounded-2xl shadow-neon-coral text-base md:text-lg hover:scale-105 transition-transform w-full sm:w-auto text-center">
-             Утвердить КП и начать работу
-           </a>
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={FADE_UP} className="pb-24 text-center px-4 space-y-6">
+           <h3 className="text-xl md:text-3xl font-black font-display text-ink text-balance">
+             Готовы завершать проект и передавать доступы? 🎉
+           </h3>
+           <p className="text-ink/70 text-base max-w-xl mx-auto">
+             Ознакомьтесь с официальным документом сметы или сразу напишите мне в Telegram для финального согласования.
+           </p>
+           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+             <Link 
+               href={`/${lang}/presentation/alisa_klimova/estimate`}
+               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange-600 text-white font-bold rounded-2xl shadow-neon-coral text-base hover:scale-105 transition-transform w-full sm:w-auto text-center"
+             >
+               <FileText className="w-5 h-5" /> Скачать кошторис (PDF)
+             </Link>
+             <a 
+               href="https://t.me/gde_malish?text=Дмитрий, посмотрела обновленную смету и сайт, всё супер, принимаю работу!" 
+               target="_blank" 
+               rel="noreferrer" 
+               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-ink text-white font-bold rounded-2xl text-base hover:bg-ink/80 transition-all w-full sm:w-auto text-center"
+             >
+               Принять сайт и сдать проект
+             </a>
+           </div>
         </motion.section>
 
       </main>
