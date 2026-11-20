@@ -398,7 +398,7 @@ export default function AlisaKlimovaEstimatePage() {
                 <span>Итоговая фактическая стоимость сайта (21 страница):</span>
                 <div className="text-right">
                   <span className="text-base sm:text-lg font-black font-mono text-white print:text-slate-900">$460.00</span>
-                  <span className="text-xs text-slate-400 print:text-slate-500 block font-normal">(~44 000 руб. по актуальному курсу)</span>
+                  <span className="text-xs text-slate-400 print:text-slate-500 block font-normal">(40 876 руб. по калькулятору Альфа-Банка)</span>
                 </div>
               </div>
 
@@ -410,8 +410,8 @@ export default function AlisaKlimovaEstimatePage() {
 
               {/* Округление в меньшую сторону */}
               <div className="flex justify-between items-center text-slate-400 print:text-slate-500 text-xs">
-                <span>Округление в меньшую сторону (дополнительная скидка в вашу пользу):</span>
-                <span className="font-mono text-emerald-400 print:text-emerald-700 font-semibold">-1 000 руб.</span>
+                <span>Округление к 500 руб. в меньшую сторону (скидка в вашу пользу):</span>
+                <span className="font-mono text-emerald-400 print:text-emerald-700 font-semibold">-376 руб.</span>
               </div>
             </div>
 
@@ -422,12 +422,12 @@ export default function AlisaKlimovaEstimatePage() {
                   Финальный остаток к оплате при сдаче проекта:
                 </span>
                 <span className="text-xs text-slate-400 print:text-slate-600">
-                  С учетом скидки &gt;70% на лендинги, вычета предоплаты 13 000 руб. и округления в меньшую сторону
+                  С учетом скидки &gt;70% на лендинги, вычета предоплаты 13 000 руб. и округления к 500 руб.
                 </span>
               </div>
               <div className="text-right">
                 <div className="text-3xl sm:text-4xl font-black font-mono text-orange-400 print:text-orange-600">
-                  30 000 руб.
+                  27 500 руб.
                 </div>
                 <div className="text-xs text-slate-400 print:text-slate-600 font-mono">
                   (или эквивалент <strong>$310.00</strong> по курсу)
@@ -444,7 +444,7 @@ export default function AlisaKlimovaEstimatePage() {
               <CreditCard className="w-4 h-4 text-orange-600" /> Способ оплаты остатка
             </div>
             <p className="leading-relaxed">
-              Оплата производится рублями (30 000 руб.) с личной банковской карты РФ через удобный P2P-перевод (Сбер / Т-Банк / СБП) либо в USDT/крипте по договоренности.
+              Оплата производится рублями (27 500 руб.) с личной банковской карты РФ через удобный перевод (Сбер / Т-Банк / СБП / Альфа-Банк) либо в USDT по договоренности.
             </p>
           </div>
 

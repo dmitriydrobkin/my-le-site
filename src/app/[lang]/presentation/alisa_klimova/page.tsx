@@ -362,7 +362,7 @@ export default function AlisaKlimovaProposalFull() {
                   <span>Итоговая фактическая стоимость сайта (21 страница):</span>
                   <div className="text-right">
                     <span className="text-xl md:text-2xl font-black font-mono text-white">$460.00</span>
-                    <span className="text-xs text-white/60 block font-normal">(~44 000 руб. по курсу)</span>
+                    <span className="text-xs text-white/60 block font-normal">(40 876 руб. по калькулятору Альфа-Банка)</span>
                   </div>
                 </div>
                 <div className="flex justify-between items-center text-emerald-400 pt-1">
@@ -370,8 +370,8 @@ export default function AlisaKlimovaProposalFull() {
                   <span className="font-bold font-mono text-lg">-13 000 руб.</span>
                 </div>
                 <div className="flex justify-between items-center text-white/60 text-xs">
-                  <span>Округление в меньшую сторону (скидка в вашу пользу):</span>
-                  <span className="font-semibold text-emerald-400 font-mono">-1 000 руб.</span>
+                  <span>Округление к 500 руб. в меньшую сторону (скидка в вашу пользу):</span>
+                  <span className="font-semibold text-emerald-400 font-mono">-376 руб.</span>
                 </div>
               </div>
 
@@ -381,12 +381,12 @@ export default function AlisaKlimovaProposalFull() {
                     Финальный остаток к оплате при сдаче:
                   </div>
                   <div className="text-xs text-white/60 mt-0.5">
-                    С учетом скидки &gt;70% на лендинги, вычета предоплаты 13 000 руб. и округления в меньшую сторону
+                    С учетом скидки &gt;70% на лендинги, вычета предоплаты 13 000 руб. и округления к 500 руб.
                   </div>
                 </div>
                 <div className="text-right">
                   <div className="text-3xl md:text-5xl font-black font-mono text-orange-400">
-                    30 000 руб.
+                    27 500 руб.
                   </div>
                   <div className="text-xs text-white/60 font-mono mt-0.5">
                     (или $310.00 в эквиваленте)
