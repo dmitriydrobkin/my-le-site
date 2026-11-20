@@ -128,7 +128,7 @@ export default function AlisaKlimovaProposalFull() {
               </h3>
               <ul className="space-y-4">
                 {[
-                  "Индивидуальный дизайн в Zero Block (никаких готовых шаблонов для основных экранов).",
+                  "Индивидуальный дизайн и кастомная адаптивная верстка (вайб-блоки без готовых шаблонов).",
                   "Мобильная и компьютерная адаптация.",
                   "Интеграция платежной системы PRODAMUS.",
                   "Настройка сквозного поиска по сайту и категориям.",
@@ -161,7 +161,7 @@ export default function AlisaKlimovaProposalFull() {
               { step: "02", title: "Проектирование структуры", price: "$40", desc: "Сборка архитектуры сайта, продумывание пользовательского пути (UX) и логики разделов." },
               { step: "03", title: "Разработка прототипа", price: "$30", desc: "Создание черно-белого скелета страниц (wireframes). Утверждаем расположение всех элементов." },
               { step: "04", title: "Визуальная концепция", price: "$20", desc: "Сбор мудборда, генерация ИИ-референсов в эстетике Pinterest для поиска идеального стиля." },
-              { step: "05", title: "Дизайн Главной страницы", price: "$70", desc: "Отрисовка Главной с нуля в Zero Block. Заложено три круга правок для доведения визуала до идеала." },
+              { step: "05", title: "Дизайн Главной страницы", price: "$70", desc: "Отрисовка Главной с нуля. Заложено согласование и доведение визуала до идеала." },
               { step: "06", title: "Дизайн внутренних страниц", price: "$50", desc: "Перенос утвержденного стиля на страницы «Обо мне», «Консультации», «Продукты» и «Статьи»." },
               { step: "07", title: "Адаптивная верстка", price: "$40", desc: "Ручная подгонка каждого блока под экраны смартфонов и планшетов, чтобы сайт смотрелся безупречно." },
               { step: "08", title: "Технические интеграции", price: "$50", desc: "Подключение домена, настройка онлайн-кассы PRODAMUS, защита от спама и настройка поиска." },
@@ -252,15 +252,15 @@ export default function AlisaKlimovaProposalFull() {
 
           <motion.div variants={FADE_UP} className="bg-white/80 backdrop-blur-xl shadow-glass rounded-[2.5rem] border border-black/5 p-6 md:p-10 space-y-8">
             
-            {/* Обоснование масштабирования и скидки */}
+            {/* Пояснение к структуре и расчету */}
             <div className="p-5 md:p-6 rounded-2xl bg-orange-500/5 border border-orange-500/20 text-sm md:text-base text-ink/80 leading-relaxed">
               <strong className="text-ink block mb-2 font-display text-base md:text-lg text-orange-600">
-                💡 Масштабирование проекта и партнерская скидка:
+                💡 Пояснение к структуре и расчету:
               </strong>
-              На старте в базовую смету <strong>$350</strong> закладывалось 6 разделов и общая витрина продуктов, где курсы и гайды открывались в небольших всплывающих окнах (поп-апах). 
-              В процессе разработки для максимальной конверсии продаж под каждый из ваших продуктов с нуля были спроектированы и свёрстаны <strong>7 полноценных продающих лендингов</strong> (в сумме 58 кастомных блоков кода: программа, тарифы, боли, модальные окна и FAQ).
+              На старте в базовую смету <strong>$350</strong> закладывалось 6 разделов и общая страница-витрина продуктов с открытием информации во всплывающих окнах (поп-апах). 
+              В процессе разработки для лучшей подачи материалов и удобства покупателей под каждый из ваших продуктов с нуля были созданы <strong>7 полноценных посадочных страниц-лендингов</strong> (всего 58 смысловых блоков).
               <div className="mt-3 text-xs md:text-sm text-ink/70">
-                По расценкам нашего КП одна такая страница стоит $50–$70 ($365 суммарно). В знак благодарности за доверие и для долгосрочного сотрудничества я сделал для вас <strong>скидку более 70%</strong>: каждый лендинг посчитан <strong>всего по $15 (+ $105)</strong>, добавлена подготовка к Черной пятнице (+ $5), а все 6 страниц юр. хаба, интерактивная 404 и 10 статей блога (вместо 3–5) переданы в подарок ($0).
+                Стандартная стоимость разработки отдельной страницы составляет $30–$40. В итоговом расчете все 7 страниц посчитаны по специальной дружественной ставке — <strong>по $15 за страницу (+ $105 к проекту)</strong>, добавлена подготовка к Черной пятнице (+ $5), а дополнительные юридические разделы и оформление 10 статей блога включены в базовую стоимость без доплат.
               </div>
             </div>
 
@@ -295,10 +295,10 @@ export default function AlisaKlimovaProposalFull() {
                     </td>
                     <td className="py-4 px-2 text-xs md:text-sm text-ink/60 hidden sm:table-cell">0 страниц (планировались только поп-апы на витрине)</td>
                     <td className="py-4 px-2 text-xs md:text-sm text-orange-700 font-medium">
-                      +7 полноценных лендингов (Скидка &gt;70%)
+                      +7 полноценных лендингов
                     </td>
                     <td className="py-4 px-2 text-right whitespace-nowrap">
-                      <span className="text-xs text-ink/40 line-through block sm:inline sm:mr-2">$365</span>
+                      <span className="text-xs text-ink/40 line-through block sm:inline sm:mr-2">$210</span>
                       <strong className="text-orange-600 font-bold">+$105.00</strong>
                       <span className="text-[11px] text-orange-500 block font-normal">(7 × $15)</span>
                     </td>
@@ -332,7 +332,7 @@ export default function AlisaKlimovaProposalFull() {
                       +6 страниц + 5 доп. статей + Schema.org
                     </td>
                     <td className="py-4 px-2 text-right font-bold text-emerald-600 whitespace-nowrap">
-                      $0.00 <span className="text-xs font-normal block text-emerald-500">(Бонус)</span>
+                      $0.00 <span className="text-xs font-normal block text-emerald-500">(Включено)</span>
                     </td>
                   </tr>
                 </tbody>
@@ -341,13 +341,13 @@ export default function AlisaKlimovaProposalFull() {
 
             {/* Итоговая сводка платежа с учетом предоплаты 13 000 руб */}
             <div className="p-6 md:p-8 bg-ink text-white rounded-3xl space-y-4">
-              <div className="space-y-2 text-sm md:text-base border-b border-white/10 pb-4">
+              <div className="space-y-2.5 text-sm md:text-base border-b border-white/10 pb-4">
                 <div className="flex justify-between items-center text-white/70">
                   <span>Базовый сайт по договору в КП:</span>
                   <span className="font-semibold text-white font-mono">$350.00</span>
                 </div>
                 <div className="flex justify-between items-center text-white/70">
-                  <span>7 отдельных продуктовых лендингов со скидкой &gt;70% (7 × $15):</span>
+                  <span>7 отдельных продуктовых лендингов (7 × $15):</span>
                   <span className="font-semibold text-orange-400 font-mono">+$105.00</span>
                 </div>
                 <div className="flex justify-between items-center text-white/70">
@@ -356,13 +356,13 @@ export default function AlisaKlimovaProposalFull() {
                 </div>
                 <div className="flex justify-between items-center text-white/70">
                   <span>6 юр. страниц, интерактивная 404 и 10 статей блога:</span>
-                  <span className="font-semibold text-emerald-400 font-mono">$0.00 (В подарок)</span>
+                  <span className="font-semibold text-emerald-400 font-mono">$0.00 (Включено)</span>
                 </div>
-                <div className="flex justify-between items-center text-base md:text-lg font-bold pt-2">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-base md:text-lg font-bold pt-2 gap-1 border-t border-white/10">
                   <span>Итоговая фактическая стоимость сайта (21 страница):</span>
-                  <div className="text-right">
+                  <div className="text-left sm:text-right">
                     <span className="text-xl md:text-2xl font-black font-mono text-white">$460.00</span>
-                    <span className="text-xs text-white/60 block font-normal">(40 876 руб. по калькулятору Альфа-Банка)</span>
+                    <span className="text-xs text-white/60 block font-normal">(40 876,48 руб. по курсу Альфа-Банка от 20.11.2026, 1 USD = 88,86 руб.)</span>
                   </div>
                 </div>
                 <div className="flex justify-between items-center text-emerald-400 pt-1">
@@ -370,26 +370,27 @@ export default function AlisaKlimovaProposalFull() {
                   <span className="font-bold font-mono text-lg">-13 000 руб.</span>
                 </div>
                 <div className="flex justify-between items-center text-white/60 text-xs">
-                  <span>Округление к 500 руб. в меньшую сторону (скидка в вашу пользу):</span>
+                  <span>Округление к 500 руб. в меньшую сторону:</span>
                   <span className="font-semibold text-emerald-400 font-mono">-376 руб.</span>
                 </div>
               </div>
 
+              {/* Финальная плашка к оплате - адаптивная верстка */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-                <div>
+                <div className="space-y-0.5">
                   <div className="text-xs md:text-sm uppercase tracking-wider font-bold text-orange-400">
                     Финальный остаток к оплате при сдаче:
                   </div>
-                  <div className="text-xs text-white/60 mt-0.5">
-                    С учетом скидки &gt;70% на лендинги, вычета предоплаты 13 000 руб. и округления к 500 руб.
+                  <div className="text-xs text-white/60">
+                    Согласно курсу Альфа-Банка (40 876 руб.) за вычетом аванса 13 000 руб. и округления к 500 руб.
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="text-3xl md:text-5xl font-black font-mono text-orange-400">
+                <div className="flex sm:flex-col items-baseline sm:items-end justify-between sm:justify-center gap-1.5 border-t sm:border-t-0 border-white/10 pt-2 sm:pt-0">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black font-mono text-orange-400 whitespace-nowrap">
                     27 500 руб.
                   </div>
-                  <div className="text-xs text-white/60 font-mono mt-0.5">
-                    (или $310.00 в эквиваленте)
+                  <div className="text-xs text-white/60 font-mono whitespace-nowrap">
+                    (или $310.00 по курсу)
                   </div>
                 </div>
               </div>

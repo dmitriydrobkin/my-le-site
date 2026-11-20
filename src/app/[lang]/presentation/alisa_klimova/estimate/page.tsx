@@ -188,7 +188,7 @@ export default function AlisaKlimovaEstimatePage() {
                   <td className="py-2.5 px-4">
                     <strong className="text-slate-900 block">Техническая настройка и интеграции</strong>
                     <span className="text-xs text-slate-500">
-                      Zero Block дизайн, адаптив, Prodamus, сквозной поиск, Яндекс.Метрика, базовое SEO
+                      Индивидуальный дизайн, адаптивная верстка (вайб-блоки), Prodamus, сквозной поиск, Яндекс.Метрика, базовое SEO
                     </span>
                   </td>
                   <td className="py-2.5 px-4 text-xs text-slate-500 hidden sm:table-cell">
@@ -207,7 +207,7 @@ export default function AlisaKlimovaEstimatePage() {
           </div>
         </section>
 
-        {/* Раздел 2: Фактическое расширение (7 продающих лендингов со СКИДКОЙ) */}
+        {/* Раздел 2: Фактическое расширение (7 продающих лендингов) */}
         <section className="space-y-3 print-avoid-break">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <h2 className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
@@ -215,11 +215,8 @@ export default function AlisaKlimovaEstimatePage() {
               7 продающих лендингов под продукты
             </h2>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-extrabold px-3 py-1 rounded-full bg-red-100 text-red-700 print-badge flex items-center gap-1">
-                <Tag className="w-3.5 h-3.5" /> СКИДКА &gt;70%
-              </span>
               <span className="text-xs font-bold px-3 py-1 rounded-full bg-orange-100 text-orange-800 print-badge">
-                Партнерская цена: $15 / страница
+                Дружественный тариф: $15 / страница
               </span>
             </div>
           </div>
@@ -228,10 +225,9 @@ export default function AlisaKlimovaEstimatePage() {
             <div className="flex gap-2">
               <Info className="w-4 h-4 text-orange-700 shrink-0 mt-0.5" />
               <div>
-                <strong>Обоснование скидки:</strong> В договоре по КП в модуле «Продукты» закладывалась только общая витрина со всплывающими окнами (поп-апами). 
-                В процессе разработки, чтобы ваши продукты продавали с максимальной конверсией, вместо коротких поп-апов мы с нуля спроектировали и свёрстали <strong>7 полноценных продающих лендингов</strong> (всего <strong>58 уникальных кастомных блоков</strong>). 
-                Стандартная стоимость таких страниц в КП составляет <strong>$50–$70 за штуку ($365 за 7 страниц)</strong>. 
-                В знак нашего долгосрочного сотрудничества и планов на запуск закрытого клуба я делаю вам <strong>эксклюзивную скидку более 70%</strong>: каждый лендинг посчитан всего по <strong>$15 за страницу</strong> (ваша чистая экономия: <strong>$260</strong>).
+                <strong>Пояснение к структуре:</strong> В базовом договоре по КП в модуле «Продукты» закладывалась общая страница-витрина с кратким открытием информации во всплывающих окнах (поп-апах). 
+                В процессе работы для лучшей подачи материалов и удобства покупателей под каждый из 7 продуктов были с нуля созданы отдельные полноценные посадочные страницы-лендинги (всего <strong>58 смысловых блоков</strong>). 
+                Стандартная стоимость разработки отдельной страницы составляет $30–$40. В итоговом расчете все 7 страниц посчитаны по специальной дружественной ставке — <strong>по $15 за страницу (+ $105 к проекту)</strong>.
               </div>
             </div>
           </div>
@@ -243,19 +239,19 @@ export default function AlisaKlimovaEstimatePage() {
                   <th className="py-2 px-3 sm:px-4">#</th>
                   <th className="py-2 px-3 sm:px-4">Разработанный лендинг продукта</th>
                   <th className="py-2 px-3 sm:px-4 hidden sm:table-cell">Фактический объем</th>
-                  <th className="py-2 px-3 sm:px-4 hidden md:table-cell text-right">По прайсу КП</th>
-                  <th className="py-2 px-3 sm:px-4 text-right">Цена со скидкой</th>
+                  <th className="py-2 px-3 sm:px-4 hidden md:table-cell text-right">Стандартный прайс</th>
+                  <th className="py-2 px-3 sm:px-4 text-right">Итоговая цена</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-slate-700">
                 {[
-                  { num: "01", name: "Курс «Прикорм вместе»", url: "/prikorm", blocks: "12 кастомных блоков (программа, тарифы, боли, FAQ)", basePrice: "$70.00", finalPrice: "$15.00" },
-                  { num: "02", name: "Проект «Детское и семейное меню»", url: "/menu", blocks: "9 блоков + интерактивная галерея тарелок", basePrice: "$60.00", finalPrice: "$15.00" },
-                  { num: "03", name: "«Книга рецептов»", url: "/recipes", blocks: "8 блоков + оглавление и развороты", basePrice: "$50.00", finalPrice: "$15.00" },
-                  { num: "04", name: "Вебинар «Адаптация к садику»", url: "/sadik", blocks: "8 блоков (пошаговая схема, спикер, тарифы)", basePrice: "$50.00", finalPrice: "$15.00" },
-                  { num: "05", name: "Гайд «Безопасная косметика»", url: "/cosmetics", blocks: "7 блоков (разбор составов, чек-листы, покупка)", basePrice: "$45.00", finalPrice: "$15.00" },
-                  { num: "06", name: "Гайд «Протеин и коллаген»", url: "/protein", blocks: "7 блоков (дозировки, разбор добавок, оплата)", basePrice: "$45.00", finalPrice: "$15.00" },
-                  { num: "07", name: "Гайд «Омега-3»", url: "/omega3", blocks: "7 блоков (выбор качественного препарата, дозировки)", basePrice: "$45.00", finalPrice: "$15.00" },
+                  { num: "01", name: "Курс «Прикорм вместе»", url: "/prikorm", blocks: "12 кастомных блоков (программа, тарифы, боли, FAQ)", basePrice: "$40.00", finalPrice: "$15.00" },
+                  { num: "02", name: "Проект «Детское и семейное меню»", url: "/menu", blocks: "9 блоков + интерактивная галерея тарелок", basePrice: "$35.00", finalPrice: "$15.00" },
+                  { num: "03", name: "«Книга рецептов»", url: "/recipes", blocks: "8 блоков + оглавление и развороты", basePrice: "$30.00", finalPrice: "$15.00" },
+                  { num: "04", name: "Вебинар «Адаптация к садику»", url: "/sadik", blocks: "8 блоков (пошаговая схема, спикер, тарифы)", basePrice: "$30.00", finalPrice: "$15.00" },
+                  { num: "05", name: "Гайд «Безопасная косметика»", url: "/cosmetics", blocks: "7 блоков (разбор составов, чек-листы, покупка)", basePrice: "$25.00", finalPrice: "$15.00" },
+                  { num: "06", name: "Гайд «Протеин и коллаген»", url: "/protein", blocks: "7 блоков (дозировки, разбор добавок, оплата)", basePrice: "$25.00", finalPrice: "$15.00" },
+                  { num: "07", name: "Гайд «Омега-3»", url: "/omega3", blocks: "7 блоков (выбор качественного препарата, дозировки)", basePrice: "$25.00", finalPrice: "$15.00" },
                 ].map((item) => (
                   <tr key={item.num} className="hover:bg-slate-50/50">
                     <td className="py-2 px-3 sm:px-4 text-xs font-mono text-slate-400">{item.num}</td>
@@ -272,9 +268,9 @@ export default function AlisaKlimovaEstimatePage() {
               <tfoot className="bg-slate-50/70 border-t border-slate-200 font-semibold text-slate-900">
                 <tr>
                   <td className="py-2.5 px-3 sm:px-4" colSpan={3}>
-                    Итого за 7 продающих лендингов со скидкой <span className="text-red-600 font-bold">(-71%)</span>:
+                    Итого за 7 отдельных продающих лендингов:
                   </td>
-                  <td className="py-2.5 px-3 sm:px-4 text-right text-xs text-slate-400 line-through hidden md:table-cell">$365.00</td>
+                  <td className="py-2.5 px-3 sm:px-4 text-right text-xs text-slate-400 line-through hidden md:table-cell">$210.00</td>
                   <td className="py-2.5 px-3 sm:px-4 text-right text-base font-bold text-orange-600">+$105.00</td>
                 </tr>
               </tfoot>
@@ -310,15 +306,15 @@ export default function AlisaKlimovaEstimatePage() {
           </div>
         </section>
 
-        {/* Раздел 4: Работы в подарок ($0) */}
+        {/* Раздел 4: Сопутствующие работы ($0) */}
         <section className="space-y-2.5 print-avoid-break">
           <div className="flex items-center justify-between">
             <h2 className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
               <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">4</span>
-              Работы сверх договора, переданные в подарок
+              Сопутствующие разделы, включенные в проект без доплат
             </h2>
             <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 print-badge">
-              $0.00 (Бесплатный бонус)
+              $0.00 (Включено)
             </span>
           </div>
 
@@ -381,7 +377,7 @@ export default function AlisaKlimovaEstimatePage() {
                 <span className="font-semibold text-white print:text-slate-900 font-mono">$350.00</span>
               </div>
               <div className="flex justify-between items-center text-slate-300 print:text-slate-600">
-                <span>2. 7 продающих лендингов со скидкой &gt;70% (7 × $15 вместо $365):</span>
+                <span>2. 7 продающих лендингов под продукты (по $15):</span>
                 <span className="font-semibold text-orange-400 print:text-orange-600 font-mono">+$105.00</span>
               </div>
               <div className="flex justify-between items-center text-slate-300 print:text-slate-600">
@@ -390,15 +386,17 @@ export default function AlisaKlimovaEstimatePage() {
               </div>
               <div className="flex justify-between items-center text-slate-300 print:text-slate-600">
                 <span>4. Юридический хаб (6 стр.), интерактивная 404 и 10 статей блога:</span>
-                <span className="font-semibold text-emerald-400 print:text-emerald-700 font-mono">$0.00 (В подарок)</span>
+                <span className="font-semibold text-emerald-400 print:text-emerald-700 font-mono">$0.00 (Включено)</span>
               </div>
 
               {/* Промежуточный итог */}
-              <div className="pt-2.5 border-t border-slate-700 print:border-slate-300 flex justify-between items-center text-sm sm:text-base font-bold">
+              <div className="pt-2.5 border-t border-slate-700 print:border-slate-300 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm sm:text-base font-bold">
                 <span>Итоговая фактическая стоимость сайта (21 страница):</span>
-                <div className="text-right">
+                <div className="text-left sm:text-right">
                   <span className="text-base sm:text-lg font-black font-mono text-white print:text-slate-900">$460.00</span>
-                  <span className="text-xs text-slate-400 print:text-slate-500 block font-normal">(40 876 руб. по калькулятору Альфа-Банка)</span>
+                  <span className="text-xs text-slate-400 print:text-slate-500 block font-normal">
+                    (40 876,48 руб. по курсу Альфа-Банка от 20.11.2026, 1 USD = 88,86 руб.)
+                  </span>
                 </div>
               </div>
 
@@ -410,27 +408,27 @@ export default function AlisaKlimovaEstimatePage() {
 
               {/* Округление в меньшую сторону */}
               <div className="flex justify-between items-center text-slate-400 print:text-slate-500 text-xs">
-                <span>Округление к 500 руб. в меньшую сторону (скидка в вашу пользу):</span>
+                <span>Округление к 500 руб. в меньшую сторону:</span>
                 <span className="font-mono text-emerald-400 print:text-emerald-700 font-semibold">-376 руб.</span>
               </div>
             </div>
 
             {/* Финальная плашка к оплате */}
             <div className="pt-3.5 border-t-2 border-orange-500/50 print:border-orange-500 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white/5 print:bg-orange-50 p-4 rounded-xl">
-              <div>
+              <div className="space-y-0.5">
                 <span className="text-xs uppercase tracking-wider font-bold text-orange-400 print:text-orange-700 block">
                   Финальный остаток к оплате при сдаче проекта:
                 </span>
-                <span className="text-xs text-slate-400 print:text-slate-600">
-                  С учетом скидки &gt;70% на лендинги, вычета предоплаты 13 000 руб. и округления к 500 руб.
+                <span className="text-xs text-slate-400 print:text-slate-600 block">
+                  Согласно курсу Альфа-Банка (40 876 руб.) за вычетом предоплаты 13 000 руб. и округления к 500 руб.
                 </span>
               </div>
-              <div className="text-right">
-                <div className="text-3xl sm:text-4xl font-black font-mono text-orange-400 print:text-orange-600">
+              <div className="flex sm:flex-col items-baseline sm:items-end justify-between sm:justify-center gap-1.5 border-t sm:border-t-0 border-white/10 pt-2 sm:pt-0">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black font-mono text-orange-400 print:text-orange-600 whitespace-nowrap">
                   27 500 руб.
                 </div>
-                <div className="text-xs text-slate-400 print:text-slate-600 font-mono">
-                  (или эквивалент <strong>$310.00</strong> по курсу)
+                <div className="text-xs text-slate-400 print:text-slate-600 font-mono whitespace-nowrap">
+                  (или эквивалент $310.00 по курсу)
                 </div>
               </div>
             </div>
